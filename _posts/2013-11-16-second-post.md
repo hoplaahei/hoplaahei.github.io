@@ -1,6 +1,9 @@
 ---
 layout: post
 published: true
+tags: 
+  - honey
+  - salmon
 ---
 
 ## Oven Omlette Recipe
@@ -23,4 +26,4 @@ Here are the steps to make it for two people:
 8.  Put in oven on a gas mark between 5 and 6 (British Ovens)
 9.  Wait 20/25 minutes
 
-When I feel a little peckish I spend 10 minutes making this and then by the time I come back to it I'm starving enough to devour it. I give half to my girlfriend or put the rest in the fridge for later. 
+When I feel a little peckish I spend 10 minutes making this and then by the time I come back to it I'm starving enough to devour it. I give half to my girlfriend or put the rest in the fridge for later.
