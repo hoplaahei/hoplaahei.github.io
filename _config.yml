@@ -26,12 +26,12 @@ prose:
           label: "Add Tags"
           placeholder: "Choose Tags"
           options:
-            - name: "Honey"
-              value: "honey"
-            - name: "Salmon"
-              value: "salmon"
-            - name: "Huckleberries"
-              value: "huckleberries"
+            - name: "Linux"
+              value: "linux"
+            - name: "Recipes"
+              value: "recipes"
+            - name: "Programming"
+              value: "programming"
     _posts/static:
       - name: "layout"
         field:
