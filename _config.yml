@@ -1,16 +1,16 @@
-name: "Doohicky"
-description: "a site about nothing"
-signature: "Yours truly, Grizzly Bear"
+name: "Salient Dream"
+description: "All Things Strange"
+signature: "Greetings, and welcome to my realm"
 pygments: true
 permalink: pretty
 markdown: redcarpet
 github:
   # enables "edit" link
-  repo: 'GRIZZLYBEAR/GRIZZLYBEAR.github.io'
+  repo: 'rodyaj/rodyaj.github.io'
   branch: master
 prose:
-  siteurl: 'http://GRIZZLYBEAR.github.io'
-  relativeLinks: 'http://GRIZZLYBEAR.github.io/links.jsonp'
+  siteurl: 'http://rodyaj.github.io'
+  relativeLinks: 'http://rodyajgithub.io/links.jsonp'
   # uncomment to limit editing to the _posts directory
   #rooturl: '_posts'
   media: 'media'
