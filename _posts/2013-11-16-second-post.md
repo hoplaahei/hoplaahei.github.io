@@ -5,7 +5,7 @@ published: true
 
 ## Oven Omlette Recipe
 
-Oven omlette is convenient for geeks like me -- who are too glued to their computer to spend time cooking -- because it is:
+Oven Omlette is convenient for geeks like me -- who are too glued to their computer to spend time cooking -- because it is:
 
 - quick to make
 - made up of basic household ingredients
