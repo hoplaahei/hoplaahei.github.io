@@ -4,7 +4,6 @@ published: true
 ---
 
 1. Backup your existing .emacs and .emacs.d folders
-
 2. Install emacs-prelude (a preconfigured Emacs for beginners):
 
 ```
