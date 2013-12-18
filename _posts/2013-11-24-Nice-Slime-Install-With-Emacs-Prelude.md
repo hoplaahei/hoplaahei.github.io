@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 ---
 
 1. Backup your existing .emacs and .emacs.d folders
