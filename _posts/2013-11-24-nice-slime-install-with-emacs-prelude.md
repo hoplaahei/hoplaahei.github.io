@@ -3,7 +3,7 @@ layout: post
 published: true
 ---
 
-Backup your existing .emacs and .emacs.d folders
+whatBackup your existing .emacs and .emacs.d folders
 Install emacs-prelude (a preconfigured Emacs for beginners):
 ```
  curl -L http://git.io/epre | sh
