@@ -10,7 +10,7 @@ github:
   branch: master
 prose:
   siteurl: 'http://rodyaj.github.io'
-  relativeLinks: 'http://rodyajgithub.io/links.jsonp'
+  relativeLinks: 'http://rodyaj.github.io/links.jsonp'
   # uncomment to limit editing to the _posts directory
   #rooturl: '_posts'
   media: 'media'
