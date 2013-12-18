@@ -16,7 +16,7 @@ published: true
 curl -O http://beta.quicklisp.org/quicklisp.lisp
 sbcl --load quicklisp.lisp
 ```
-- From within the new sbcl buffer, paste these lines one-at-a-time, pressing enter after each
+- From within the new sbcl buffer, paste these lines one-at-a-time, pressing enter after each:
 
 ```
 (quicklisp-quickstart:install)
