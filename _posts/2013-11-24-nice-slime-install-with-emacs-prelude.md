@@ -4,6 +4,7 @@ published: true
 ---
 
 - Move your existing .emacs file and .emacs.d folder
+- Install sbcl (I use the git version as it tends to cause less problems)
 - Install emacs-prelude (a preconfigured Emacs for beginners):
 
 ```
