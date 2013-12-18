@@ -4,6 +4,9 @@ published: true
 tags: ""
 ---
 
+Test a code block
+	some code here
+
 Too glued to your computer to waste time cooking? Give Oven Omlette a try. It is:
 
 - quick to make
