@@ -4,7 +4,7 @@ published: true
 ---
 
 - Move your existing .emacs file and .emacs.d folder
-- Install sbcl (I use the git version as it tends to cause less problems)
+- Install sbcl
 - Install emacs-prelude (a preconfigured Emacs for beginners):
 
 ```
@@ -24,5 +24,5 @@ sbcl --load quicklisp.lisp
 (ql:add-to-init-file)
 (ql:quickload "quicklisp-slime-helper")
 ```
-- Ignore the recommendations from quicklisp as prelude already has everything setup
-- Restart emacs and load slime with M-x slime (Alt-x slime)
+- Ignore the recommendations from quicklisp as prelude should have everything setup
+- Restart emacs and load slime with M-x slime (alt-x slime)
