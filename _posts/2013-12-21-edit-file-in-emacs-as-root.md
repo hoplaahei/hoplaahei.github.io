@@ -3,38 +3,51 @@ layout: post
 published: true
 ---
 
-Adding this elisp code to ~/.emacs will re-open a file as root that you access with find-file:
+There are a few elisp snippets floating about the web to save files as sudo, but most only allow you to open files with sudo from within emacs find-file, and not straight from a terminal. sudo.el does both. Download it:
 
 ```
-(defun th-rename-tramp-buffer ()
-  (when (file-remote-p (buffer-file-name))
-    (rename-buffer
-     (format "%s:%s"
-             (file-remote-p (buffer-file-name) 'method)
-             (buffer-name)))))
+wget --no-check-certificate https://raw.github.com/alexander-yakushev/.emacs.d/master/sudo.el
+```
 
-(add-hook 'find-file-hook
-          'th-rename-tramp-buffer)
+And make sure you put the above in the same folder as your emacs loadpath. If you do not know what your load path is then you can set your own in ~/.emacs with e.g.,:
 
-(defadvice find-file (around th-find-file activate)
-  "Open FILENAME using tramp's sudo method if it's read-only."
-  (if (and (not (file-writable-p (ad-get-arg 0)))
-           (y-or-n-p (concat "File "
-                             (ad-get-arg 0)
-                             " is read-only.  Open it as root? ")))
-      (th-find-file-sudo (ad-get-arg 0))
-    ad-do-it))
+```
+(add-to-list 'load-path "~/.emacs.d/personal/modules")
+```
 
-(defun th-find-file-sudo (file)
-  "Opens FILE with root privileges."
-  (interactive "F")
-  (set-buffer (find-file (concat "/sudo::" file))))
-  ```
-  
-Unfortunately the above does not seem to work when opening a file from a terminal. But you can make an alias in your shell (e.g., ~/.zshrc or ~/.bashrc) to open a file as root from the shell manually:
+You also need the following snippet in your ~/.emacs
+
+```
+;; Save files as root
+
+(defun sudo-before-save-hook ()
+  (set (make-local-variable 'sudo:file) (buffer-file-name))
+  (when sudo:file
+    (unless(file-writable-p sudo:file)
+      (set (make-local-variable 'sudo:old-owner-uid) (nth 2 (file-attributes sudo:file)))
+      (when (numberp sudo:old-owner-uid)
+        (unless (= (user-uid) sudo:old-owner-uid)
+            (when (y-or-n-p
+                    (format "File %s is owned by %s, save it with sudo? "
+                             (file-name-nondirectory sudo:file)
+                              (user-login-name sudo:old-owner-uid)))
+                  (sudo-chown-file (int-to-string (user-uid)) (sudo-quoting sudo:file))
+                      (add-hook 'after-save-hook
+                                      (lambda ()
+                                        (sudo-chown-file (int-to-string sudo:old-owner-uid)
+                                                          (sudo-quoting sudo:file))
+                                        (if sudo-clear-password-always
+                                                (sudo-kill-password-timeout)))
+                                            nil   ;; not append
+                                            t    ;; buffer local hook
+                                                  )))))))
+
+
+(add-hook 'before-save-hook 'sudo-before-save-hook)
+```
+
+If you do not want to use the above elisp code then you can open as root directly from the terminal by adding this to e.g., ~/.zshrc or ~/.bashrc:
 
 ```
 alias E=emacsclient -t -e '(find-file "/sudo::/etc/passwd")'
 ```
-
-I'd be interested to find an elisp snippet that combines the two methods into one. I'll have to remember to make my own when I have time. 
