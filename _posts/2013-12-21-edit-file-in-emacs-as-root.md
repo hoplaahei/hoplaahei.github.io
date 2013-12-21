@@ -9,7 +9,7 @@ There are a few elisp snippets floating about the web to save files as sudo, but
 wget --no-check-certificate https://raw.github.com/alexander-yakushev/.emacs.d/master/sudo.el
 ```
 
-And make sure you put the above in the same folder as your emacs loadpath. If you do not know what your load path is then you can set your own in ~/.emacs with e.g.,:
+And make sure you put the above in the same folder as your emacs loadpath. If you do not know what your load path is then you can add on your own in ~/.emacs with e.g.,:
 
 ```
 (add-to-list 'load-path "~/.emacs.d/personal/modules")
