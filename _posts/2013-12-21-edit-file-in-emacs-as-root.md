@@ -15,7 +15,7 @@ And make sure you put the above in the same folder as your emacs loadpath and te
 (add-to-list 'load-path "~/.emacs.d/personal/modules")
 ```
 
-And you can require it with:
+And you can require it by adding this in ~/.emacs:
 
 ```
 (require 'sudo)
