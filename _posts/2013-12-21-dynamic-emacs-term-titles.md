@@ -20,5 +20,6 @@ Add this to ~/.emacs init file:
 If using tmux you will also need (in ~/.tmux.conf):
 
 ```
+set -g set-titles on
 set -g set-titles-string "#T"
 ```
