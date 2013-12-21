@@ -22,4 +22,4 @@ Here are the steps to make it for two people:
 8.  Put in oven on a gas mark between 5 and 6 (British Ovens)
 9.  Wait 20/25 minutes
 
-I spend 10 minutes making this, but leave it cooking on gas 5/6 for 25 minutes. I give half to my girlfriend or put the rest in the fridge for later.
+If you throw the gas up to 6 it will probaby do in 15 minutes, but I leave it in for 25 minutes on gas 5/6 so it cooks well. I give half to my girlfriend or put the rest in the fridge for later.
