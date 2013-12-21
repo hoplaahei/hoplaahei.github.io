@@ -3,6 +3,8 @@ layout: post
 published: true
 ---
 
+Use this method to change the terminal title to the running emacs buffer. I've prefixed the titles with '[Emacs]', which is useful if you want a unique set of symbols to match with window-matching rules in your window manager e.g., for cycling between open emacs terminal windows. 
+
 Add this to ~/.emacs init file:
 
 ```
