@@ -13,8 +13,9 @@ M-x package-list-packages
 
 Use C-s to search for xclip and install it.
 
-Finally add to .emacs:
+Now add to ~/.emacs:
 
 ```
 (xclip-mode 1)
 ```
+Remember to restart Emacs. 
