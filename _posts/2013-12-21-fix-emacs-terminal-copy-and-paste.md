@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 ---
 
 Emacs from the terminal does not have access to X11 libraries so e.g., copying some code from Emacs to your X web browser will not work. Using third party tools with Emacs can fix this. 
