@@ -41,4 +41,4 @@ If you do not want to use the above elisp code then you can open as root directl
 ```
 alias E=emacsclient -t -e '(find-file "/sudo::/etc/passwd")'
 ```
-[sudo.el](http://www.emacswiki.org/emacs/SudoSave) is meant to offer the same as sudo-save, but with password prompting. Unfortunately, it does not switch read-only mode off when root files are opened from a terminal in emacsclient. And WARNING: if you try to set read-only flag off yourself and save the file it will work, but the file remains chowned as normal user, rather than root. 
+[sudo.el](http://www.emacswiki.org/emacs/SudoSave) is meant to offer the same as sudo-save, but with password prompting. Unfortunately, it does not switch read-only mode off when root files are opened from a terminal in emacsclient. And WARNING: if you try to set read-only flag off yourself and save the file it will error out and leave the file chowned as normal user, rather than root.
