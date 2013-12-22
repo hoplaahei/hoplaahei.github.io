@@ -19,7 +19,7 @@ Disadvantages:
 
 I still prefer this method despite the security risks because I'm lazy and like the audodetection rather than having to manually specifying that I'm editing a root file.
 
-** Installation
+## Installation
 
 ```
 wget http://dryice.name/computer/emacs/packages/sudo-save.el
