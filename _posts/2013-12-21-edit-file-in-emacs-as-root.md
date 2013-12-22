@@ -3,12 +3,26 @@ layout: post
 published: true
 ---
 
-There are a few elisp snippets floating about the web to save files as sudo, but most only allow you to open files with sudo from within emacs find-file, and not straight from a terminal. sudo.el does both. Download it:
+The simplest way is to edit root files in emacs is to download sudo-save.el.
+
+Advantages: 
+
+- only needs requiring in the init file
+- autodetects when a root file is opened both from within emacs or directly from the commandline
+
+Disadvantages:
+
+- requires NOPASSWD option in /etc/sudoers (security risk)
+- or requires recent use of sudo command before timeout (in cache)
+- doesn't prompt for password
+
+I still prefer this method despite the security risks because I'm lazy and like the audodetection rather than having to manually specifying that I'm editing a root file.
+
+** Installation
 
 ```
-wget --no-check-certificate https://raw.github.com/alexander-yakushev/.emacs.d/master/sudo.el
+wget http://dryice.name/computer/emacs/packages/sudo-save.el
 ```
-
 And make sure you put the above in the same folder as your emacs loadpath and tell emacs to require it. If you do not know what your load path is then you can add on your own in ~/.emacs with e.g.,:
 
 ```
@@ -18,38 +32,7 @@ And make sure you put the above in the same folder as your emacs loadpath and te
 And you can require it by adding this in ~/.emacs:
 
 ```
-(require 'sudo)
-```
-
-You also need the following snippet in your ~/.emacs
-
-```
-;; Save files as root
-
-(defun sudo-before-save-hook ()
-  (set (make-local-variable 'sudo:file) (buffer-file-name))
-  (when sudo:file
-    (unless(file-writable-p sudo:file)
-      (set (make-local-variable 'sudo:old-owner-uid) (nth 2 (file-attributes sudo:file)))
-      (when (numberp sudo:old-owner-uid)
-        (unless (= (user-uid) sudo:old-owner-uid)
-            (when (y-or-n-p
-                    (format "File %s is owned by %s, save it with sudo? "
-                             (file-name-nondirectory sudo:file)
-                              (user-login-name sudo:old-owner-uid)))
-                  (sudo-chown-file (int-to-string (user-uid)) (sudo-quoting sudo:file))
-                      (add-hook 'after-save-hook
-                                      (lambda ()
-                                        (sudo-chown-file (int-to-string sudo:old-owner-uid)
-                                                          (sudo-quoting sudo:file))
-                                        (if sudo-clear-password-always
-                                                (sudo-kill-password-timeout)))
-                                            nil   ;; not append
-                                            t    ;; buffer local hook
-                                                  )))))))
-
-
-(add-hook 'before-save-hook 'sudo-before-save-hook)
+(require 'sudo-save)
 ```
 
 If you do not want to use the above elisp code then you can open as root directly from the terminal by adding this to e.g., ~/.zshrc or ~/.bashrc:
@@ -57,3 +40,4 @@ If you do not want to use the above elisp code then you can open as root directl
 ```
 alias E=emacsclient -t -e '(find-file "/sudo::/etc/passwd")'
 ```
+I'm yet to find a piece of elisp code that can do the same autodetection of root files as sudo-save.el, but with the added security of password prompting. There is [sudo.el](http://www.emacswiki.org/emacs/SudoSave), but it breaks for me when I try to open root files with emacs from the commandline. I'd be interested to know if anyone has came up with a working solution. 
