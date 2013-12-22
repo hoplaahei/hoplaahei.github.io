@@ -3,7 +3,7 @@ layout: post
 published: true
 ---
 
-The simplest way is to edit root files in emacs is to download sudo-save.el.
+The simplest way to edit root files in emacs is to download sudo-save.el.
 
 Advantages: 
 
