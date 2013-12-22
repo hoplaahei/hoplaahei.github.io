@@ -12,9 +12,10 @@ Advantages:
 
 Disadvantages:
 
+- doesn't prompt for password
 - requires [NOPASSWD](http://www.andrehonsberg.com/article/linux-sudo-without-a-password-using-the-sudoers-file) option in /etc/sudoers (security risk)
 - or requires recent use of sudo command before timeout (in cache)
-- doesn't prompt for password
+
 
 I still prefer this method despite the security risks because I'm lazy and like the audodetection rather than having to manually specifying that I'm editing a root file.
 
