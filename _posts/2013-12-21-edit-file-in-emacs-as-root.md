@@ -41,4 +41,4 @@ If you do not want to use the above elisp code then you can open as root directl
 ```
 alias E=emacsclient -t -e '(find-file "/sudo::/etc/passwd")'
 ```
-I'm yet to find a piece of elisp code that can do the same autodetection of root files as sudo-save.el, but with the added security of password prompting. There is [sudo.el](http://www.emacswiki.org/emacs/SudoSave), but I receive a rather grave bug when opening root files from a terminal; it errors out and leaves the root file chowned as normal user. I'd be interested to know if anyone has came up with another working solution.
+I'm yet to find a piece of elisp code that can do the same autodetection of root files as sudo-save.el, but with the added security of password prompting. There is [sudo.el](http://www.emacswiki.org/emacs/SudoSave), but it doesn't set the read-only flag off when you open root files from a terminal. Also, if I manually set read-only off then it errors out when the file is saved and leaves the root file chowned as normal user. I'd be interested to know if anyone has came up with another working solution.
