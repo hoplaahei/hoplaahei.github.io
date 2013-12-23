@@ -12,14 +12,14 @@ In this guide I assume you know howto:
 - add a github repository
 - use shell commands
 
-Choose the dotfiles or dotfolders (.****) you want backing up from your home directory and move them to a folder ~/.dotfiles.
+1. Choose the dotfiles or dotfolders (.****) you want backing up from your home directory and move them to a folder ~/.dotfiles.
 
-We need to remove the dots from the dotfiles/folders so they are visible in github. Run this loop in the terminal:
+2. Remove the dots from the dotfiles/folders so they are visible in github. Run this loop in the terminal:
 
 ```
 cd ~/.dotfiles && for f in * ; do mv "$f" "${f/./}" ; done
 ```
-Now we symlink the renamed dotfiles back to their original home directory location:
+3. Symlink the renamed dotfiles back to their original home directory location:
 
 ```
 cd ~/.dotfiles && for f in *; do ln -s ~/.dotfiles/$f ~/.$f; done
@@ -31,7 +31,7 @@ If you mess up and create a load of useless symlinks in the home dir then you ca
 find /home/joe -maxdepth 1 -lname '*' -exec rm {} \;
 ```
 
-Now to make a local git repository:
+4. Make a local git repository:
 
 ```
 cd ~/.dotfiles
@@ -40,7 +40,7 @@ git add *
 git commit -m "First dotfiles commit."
 ```
 
-We also sync it with our remote repository (which you must create) on github:
+5. Sync it with our remote repository (which you must create) on github:
 
 ```
 cd ~/.dotfiles
