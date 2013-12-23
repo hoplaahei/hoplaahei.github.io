@@ -62,3 +62,11 @@ git add *
 git commit -m "Merge local and remote"
 git push -u origin master
 ```
+
+To restore the dotfiles from github:
+
+```
+cd ~
+git clone git@github.com:rodyaj/dotfiles.git .dotfiles
+cd .dotfiles && f in *; do ln -s ~/.dotfiles/$f ~/.$f; done
+```
