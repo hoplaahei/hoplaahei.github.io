@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 ---
 
 DISCLAIMER: Although the following works fine on my system, I cannot account for the quirks in some shells, and therefore urge you to backup your home directory before trying the following. 
