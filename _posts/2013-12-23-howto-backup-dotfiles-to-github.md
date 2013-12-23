@@ -12,14 +12,20 @@ In this guide I assume you know howto:
 - add a github repository
 - use shell commands
 
-1. Choose the dotfiles or dotfolders (.****) you want backing up from your home directory and move them to a folder ~/.dotfiles.
+Choose the dotfiles or dotfolders (.****) you want backing up from your home directory and move them to a folder ~/.dotfiles:
 
-2. Remove the dots from the dotfiles/folders so they are visible in github. Run this loop in the terminal:
+``` 
+mv .yourfile ~/.dotfiles
+mv .yourfolder ~/.dotfiles
+```
+
+Remove the '.' from the dotfiles/folders so they are visible in github. Run this loop in the terminal:
 
 ```
 cd ~/.dotfiles && for f in * ; do mv "$f" "${f/./}" ; done
 ```
-3. Symlink the renamed dotfiles back to their original home directory location:
+
+Symlink the renamed dotfiles back to their original home directory location:
 
 ```
 cd ~/.dotfiles && for f in *; do ln -s ~/.dotfiles/$f ~/.$f; done
@@ -31,7 +37,7 @@ If you mess up and create a load of useless symlinks in the home dir then you ca
 find /home/joe -maxdepth 1 -lname '*' -exec rm {} \;
 ```
 
-4. Make a local git repository:
+Make a local git repository:
 
 ```
 cd ~/.dotfiles
@@ -40,13 +46,14 @@ git add *
 git commit -m "First dotfiles commit."
 ```
 
-5. Sync it with our remote repository (which you must create) on github:
+Sync it with our remote repository (which you must create) on github:
 
 ```
 cd ~/.dotfiles
 git remote add origin git@github.com:rodyaj/dotfiles.git
 git push -u origin master
 ```
+
 If you receive an error message that files already exist on the remote repository (e.g., README.md) then you can usually fix this with:
 
 ```
