@@ -5,7 +5,7 @@ published: true
 
 DISCLAIMER: Although the following works fine on my system, I cannot account for the quirks in some shells, and therefore urge you to backup your home directory before trying the following. 
 
-In this guide I assume you know howto:
+In this guide I assume you know how to:
 
 - create a github account
 - [setup](https://help.github.com/articles/generating-ssh-keys) security keys
