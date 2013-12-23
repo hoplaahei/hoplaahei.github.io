@@ -8,7 +8,7 @@ DISCLAIMER: Although the following works fine on my system, I cannot account for
 In this guide I assume you know howto:
 
 - create a github account
-- setup a public key
+- [setup](https://help.github.com/articles/generating-ssh-keys) security keys
 - add a github repository
 - use shell commands
 
@@ -45,5 +45,13 @@ We also sync it with our remote repository (which you must create) on github:
 ```
 cd ~/.dotfiles
 git remote add origin git@github.com:rodyaj/dotfiles.git
+git push -u origin master
+```
+If you receive an error message that files already exist on the remote repository (e.g., README.md) then you can usually fix this with:
+
+```
+git pull origin master
+git add *
+git commit -m "Merge local and remote"
 git push -u origin master
 ```
