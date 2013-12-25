@@ -20,3 +20,4 @@ Make it LVM ready and add it to the existing volume group (which you can find th
 pvcreate /dev/sdb1
 vgextend YourVolGroup /dev/sdb1
 ```
+The new disk is now tacked onto the end of the LVM setup. No data is written to it though because it isn't mounted. 
