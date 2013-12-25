@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 ---
 
 If you have free unpartitioned space on your LVM disk extend the logical device with:
