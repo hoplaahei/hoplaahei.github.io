@@ -29,7 +29,7 @@ The new disk is now tacked onto the end of the LVM drive. No data is written to 
 Find out the current extent number of the LVM volume to be backed up:
 
 ```
-lvdisplay -v /dev/VolGroup00/lvolhome`
+lvdisplay -v /dev/VolGroup00/lvolhome
 ```
 
 Create a snapshot volume using the extent number listed in the output. The `/dev/sda1` on the end isn't necessary unless you are trying to force it to write to a particular disk e.g., an inserted USB or an SSD:
