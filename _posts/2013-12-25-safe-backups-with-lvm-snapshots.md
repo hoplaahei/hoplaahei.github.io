@@ -74,7 +74,7 @@ do
              EXTENDED_DEV=$OPTARG
              ;;
          e)
-             EXTENDED_DEV=$OPTARG
+             EXTENT_NUM=$OPTARG
              ;;
          v)
              VERBOSE=1
