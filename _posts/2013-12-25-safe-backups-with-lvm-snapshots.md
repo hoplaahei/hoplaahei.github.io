@@ -3,29 +3,39 @@ layout: post
 published: true
 ---
 
-Creating an LVM snapshot makes a "freeze" of the filesystem so that things are in a consistent state before making the backup. This guide assumes the reader knows how to:
+This guide assumes the reader knows how to:
 
 - use a terminal
 - partition a disk
 
+Creating an LVM snapshot is useful as it makes a "freeze" of the filesystem so that things are in a consistent state before making a backup. LVM requires the creation of a snapshot volume to store them, but it needn't go bigger than a few gig, as the snapshots only store the changed files in the overlying filesystem. 
+
 ## Preparing a drive to store the snapshots
 
-** If you are lucky enough to have a big disk that isn't already full with LVM volumes, then skip this first section. **
+Setup as taken from `blkid` command:
 
-In my setup I have an SSD disk (my main disk) that has no more room for LVM snapshots (`/` and `/home` hog it all). Rather than second guessing how much space to give up -- and mess about shrinking volumes and filesystems -- I extend the logical volumes to a second magnetic hard disk for much more space. It doesn't really matter that the magnetic hard disk is considerably slower, since it's only used temporarily for snapshotting. 
+SSD 128G (/dev/sda)
+Hard Drive 320G (/dev/sdb)
 
-So, make sure the extra device is connected and use the likes of `blkid` (or `dmesg | tail` if it's a USB) to find the device number for it such as /dev/sdb. Decide how big the partition needs to be; remember it holds snapshots containing any changes to the filesystem. Something small such as 5 gig should suffice for most tasks, but I stay on the safe side and match it with the full size of the disk I'm backing up. In my case, I'm backing up all the logical volumes on an SSD to a hard drive. `pvdisplay` shows that all the logical volumes on the SSD drive total 128.74G, which I round off to 129G. With that in mind, here is the setup:
+I'm not keen on the idea of resizing existing volumes on the SSD to make room for a snapshot volume, however small. That said, I instead split a second drive into two partitions:
 
-`gdisk /dev/sdb` then `n`, `Enter`, `Enter`, `+129G`, `8e00`
+LVM Partition 1 (To share with SSD):
 
-Then I repeat the step, this time using all remaining free space (the default) for the size, so that I have two partitions on the disk. The first one will contain a volume group that is shared with my first disk and only used temporarily to make backups. The second partition is used to physically store the backups of the first drive. 
+`gdisk /dev/sdb` then `n`, `Enter`, `Enter`, `+129G`, `8e00`, `w`
 
-Make the first partition LVM ready and add it to the existing volume group (which you can find the name of by looking at the 'VG Name' field of `lvdisplay` command):
+LVM Partition 2 (To store imaged backups)
+
+`n`, `Enter`, `Enter`, `Enter`, `8e00`, `w`
+
+...  and share the first partition with the SSD in LVM like this:
 
 ```
+# Use 'VG Name' field of `lvdisplay` command to get the existing Volume Group name):
 pvcreate /dev/sdb1
-vgextend VolGroup00 /dev/sdb1
+vgextend VolGroup00 /dev/sdb1 # VolGroup00 already exists on /dev/sda1 SSD
 ```
+So, use the above as a guideline. Notice that the first partition of the second disk is the same size as the entire SSD. It needn't be that big as it only holds the changed files in the volumes, but it doesn't hurt to stay on the safe side if the space is available. 
+
 The sata hard drive space is now tacked onto the end of the SSD space. Don't worry though, no data is spread to it while it isn't mounted. 
 
 Find out the current extent number of the SSD LVM volume to be backed up:
