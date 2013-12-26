@@ -8,7 +8,7 @@ This guide assumes the reader knows how to:
 - use a terminal
 - partition a disk
 
-Creating an LVM snapshot is useful as it makes a "freeze" of the filesystem so that things are in a consistent state before making a backup. LVM requires the creation of a snapshot volume to store them, but the snapshots only store the changed files in the overlying filesystem, so it is ok to limit the volume size to a few gigs.
+Creating an LVM snapshot is useful as it makes a "freeze" of the filesystem so that things are in a consistent state before making a backup. LVM requires the creation of a snapshot volume to store them, but the snapshots only record the changed files in the overlying filesystem, so it is ok to limit the volume size to a few gigs.
 
 The downside of LVM snapshots are that they slow down the system considerably whilst they remain on the system, so just use them temporarily to get a frozen state of the disk, treat them like a mounted disk and back up from them using more conventional methods, then remove them. 
 
