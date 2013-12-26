@@ -17,16 +17,16 @@ The downside of LVM snapshots are that they slow down the system considerably wh
 - backup from them using more conventional methods
 - remove after use 
 
-I've made the below script to make a temporary snapshot of a volume, dd it over to a backup volume, and then remove the snapshot volume. The script will extend over to another volume when given an optional "snapshot device" argument, and then remove (reduce) the extended device after. This is useful if there isn't enough room for temporary snapshots on the origin device. It is ok to use a slow device such as USB as the snapshot device, as we only need it during the backup, then remove the snapshot volume afterwards. 
+I've made the below script to make a temporary snapshot of a volume, dd it over to a backup volume, and then remove the snapshot volume. The script will extend over to another volume when given an optional "snapshot device" argument, and then remove (reduce) the extended device after. This is useful if there isn't enough room for temporary snapshots on the origin device. It is ok to use a slow device such as USB as the snapshot device, as we only need it during the backup, and can simply remove the snapshot volume afterwards. 
 
 dd'ing large drives is slow, so treat this as a one time operation to get the backups where needed. Don't use this script to backup every time. Instead, mount the logical volumes already backed up as normal drives, and use an incremental backup tool like rsnapshot to only copy over the changed files.
 
-Save this script as lvm-backup.sh and execute with ./lvm-backup.sh:
+I give no guarantees that the following script won't destroy your system, so check over it yourself and make a conventional backup first. Save this script as lvm-backup.sh and execute with ./lvm-backup.sh:
 
 ```bash
 #!/bin/bash
 # Argument = -sg source-group -dg dest-group -sv source-vol
-#            -ed extended-device -v
+#            -ed extended-snapshot-device -v
 
 usage()
 {
@@ -40,7 +40,7 @@ OPTIONS:
    -i     Source Group Volume
    -o     Destination Group Volume
    -l     Source Logical Volume
-   -d     Extended device
+   -d     Extended snapshot device
    -v     Verbose
 EOF
 }
