@@ -13,15 +13,15 @@ Creating an LVM snapshot is useful as it makes a "freeze" of the filesystem so t
 The downside of LVM snapshots are that they slow down the system considerably whilst active on the system, so I recommend these guidelines:
 
 - use temporarily to get a frozen state of the disk
-- treat like a mounted disk
-- backup from them using more conventional methods
-- remove after use 
+- remove after the backup is complete
 
-I've made the below script to make a temporary snapshot of a volume, dd it over to a backup volume, and then remove the snapshot volume. The script will extend over to another volume when given an optional "snapshot device" argument, and then remove (reduce) the extended device after. This is useful if there isn't enough room for temporary snapshots on the origin device. It is ok to use a slow device such as USB as the snapshot device, as we only need it during the backup, and can simply remove the snapshot volume afterwards. 
+Although the snapshots only record and point to changes, they behave like a full filesystem when copied over. This is useful, as it allows backup using more conventional methods. 
 
-dd'ing large drives is slow, so treat this as a one time operation to get the backups where needed. Don't use this script to backup every time. Instead, mount the logical volumes already backed up as normal drives, and use an incremental backup tool like rsnapshot to only copy over the changed files.
+I've made the below script to make a temporary snapshot of a volume A, dd it over to a backup volume B (making a full backup of the volume A), and then remove the snapshot volume. The script will extend over to another volume when given an optional "snapshot device" argument, and then remove (reduce) the extended device afterwards. This is useful if there isn't enough room for temporary snapshots on the origin device. It is ok to use a slow device such as USB as the snapshot device, as we only need it during the backup, and can simply remove the snapshot volume afterwards. 
 
-Remember that the snapshot volume must be large enough to hold all changes to the source logical volume. My script stays on the safe side by allocating the full size of the volume to be backed up to the snapshot volume, unless you specifically pass it an extent number with `-e`.
+dd'ing large drives can be slow, so treat this as a one time operation to get the backups where needed. Don't use this script to backup every time. Instead, mount the logical volumes already backed up as normal drives, and use an incremental backup tool like rsnapshot to only copy over the changed files from the snapshot.
+
+Remember that the snapshot volume must be large enough to hold all changes that happen to the source volume while the snapshot is in existence. My script stays on the safe side by allocating the full size of the volume to be backed up to the snapshot volume, unless you specifically pass it an extent number with `-e`.
 
 I give no guarantees that the following script won't destroy your system, so check over it yourself and make a conventional backup first. Save this script as lvm-backup.sh and execute with ./lvm-backup.sh:
 
