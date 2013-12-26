@@ -18,7 +18,7 @@ dd'ing large drives is slow, so treat this as a one time operation to get the ba
 
 Save this script as lvm-backup.sh and execute with ./lvm-backup.sh:
 
-```
+```bash
 #!/bin/bash
 # Argument = -sg source-group -dg dest-group -sv source-vol
 #            -ed extended-device -v
