@@ -23,7 +23,7 @@ dd'ing large drives can be slow, so treat this as a one time operation to get th
 
 Remember that the snapshot volume must be large enough to hold all changes that happen to the source volume while the snapshot is in existence. My script stays on the safe side by allocating the full size of the volume to be backed up to the snapshot volume, unless you specifically pass it an extent number with `-e`.
 
-I give no guarantees that the following script won't destroy your system, so check over it yourself and make a conventional backup first. Save this script as lvm-backup.sh and execute with e.g., `sh lvmscript.sh -i VolGroup00 -o VolGroup01 -l lvolroot -d /dev/sdb1` (where sdb1 is a large hard disk to store the snapshots).
+I give no guarantees that the following script won't destroy your system, so check over it yourself and make a conventional backup first. Save this script as lvm-backup.sh and execute with e.g., `sh lvmscript.sh -i MyVolGroup -o MyBackupVolGroup -l lvolroot -d /dev/sdb1` (where sdb1 is a large hard disk to store the snapshots).
 
 ```bash
 #!/bin/bash
