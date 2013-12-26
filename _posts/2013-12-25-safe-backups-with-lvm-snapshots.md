@@ -28,7 +28,7 @@ Find out the current extent number of the LVM volume to be backed up:
 lvdisplay -v /dev/VolGroup00/lvolhome`
 ```
 
-Create a snapshot volume based on the extent number. In this example I also add the device of my empty hard disk `/dev/sda1` on the end of the line so it doesn't try to write to the already fully extended ssd:
+Create a snapshot volume using the extent number. In this example I also add the device of my empty hard disk `/dev/sda1` on the end of the line so it doesn't try to write to the already fully extended ssd:
 
 ```
 lvcreate -l 22717 -s /dev/VolGroup00/lvolhome -n lvolhomesnap /dev/sda1
