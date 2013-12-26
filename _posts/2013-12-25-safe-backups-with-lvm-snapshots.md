@@ -18,6 +18,19 @@ Make it LVM ready and add it to the existing volume group (which you can find th
 
 ```
 pvcreate /dev/sdb1
-vgextend YourVolGroup /dev/sdb1
+vgextend VolGroup00 /dev/sdb1
 ```
 The new disk is now tacked onto the end of the LVM setup. No data is written to it though because it isn't mounted. 
+
+Find out the current extent number of the LVM volume to be backed up:
+
+```
+lvdisplay -v /dev/VolGroup00/lvolhome`
+```
+
+Create a snapshot volume based on the extent number. In this example I also add the device of my empty hard disk `/dev/sda1` on the end of the line so it doesn't try to write to the already fully extended ssd:
+
+```
+lvcreate -l 22717 -s /dev/VolGroup00/lvolhome -n lvolhomesnap /dev/sda1
+```
+
