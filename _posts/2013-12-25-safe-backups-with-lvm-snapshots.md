@@ -21,6 +21,8 @@ I've made the below script to make a temporary snapshot of a volume, dd it over 
 
 dd'ing large drives is slow, so treat this as a one time operation to get the backups where needed. Don't use this script to backup every time. Instead, mount the logical volumes already backed up as normal drives, and use an incremental backup tool like rsnapshot to only copy over the changed files.
 
+Remember that the snapshot volume must be large enough to hold all changes to the source logical volume. My script stays on the safe side by allocating the full size of the volume to be backed up to the snapshot volume, unless you specifically pass it an extent number with `-e`.
+
 I give no guarantees that the following script won't destroy your system, so check over it yourself and make a conventional backup first. Save this script as lvm-backup.sh and execute with ./lvm-backup.sh:
 
 ```bash
@@ -40,7 +42,8 @@ OPTIONS:
    -i     Source Group Volume
    -o     Destination Group Volume
    -l     Source Logical Volume
-   -d     Extended snapshot device
+   -d     Extended snapshot device (optional)
+   -e     Extent number (optional)
    -v     Verbose
 EOF
 }
@@ -49,8 +52,9 @@ SOURCE_GROUP=
 DEST_GROUP=
 SOURCE_VOL=
 EXTENDED_DEV=
+EXTENT_NUM=
 VERBOSE=
-while getopts “hi:o:l:d:v” OPTION
+while getopts “hi:o:l:d:e:v” OPTION
 do
      case $OPTION in
          h)
@@ -67,6 +71,9 @@ do
              SOURCE_VOL=$OPTARG
              ;;
          d)
+             EXTENDED_DEV=$OPTARG
+             ;;
+         e)
              EXTENDED_DEV=$OPTARG
              ;;
          v)
@@ -92,11 +99,14 @@ else
     echo "WARNING: About to use one device. Make sure it has enough space." && sleep 5
 fi
 
-extentNum=$(lvdisplay -v /dev/$SOURCE_GROUP/$SOURCE_VOL | grep "Current\ LE" | grep -o '[0-9]*')
+if [ -z "$EXTENT_NUM" ];
+then
+    EXTENT_NUM=$(lvdisplay -v /dev/$SOURCE_GROUP/$SOURCE_VOL | grep "Current\ LE" | grep -o '[0-9]*')
+fi
 
-lvcreate -l $extentNum -n ${SOURCE_VOL}-backup $DEST_GROUP
+lvcreate -l $EXTENT_NUM -n ${SOURCE_VOL}-backup $DEST_GROUP
 
-lvcreate -l $extentNum -s /dev/$SOURCE_GROUP/$SOURCE_VOL -n ${SOURCE_VOL}-snap $EXTENDED_DEV
+lvcreate -l $EXTENT_NUM -s /dev/$SOURCE_GROUP/$SOURCE_VOL -n ${SOURCE_VOL}-snap $EXTENDED_DEV
 
 dd if=/dev/$SOURCE_GROUP/${SOURCE_VOL}-snap of=/dev/$DEST_GROUP/${SOURCE_VOL}-backup
 
