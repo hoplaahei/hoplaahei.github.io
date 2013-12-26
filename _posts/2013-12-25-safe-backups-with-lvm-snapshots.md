@@ -17,7 +17,7 @@ Setup as taken from `blkid` command:
 - SSD 128G (/dev/sda)
 - Hard Drive 320G (/dev/sdb)
 
-I'm not keen on the idea of resizing existing volumes on the SSD to make room for a snapshot volume, however small. That said, I instead split a second drive into two partitions:
+I'm not keen on the idea of resizing existing volumes on the SSD to make room for a snapshot volume. I instead split a second drive into two partitions:
 
 LVM Partition 1 (To share with SSD):
 
