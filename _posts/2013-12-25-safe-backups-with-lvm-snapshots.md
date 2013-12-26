@@ -8,48 +8,101 @@ This guide assumes the reader knows how to:
 - use a terminal
 - partition a disk
 
-Creating an LVM snapshot is useful as it makes a "freeze" of the filesystem so that things are in a consistent state before making a backup. LVM requires the creation of a snapshot volume to store them, but it needn't go bigger than a few gigs, as the snapshots only store the changed files in the overlying filesystem. 
+Creating an LVM snapshot is useful as it makes a "freeze" of the filesystem so that things are in a consistent state before making a backup. LVM requires the creation of a snapshot volume to store them, but the snapshots only store the changed files in the overlying filesystem, so it is ok to limit the volume size to a few gigs.
 
-## Preparing a drive to store the snapshots
+The downside of LVM snapshots are that they slow down the system considerably whilst they remain on the system, so just use them temporarily to get a frozen state of the disk, treat them like a mounted disk and back up from them using more conventional methods, then remove them. 
 
-Setup as taken from `blkid` command:
+I've made the below script to make a temporary snapshot of a volume, dd it over to a backup volume, and then remove the snapshot volume. The script will extend over to another volume when given an optional "snapshot device" argument, and then remove (reduce) the extended device after. This is useful if there isn't enough room for temporary snapshots on the origin device. It is ok to use a slow device such as USB as the snapshot device, as we only need it during the backup, then remove the snapshot volume afterwards. 
 
-- SSD 128G (/dev/sda)
-- Hard Drive 320G (/dev/sdb)
+dd'ing large drives is slow, so treat this as a one time operation to get the backups where needed. Don't use this script to backup every time. Instead, mount the logical volumes already backed up as normal drives, and use an incremental backup tool like rsnapshot to only copy over the changed files.
 
-I'm not keen on the idea of resizing existing volumes on the SSD to make room for a snapshot volume. I instead split a second drive into two partitions:
-
-LVM Partition 1 (To share with SSD):
-
-`gdisk /dev/sdb` then `n`, `Enter`, `Enter`, `+129G`, `8e00`, `w`
-
-LVM Partition 2 (To store imaged backups)
-
-`n`, `Enter`, `Enter`, `Enter`, `8e00`, `w`
-
-...  and share the first partition with the SSD in LVM like this:
+Save this script as lvm-backup.sh and execute with ./lvm-backup.sh:
 
 ```
-# Use 'VG Name' field of `lvdisplay` command to get the existing Volume Group name):
-pvcreate /dev/sdb1
-vgextend VolGroup00 /dev/sdb1 # VolGroup00 already exists on /dev/sda1 SSD
-```
-So, use the above as a guideline. Notice that the first partition of the second disk is the same size as the entire SSD. It needn't be that big as it only holds the changed files in the volumes, but it doesn't hurt to stay on the safe side if the space is available. 
+#!/bin/bash
+# Argument = -sg source-group -dg dest-group -sv source-vol
+#            -ed extended-device -v
 
-The sata hard drive space is now tacked onto the end of the SSD space. Don't worry though, no data is spread to it while it isn't mounted. 
+usage()
+{
+cat <<EOF
+usage: $0 options
 
-Find out the current extent number of the SSD LVM volume to be backed up:
+This script backs up logical volumes using snapshots.
 
-```
-lvdisplay -v /dev/VolGroup00/lvolhome
-```
-Create a snapshot volume using the extent number listed in the output. The `/dev/sda1` on the end isn't necessary unless you are trying to force it to write to a particular disk as I am (i.e., a sata hard disk):
+OPTIONS:
+   -h     Show this messagea
+   -i     Source Group Volume
+   -o     Destination Group Volume
+   -l     Source Logical Volume
+   -d     Extended device
+   -v     Verbose
+EOF
+}
 
-```
-lvcreate -l 22717 -s /dev/VolGroup00/lvolhome -n lvolhomesnap /dev/sda1
-```
-Copy the snapshot over to the backup (hard disk) device:
+SOURCE_GROUP=
+DEST_GROUP=
+SOURCE_VOL=
+EXTENDED_DEV=
+VERBOSE=
+while getopts “hi:o:l:d:v” OPTION
+do
+     case $OPTION in
+         h)
+             usage
+             exit 1
+             ;;
+         i)
+             SOURCE_GROUP=$OPTARG
+             ;;
+         o)
+             DEST_GROUP=$OPTARG
+             ;;
+         l)
+             SOURCE_VOL=$OPTARG
+             ;;
+         d)
+             EXTENDED_DEV=$OPTARG
+             ;;
+         v)
+             VERBOSE=1
+             ;;
+         ?)
+             usage
+             exit
+             ;;
+     esac
+done
 
-```
-dd if=/dev/mapper/VolGroup00-lvolhomesnap of=/dev/mapper/VolGroup01-lvolbackup
+if [[ -z $SOURCE_GROUP ]] || [[ -z $DEST_GROUP ]] || [[ -z $SOURCE_VOL ]]
+then
+     usage
+     exit 1
+fi
+
+if [ ! -z "$EXTENDED_DEV" ];
+then
+    vgextend $SOURCE_GROUP $EXTENDED_DEV
+else
+    echo "WARNING: About to use one device. Make sure it has enough space." && sleep 5
+fi
+
+extentNum=$(lvdisplay -v /dev/$SOURCE_GROUP/$SOURCE_VOL | grep "Current\ LE" | grep -o '[0-9]*')
+
+lvcreate -l $extentNum -n ${SOURCE_VOL}-backup $DEST_GROUP
+
+lvcreate -l $extentNum -s /dev/$SOURCE_GROUP/$SOURCE_VOL -n ${SOURCE_VOL}-snap $EXTENDED_DEV
+
+dd if=/dev/$SOURCE_GROUP/${SOURCE_VOL}-snap of=/dev/$DEST_GROUP/${SOURCE_VOL}-backup
+
+echo
+echo Cleaning up....
+echo
+
+lvremove /dev/$SOURCE_GROUP/${SOURCE_VOL}-snap
+
+if [[ ! -z $EXTENDED_DEV ]];
+then
+    vgreduce $SOURCE_GROUP $EXTENDED_DEV
+fi
 ```
