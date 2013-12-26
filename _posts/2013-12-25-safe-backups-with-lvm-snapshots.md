@@ -8,14 +8,14 @@ This guide assumes the reader knows how to:
 - use a terminal
 - partition a disk
 
-Creating an LVM snapshot is useful as it makes a "freeze" of the filesystem so that things are in a consistent state before making a backup. LVM requires the creation of a snapshot volume to store them, but it needn't go bigger than a few gig, as the snapshots only store the changed files in the overlying filesystem. 
+Creating an LVM snapshot is useful as it makes a "freeze" of the filesystem so that things are in a consistent state before making a backup. LVM requires the creation of a snapshot volume to store them, but it needn't go bigger than a few gigs, as the snapshots only store the changed files in the overlying filesystem. 
 
 ## Preparing a drive to store the snapshots
 
 Setup as taken from `blkid` command:
 
-SSD 128G (/dev/sda)
-Hard Drive 320G (/dev/sdb)
+- SSD 128G (/dev/sda)
+- Hard Drive 320G (/dev/sdb)
 
 I'm not keen on the idea of resizing existing volumes on the SSD to make room for a snapshot volume, however small. That said, I instead split a second drive into two partitions:
 
