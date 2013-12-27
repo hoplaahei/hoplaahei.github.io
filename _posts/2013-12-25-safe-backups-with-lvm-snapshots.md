@@ -18,7 +18,7 @@ Here are a few key points to remember when dealing with LVM snapshots:
 
 - dd'ing large drives can be slow, so treat this as a one time operation to get the backups. From then on, mount the backups and use an incremental tool like rsnapshot to keep the source and backup volumes in sync
 
-- Remember that the snapshot volume must be large enough to hold all changes that happen to the source volume while the snapshot is in existence. 
+- Remember that the snapshot volume must be large enough to hold all changes that happen to the source volume while the snapshot is in existence
 
 I've made a script (found at the end of this page) to make a temporary snapshot of a volume A, dd it over to a backup volume B (making a full backup of the volume A), and then remove the snapshot volume. My script stays on the safe side by allocating the full size of the volume to be backed up to the snapshot volume, unless you specifically pass it an extent number with `-e`. 
 
@@ -45,8 +45,8 @@ Here is the script itself:
 
 ```bash
 #!/bin/bash
-# Argument = -sg source-group -dg dest-group -sv source-vol
-#            -ed extended-snapshot-device -v
+# Argument = -i source-group -o dest-group -l source-vol
+#            -d extended-snapshot-device -e extent-num -v
 
 usage()
 {
