@@ -3,10 +3,10 @@ layout: post
 published: true
 ---
 
-This guide assumes the reader knows how to:
+This guide assumes the reader:
 
-- use a terminal
-- partition a disk
+- can use a console
+- already has an LVM setup
 
 Creating an LVM snapshot is useful as it makes a "freeze" of the filesystem so that running write operations do not leave the filesystem in an inconsistent state. LVM requires the creation of a snapshot volume to store them, but the snapshots only start to take up space when changes happen, so it is fine to limit the snap partition to a few gigs.
 
