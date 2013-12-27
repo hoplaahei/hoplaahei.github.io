@@ -8,22 +8,36 @@ This guide assumes the reader knows how to:
 - use a terminal
 - partition a disk
 
-Creating an LVM snapshot is useful as it makes a "freeze" of the filesystem so that things are in a consistent state before making a backup. LVM requires the creation of a snapshot volume to store them, but the snapshots only record the changed files in the overlying filesystem, so it is ok to limit the volume size to a few gigs.
+Creating an LVM snapshot is useful as it makes a "freeze" of the filesystem so that running write operations do not leave the filesystem in an inconsistent state. LVM requires the creation of a snapshot volume to store them, but the snapshots only start to take up space when changes happen, so it is fine to limit the snap partition to a few gigs.
 
-The downside of LVM snapshots are that they slow down the system considerably whilst active on the system, so I recommend these guidelines:
+Snapshots slow down the system considerably whilst active, so use them temporarily to create backups, then remove them. 
 
-- use temporarily to get a frozen state of the disk
-- remove after the backup is complete
+Although the snapshots only contain information about changes, they link back and behave like the full filesystem when copied over. This is useful, as it allows backup using more conventional methods.
 
-Although the snapshots only record and point to changes, they behave like a full filesystem when copied over. This is useful, as it allows backup using more conventional methods. 
+I've made a script (found at the end of this page) to make a temporary snapshot of a volume A, dd it over to a backup volume B (making a full backup of the volume A), and then remove the snapshot volume. If there is no room for snapshots on the source device then pass the script a `-d /dev/sdXN` argument and it will automatically extend to another device to use the extra space there, then unextend (reduce) afterwards. Using a slow device such as USB pen as the snapshot device is ok, as we only need it during the backup and can simply remove the snapshot volume afterwards. 
 
-I've made the below script to make a temporary snapshot of a volume A, dd it over to a backup volume B (making a full backup of the volume A), and then remove the snapshot volume. The script will extend over to another volume when given an optional "snapshot device" argument, and then remove (reduce) the extended device afterwards. This is useful if there isn't enough room for temporary snapshots on the origin device. It is ok to use a slow device such as USB as the snapshot device, as we only need it during the backup, and can simply remove the snapshot volume afterwards. 
-
-dd'ing large drives can be slow, so treat this as a one time operation to get the backups where needed. Don't use this script to backup every time. Instead, mount the logical volumes already backed up as normal drives, and use an incremental backup tool like rsnapshot to only copy over the changed files from the snapshot.
+dd'ing large drives can be slow, so treat this as a one time operation to get the backups. Don't use this script to backup every time. Instead, mount the logical volumes already backed up as normal drives, and use an incremental backup tool like rsnapshot to only copy over the changed files from the snapshot.
 
 Remember that the snapshot volume must be large enough to hold all changes that happen to the source volume while the snapshot is in existence. My script stays on the safe side by allocating the full size of the volume to be backed up to the snapshot volume, unless you specifically pass it an extent number with `-e`.
 
-I give no guarantees that the following script won't destroy your system, so check over it yourself and make a conventional backup first. Save this script as lvm-backup.sh and execute with e.g., `sh lvmscript.sh -i MyVolGroup -o MyBackupVolGroup -l lvolroot -d /dev/sdb1` (where sdb1 is a large hard disk to store the snapshots).
+I give no guarantees that the following script won't destroy your system, so check over it yourself and make a conventional backup first. Save this script as lvmbackup and execute with e.g., `sh lvmbackup -i MyVolGroup -o MyBackupVolGroup -l lvolroot -d /dev/sdb1` (where sdb1 is a large hard disk to store the snapshots).
+
+Here is how I backup my system with the script:
+
+```
+lvmbackup -i VolGroup00 -o VolGroup01 -l lvolroot -d /dev/sda1
+lvmbackup -i VolGroup00 -o VolGroup01 -l lvolhome -d /dev/sda1
+```
+
+Notice that I have two volume groups. VolGroup00 contains the OS install on my SSD. VolGroup01 is the backup volume on my external hard disk. The above makes a `lvolroot-snap` and `lvolhome-snap` on the backup hard disk volume group. 
+
+Remember to also backup your boot partition if it lives outside LVM with e.g.,:
+
+```
+lvcreate -L 512 -n boot-backup VolGroup01
+dd if=/dev/sdb1 of=/dev/VolGroup01/lvolboot-backup
+```
+Here is the script itself:
 
 ```bash
 #!/bin/bash
