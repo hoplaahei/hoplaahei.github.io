@@ -20,9 +20,86 @@ Here are a few key points to remember when dealing with LVM snapshots:
 
 - Remember that the snapshot volume must be large enough to hold all changes that happen to the source volume while the snapshot is in existence
 
-I've made a script (found at the end of this page) to make a temporary snapshot of a volume A, dd it over to a backup volume B (making a full backup of the volume A), and then remove the snapshot volume. My script stays on the safe side by allocating the full size of the volume to be backed up to the snapshot volume, unless you specifically pass it an extent number with `-e`. 
+To illustrate how to use LVM snapshots, imagine two disks: one is an SSD, the other an external hard drive.
 
-If there is no room for snapshots on the source device then pass the script a `-d /dev/sdXN` argument and it will automatically extend to another device to use the extra space there, then unextend (reduce) afterwards. Using a slow device such as USB pen as the snapshot device is ok, as we only need it during the backup and can simply remove the snapshot volume afterwards. 
+The SSD is our OS installation. It has:
+
+- a root volume, `lvolroot`
+- a home volume, `lvolhome`
+- a `VolGroupSSD` volume group that contains the two logical volumes
+
+The external hard disk is split into two partitions:
+
+- `/dev/sda1` is an LVM partition which has no volumes. We use this to temporarily create and store LVM snapshots, then delete them
+- `/dev/sda2` is another LVM partition will contain backup volumes of the SSD volumes
+
+Assume that the SSD already has the full space allocated to LVM partitions, so we have no more room to make a snapshot volume. In that case, we will use `/dev/sda1` of our external hard disk instead, to temporarily store the snapshots. We let our `VolGroupSSD` see this device and share its space:
+
+```
+vgextend VolGroupSSD /dev/sda1
+```
+This new volume isn't mounted, so no data should spread to it. You could just as easily use a USB pen, as we only need it temporarily for the snapshots, which are delete afterwards. We will also `reduce` (unextend) the `VolGroupSSD` from the external disk when done.
+
+Now we need to create the volumes that will store the snapshots:
+
+```
+lvdisplay -v /dev/VolGroupSSD/lvolroot
+
+lvdisplay -v /dev/VolGroupSSD/lvolhome
+```
+
+Look at the `LV Size` for the `lvolroot` and `lvolhome` logical volumes and decide how much % of that to use for their corresponding snapshot volumes. If files change on these volumes a lot then allocate a higher percentage. I personally just stay on the extreme safe side and allocate the full size of the volume for the snapshots. You can do this by taking the `Current LE` number and using it in the next commands:
+
+```
+lvcreate -l 5120 -s /dev/VolGroupSSD/lvolroot -n lvolroot-snap /dev/sda1
+lvcreate -l 22717 -s /dev/VolGroupSSD/lvolhome -n lvolhome-snap /dev/sda1
+```
+This uses the extent numbers found in `lvdisplay` to allocate the exact size of the source volumes to the backup volumes, that way we prevent the possibility of overflow from too many file changes -- which would drop the snapshot volume and prevent a backup.
+
+Now that our snapshot partitions are active they create a noticeable slowdown on our system, so we only keep them enabled for the copying to the backup volumes, which we now create on `/dev/sda2` of the external hard disk. First make the volume group for the external hard disk:
+
+```
+vgcreate VolGroupBackupDisk /dev/sda2
+```
+
+And create the logical backup volumes in it:
+
+```
+lvcreate -l 22717 -n lvolhome-backup /dev/mapper/VolGroupBackupDisk
+lvcreate -l 5120 -n lvolroot-backup /dev/mapper/VolGroupBackupDisk
+```
+
+Use the same size/extents as the source volumes e.g., lvolroot, not necessarily the same size as the snapshot volumes.
+
+Now run the full backup:
+
+```
+dd if=/dev/VolGroupSSD/lvolroot-snap of=/dev/VolGroupBackupDisk/lvolroot-backup
+dd if=/dev/VolGroupSSD/lvolhome-snap of=/dev/VolGroupBackupDisk/lvolhome-backup
+```
+
+The backup is done so we remove the snapshots:
+
+```
+lvremove /dev/VolGroupSSD/lvolhome-snap
+lvremove /dev/VolGroupSSD/lvolroot-snap
+```
+And unextend the hard disk from the SSD volume group as we no longer need the extra space:
+
+```
+vgreduce VolGroupSSD /dev/sda1
+```
+
+Remember to also backup your boot partition if it lives outside LVM with e.g.,:
+
+```
+lvcreate -L 512 -n boot-backup VolGroupBackupDisk
+dd if=/dev/sdb1 of=/dev/VolGroupBackupDisk/lvolboot-backup
+```
+
+I've made a script (found at the end of this page) to make the above easier. The script stays on the safe side by allocating the full size of the volume to be backed up to the snapshot volume, unless you specifically pass it an extent number with `-e`. 
+
+If there is no room for snapshots on the source device then pass the script a `-d /dev/sdXN` argument and it will automatically extend to another device (e.g., a hard disk or USB) to use the extra space there, then it will unextend (reduce) afterwards. 
 
 I give no guarantees that the following script won't destroy your system, so check over it yourself and make a conventional backup first. Save this script as lvmbackup and execute with e.g., `sh lvmbackup -i MyVolGroup -o MyBackupVolGroup -l lvolroot -d /dev/sdb1` (where sdb1 is a large hard disk to store the snapshots).
 
@@ -33,14 +110,8 @@ lvmbackup -i VolGroupSSD -o VolGroupBackupDisk -l lvolroot -d /dev/sda1
 lvmbackup -i VolGroupSSD -o VolGroupBackupDisk -l lvolhome -d /dev/sda1
 ```
 
-Notice that I have two volume groups. VolGroupSSD contains the OS install on my SSD. VolGroupBackupDisk is the backup volume on my external hard disk. The above makes a `lvolroot-snap` and `lvolhome-snap` on the backup hard disk volume group, and uses them to copy over to backup volumes on that disk, then it removes the snapshots. 
+Notice that I have two volume groups. Just as in the examples above, VolGroupSSD contains the OS install on my SSD. VolGroupBackupDisk is the backup volume on my external hard disk. The above makes a `lvolroot-snap` and `lvolhome-snap` on the backup hard disk volume group, and uses them to copy over to backup volumes on that disk, then it removes the snapshots and unextends the hard disk from the SSD storage. 
 
-Remember to also backup your boot partition if it lives outside LVM with e.g.,:
-
-```
-lvcreate -L 512 -n boot-backup VolGroupBackupDisk
-dd if=/dev/sdb1 of=/dev/VolGroupBackupDisk/lvolboot-backup
-```
 Here is the script itself:
 
 ```bash
