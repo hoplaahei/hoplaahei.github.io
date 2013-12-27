@@ -99,7 +99,7 @@ lvcreate -L 512 -n boot-backup VolGroupBackupDisk
 dd if=/dev/sda1 of=/dev/VolGroupBackupDisk/lvolboot-backup
 ```
 
-I've made a script (found at the end of this page) to make the above steps easier. The script stays on the safe side by allocating the full size of the volume to be backed up to the snapshot volume, unless you specifically pass it an extent number with `-e`. 
+I've made a script (found at the end of this page) to make all the above steps easier. The script stays on the safe side by allocating the full size of the volume to be backed up to the snapshot volume, unless you specifically pass it an extent number with `-e`. 
 
 If there is no room for snapshots on the source device then pass the script a `-d /dev/sdXN` argument and it will automatically extend to another device (e.g., a hard disk or USB) to use the extra space there, then it will unextend (reduce) afterwards. 
 
