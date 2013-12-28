@@ -31,9 +31,9 @@ The SSD is our OS installation. It has:
 The external hard disk is split into two partitions:
 
 - `/dev/sda1` is an LVM partition which has no volumes. We use this to temporarily create and store LVM snapshots, then delete them
-- `/dev/sda2` is another LVM partition will contain backup volumes of the SSD volumes
+- `/dev/sda2` is another LVM partition thst will contain backup volumes of the SSD volumes
 
-For illustration purposes, assume that the SSD already has the full space allocated to LVM partitions, giving us the problem of no room for a snapshot volume. In that case, we will use `/dev/sdb1` on our external hard disk instead, to temporarily store the snapshots. We let our `VolGroupSSD` see this device and share its space:
+For illustration purposes, assume the SSD already has the full space allocated to LVM partitions, giving us the problem of no room for a snapshot volume. In that case, we will use `/dev/sdb1` on our external hard disk instead, to temporarily store the snapshots. We let our `VolGroupSSD` see this device and share its space:
 
 ```
 vgextend VolGroupSSD /dev/sdb1
@@ -99,7 +99,7 @@ lvcreate -L 512 -n boot-backup VolGroupBackupDisk
 dd if=/dev/sda1 of=/dev/VolGroupBackupDisk/lvolboot-backup
 ```
 
-I've made a script (found at the end of this page) to make all the above steps easier. The script stays on the safe side by allocating the full size of the volume to be backed up to the snapshot volume, unless you specifically pass it an extent number with `-e`. 
+I've made a script (found at the end of this page) to make all the above steps easier. The script stays on the safe side by allocating the full size of the volume to be backed up to the snapshot volume, unless you pass it an extent number with `-e`. 
 
 If there is no room for snapshots on the source device then pass the script a `-d /dev/sdXN` argument and it will automatically extend to another device (e.g., a hard disk or USB) to use the extra space there, then it will unextend (reduce) afterwards. 
 
