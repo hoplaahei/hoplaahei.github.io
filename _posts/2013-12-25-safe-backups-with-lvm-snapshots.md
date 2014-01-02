@@ -33,7 +33,7 @@ The external hard disk is split into two partitions:
 - `/dev/sda1` is an LVM partition which has no volumes. We use this to temporarily create and store LVM snapshots, then delete them
 - `/dev/sda2` is another LVM partition thst will contain backup volumes of the SSD volumes
 
-For illustration purposes, assume the SSD already has the full space allocated to LVM partitions, giving us the problem of no room for a snapshot volume. In that case, we will use `/dev/sdb1` on our external hard disk instead, to temporarily store the snapshots. We let our `VolGroupSSD` see this device and share its space:
+One possible problem is that the disk we want to backup (the SSD here) already has the full space allocated to LVM partitions, with no room left for a snapshot volume. In that case, we will use our external hard disk instead (`/dev/sdb1`), to temporarily store the snapshots. We let our `VolGroupSSD` see this device and share its space:
 
 ```
 vgextend VolGroupSSD /dev/sdb1
