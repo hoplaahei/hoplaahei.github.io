@@ -54,9 +54,9 @@ Look at the `LV Size` for the `lvolroot` and `lvolhome` logical volumes and deci
 lvcreate -l 5120 -s /dev/VolGroupSSD/lvolroot -n lvolroot-snap /dev/sdb1
 lvcreate -l 22717 -s /dev/VolGroupSSD/lvolhome -n lvolhome-snap /dev/sdb1
 ```
-This uses the extent numbers found in `lvdisplay` to allocate the exact size of the source volumes to the backup volumes, that way we prevent the possibility of overflow from too many file changes -- which would drop the snapshot volume and prevent a backup. 
+This uses the extent numbers found in `lvdisplay` to allocate the exact size of the source volumes to the backup volumes, that way we prevent the possibility of overflow from too many file changes, which would drop the snapshot volume and prevent a backup. 
 
-The /dev/... parts of those lvcreate commands cause LVM to write on the external hard disk rather than the SSD. I doubt this is really necessary, as by default it should write linearly straight to the free space/extents, but I add it anyway to be sure. 
+The /dev/... parts of those lvcreate commands cause LVM to write on the external hard disk rather than the SSD. I doubt this is really necessary -- as by default it should write linearly straight to the free space/extents -- but I add it anyway to be sure. 
 
 Now that our snapshot partitions are active they create a slowdown on the system, so only keep them enabled for the copying to the backup volumes, which it is time to create on `/dev/sdb2` of the external hard disk. First make the volume group for the external hard disk:
 
