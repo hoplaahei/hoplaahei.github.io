@@ -3,4 +3,4 @@ layout: post
 published: true
 ---
 
-Pulse audio may get permission errors if `/run/user/` sub-directory it creates is not `chown`'d to the user. Running pulseaudio -D will reset the permissions if some other misbehavings apps has changed the permissions of the `/run/user/` sub-dirs.
+If a misbehaving app has messed with the ownership of `/run/user` sub-directories then your pulse-audio server may not start. Running `pulseaudio -D` will set the ownership back to user and fix the problem.
