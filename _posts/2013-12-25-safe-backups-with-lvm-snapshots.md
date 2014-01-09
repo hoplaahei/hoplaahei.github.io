@@ -117,10 +117,10 @@ Notice that I have two volume groups. Just as in the examples above, VolGroupSSD
 One final thing to consider is how to restore the bootloader. It is possible to backup it up to a file and restore it later:
 
 ```
-#backup
+# backup
 dd if=/dev/sda of=/path/mbr-backup bs=512 count=1
 
-#restore
+# restore
 dd if=/dev/sda of=/path/mbr-backup bs=512 count=1
 ```
 
