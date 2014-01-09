@@ -114,6 +114,18 @@ lvmbackup -i VolGroupSSD -o VolGroupBackupDisk -l lvolhome -d /dev/sdb1
 
 Notice that I have two volume groups. Just as in the examples above, VolGroupSSD contains the OS install on my SSD. VolGroupBackupDisk is the backup volume on my external hard disk. The above makes a `lvolroot-snap` and `lvolhome-snap` on the backup hard disk volume group, and uses them to copy over to backup volumes on that disk, then it removes the snapshots and unextends the hard disk from the SSD storage. 
 
+One final thing to consider is how to restore the bootloader. It is possible to backup it up to a file and restore it later:
+
+```
+#backup
+dd if=/dev/sda of=/path/mbr-backup bs=512 count=1
+
+#restore
+dd if=/dev/sda of=/path/mbr-backup bs=512 count=1
+```
+
+But this could destory the partition table if it has changed since the last backup, so I advise against it. Instead I usually just mount all my restored partitions and`chroot` in so I can restore the bootloader (e.g., grub or gummiboot). I'll leave you to Google how to chroot (or email me).  
+
 Here is the script itself:
 
 ```bash
