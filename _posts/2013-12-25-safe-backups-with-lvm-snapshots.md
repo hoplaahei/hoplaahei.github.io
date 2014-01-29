@@ -105,7 +105,7 @@ If there is no room for snapshots on the source device then pass the script a `-
 
 I give no guarantees that the following script won't destroy your system, so check over it yourself and make a conventional backup first. Save this script as lvmbackup and execute with e.g., `sh lvmbackup -i MyVolGroup -o MyBackupVolGroup -l lvolroot -d /dev/sdb1` (where sdb1 is a large hard disk to store the snapshots).
 
-Here is how I backup my system with the script:
+Here is how I initially backup my system with the script:
 
 ```
 lvmbackup -i VolGroupSSD -o VolGroupBackupDisk -l lvolroot -d /dev/sdb1
@@ -113,6 +113,8 @@ lvmbackup -i VolGroupSSD -o VolGroupBackupDisk -l lvolhome -d /dev/sdb1
 ```
 
 Notice that I have two volume groups. Just as in the examples above, VolGroupSSD contains the OS install on my SSD. VolGroupBackupDisk is the backup volume on my external hard disk. The above makes a `lvolroot-snap` and `lvolhome-snap` on the backup hard disk volume group, and uses them to copy over to backup volumes on that disk, then it removes the snapshots and unextends the hard disk from the SSD storage. 
+
+From then on, I add a `-s` flag to only copy new changes to the backup LVM volume with `rsync --delete -aAXv`. This runs a lot faster than doing a complete `dd`.
 
 One final thing to consider is how to restore the bootloader. It is possible to backup it up to a file and restore it later:
 
@@ -130,8 +132,8 @@ Here is the script itself:
 
 ```bash
 #!/bin/bash
-# Argument = -i source-group -o dest-group -l source-vol
-#            -d extended-snapshot-device -e extent-num -v
+# Argument = -sg source-group -dg dest-group -sv source-vol
+#            -ed extended-snapshot-device -v
 
 usage()
 {
@@ -144,9 +146,11 @@ OPTIONS:
    -h     Show this messagea
    -i     Source Group Volume
    -o     Destination Group Volume
+   -s     Just Sync With Existing Backup
    -l     Source Logical Volume
    -d     Extended snapshot device (optional)
    -e     Extent number (optional)
+   -f     Force (No Warnings)
    -v     Verbose
 EOF
 }
@@ -156,8 +160,13 @@ DEST_GROUP=
 SOURCE_VOL=
 EXTENDED_DEV=
 EXTENT_NUM=
+FORCE=
+SYNC=
 VERBOSE=
-while getopts “hi:o:l:d:e:v” OPTION
+SOURCE_MNT=
+DEST_MNT=
+
+while getopts “hi:o:l:d:e:sfv” OPTION
 do
      case $OPTION in
          h)
@@ -178,6 +187,12 @@ do
              ;;
          e)
              EXTENT_NUM=$OPTARG
+             ;;
+         f)
+             FORCE='-f'
+             ;;
+         s)
+             SYNC=1
              ;;
          v)
              VERBOSE=1
@@ -211,16 +226,54 @@ lvcreate -l $EXTENT_NUM -n ${SOURCE_VOL}-backup $DEST_GROUP
 
 lvcreate -l $EXTENT_NUM -s /dev/$SOURCE_GROUP/$SOURCE_VOL -n ${SOURCE_VOL}-snap $EXTENDED_DEV
 
-dd if=/dev/$SOURCE_GROUP/${SOURCE_VOL}-snap of=/dev/$DEST_GROUP/${SOURCE_VOL}-backup
+if [ ! -z "$SYNC" ];
+then
+    SOURCE_MNT=$(mktemp -d "$0.XXXXXX")
+    DEST_MNT=$(mktemp -d "$0.XXXXXX")
+    if [ ! -z $SOURCE_MNT ] && [ ! -z $DEST_MNT ];
+        then
+        mount /dev/$SOURCE_GROUP/${SOURCE_VOL}-snap $SOURCE_MNT
+        mount /dev/$DEST_GROUP/${SOURCE_VOL}-backup $DEST_MNT
+        rsync --delete -aAXv $SOURCE_MNT/* $DEST_MNT
+    fi
+else
+    dd if=/dev/$SOURCE_GROUP/${SOURCE_VOL}-snap of=/dev/$DEST_GROUP/${SOURCE_VOL}-backup
+fi
+
+function cleanup() {
 
 echo
 echo Cleaning up....
 echo
 
-lvremove /dev/$SOURCE_GROUP/${SOURCE_VOL}-snap
+if [ ! -z $SOURCE_MNT ] && [ ! -z $DEST_MNT ];
+then
+    umount $SOURCE_MNT
+    umount $DEST_MNT
+fi
+
+if [ ! "$(ls -A $SOURCE_MNT)" ] && [ ! "$(ls -A $DEST_MNT)" ]; then
+    rm -rf $SOURCE_MNT
+    rm -rf $DEST_MNT
+fi
+
+lvremove $FORCE /dev/$SOURCE_GROUP/${SOURCE_VOL}-snap
 
 if [[ ! -z $EXTENDED_DEV ]];
 then
-    vgreduce $SOURCE_GROUP $EXTENDED_DEV
+    vgreduce $FORCE $SOURCE_GROUP $EXTENDED_DEV
 fi
+
+}
+
+cleanup
+
+function ctrl_c() {
+    echo "** Trapped CTRL-C"
+    cleanup
+    exit 1
+}
+
+# trap ctrl-c and call ctrl_c()
+trap ctrl_c INT
 ```
