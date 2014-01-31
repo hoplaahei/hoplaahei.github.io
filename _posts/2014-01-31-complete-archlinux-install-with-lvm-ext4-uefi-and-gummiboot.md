@@ -58,17 +58,17 @@ gdisk /dev/sdX
 
 Make a 512M EFI (ee00 code) boot partition:
 
-```
+```bash
 gdisk /dev/sdX # if you are not already running it
 ```
 
-Now press `n` and choose `1`. Leave start sector at default by pressing `Enter`, but change end sector to `+512M`. For the type enter the code `ef00` (EFI). Remember to write the changes with `w`.
+Now press `n` and choose `1` to select 1st partition. Leave start sector at default by pressing `Enter`, but change end sector to `+512M` (it is important to keep it at this size). For the type enter the code `ef00` (EFI). Remember to write the changes with `w`.
 
 ## Create the LVM volumes
 
 Creating LVM volumes seems abstract and complex at first compared to traditional partitioning of Linux, but really it just has a few more layers of complexity to remember. 
 
-Confusingly, LVM does not necessarily need a partition, as it can work on the block level. However, we WILL put it in its own partition; that way it can coexist with the UEFI boot partition we made. 
+It may seem confusing to learn that LVM does not necessarily need a partition, as it can work on the block level. However, we WILL put it in its own partition; that way it can coexist with the UEFI boot partition we made. 
 
 Our LVM partition uses the remaining space on the drive. The steps are:
 
@@ -78,5 +78,21 @@ Our LVM partition uses the remaining space on the drive. The steps are:
 - add volumes (lvcreate)
 
 It is no harder than those four steps. The volume creation in the last step is like creating traditional partitions e.g., /, /home, and swap.
+
+To create the LVM partition:
+
+```
+gdisk /dev/sdX
+```
+Press `n` and `Enter` to make partition 2. `Enter` again for default start block, and `Enter` once more for default end block. `8e00` to create type LVM and then `w` to write the changes. 
+
+```bash
+pvcreate /dev/sdX2 # activate
+lvcreate /deb/sdX2
+lvcreate -L 15G VolGroup00 -n lvolroot
+lvcreate -C y -L 10G VolGroup00 -n lvolswap
+lvcreate -l +100%FREE VolGroup00 -n lvolhome # use remaining space
+```
+
 
 
