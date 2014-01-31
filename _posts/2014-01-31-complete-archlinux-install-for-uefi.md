@@ -3,7 +3,9 @@ layout: post
 published: true
 ---
 
-This guide requires knowledge of basic Linux Console commands.
+Note: This guide requires knowledge of basic Linux Console commands. 
+
+Uefi seems complicated to setup, but once you know how, it is arguably simpler than the old MBR way. It also boots somewhat quicker on most systems. 
 
 ## Download the iso
 
@@ -18,3 +20,5 @@ dd bs=4M if=/path/to/archlinux.iso of=/dev/sdX && sync # where X is your device 
 ```
 
 If unsure which `sdX` device to copy the ISO too, run `dmesg | tail` just after plugging it in. 
+
+Reboot your computer and immediately press the BIOS key (usually F1 or Escape). Here you should make sure under the 'Boot' section that Uefi boot is enabled. 
