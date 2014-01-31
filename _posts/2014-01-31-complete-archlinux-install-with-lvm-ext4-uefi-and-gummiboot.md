@@ -52,14 +52,26 @@ First, choose the disk you want to install Arch on. I like to get rid of remenan
 ```
 gdisk /dev/sdX
 ```
-... and pressing `o` to create `an empty GUID partition table`. Now press `w` to save and write the changes. 
+... and pressing `o` to create `an empty GUID partition table`. Now press `w` to save and write the changes.
 
-Now we need to make a 512M EFI (ee00 code) boot partition:
+## Create the EFI boot partition
+
+Make a 512M EFI (ee00 code) boot partition:
 
 ```
 gdisk /dev/sdX
 ```
 
-Now press `n` and choose `1`. Leave start sector at default by pressing `Enter`, but change end sector to `+512M`. For the type enter the code `ef00` (EFI). Remember to write the changes with `w`. 
+Now press `n` and choose `1`. Leave start sector at default by pressing `Enter`, but change end sector to `+512M`. For the type enter the code `ef00` (EFI). Remember to write the changes with `w`.
+
+## Create the LVM volumes
+
+Creating LVM volumes seems abstract and complex at first compared to traditional partitioning of Linux, but it is really very simple. There are three steps:
+
+- make the physical device LVM ready (pvcreate)
+- create a volume group to contain the volumes (vgcreate)
+- add volumes (lvcreate)
+
+It is no harder than those three steps. The volume creation in the last step is like creating partitions e.g., /, /home, swap.
 
 
