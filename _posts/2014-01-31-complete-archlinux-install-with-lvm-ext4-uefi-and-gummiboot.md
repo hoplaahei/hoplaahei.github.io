@@ -37,7 +37,6 @@ Once the internet connection is established we can update the live system with t
 
 ```
 pacman -Syu
-pacman -S gummiboot
 ```
 
 This update will take some time depending on the speed of your connection. Now let's download a script by helmuthdu to make installing Arch easy:
