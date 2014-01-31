@@ -49,12 +49,13 @@ This update will take some time depending on the speed of your connection. Now l
 pacman -S git
 git clone git://github.com/helmuthdu/aui
 ```
+
 This script lets you configure partitions, but it doesn't support LVM (at the time of writing), so don't run it yet. 
 
-First, choose the disk you want to install Arch on. I like to get rid of remenants of old partitions on the disk by running:
+First, choose the disk you want to install Arch on. Use `blkid` to see available devices. I like to get rid of remenants of old partitions on the chosen disk by running:
 
 ```
-gdisk /dev/sdX
+gdisk /dev/sdX # where X is the device number you selected
 ```
 ... and pressing `o` to create `an empty GUID partition table`. Then `w` to save and write the changes.
 
@@ -72,7 +73,7 @@ Now press `n` and choose `1` to select 1st partition. Leave start sector at defa
 
 Creating LVM volumes seems abstract and complex at first compared to traditional partitioning of Linux, but really it just has a few more layers of complexity to remember. 
 
-It may seem confusing to learn that LVM does not necessarily need a partition, as it can work on the block level. However, we WILL put it in its own partition; that way it can coexist with the UEFI boot partition we made. 
+We will put LVM in its own partition; that way it can coexist with the EFI boot partition we made. As a side note, LVM can exist without a partition on the block level (e.g., as /dev/sdX rather than /dev/sdX2), but we won't concern ourselves with that. 
 
 Our LVM partition uses the remaining space on the drive. The steps are:
 
@@ -128,4 +129,8 @@ The only thing that differs here from what you may see in other UEFI install gui
 cd aui && .ais
 ```
 
-- choose first four options then skip to '6) Install Base System'
+- choose 1, 2, and 3, then skip to '6) Install Base System'
+- choose 7 through 13
+- if using an SSD with trim support (check with `hdparm -I /dev/sdX |grep TRIM`), then change /etc/fstab options to `defaults,noatime,discard` for each ext4 partition. Or edit /etc/lvm/lvm.conf to contain `issue_discards`
+
+
