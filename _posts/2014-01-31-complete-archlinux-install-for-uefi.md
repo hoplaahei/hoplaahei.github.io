@@ -7,6 +7,8 @@ Note: This guide requires knowledge of basic Linux Console commands.
 
 Uefi seems complicated to setup, but once you know how, it is arguably simpler than the old MBR way. It also boots somewhat quicker on most systems. 
 
+I've opted for gummiboot over Grub because, at the time of writing, a pacman update installs a buggy version that prevents the user making modifications to the bootloader. 
+
 ## Download the iso
 
 Choose your nearest [mirror](https://www.archlinux.org/download/) to get the dual ISO in the fastest possible time.
