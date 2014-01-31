@@ -52,7 +52,7 @@ First, choose the disk you want to install Arch on. I like to get rid of remenan
 ```
 gdisk /dev/sdX
 ```
-... and pressing `o` to create `an empty GUID partition table`. Now press `w` to save and write the changes.
+... and pressing `o` to create `an empty GUID partition table`. Then `w` to save and write the changes.
 
 ## Create the EFI boot partition
 
