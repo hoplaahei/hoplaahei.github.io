@@ -68,7 +68,7 @@ gdisk /dev/sdX # if you are not already running it
 
 Now press `n` and choose `1` to select 1st partition. Leave start sector at default by pressing `Enter`, but change end sector to `+512M` (it is important to keep it at this size). For the type enter the code `ef00` (EFI). Remember to write the changes with `w`.
 
-## Create the LVM volumes
+## Creating and mounting the LVM volumes
 
 Creating LVM volumes seems abstract and complex at first compared to traditional partitioning of Linux, but really it just has a few more layers of complexity to remember. 
 
@@ -121,3 +121,11 @@ swapon /dev/VolGroup00/lvolswap
 ```
 
 The only thing that differs here from what you may see in other UEFI install guides is that we mount the efi partition to `/boot` instead of `/boot/efi`. Why don't we want to use /boot/efi? Well, as the Arch Wiki says, you would need to run `gummiboot --path=$esp update` after each package update, and copy over the kernel and initramfs manually. Why bother doing that when we don't need to? Stick to using /boot.
+
+## Installing Arch
+
+```
+cd aui && .ais
+```
+
+- choose first four options then skip to '6) Install Base System'
