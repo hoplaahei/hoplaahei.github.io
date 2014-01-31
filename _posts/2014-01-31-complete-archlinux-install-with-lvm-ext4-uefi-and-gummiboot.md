@@ -39,11 +39,27 @@ Once the internet connection is established we can update the live system with t
 pacman -Syu
 ```
 
-This update will take some time depending on the speed of your connection. Now let's download and run a script by helmuthdu to make installing Arch easy:
+This update will take some time depending on the speed of your connection. Now let's download a script by helmuthdu to make installing Arch easy:
 
 ```
 pacman -S git
 git clone git://github.com/helmuthdu/aui
-cd aui && ./ais
 ```
+This script lets you configure partitions, but it doesn't support LVM (at the time of writing), so don't run it yet. 
+
+First, choose the disk you want to install Arch on. I like to get rid of remenants of old partitions on the disk by running:
+
+```
+gdisk /dev/sdX
+```
+... and pressing `o` to create `an empty GUID partition table`. Now press `w` to save and write the changes. 
+
+Now we need to make a 512M EFI (ee00 code) boot partition:
+
+```
+gdisk /dev/sdX
+```
+
+Now press `n` and choose `1`. Leave start sector at default by pressing `Enter`, but change end sector to `+512M`. For the type enter the code `ef00` (EFI). Remember to write the changes with `w`. 
+
 
