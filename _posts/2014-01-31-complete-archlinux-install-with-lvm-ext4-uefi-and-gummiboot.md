@@ -27,11 +27,11 @@ If unsure which `sdX` device to copy the ISO too, run `dmesg | tail` just after 
 
 Reboot your computer and immediately press the BIOS key (usually F1 or Escape). Here you should make sure under the 'Boot' section that Uefi boot is enabled. 
 
-Also set the boot order in the BIOS to boot from USB, or find the key to load the boot menu when you reboot. Select the Uefi Arch entry and bootup. 
+Also set the boot order in the BIOS to boot from USB, or find the key to load the boot menu when you reboot. Select your USB device, then the UEFI Arch entry (if it pops up). 
 
 ## Prepare the live environment
 
-Type `wifi-menu` to get a list of wifi-networks, else follow Arch networking guides for setting up Ethernet. 
+When logged in, type `wifi-menu` to get a list of wifi networks. Select your router and enter the security key (usually found on a sticker below the router). If your computer is plugged in directly to the wall then use `ifconfig` to list the correct ethernet device, then run `dhcpcd ethX`. 
 
 Once the internet connection is established we can update the live system with the latest packages (before we create the partitions that Arch will reside on).
 
