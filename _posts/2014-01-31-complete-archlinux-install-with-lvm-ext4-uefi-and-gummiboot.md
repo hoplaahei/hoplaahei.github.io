@@ -86,6 +86,8 @@ gdisk /dev/sdX
 ```
 Press `n` and `Enter` to make partition 2. `Enter` again for default start block, and `Enter` once more for default end block. `8e00` to create type LVM and then `w` to write the changes. 
 
+Now create the LVM hierarchy:
+
 ```bash
 pvcreate /dev/sdX2 # activate
 lvcreate /deb/sdX2
@@ -93,6 +95,16 @@ lvcreate -L 15G VolGroup00 -n lvolroot
 lvcreate -C y -L 10G VolGroup00 -n lvolswap
 lvcreate -l +100%FREE VolGroup00 -n lvolhome # use remaining space
 ```
+
+And mount the partitions inside the live environment:
+
+```
+mount /dev/VolGroup00/lvolroot /mnt
+mount /dev/VolGroup00/lvolhome /mnt/home
+mount /dev/sdX1 /mnt/boot/EFI
+swapon /dev/VolGroup00/lvolswap
+```
+
 
 
 
