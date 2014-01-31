@@ -120,8 +120,4 @@ mount /dev/sdX1 /mnt/boot
 swapon /dev/VolGroup00/lvolswap
 ```
 
-The only thing that differs here from what you may see in other UEFI install guides is that we mount the efi partition to `/boot` instead of `/boot/efi`. Why don't we want to use /boot/efi? Well, as the Arch Wiki says, you would need to run `gummiboot --path=$esp update` after each package update, and copy over the kernel and initramfs manually. Why bother doing that when we don't need to? Stick to using /boot. 
-
-
-
-
+The only thing that differs here from what you may see in other UEFI install guides is that we mount the efi partition to `/boot` instead of `/boot/efi`. Why don't we want to use /boot/efi? Well, as the Arch Wiki says, you would need to run `gummiboot --path=$esp update` after each package update, and copy over the kernel and initramfs manually. Why bother doing that when we don't need to? Stick to using /boot.
