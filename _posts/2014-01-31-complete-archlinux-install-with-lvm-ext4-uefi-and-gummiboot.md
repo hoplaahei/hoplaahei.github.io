@@ -59,7 +59,7 @@ gdisk /dev/sdX
 Make a 512M EFI (ee00 code) boot partition:
 
 ```
-gdisk /dev/sdX
+gdisk /dev/sdX # if you are not already running it
 ```
 
 Now press `n` and choose `1`. Leave start sector at default by pressing `Enter`, but change end sector to `+512M`. For the type enter the code `ef00` (EFI). Remember to write the changes with `w`.
