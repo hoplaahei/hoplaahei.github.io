@@ -24,3 +24,19 @@ dd bs=4M if=/path/to/archlinux.iso of=/dev/sdX && sync # where X is your device 
 If unsure which `sdX` device to copy the ISO too, run `dmesg | tail` just after plugging it in and look at the last few lines.  
 
 Reboot your computer and immediately press the BIOS key (usually F1 or Escape). Here you should make sure under the 'Boot' section that Uefi boot is enabled. 
+
+Also set the boot order in the BIOS to boot from USB, or find the key to load the boot menu when you reboot. Select the Uefi Arch entry and bootup. Type `wifi-menu` to get a list of wifi-networks, else follow Arch networking guides for setting up Ethernet. 
+
+Once the internet connection is established we can update the live system with the latest packages (before we create the partitions that Arch will reside on).
+
+```
+pacman -Syu
+```
+
+This update will take some time depending on the speed of your connection. Now let's download a script by helmuthdu to make installing Arch easy:
+
+```
+pacman -S git
+git clone git://github.com/helmuthdu/aui
+```
+
