@@ -96,14 +96,27 @@ lvcreate -C y -L 10G VolGroup00 -n lvolswap
 lvcreate -l +100%FREE VolGroup00 -n lvolhome # use remaining space
 ```
 
+Format the partitions:
+
+```
+mkfs.ext4 /dev/VolGroup00/lvolroot
+mkfs.ext4 /dev/VolGroup00/lvolhome
+mkswap /dev/VolGroup00/lvolswap
+mkfs.vfat -F32 /dev/sdX1
+```
+
 And mount the partitions inside the live environment:
 
 ```
 mount /dev/VolGroup00/lvolroot /mnt
+mkdir /mnt/home
 mount /dev/VolGroup00/lvolhome /mnt/home
-mount /dev/sdX1 /mnt/boot/EFI
+mkdir -p /mnt/boot
+mount /dev/sdX1 /mnt/boot
 swapon /dev/VolGroup00/lvolswap
 ```
+
+The only thing that differs here from what you may see in other UEFI install guides is that we mount the efi partition to /boot instead of /boot/efi. Why don't we want to use /boot/efi? Well, as the Arch Wiki says, you would need to run `gummiboot --path=$esp update` after each package update, and copy over kernel and initramfs manually. Why bother doing that when we don't need to? Stick to using /boot. 
 
 
 
