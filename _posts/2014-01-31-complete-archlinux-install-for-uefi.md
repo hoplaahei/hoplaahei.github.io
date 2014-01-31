@@ -3,6 +3,8 @@ layout: post
 published: true
 ---
 
+This guide requires knowledge of basic Linux Console commands.
+
 ## Download the iso
 
 Choose your nearest [mirror](https://www.archlinux.org/download/) to get the dual ISO in the fastest possible time.
