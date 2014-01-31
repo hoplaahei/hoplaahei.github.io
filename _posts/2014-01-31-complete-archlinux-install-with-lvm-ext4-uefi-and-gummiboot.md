@@ -66,12 +66,17 @@ Now press `n` and choose `1`. Leave start sector at default by pressing `Enter`,
 
 ## Create the LVM volumes
 
-Creating LVM volumes seems abstract and complex at first compared to traditional partitioning of Linux, but it is really very simple. There are three steps:
+Creating LVM volumes seems abstract and complex at first compared to traditional partitioning of Linux, but really it just has a few more layers of complexity to remember. 
 
-- make the physical device LVM ready (pvcreate)
+Confusingly, LVM does not necessarily need a partition, as it can work on the block level. However, we WILL put it in its own partition; that way it can coexist with the UEFI boot partition we made. 
+
+Our LVM partition uses the remaining space on the drive. The steps are:
+
+- create a primary LVM partition (code 8e00 in gdisk)
+- make the device LVM ready (pvcreate)
 - create a volume group to contain the volumes (vgcreate)
 - add volumes (lvcreate)
 
-It is no harder than those three steps. The volume creation in the last step is like creating partitions e.g., /, /home, swap.
+It is no harder than those four steps. The volume creation in the last step is like creating traditional partitions e.g., /, /home, and swap.
 
 
