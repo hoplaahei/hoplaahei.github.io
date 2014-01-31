@@ -3,7 +3,7 @@ layout: post
 published: true
 ---
 
-Note: This guide requires knowledge of basic Linux Console commands. Backup all data before attempting to follow it.
+Note: This guide requires knowledge of basic Linux Console commands. Please backup all data before attempting to follow it.
 
 ## Why UEFI?
 
