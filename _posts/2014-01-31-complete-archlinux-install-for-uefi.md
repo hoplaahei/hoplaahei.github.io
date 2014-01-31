@@ -19,6 +19,6 @@ In the past, extra steps were needed to make the ISOs UEFI bootable, but now a `
 dd bs=4M if=/path/to/archlinux.iso of=/dev/sdX && sync # where X is your device number
 ```
 
-If unsure which `sdX` device to copy the ISO too, run `dmesg | tail` just after plugging it in. 
+If unsure which `sdX` device to copy the ISO too, run `dmesg | tail` just after plugging it in and look at the last few lines.  
 
 Reboot your computer and immediately press the BIOS key (usually F1 or Escape). Here you should make sure under the 'Boot' section that Uefi boot is enabled. 
