@@ -351,4 +351,19 @@ linux   /vmlinuz-linux
 initrd  /initramfs-linux.img
 options root=/dev/mapper/VolGroup00-lvolroot rw quiet consoleblank=0 elevator=noop pcie_aspm=force pcie_aspm=force i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1
 ```
+Add the following to `~/.xinitrc`:
 
+```
+sudo su -c "echo '1500' > '/proc/sys/vm/dirty_writeback_centisecs'"
+
+# screen powersave
+xset +dpms
+xset dpms 0 0 300
+
+# additional powersave tweaks
+xset s off
+xset s noblank
+xset s noexpose
+xset c on
+xset -dpms
+```
