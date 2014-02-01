@@ -225,6 +225,19 @@ Type=simple # should allow X to start faster
 ```
 * Please see wiki [note](https://wiki.archlinux.org/index.php/automatic_login_to_virtual_console) for distinction between `Type=simple` and `Type=idle`
 
+### Auto-connect to wireless
+
+```bash
+ls /etc/netctl # will list the devices wifi-menu has already configured
+```
+
+Now enable the wifi permanently:
+
+```
+systemctl enable netctl-auto@yourdevice
+```
+Now your wireless will automatically connect to any wifi-points configured in /etc/netctl (e.g., those setup by wifi-menu).
+
 ### Autologin to X
 
 ```
