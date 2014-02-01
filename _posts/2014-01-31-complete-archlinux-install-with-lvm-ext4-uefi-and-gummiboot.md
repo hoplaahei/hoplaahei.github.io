@@ -170,7 +170,7 @@ umount /mnt
 reboot
 ```
 
-Tip: The first time I rebooted using this method there was an upstream bug in gummiboot, so I couldn't get into the system. I found out by accident that sticking the USB Arch stick in didn't load the live system, but luckily booted straight into the root system with its working version of gummiboot. Worth a try. 
+Tip: Arch is rolling release and in my experience from time-to-time an update breaks the bootloader and locks you out the Arch installation. If this happens you can stick the Arch USB key in (which itself has a working UEFI bootloader) and it will try to boot into your Arch installation rather than the live environment by default. From there you can install [Arch Rollback Machine](https://wiki.archlinux.org/index.php/Arch_Rollback_Machine) and get an older working version of gummiboot. 
 
 ## Basic configuration
 
