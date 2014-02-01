@@ -261,8 +261,10 @@ videothumbnail # Click 'Install Handlers'
 ### Automounting plugged in devices
 
 ```
-pacman -S devmon udevil
+pacman -S udevil
 ```
+
+... [coming soon]
 
 ## Power saving for laptops
 
