@@ -270,10 +270,12 @@ pacman -S udevil
 
 ## <a name="whatdo"></a> What to do when things go wrong
 
+First install `downgrade`:
+
 ```bash
 yaourt -S downgrade
 ```
-For example, you have a bug with latest kernel being incompatible with gummiboot. On Arch [bugtracker](https://bugs.archlinux.org/task/33745#comment116633) you check most recent comments at the bottom of the thread and find out from a user that older kernel `3.12.6-1` still works fine with gummiboot. To get back to it we search for old 'linux' (kernel) packages with `downgrade`:
+As an example, imagine you have a bug with latest kernel being incompatible with gummiboot. On Arch [bugtracker](https://bugs.archlinux.org/task/33745#comment116633) you check most recent comments at the bottom of the thread and find out from a user that older kernel `3.12.6-1` still works fine with gummiboot. To get back to it we search for old 'linux' (kernel) packages with `downgrade`:
 
 ```bash
 downgrade linux | grep -i 3.12.6-1
