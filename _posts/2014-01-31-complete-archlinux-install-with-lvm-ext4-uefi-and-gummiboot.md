@@ -66,7 +66,7 @@ Then I create a fresh GPT partition table:
 gdisk /dev/sdX # where X is the device number you selected
 ```
 
-... and pressing `o` to create `an empty GUID partition table`. Then `w` to save and write the changes.
+Press `o` on the prompt of `gdisk` to create `an empty GUID partition table`. Then `w` to save and write the changes.
 
 ## Create the EFI boot partition
 
