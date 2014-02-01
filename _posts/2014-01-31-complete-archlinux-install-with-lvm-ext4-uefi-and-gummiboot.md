@@ -142,7 +142,7 @@ cd aui && .ais
 - choose 7) through 12)
 - if using an SSD with trim support (check with `hdparm -I /dev/sdX |grep TRIM`), then change /etc/fstab options to `defaults,noatime,discard` for each ext4 partition listed. Or edit /etc/lvm/lvm.conf to contain `issue_discards = 1`
 - exit ais script, but choose not to reboot
-- edit /etc/mkinitcpio.conf 'HOOKS=...' and stick `lvm2` in between `block` and `filesystems`
+- edit /etc/mkinitcpio.conf 'HOOKS=...' and stick `lvm2 resume` in between `block` and `filesystems`
 - save changes and load `./ais` again
 - run option 12) again to build lvm2 support into the image
 - do not manually run `mkinitcpio` (unless you `arch-chroot` into /mnt)
