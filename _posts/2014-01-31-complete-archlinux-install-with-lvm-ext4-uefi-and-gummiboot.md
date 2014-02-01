@@ -252,7 +252,7 @@ nano ~/.zprofile
 
 You must edit the PKGBUILD of magickthumbnail when prompted and remove the depracted 'force' option, or it will not install. 
 
-``` 
+```bash
 yaourt -S videothumbnail magickthumbnail
 magickthumbnail # Click 'Install Handlers'
 videothumbnail # Click 'Install Handlers'
