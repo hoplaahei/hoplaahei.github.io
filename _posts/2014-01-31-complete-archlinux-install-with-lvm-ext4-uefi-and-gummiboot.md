@@ -170,7 +170,7 @@ umount /mnt
 reboot
 ```
 
-Tip: Arch is rolling release and in my experience from time-to-time an update breaks the bootloader and locks you out the Arch installation. If this happens you can stick the Arch USB key in (which itself has a working UEFI bootloader) and it will try to boot into your Arch installation rather than the live environment by default. From there you can use [Arch Rollback Machine](https://wiki.archlinux.org/index.php/Arch_Rollback_Machine) and get an older working version of gummiboot. See: [what to do when things go wrong](#what). 
+Tip: Arch is rolling release and in my experience from time-to-time an update breaks the bootloader and locks you out the Arch installation. If this happens you can stick the Arch USB key in (which itself has a working UEFI bootloader) and it will try to boot into your Arch installation rather than the live environment by default. From there you can use [Arch Rollback Machine](https://wiki.archlinux.org/index.php/Arch_Rollback_Machine) and get an older working version of gummiboot. See: [What to do when things go wrong](). 
 
 ## Basic configuration
 
