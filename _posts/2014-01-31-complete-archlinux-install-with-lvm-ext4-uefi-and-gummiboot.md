@@ -308,4 +308,34 @@ If you have any proprietary drivers then don't forget to also get the correspond
 
 ## Power saving for laptops
 
-... [coming soon]
+Here is how to set a charge limit (80%) for Thinkpad laptops, which prevents battery capacity degrading over time:
+
+```
+pacman -S linux-headers
+yaourt -S tpacpi-bat
+echo "acpi_call" > /etc/modules-load.d/acpi_call.conf
+nano /etc/systemd/system/set-battery.service
+```
+
+Contents of set-battery.service:
+
+```
+[Unit]
+Description=Set battery capacity
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/perl /usr/lib/perl5/vendor_perl/tpacpi-bat -v stopChargeThreshold 0 80
+ExecStart=/usr/bin/perl /usr/lib/perl5/vendor_perl/tpacpi-bat -v startChargeThreshold 0 40
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Enable set-battery.service now and on next reboot:
+
+```
+systemctl enable set-battery.service
+systemctl start set-battery.service
+```
+
