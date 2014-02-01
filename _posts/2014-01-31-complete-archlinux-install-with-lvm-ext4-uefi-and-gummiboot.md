@@ -182,9 +182,9 @@ It can also automatically set up many great optimisations such as:
 - `bumblebee` for NVIDIA Optimus (graphics switching/power saving) technology
 - `infinality` for smooth fonts
 - `ZRAM` for using RAM for swap, thus reducing disk writes
-- `readahead` for caching common used apps for quicker loading
+- `readahead` for caching commonly used apps for quicker loading
 
-Furthermore, it reminds you about other things you may need such as CUPS printing, openssh, VirtualBox, or TOR. It's a brilliant script that saves me a few hours on new installs. 
+Furthermore, it reminds you about other things such as CUPS printing, openssh, VirtualBox, or TOR. It's a brilliant script that saves me a few hours on new installs. 
 
 ## Power saving for laptops
 
