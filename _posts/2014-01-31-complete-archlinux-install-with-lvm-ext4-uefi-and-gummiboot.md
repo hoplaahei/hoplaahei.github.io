@@ -168,7 +168,7 @@ Make /boot/loader/entries/arch.conf:
 title          Arch Linux
 linux          /vmlinuz-linux
 initrd         /initramfs-linux.img
-options        root=/dev/mapper/VolGroup00-lvolroot rw
+options        root=/dev/mapper/VolGroup00-lvolroot rw resume=/dev/mapper/VolGroup00-lvolroot
 ```
 You now have a base Arch Linux installation you can boot into:
 
@@ -402,7 +402,7 @@ Edit `/boot/loader/entries/arch.conf`:
 title   Arch Linux
 linux   /vmlinuz-linux
 initrd  /initramfs-linux.img
-options root=/dev/mapper/VolGroup00-lvolroot rw quiet consoleblank=0 elevator=noop pcie_aspm=force pcie_aspm=force i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1
+options root=/dev/mapper/VolGroup00-lvolroot rw quiet consoleblank=0 elevator=noop pcie_aspm=force pcie_aspm=force i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1 resume=/dev/mapper/VolGroup00-lvolroot
 ```
 Add the following to `~/.xinitrc`:
 
