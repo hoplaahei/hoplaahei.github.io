@@ -268,9 +268,7 @@ pacman -S udevil
 
 ... [coming soon]
 
-## What to do when things go wrong
-
-<a name="Whatdo">
+## <a name="whatdo"></a> What to do when things go wrong
 
 ```bash
 yaourt -S downgrade
