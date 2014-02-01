@@ -184,7 +184,7 @@ It can also automatically set up many great optimisations such as:
 - `ZRAM` for using RAM for swap, thus reducing disk writes
 - `readahead` for caching common used apps for quicker loading
 
-Furthermore, it reminds you about other things you may need such as CUPS printing and openssh. 
+Furthermore, it reminds you about other things you may need such as CUPS printing, openssh, or TOR. 
 
 ## Power saving for laptops
 
