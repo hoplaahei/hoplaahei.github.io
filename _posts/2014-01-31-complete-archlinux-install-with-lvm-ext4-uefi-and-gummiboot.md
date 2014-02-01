@@ -304,7 +304,7 @@ mkinitcpio -p linux
 
 This generates a new kernel image in /boot that will be compatible with the newer gummiboot. This solves our problem for the time being. We can subscribe to the bug tracker and ask it to notify us of updates, so we can see when  it is safe to unfreeze our kernel package (by removing it from `IgnorePkg` in `/etc/pacman.conf` and go back up to the latest version. 
 
-If you have any proprietary drivers, don't forget to also get the old version of your kernel sources by doing a `downgrade linux-headers`. Remove then reinstall the drivers, and a hook should run to compile them against this new (old) version of the kernel. Do not reboot until you've done so. 
+If you have any proprietary drivers then don't forget to also get the old version of your kernel sources by doing a `downgrade linux-headers`. Remove then reinstall the drivers, and a hook should run to compile them against this new (old) version of the kernel. Do not reboot until you've done so. 
 
 ## Power saving for laptops
 
