@@ -278,7 +278,7 @@ For example, you have a bug with latest kernel being incompatible with gummiboot
 ```bash
 downgrade linux | grep -i 3.12.6-1
 ```
-The results tell us that we must press key '6' to install that version, so we run `downgrade linux` again and press `6`. Now it installs like a normal package and asks us if we want to add it to `IgnorePkg` in `/etc/pacman.conf`. Since we don't have an eta on when this bug will be fixed, we decide to say `y` and freeze the package on this kernel version for the time being.
+The results tell us that we must press key '6' to install that version, so we run `downgrade linux` again and press `6`. Now it installs like a normal package and asks us if we want to add it to `IgnorePkg` in `/etc/pacman.conf`. Since we don't have an ETA on when this bug will be fixed, we decide to say `y` and freeze the package on this kernel version for the time being.
 
 To use the new kernel we run:
 
