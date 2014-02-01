@@ -247,6 +247,11 @@ nano ~/.zprofile
 In .zprofile enter:
 
 ```bash
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx
+```
+Or if you wish X to auto-restart after quitting add `exec`:
+
+```bash
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 ```
 
