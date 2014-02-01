@@ -55,8 +55,17 @@ This script lets you configure partitions, but it doesn't support LVM (at the ti
 First, choose the disk you want to install Arch on. Use `blkid` to see available devices. I like to get rid of remenants of old partitions on the chosen disk by running:
 
 ```
+dd if=/dev/zero of=/dev/sdX bs=512 count=1 # erase MBR and dos partition table
+dd if=/dev/zero of=/dev/sdX bs=512 count=2 # erase GPT table beginning
+dd if=/dev/zero of=/dev/sdX bs=512 count=2 seek=$(($(blockdev --getsz /dev/sdb) - 2)) # erase GPT end
+```
+
+Then I create a fresh GPT partition table:
+
+```
 gdisk /dev/sdX # where X is the device number you selected
 ```
+
 ... and pressing `o` to create `an empty GUID partition table`. Then `w` to save and write the changes.
 
 ## Create the EFI boot partition
