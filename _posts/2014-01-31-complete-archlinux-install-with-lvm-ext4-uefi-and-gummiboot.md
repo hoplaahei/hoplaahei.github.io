@@ -138,4 +138,44 @@ cd aui && .ais
 - run option 12) again to build lvm2 support into the image
 - do not manually run `mkinitcpio` (unless you `arch-chroot` into /mnt)
 
+Now exit out ./ais once more, without rebooting, and run:
+
+```
+arch-chroot /mnt
+pacman -S gummiboot
+gummiboot install
+```
+
+Edit /boot/loader.conf:
+
+```
+default  arch
+timeout  3 # how long you want menu to stay before booting
+```
+
+Make /boot/loader/entries/arch.conf:
+
+```
+title          Arch Linux
+linux          /vmlinuz-linux
+initrd         /initramfs-linux.img
+options        root=/dev/mapper/VolGroup00-lvolroot rw
+```
+You now have a base Arch Linux installation you can boot into:
+
+```
+exit
+umount /mnt/*
+umount /mnt
+reboot
+```
+## Basic configuration
+
+The `ais` script from the install copied `aui` over to /root, so when you first login run `./aui`. This will help you the rest of the way in setting up the system.
+
+## Power saving for laptops
+
+... [coming soon]
+
+
 
