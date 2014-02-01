@@ -248,7 +248,21 @@ nano ~/.zprofile
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 ```
 
+### Video, image and (some) pdf thumbnails for rox
 
+You must edit the PKGBUILD of magickthumbnail when prompted and remove the depracted 'force' option, or it will not install. 
+
+``` 
+yaourt -S videothumbnail magickthumbnail
+magickthumbnail # Click 'Install Handlers'
+videothumbnail # Click 'Install Handlers'
+```
+
+### Automounting plugged in devices
+
+```
+pacman -S devmon udevil
+```
 
 ## Power saving for laptops
 
