@@ -183,9 +183,8 @@ It can also automatically set up many great optimisations such as:
 - `infinality` for smooth fonts
 - `ZRAM` for using RAM for swap, thus reducing disk writes
 - `readahead` for caching common used apps for quicker loading
-- `virtualbox` for running other operating systems inside Arch
 
-Furthermore, it reminds you about other things you may need such as CUPS printing, openssh, or TOR. 
+Furthermore, it reminds you about other things you may need such as CUPS printing, openssh, Virtual Box, or TOR. 
 
 ## Power saving for laptops
 
