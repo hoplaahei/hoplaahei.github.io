@@ -216,6 +216,7 @@ Logout and log back in.
 mkdir -p /etc/systemd/system/getty@tty1.service.d
 nano /etc/systemd/system/getty@tty1.service.d/autologin.conf
 ```
+And in autologin.conf enter:
 
 ```bash
 [Service]
@@ -243,6 +244,7 @@ Now your wireless will automatically connect to any wifi-points configured in /e
 ```
 nano ~/.zprofile
 ```
+In .zprofile enter:
 
 ```bash
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
