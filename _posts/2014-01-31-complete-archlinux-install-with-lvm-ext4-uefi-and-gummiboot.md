@@ -308,6 +308,8 @@ If you have any proprietary drivers then don't forget to also get the correspond
 
 ## Power saving for laptops
 
+### Battery charge threshold
+
 Here is how to set a charge limit (80%) for Thinkpad laptops, which prevents battery capacity degrading over time:
 
 ```
@@ -337,5 +339,16 @@ Enable set-battery.service now and on next reboot:
 ```
 systemctl enable set-battery.service
 systemctl start set-battery.service
+```
+
+### Power saving kernel parameters
+
+Edit `/boot/loader/entries/arch.conf`:
+
+```
+title   Arch Linux
+linux   /vmlinuz-linux
+initrd  /initramfs-linux.img
+options root=/dev/mapper/VolGroup00-lvolroot rw quiet consoleblank=0 elevator=noop pcie_aspm=force pcie_aspm=force i915.i915_enable_rc6=1 i915.i915_enable_fbc=1 i915.lvds_downclock=1 i915.semaphores=1
 ```
 
