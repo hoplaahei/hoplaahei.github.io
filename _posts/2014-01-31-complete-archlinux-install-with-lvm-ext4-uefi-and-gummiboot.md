@@ -174,7 +174,7 @@ Tip: Arch is rolling release and in my experience from time-to-time an update br
 
 ## Basic configuration
 
-The `ais` script from the install copied `aui` over to /root, so when you first login run `./aui`. This will help you the rest of the way in setting up the system. At the least, install an AUR helper such as `yaourt`. 
+The `ais` script from the install copied `aui` over to /root, so when you first login run `./aui`. This will help you the rest of the way in setting up the system. At the least, let it install an AUR helper such as `yaourt`. 
 
 ## Power saving for laptops
 
