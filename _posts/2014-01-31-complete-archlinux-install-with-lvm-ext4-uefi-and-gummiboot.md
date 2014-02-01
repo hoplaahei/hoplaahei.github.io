@@ -186,6 +186,57 @@ It can also automatically set up many great optimisations such as:
 
 Furthermore, it reminds you about other things such as CUPS printing, openssh, VirtualBox, Skype, or TOR. It's a brilliant script that saves me a few hours on new installs. 
 
+## Personal preferences
+
+### Change user shell to zsh
+
+```bash
+pacman -S zsh
+chsh -s /usr/bin/zsh user # where user is your username
+```
+### sudo without entering a password
+
+I'm willing to overlook security risks when it comes to everyday usability.
+
+```bash
+visudo
+```
+
+Add the line:
+
+```
+Defaults:USER_NAME      !authenticate
+```
+
+Logout and log back in. 
+
+### Autologin to virtual console at boot for convenience
+
+```
+mkdir -p /etc/systemd/system/getty@tty1.service.d
+nano /etc/systemd/system/getty@tty1.service.d/autologin.conf
+```
+
+```bash
+[Service]
+ExecStart=
+ExecStart=-/usr/bin/agetty --autologin username --noclear %I 38400 linux
+Type=simple # should allow X to start faster
+```
+* Please see wiki [note](https://wiki.archlinux.org/index.php/automatic_login_to_virtual_console) for distinction between `Type=simple` and `Type=idle`
+
+### Autologin to X
+
+```
+nano ~/.zprofile
+```
+
+```bash
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+```
+
+
+
 ## Power saving for laptops
 
 ... [coming soon]
