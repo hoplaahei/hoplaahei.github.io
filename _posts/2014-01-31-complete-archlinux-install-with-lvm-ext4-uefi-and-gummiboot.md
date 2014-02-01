@@ -169,6 +169,9 @@ umount /mnt/*
 umount /mnt
 reboot
 ```
+
+Tip: The first time I rebooted using this method there was an upstream bug in gummiboot, so I couldn't get into the system. I found out by accident that sticking the USB Arch stick in didn't load the live system, but luckily booted straight into the root system with its working version of gummiboot. Worth a try. 
+
 ## Basic configuration
 
 The `ais` script from the install copied `aui` over to /root, so when you first login run `./aui`. This will help you the rest of the way in setting up the system.
