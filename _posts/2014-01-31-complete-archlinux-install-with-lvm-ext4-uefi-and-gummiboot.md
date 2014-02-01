@@ -341,6 +341,59 @@ systemctl enable set-battery.service
 systemctl start set-battery.service
 ```
 
+### Re-disable bluetooth after resume from suspend or hibernate
+
+Disable bluetooth on startup:
+
+```
+yaourt tlp
+```
+
+Add this line to `/etc/default/tlp`:
+
+```
+DEVICES_TO_DISABLE_ON_STARTUP="bluetooth"
+```
+
+Create `/etc/systemd/system/autostart-boot-resume.service`
+
+```
+[Unit]
+Description=Run custom user autostart script on boot and resume from suspension and hibernation
+After=basic.target
+After=suspend.target
+After=hibernate.target
+
+[Service]
+User=youruser
+Environment=DISPLAY=:0
+ExecStartPre=/usr/bin/sleep 60
+ExecStart=/home/youruser/.bin/autostart
+
+[Install]
+WantedBy=basic.target
+WantedBy=suspend.target
+WantedBy=hibernate.target
+```
+
+Replace 'youruser' with your username. Now make sure the script `/home/youruser/.bin/autostart` exists with this contents:
+
+```
+#!/bin/bash
+
+echo "Running autostart now..."
+sudo rfkill block bluetooth
+```
+
+Now start and enable the service:
+
+```
+systemctl start autostart-boot-resume.service
+systemctl enable autostart-boot-resume.service
+```
+
+
+
 ### Power saving kernel parameters
 
 Edit `/boot/loader/entries/arch.conf`:
