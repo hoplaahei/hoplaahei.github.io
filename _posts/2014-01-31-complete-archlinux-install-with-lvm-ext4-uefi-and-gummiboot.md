@@ -292,17 +292,17 @@ yaourt -S downgrade
 As an example, imagine you have a bug with latest kernel being incompatible with gummiboot. On Arch [bugtracker](https://bugs.archlinux.org/task/33745#comment116633) you check most recent comments at the bottom of the thread and find out from a user that older kernel `3.12.6-1` still works fine with gummiboot. To get back to it we search for old 'linux' (kernel) packages with `downgrade`:
 
 ```bash
-downgrade linux | grep -i 3.12.6-1
+downgrade linux | grep -i 3.12.6-1 # search for 3.12.6-1 version
 ```
-The results tell us that we must press key '6' to install that version, so we run `downgrade linux` again and press `6`. Now it installs like a normal package and asks us if we want to add it to `IgnorePkg` in `/etc/pacman.conf`. Since we don't have an ETA on when this bug will be fixed, we decide to say `y` and freeze the package on this kernel version for the time being.
+The results tell us that we must press key '6' to install that version, so we run `downgrade linux` again and press `6`. Now it installs like a normal package and asks us if we want to add it to `IgnorePkg` in `/etc/pacman.conf`. Since we don't have an ETA on when this bug will be fixed, we decide to say `y` and freeze the package on this kernel version for the time being. From now on, any time you run a system update with `pacman -Syu`, the `linux` package won't get upgraded.
 
-To use the new kernel we run:
+To use the new (old) kernel we run:
 
 ```bash
 mkinitcpio -p linux
 ```
 
-This generates a new kernel image in /boot that will be compatible with the newer gummiboot. This solves our problem for the time being. We can subscribe to the bug tracker and ask it to notify us of updates, so we can see when  it is safe to unfreeze our kernel package (by removing it from `IgnorePkg` in `/etc/pacman.conf` and go back up to the latest version. 
+This generates a new kernel image in /boot that will be compatible with the newer gummiboot. This solves our problem for the time being. We can subscribe to the bug tracker and ask it to notify us of updates, so we can see when it is safe to unfreeze our kernel package (by removing it from `IgnorePkg` in `/etc/pacman.conf` and go back up to the latest version. 
 
 If you have any proprietary drivers then don't forget to also get the corresponding old version of your kernel sources by doing a `downgrade linux-headers`. Remove then reinstall the drivers against these headers (a hook should run to compile them against this new (old) version of the kernel). Do not reboot until you've done so.
 
