@@ -195,6 +195,21 @@ It can also automatically set up many great optimisations such as:
 
 Furthermore, it reminds you about other things such as CUPS printing, openssh, VirtualBox, Skype, or TOR. It's a brilliant script that saves me a few hours on new installs. 
 
+## Fix font problems
+
+Fonts installed in `/usr/share/fonts/local` don't get loaded by default. Do this to fix many problems with apps complaining of missing fonts:
+
+```
+cd /usr/share/fonts/local;mkfontdir
+```
+
+Add this to `~/.xinitrc`:
+
+```
+xset +fp /usr/share/fonts/local
+xset fp rehash
+```
+
 ## Personal preferences
 
 ### Change user shell to zsh
