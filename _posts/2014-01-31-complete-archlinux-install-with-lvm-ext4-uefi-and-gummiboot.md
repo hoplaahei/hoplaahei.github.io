@@ -280,6 +280,15 @@ videothumbnail # Click 'Install Handlers'
 pacman -S udevil
 ```
 
+Edit `~/.xinitrc`
+
+```
+(sleep 5 && devmon) &
+```
+
+Now plugged in devices will get mounted automatically in media. See IgnorantGuru's [blog](http://igurublog.wordpress.com/downloads/script-devmon/) for more examples devmon's capabilities, such as popping up a filemanger to view the files automatically. 
+
+
 ... [coming soon]
 
 ## <a name="whatdo"></a> What to do when things go wrong
