@@ -289,6 +289,8 @@ magickthumbnail # Click 'Install Handlers'
 videothumbnail # Click 'Install Handlers'
 ```
 
+Now right-click in a `rox` window and select 'Options...'. In the side-menu navigate to 'Thumbnails' and on the right check the box 'Show image thumbnails'.
+
 ### Automounting plugged in devices
 
 ```
