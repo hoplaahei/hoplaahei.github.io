@@ -19,7 +19,7 @@ mv .yourfile ~/.dotfiles
 mv .yourfolder ~/.dotfiles
 ```
 
-Remove the '.' from the dotfiles/folders so they are visible in github. Run this loop in the terminal:
+To remove the '.' from the dotfiles/folders so they are visible in github, run this loop in the terminal:
 
 ```bash
 cd ~/.dotfiles && for f in * ; do mv "$f" "${f/./}" ; done
@@ -31,7 +31,7 @@ Symlink the renamed dotfiles back to their original home directory location:
 cd ~/.dotfiles && for f in *; do ln -s ~/.dotfiles/$f ~/.$f; done
 ```
 
-If you mess up and create a load of useless symlinks in the home dir then you can remove them quickly with:
+If you mess up and create useless symlinks in the home dir, then you can remove them quickly with:
 
 ```bash
 find /home/joe -maxdepth 1 -lname '*' -exec rm {} \;
