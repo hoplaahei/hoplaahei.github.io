@@ -221,6 +221,14 @@ vm.swappiness=1
 vm.vfs_cache_pressure=50
 ```
 
+### Compile in RAM
+
+Edit `/etc/fstab`:
+
+```
+tmpfs     /scratch     tmpfs     nodev,nosuid,size=7G     0     0
+```
+
 ### Change user shell to zsh
 
 ```bash
