@@ -147,7 +147,21 @@ cd aui && .ais
 - run option 12) again to build lvm2 support into the image
 - do not manually run `mkinitcpio` (unless you `arch-chroot` into /mnt)
 
-Now exit out ./ais once more, without rebooting, and run:
+Now exit out ./ais once more, without rebooting.
+
+Check that it detected your /etc/fstab entries correctly. In my case the EFI vfat partition had some options that I later found out prevented it unmounting properly on shutdown. I had to change it from:
+
+```
+/dev/sdb1              /boot           vfat            rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro    0 2
+```
+
+to:
+
+```
+/dev/sdb1               /boot           vfat            defaults        0       2
+```
+
+Now run:
 
 ```
 arch-chroot /mnt
@@ -179,7 +193,7 @@ umount /mnt
 reboot
 ```
 
-Tip: Arch is rolling release and in my experience from time-to-time an update breaks the bootloader and locks you out the Arch installation. If this happens you can stick the Arch USB key in (which itself has a working UEFI bootloader) and it will try to boot into your Arch installation rather than the live environment by default. From there you can use [Arch Rollback Machine](https://wiki.archlinux.org/index.php/Arch_Rollback_Machine) and get an older working version of gummiboot. See: [What to do when things go wrong](#whatdo). 
+Tip: Arch is rolling release and in my experience from time-to-time an update breaks the bootloader and locks you out the Arch installation. If this happens you can stick the Arch USB key in (which itself has a working UEFI bootloader) and try to boot into your Arch installation from there. If it fails, you can load the live environment and reperform the steps above to mount your disks and chroot into the system. From there you can use [Arch Rollback Machine](https://wiki.archlinux.org/index.php/Arch_Rollback_Machine) and get an older working version of gummiboot. See: [What to do when things go wrong](#whatdo). 
 
 ## Basic configuration
 
