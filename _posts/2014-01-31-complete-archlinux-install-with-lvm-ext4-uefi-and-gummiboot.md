@@ -212,6 +212,15 @@ xset fp rehash
 
 ## Personal preferences
 
+### Reduce swap writes to swap space on SSD
+
+Edit `/etc/sysctl.d/99-sysctl.conf`:
+
+```
+vm.swappiness=1
+vm.vfs_cache_pressure=50
+```
+
 ### Change user shell to zsh
 
 ```bash
