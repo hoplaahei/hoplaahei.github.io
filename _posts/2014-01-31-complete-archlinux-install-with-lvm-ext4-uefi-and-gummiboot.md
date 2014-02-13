@@ -147,21 +147,7 @@ cd aui && .ais
 - run option 12) again to build lvm2 support into the image
 - do not manually run `mkinitcpio` (unless you `arch-chroot` into /mnt)
 
-Now exit out ./ais once more, without rebooting.
-
-Check that it detected your /etc/fstab entries correctly. In my case the EFI vfat partition had some options that I later found out prevented it unmounting properly on shutdown. I had to change it from:
-
-```
-/dev/sdb1              /boot           vfat            rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro    0 2
-```
-
-to:
-
-```
-/dev/sdb1               /boot           vfat            defaults        0       2
-```
-
-Now run:
+Now exit out ./ais once more, without rebooting, and run:
 
 ```
 arch-chroot /mnt
