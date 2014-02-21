@@ -104,7 +104,7 @@ Now create the LVM hierarchy:
 
 ```bash
 pvcreate /dev/sdX2 # activate
-lvcreate /deb/sdX2
+vgcreate VolGroup00 /dev/sdX2
 lvcreate -L 15G VolGroup00 -n lvolroot
 lvcreate -C y -L 10G VolGroup00 -n lvolswap
 lvcreate -l +100%FREE VolGroup00 -n lvolhome # use remaining space
