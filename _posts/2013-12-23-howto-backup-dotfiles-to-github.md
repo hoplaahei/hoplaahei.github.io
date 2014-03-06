@@ -68,5 +68,5 @@ To restore the dotfiles from github:
 ```bash
 cd ~
 git clone git@github.com:rodyaj/dotfiles.git .dotfiles
-cd .dotfiles && f in *; do ln -s ~/.dotfiles/$f ~/.$f; done
+cd .dotfiles && for f in *; do ln -s ~/.dotfiles/$f ~/.$f; done
 ```
