@@ -5,15 +5,15 @@ published: true
 
 PC-BSD has two types of release: 'RELEASE' and 'STABLE'
 
-** RELEASE
+## RELEASE
 
 This is the stabler version that the main site links to. It only receives security updates and bug fixes between each major release. It is not a rolling release, meaning you will have to instruct PC-BSD to upgrade to the next release.
 
-** STABLE
+## STABLE
 
 Confusingly, this ISO is actually less stable than the 'RELEASE' version because it regularly updates software and drivers to the latest versions. Use this if you want to test the latest features of software, or get an updated driver that fixes your hardware. Do not use 'STABLE' release if you hate software that regularly changes how you work and interact with it. 
 
-** Getting the ISOs
+## Getting the ISOs
 
 PC-BSD uses a Content Distribution Network (CDN) to get the ISOs from multiple locations without needing to select a mirror. Unfortunately, most browsers do not download from multiple locations by default, which results in a slower download. To fix this, install an extension that supports multiple download sources. Here is how you can do this in Firefox:
 
