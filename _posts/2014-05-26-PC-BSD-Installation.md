@@ -9,7 +9,7 @@ Confusingly, there is also a 'STABLE' version, which is actually less stable tha
 
 PC-BSD uses a Content Distribution Network (CDN) to get the ISOs from multiple locations without needing to select a mirror. Unfortunately, most browsers do not download from multiple locations by default, which results in a slower download. To fix this, install an extension that supports multiple download sources. Here is how you can do this in Firefox:
 
-1. Install DownloadThemAll! 
+1. Install DownloadThemAll! extension
 2. Navigate to the [CDN](iso.cdn.pcbsd.org)
 3. Choose the latest stable release
 4. Choose your architecture (e.g., amd64 for 64-bit)
