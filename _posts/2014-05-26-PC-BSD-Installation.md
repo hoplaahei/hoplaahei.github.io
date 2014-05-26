@@ -14,7 +14,7 @@ PC-BSD uses a Content Distribution Network (CDN) to get the ISOs from multiple l
 3. Choose the latest stable release
 4. Choose your architecture (e.g., amd64 for 64-bit)
 5. Open the .sha26 file (has the same name as the .iso)
-6. Copy the long hash string
+6. Copy the long hash string to clipboard
 7. Right-click on the link for the hybrid .iso and choose 'Save Link with DownloadThemAll!'
 8. Paste the hash key and set the type to sha256
 9. Download the .iso
