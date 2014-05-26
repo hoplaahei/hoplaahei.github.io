@@ -7,7 +7,7 @@ PC-BSD has two types of release: 'RELEASE' and 'STABLE'
 
 ## RELEASE
 
-This is the only version directly linked from the front page of the main site, and is also the stablest. Use this if you do not want your system to change dramatically over time. It only receives security updates and bug fixes. Software and drivers are not periodically updated to the latest versions by an update manager, so it is not a rolling release. If you want the latest applications and drivers, you will need to configure it to switch to 'STABLE' or wait for the next 'RELEASE' candidate. 
+This is the only version directly linked from the front page of the main site, and is actually stabler than 'STABLE' release. Use this if you do not want your system to change dramatically over time. It receives security updates and bug fixes, but software and drivers do not get changed to the latest versions by an update manager. If you later decide that you prefer having newer applications and features, then you must configure the system to switch to 'STABLE' (a rolling-release) or wait for the next 'RELEASE' candidate. 
 
 ## STABLE
 
