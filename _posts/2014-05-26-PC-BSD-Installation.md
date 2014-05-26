@@ -3,7 +3,7 @@ layout: post
 published: true
 ---
 
-PC-BSD has two types of release. The 'RELEASE' is the default that you can download from the main page. This is the most stable version as it only receives security updates and bug fixes between each major release. This is not, however, a rolling release, meaning you will have to instruct PC-BSD to upgrade to the next release.
+PC-BSD has two types of release. The 'RELEASE' is the default, downloadable from the main page. This is the stabler version, and only receives security updates and bug fixes between each major release. It is not, however, a rolling release, meaning you will have to instruct PC-BSD to upgrade to the next release.
 
 Confusingly, there is also a 'STABLE' version, which is actually less stable than the 'RELEASE' version because it regularly updates software and drivers to the latest versions. Use this if you want to test the latest features of software, or get an updated driver that fixes your hardware. Do not use 'STABLE' release if you hate software that changes how you are used to working with it. 
 
