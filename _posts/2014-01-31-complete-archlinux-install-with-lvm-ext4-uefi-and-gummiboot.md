@@ -84,16 +84,16 @@ Creating LVM volumes seems abstract and complex at first compared to traditional
 
 We will put LVM in its own partition; that way it can coexist with the EFI boot partition we made. _Side note: LVM can exist on the block level, without the need for partitions, but in this case we store it in one, so as not to overwrite the UEFI boot partition we made._
 
-Our LVM partition uses the remaining space on the drive. Here is a brief run down of what we now need to do:
+Our LVM partition uses the remaining space on the drive. Here is a brief run down of how we will make a usable LVM setup:
 
-- create a primary LVM partition (code 8e00 in gdisk)
-- make the device LVM ready (using pvcreate)
-- create a volume group to contain the volumes (using vgcreate)
-- add volumes (using lvcreate)
+1. create a primary LVM partition (code 8e00 in gdisk)
+2. make the device LVM ready (using pvcreate)
+3. create a volume group to contain the volumes (using vgcreate)
+4. add volumes (using lvcreate)
 
-It is no harder than those four steps, and you will see exactly how to do it. The last step of volume creation looks complicated, but it is the same as creating traditional partitions e.g., /, /home, and swap.
+It is no harder than those four steps, and you will see exactly how to do it. The last step of volume creation looks complicated, but it is the same as creating traditional partitions e.g., /, /home, and swap. So let's go.
 
-To create the LVM partition:
+Create the LVM partition:
 
 ```
 gdisk /dev/sdX
