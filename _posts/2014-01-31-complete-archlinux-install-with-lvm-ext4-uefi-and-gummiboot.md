@@ -25,7 +25,7 @@ In the past, extra steps were needed to make the ISOs UEFI bootable, but now a `
 dd bs=4M if=/path/to/archlinux.iso of=/dev/sdX && sync # where X is your device number
 ```
 
-If unsure which `sdX` device to copy the ISO too, run `dmesg | tail` just after plugging it in and look at the last few lines.
+If unsure which `sdX` device to copy the ISO to, run `dmesg | tail` just after plugging it in and look at the last few lines.
 
 ## Modify BIOS to make computer UEFI bootable
 
@@ -82,16 +82,16 @@ Now press `n` and choose `1` to select 1st partition. Leave start sector at defa
 
 Creating LVM volumes seems abstract and complex at first compared to traditional partitioning of Linux, but really it just has a few more layers of complexity to remember. 
 
-We will put LVM in its own partition; that way it can coexist with the EFI boot partition we made. As a side note, LVM can exist without a partition on the block level (e.g., as /dev/sdX rather than /dev/sdX2), but we won't concern ourselves with that. 
+We will put LVM in its own partition; that way it can coexist with the EFI boot partition we made. _Side note: LVM can exist on the block level, without the need for partitions, but in this case we store it in one, so as not to overwrite the UEFI boot partition we made._
 
-Our LVM partition uses the remaining space on the drive. The steps are:
+Our LVM partition uses the remaining space on the drive. Here is a brief run down of what we now need to do:
 
 - create a primary LVM partition (code 8e00 in gdisk)
-- make the device LVM ready (pvcreate)
-- create a volume group to contain the volumes (vgcreate)
-- add volumes (lvcreate)
+- make the device LVM ready (using pvcreate)
+- create a volume group to contain the volumes (using vgcreate)
+- add volumes (using lvcreate)
 
-It is no harder than those four steps. The volume creation in the last step is like creating traditional partitions e.g., /, /home, and swap.
+It is no harder than those four steps, and you will see exactly how to do it. The last step of volume creation looks complicated, but it is the same as creating traditional partitions e.g., /, /home, and swap.
 
 To create the LVM partition:
 
