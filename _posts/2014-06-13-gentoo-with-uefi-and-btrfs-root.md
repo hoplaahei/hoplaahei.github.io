@@ -22,6 +22,18 @@ I thought my disk might be mechanically damaged, but the same error appeared for
 I decided to use gdisk instead.
 
 ```
+Command (? for help): o
+This option deletes all partitions and creates a new protective MBR.
+Proceed? (Y/N): y
+
+Command (? for help): n
+Partition number (1-128, default 1): 
+First sector (34-250069646, default = 2048) or {+-}size{KMGTP}: 
+Last sector (2048-250069646, default = 250069646) or {+-}size{KMGTP}: 1050623
+Current type is 'Linux filesystem'
+Hex code or GUID (L to show codes, Enter = 8300): EF00
+Changed type of partition to 'EFI System'
+
 Command (? for help): n
 Partition number (2-128, default 2): 
 First sector (34-250069646, default = 1050624) or {+-}size{KMGTP}: 
