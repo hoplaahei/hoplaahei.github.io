@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 ---
 
-Get the [minimal install cd](http://www.gentoo.org/main/en/where.xml) for you architecture. 
+Get the [minimal install cd](http://www.gentoo.org/main/en/where.xml) for your architecture.
