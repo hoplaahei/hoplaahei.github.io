@@ -12,3 +12,11 @@ Now it's time to reboot with the USB/CD in. If you want UEFI boot, you will need
 Press enter to boot, and then type ```startx``` from command-line to run the graphical environment. Use network-manager icon in the taskbar to setup wifi.
 
 Now skip straight to Part 1, [Chapter 4](http://www.gentoo.org/doc/en/handbook/handbook-amd64.xml?part=1&chap=4) of the Gentoo Handbook.
+
+I had some problems using ```gpart``` on the live iso. 
+
+``` Fatal error: /dev(/dev/sdb): seek failure.```
+
+I thought my disk might be mechanically damaged, but the same error appeared for the brand new ssd I'd just installed on /dev/sda, so I'm more inclined to believe this is a bug in gpart. Although, I suppose there could be something wrong with the SATA connection on the motherboard itself. Anyway, just a heads up in case you get the same errors as me. 
+
+I decided to use gdisk instead. 
