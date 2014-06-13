@@ -13,7 +13,7 @@ Press enter to boot, and then type ```startx``` from command-line to run the gra
 
 Now skip straight to Part 1, [Chapter 4](http://www.gentoo.org/doc/en/handbook/handbook-amd64.xml?part=1&chap=4) of the Gentoo Handbook.
 
-** Partitioning
+## Partitioning
 
 I had some problems using ```gpart``` on the live iso. 
 
