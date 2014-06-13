@@ -3,7 +3,7 @@ layout: post
 published: true
 ---
 
-**NOTE: This guide assumes basic knowledge of \*nix such as how to enter terminal commands.             
+**NOTE: This guide assumes basic knowledge of Linux, such as how to enter terminal commands.**             
 
 Get the [minimal install cd](http://www.gentoo.org/main/en/where.xml) for your architecture (e.g, amd64).
 
