@@ -5,12 +5,6 @@ published: false
 
 **NOTE: This guide assumes basic knowledge of Linux, such as how to enter terminal commands.**             
 
-Get the [minimal install cd](http://www.gentoo.org/main/en/where.xml) for your architecture (e.g, amd64).
+Don't bother with the Gentoo minimal install cd; it's limited to a console and setting up wifi is tedious. Many Gentoo users use SystemRescueCD instead (which, at the time of writing, is Gentoo based). It has instructions for [copying to a USB pen](http://www.sysresccd.org/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick). Or burn the downloaded .iso to the CD with e.g., ``` sudo cdrecord nameof.iso```
 
-Put it on a USB pen:
-
-    dd if=install-ARCHITECTURE-minimal-DATE.iso of=/dev/sdX bs=4M && sync
-    
-... remember to replace the iso filename with the one you downloaded and the X of *sdX* with your drive letter. 
-
-Find out what key to press to get the boot menu up on your BIOS, then reboot and select the USB pen from the menu.
+Now it's time to reboot with the USB/CD in. Upon reboot there is a key to press (F12 in many post-boot screens) that will show a menu of devices to boot from. Choose the USB/CD drive.
