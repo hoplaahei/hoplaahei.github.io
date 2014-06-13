@@ -61,3 +61,24 @@ Do you want to proceed? (Y/N): y
 OK; writing new GUID partition table (GPT) to /dev/sdb.
 The operation has completed successfully.
 ```
+
+## Format the partitions
+
+```
+root@sysresccd /root % mkfs.vfat -F32 /dev/sdb1
+mkfs.fat 3.0.22 (2013-07-19)
+root@sysresccd /root % mkswap /dev/sdb2
+Setting up swapspace version 1, size = 9437180 KiB
+no label, UUID=1e7d3aca-10be-414f-b839-6157c228c5d8
+root@sysresccd /root % mkfs.btrfs /dev/sdb3
+Detected a SSD, turning off metadata duplication.  Mkfs with -m dup if you want to force metadata duplication.
+
+WARNING! - Btrfs v3.12 IS EXPERIMENTAL
+WARNING! - see http://btrfs.wiki.kernel.org before using
+
+Performing full device TRIM (109.74GiB) ...
+Turning ON incompat feature 'extref': increased hardlink limit per file to 65536
+fs created label (null) on /dev/sdb3
+	nodesize 16384 leafsize 16384 sectorsize 4096 size 109.74GiB
+Btrfs v3.12
+```
