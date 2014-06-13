@@ -1,6 +1,6 @@
 ---
 layout: post
-published: true
+published: false
 ---
 
 **NOTE: This guide assumes basic knowledge of Linux, such as how to enter terminal commands.**             
@@ -13,4 +13,4 @@ Put it on a USB pen:
     
 ... remember to replace the iso filename with the one you downloaded and the X of *sdX* with your drive letter. 
 
-Find out what key to press to get the boot menu up on your BIOS, then reboot and select the USB pen from the menu. 
+Find out what key to press to get the boot menu up on your BIOS, then reboot and select the USB pen from the menu.
