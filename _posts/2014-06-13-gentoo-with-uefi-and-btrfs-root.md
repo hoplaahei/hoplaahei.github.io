@@ -62,7 +62,7 @@ OK; writing new GUID partition table (GPT) to /dev/sdb.
 The operation has completed successfully.
 ```
 
-## Format the partitions
+## Formatting the partitions
 
 ```
 root@sysresccd /root % mkfs.vfat -F32 /dev/sdb1
