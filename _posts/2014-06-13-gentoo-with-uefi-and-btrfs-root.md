@@ -11,4 +11,4 @@ Now it's time to reboot with the USB/CD in. If you want UEFI boot, you will need
 
 Press enter to boot, and then type ```startx``` from command-line to run the graphical environment. Use network-manager icon in the taskbar to setup wifi.
 
-Now skip straight to [Part 4](http://www.gentoo.org/doc/en/handbook/handbook-x86.xml?part=4) of the Gentoo Handbook.
+Now skip straight to Part 1, [Chapter 4](http://www.gentoo.org/doc/en/handbook/handbook-amd64.xml?part=1&chap=4) of the Gentoo Handbook.
