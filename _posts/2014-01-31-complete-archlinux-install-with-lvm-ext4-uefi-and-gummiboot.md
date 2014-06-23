@@ -52,7 +52,7 @@ git clone git://github.com/helmuthdu/aui
 
 This script lets you configure partitions, but it doesn't support LVM (at the time of writing), so don't run it yet. 
 
-First, choose the disk you want to install Arch on. Use `blkid` to see available devices. I like to get rid of remenants of old partitions on the chosen disk by running `gdisk /dev/sdX` and pressing `x` for `extra functionality`, followed by `z` to `zap (destroy) GPT data structures and exit`. 
+First, choose the disk you want to install Arch on. Use `blkid` to see available devices. I like to get rid of remnants of old partitions on the chosen disk by running `gdisk /dev/sdX` and pressing `x` for `extra functionality`, followed by `z` to `zap (destroy) GPT data structures and exit`. 
 
 Or if you don't have gdisk installed you can do it with dd:
 
