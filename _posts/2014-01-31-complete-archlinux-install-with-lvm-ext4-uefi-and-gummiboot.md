@@ -59,6 +59,7 @@ dd if=/dev/zero of=/dev/sdX bs=512 count=1 # erase MBR and dos partition table
 dd if=/dev/zero of=/dev/sdX bs=512 count=2 # erase GPT table beginning
 dd if=/dev/zero of=/dev/sdX bs=512 count=2 seek=$(($(blockdev --getsz /dev/sdb) - 2)) # erase GPT end
 ```
+** Edit: I've found a quicker way to do the above by running `gdisk /dev/sdX` and pressing `x` for 'extra functionality', followed by `z` to 'zap (destroy) GPT data structures and exit'. **
 
 Then I create a fresh GPT partition table:
 
