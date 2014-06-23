@@ -52,15 +52,15 @@ git clone git://github.com/helmuthdu/aui
 
 This script lets you configure partitions, but it doesn't support LVM (at the time of writing), so don't run it yet. 
 
-First, choose the disk you want to install Arch on. Use `blkid` to see available devices. I like to get rid of remenants of old partitions on the chosen disk by running:
+First, choose the disk you want to install Arch on. Use `blkid` to see available devices. I like to get rid of remenants of old partitions on the chosen disk by running `gdisk /dev/sdX` and pressing `x` for `extra functionality`, followed by `z` to `zap (destroy) GPT data structures and exit`. 
+
+Or if you don't have gdisk installed you can do it with dd:
 
 ```
 dd if=/dev/zero of=/dev/sdX bs=512 count=1 # erase MBR and dos partition table
 dd if=/dev/zero of=/dev/sdX bs=512 count=2 # erase GPT table beginning
 dd if=/dev/zero of=/dev/sdX bs=512 count=2 seek=$(($(blockdev --getsz /dev/sdb) - 2)) # erase GPT end
 ```
-** Edit: I've found a quicker way to do the above by running `gdisk /dev/sdX` and pressing `x` for `extra functionality`, followed by `z` to `zap (destroy) GPT data structures and exit`. **
-
 Then I create a fresh GPT partition table:
 
 ```
