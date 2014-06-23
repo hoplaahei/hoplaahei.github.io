@@ -299,7 +299,7 @@ Or if you wish X to auto-restart after quitting add `exec`:
 
 ### Video, image and (some) pdf thumbnails for rox
 
-You must edit the PKGBUILD of magickthumbnail when prompted and remove the depracted 'force' option, or it will not install. 
+You must edit the PKGBUILD of magickthumbnail when prompted and remove the deprecated 'force' option, or it will not install. 
 
 ```bash
 yaourt -S videothumbnail magickthumbnail
