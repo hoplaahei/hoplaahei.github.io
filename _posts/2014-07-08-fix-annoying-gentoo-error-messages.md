@@ -3,7 +3,9 @@ layout: post
 published: true
 ---
 
-Do you receive these grub errors:
+## Grub Errors
+
+Do you receive these errors?
 
 ```
 No suitable mode found
@@ -68,7 +70,9 @@ fi
 
 Creating a custom.cfg prevents the settings getting overwritten on a Grub update. There is no need to regenerate anything.
 
-Do you receive this kernel message?
+## Kernel Errors
+
+Do you receive this error message?
 
 ```
 drivers/rtc/hctosys.c: unable to open rtc device (rtc0)
