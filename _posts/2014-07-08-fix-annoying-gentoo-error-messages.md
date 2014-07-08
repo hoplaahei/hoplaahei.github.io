@@ -52,7 +52,7 @@ mkdir /boot/grub/fonts
 sudo mv unicode.pf2 /boot/grub/fonts
 ```
 
-Now create a /boot/grub/custom.cfg file containing:
+And create a /boot/grub/custom.cfg file containing:
 
 ```
 insmod font
