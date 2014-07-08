@@ -47,7 +47,7 @@ And convert .bdf to .pf2:
 grub2-mkfont -o unicode.pf2 unifont.bdf
 ```
 
-You need to copy the .pf2 file to a `fonts` folder to the `grub prefix` folder. This is usually `/boot/grub`, so try that if you're not sure:
+You need to copy the .pf2 file to a `fonts` folder to the `grub prefix` folder. The prefix is usually `/boot/grub`, so try that if you're not sure:
 
 ```
 mkdir /boot/grub/fonts
