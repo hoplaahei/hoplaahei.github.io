@@ -76,5 +76,5 @@ Disable `CONFIG_RTC_HCTOSYS` in kernel using a graphical tool:
 genkernel --splash --install --menuconfig all
 ```
 
-Look for `Device Drivers` -> `Real Time System Clock` and disable it with spacebar. Or press `/` to search for `CONFIG_RTC_HCTOSYS` and it will tell you where that option is located in the tree. See [here](https://github.com/raspberrypi/linux/issues/163) for explanation of what the RTC is used for, and whether or not you need it.
+Look for `Device Drivers` -> `Real Time System Clock` and disable it with spacebar. Or press `/` to search for `CONFIG_RTC_HCTOSYS` and it will tell you where that option is located in the tree. See [here](https://github.com/raspberrypi/linux/issues/163) for explanation of what the RTC is used for, and whether or not you need it. Most people don't.
 
