@@ -3,13 +3,13 @@ layout: post
 published: true
 ---
 
-Do you receive these errors:
+Do you receive these grub errors:
 
 > No suitable mode found
 
 or
 
-> missing ... unicode.pcf
+> Missing ... unicode.pcf
 
 If so, follow these steps:
 
@@ -63,3 +63,18 @@ fi
 ```
 
 Creating a custom.cfg prevents the settings getting overwritten on a Grub update. There is no need to regenerate anything.
+
+Do you receive this kernel message?
+
+```
+drivers/rtc/hctosys.c: unable to open rtc device (rtc0)
+```
+
+Disable `CONFIG_RTC_HCTOSYS` in kernel using a graphical tool:
+
+```
+genkernel --splash --install --menuconfig all
+```
+
+Look for `Device Drivers` -> `Real Time System Clock` and disable it with spacebar. See (https://github.com/raspberrypi/linux/issues/163)[here] for explanation of what the RTC is used for, and whether or not you need it.
+
