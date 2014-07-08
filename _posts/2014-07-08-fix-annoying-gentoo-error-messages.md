@@ -11,7 +11,7 @@ Do you receive these errors?
 No suitable mode found
 ```
 
-or
+OR
 
 ```
 Missing ... unicode.pcf
@@ -23,19 +23,19 @@ If so, follow these steps:
 USE=truetype emerge grub
 ```
 
-The `truetype` flag of `grub` is needed to get the `grub2-mkfont` executable. If you want this executable for every update of grub then you will need to add it to your `/etc/portage/package.use` permanently e.g.,
+The `truetype` flag of `grub` is needed to get the `grub2-mkfont` executable. If you want this executable for every update of grub then you will need to add it to your `/etc/portage/package.use` permanently by adding the line:
 
 ```
 sys-boot/grub truetype
 ```
 
-Now we need the unifont package:
+Now we need the `unifont` package:
 
 ```
 emerge unifont
 ```
 
-And we use the unifont tools to convert the hex to bdf format:
+And we use the unifont tools to convert the .hex file to bdf format:
 
 ```
 hex2bdf /usr/share/unifont/unifont.hex > unifont.bdf
@@ -54,7 +54,7 @@ mkdir /boot/grub/fonts
 sudo mv unicode.pf2 /boot/grub/fonts
 ```
 
-And create a /boot/grub/custom.cfg file containing:
+And create a `/boot/grub/custom.cfg` file containing:
 
 ```
 insmod font
@@ -85,4 +85,3 @@ genkernel --splash --install --menuconfig all
 ```
 
 Look for `Device Drivers` -> `Real Time System Clock` and disable it with spacebar. Or press `/` to search for `CONFIG_RTC_HCTOSYS` and it will tell you where that option is located in the tree. See [here](https://github.com/raspberrypi/linux/issues/163) for explanation of what the RTC is used for, and whether or not you need it. Most people don't.
-
