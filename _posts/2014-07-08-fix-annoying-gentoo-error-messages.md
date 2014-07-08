@@ -5,11 +5,15 @@ published: true
 
 Do you receive these grub errors:
 
-> No suitable mode found
+```
+No suitable mode found
+```
 
 or
 
-> Missing ... unicode.pcf
+```
+Missing ... unicode.pcf
+```
 
 If so, follow these steps:
 
