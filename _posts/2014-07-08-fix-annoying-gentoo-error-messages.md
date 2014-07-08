@@ -11,7 +11,7 @@ Do you receive these errors?
 No suitable mode found
 ```
 
-OR
+or
 
 ```
 Missing ... unicode.pcf
