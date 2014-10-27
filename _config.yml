@@ -1,16 +1,16 @@
 name: "Salient Dream"
 description: "All Things Strange"
-signature: "Questions: hybris246@gmail.com"
+signature: "Questions: hoplaahei@opmbx.org"
 pygments: true
 permalink: pretty
 markdown: redcarpet
 github:
   # enables "edit" link
-  repo: 'rodyaj/rodyaj.github.io'
+  repo: 'hoplaahei/hoplaahei.github.io'
   branch: master
 prose:
-  siteurl: 'http://rodyaj.github.io'
-  relativeLinks: 'http://rodyaj.github.io/links.jsonp'
+  siteurl: 'http://hoplaahei.github.io'
+  relativeLinks: 'http://hoplaahei.github.io/links.jsonp'
   # uncomment to limit editing to the _posts directory
   #rooturl: '_posts'
   media: 'media'
