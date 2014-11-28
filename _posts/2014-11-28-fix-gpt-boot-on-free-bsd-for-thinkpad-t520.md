@@ -11,13 +11,9 @@ I've learned about a hackish way to get GPT booting in legacy mode, and you may 
 
 If you don't care about the [advantages](https://wiki.archlinux.org/index.php/GUID_Partition_Table#Advantages_of_GPT) of GPT, then the installer has the option to switch to BIOS partitioning, which should allow you to bypass the issue (though you will need to press `F1` at system boot, then goto `Startup` and change `UEFI/Legacy Boot` to `Both` or `Legacy Only`.
 
-## With UEFI (without ZFS)
-
-Another option is to boot from a UEFI installation medium and choose `UFS root` rather than `ZFS root` in the installer.
-
 ## The hackish way
 
-None of the above solutions are acceptable to me. I want a ZFS root because I find it simpler to backup everything with ZFS, but I want to "have my cake and eat it" and stick with modern methods as well. For now I'll have to make do with legacy boot until they manage to get UEFI booting with a ZFS root, but I don't want the hassle of converting my partitions from MBR to GPT when they do eventually manage that. So the only other solution is to hack the GPT partition table for now to get it bootable.
+Arguably GPT partitioning isn't necessary for most modern usages, as ZFS root works fine on MBR partitioning for disks 2TB and under, and it doesn't work at all with UEFI anyway. Even so, the fact is that UEFI boot might support ZFS root in the near future. And when it does, I want to test it out easily without the bother of converting partitions over from BIOS to GPT. So even though for now I'll have to make do with legacy boot until they manage to get UEFI booting with a ZFS root, I still want to use modern partitioning methods so that the conversion will be easy in the future. The only solution is to hack the GPT partition table for now to get it bootable.
 
 Make sure your BIOS is UEFI enabled by pressing `F1` at system boot, choosing `Startup` and changing `UEFI/Legacy Boot` to `Both` or `UEFI Only`. If booting for a USB image, you also need to make sure `Config` -> `USB` -> `USB UEFI BIOS Support` is `Enabled`. Also, in the `Security` tab you must make sure `Secure Boot` is not enabled (it should be off by default). If you know how to compile C code there is even a [program](https://github.com/fpmurphy/UEFI-Utilities/blob/master/showlenovo/showlenovo.c) (needs gnu_efi package installed) to check if Secure Boot is enabled or disabled. Get one of the UEFI bootable live images and copy it to USB with `dd if=nameof.img of=/dev/yourdevice bs=1M && sync`. Now reboot and press `F12` to boot from the USB. Install the system as normal, being sure to select GPT partitioning over BIOS. When you reboot you will need to get back into the live USB and this time choose `Shell`.
 
