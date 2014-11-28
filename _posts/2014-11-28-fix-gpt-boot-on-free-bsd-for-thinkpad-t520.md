@@ -9,7 +9,7 @@ I've learned about a hackish way to get GPT booting in legacy mode, and you may 
 
 ## Without GPT (simpler)
 
-If you don't care about the [advantages](https://wiki.archlinux.org/index.php/GUID_Partition_Table#Advantages_of_GPT) of GPT, then the installer has the option to switch to BIOS partitioning, which should allow you to bypass the issue (though you will need to press `F1` at system boot, then goto `Startup` and change `UEFI/Legacy Boot` to `Both` or `Legacy Only`.
+If you don't care about the [advantages](https://wiki.archlinux.org/index.php/GUID_Partition_Table#Advantages_of_GPT) of GPT, then the installer has the option to switch to BIOS partitioning, which should allow you to bypass the issue (though after install you will need to press `F1` at system boot, then goto `Startup` and change `UEFI/Legacy Boot` to `Both` or `Legacy Only`.
 
 ## The hackish way
 
