@@ -35,7 +35,7 @@ Your file likely won't look exactly like this, but it will look similar. Change 
 
 ```
     # /dev/ada0
-    g c969021 h16 s63
+    g c969021 h16 s1
     p 1 0x00 1 976773167
     p 2 0xee 1 976773167
 ```
