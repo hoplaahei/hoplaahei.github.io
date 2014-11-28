@@ -7,9 +7,13 @@ There is a long withstanding bug in the bioses for T520, T420 and W520 that prev
 
 I've learned about a hackish way to get GPT booting in legacy mode, and you may wish to skip straight to those steps, but carry on reading if you prefer a simpler solution that doesn't use GPT.
 
+## Without GPT (simpler)
+
 If you don't care about the [advantages](https://wiki.archlinux.org/index.php/GUID_Partition_Table#Advantages_of_GPT) of GPT, then the installer has the option to switch to BIOS partitioning, which should allow you to bypass the issue (though you will need to press `F1` at system boot, then goto `Startup` and change `UEFI/Legacy Boot` to `Both` or `Legacy Only`.
 
-Another option is to boot from a UEFI installation medium and choose UFS root rather than ZFS root in the installer.
+## With UEFI (without ZFS)
+
+Another option is to boot from a UEFI installation medium and choose `UFS root` rather than `ZFS root` in the installer.
 
 ## The hackish way
 
