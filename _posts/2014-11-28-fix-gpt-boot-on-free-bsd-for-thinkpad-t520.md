@@ -3,21 +3,13 @@ layout: post
 published: true
 ---
 
-There is a long withstanding bug in the bioses for T520, T420 and W520 that prevents the booting of operating systems that use a GPT partition scheme with type `ee00` (protective MBR) as the first partition. [Many](http://forums.lenovo.com/t5/Linux-Discussion/Lenovo-Thinkpad-T520-doesn-t-boot-with-GPT-slices-on-FreeBSD-9/td-p/555317) users have this problem. 
-
-I've learned about a hackish way to get GPT booting in legacy mode, and you may wish to [skip](#markdown-header-the-hackish-way) straight to those steps, but carry on reading if you prefer a simpler solution that doesn't use GPT.
-
-## Without GPT (simpler)
-
-If you don't care about the [advantages](https://wiki.archlinux.org/index.php/GUID_Partition_Table#Advantages_of_GPT) of GPT, then the installer has the option to switch to BIOS partitioning, which should allow you to bypass the issue (though after install you will need to press `F1` at system boot, then goto `Startup` and change `UEFI/Legacy Boot` to `Both` or `Legacy Only`.
-
-## The hackish way
-
-Arguably GPT partitioning isn't necessary for most modern usages, as ZFS root works fine on MBR partitioning for disks 2TB and under, and it doesn't work at all with UEFI anyway. Even so, the fact is that UEFI boot might support ZFS root in the near future. And when it does, I want to test it out easily without the bother of converting partitions over from BIOS to GPT. So even though for now I'll have to make do with legacy boot until they manage to get UEFI booting with a ZFS root, I still want to use modern partitioning methods so that the conversion will be easy in the future. The only solution is to hack the GPT partition table for now to get it bootable.
-
-Make sure your BIOS is UEFI enabled by pressing `F1` at system boot, choosing `Startup` and changing `UEFI/Legacy Boot` to `Both` or `UEFI Only`. If booting for a USB image, you also need to make sure `Config` -> `USB` -> `USB UEFI BIOS Support` is `Enabled`. Also, in the `Security` tab you must make sure `Secure Boot` is not enabled (it should be off by default). If you know how to compile C code there is even a [program](https://github.com/fpmurphy/UEFI-Utilities/blob/master/showlenovo/showlenovo.c) (needs gnu_efi package installed) to check if Secure Boot is enabled or disabled. Get one of the UEFI bootable install images and find a guide on howto copy it to USB (in an existing BSD installation you can use e.g.,) `dd if=nameof.img of=/dev/da0 bs=1M && sync`. Now reboot and press `F12` to boot from the USB. Install the system as normal, being sure to select GPT partitioning over BIOS. When you reboot you will need to get back into the live USB and this time choose `Shell`.
+There is a long withstanding bug in the bioses for T520, T420 and W520 which prevents the booting of operating systems that use a GPT partition scheme with type `ee00` (protective MBR) as the first partition. So if you're one of the [many](http://forums.lenovo.com/t5/Linux-Discussion/Lenovo-Thinkpad-T520-doesn-t-boot-with-GPT-slices-on-FreeBSD-9/td-p/555317) Thinkpad owners tearing their hair out after following FreeBSD EFI/GPT installation guides to the letter, and still having no success, this post could finally offer a stop-gap solution. 
 
 You will need to replace `adaX` in the below command with e.g., `ada0` if it is your primary disk or `ada1` if it is the secondary. Run:
+
+If you've struggled to get the install images working with legacy boot, get one of the UEFI images. Search for e.g.,: `FreeBSD-10.1-RELEASE-amd64-uefi-mini-memstick.img`. In `F1` setup at computer boot choose `Startup` -> `UEFI/Legacy Boot` -> `Both`. If booting from a USB image, you also need to make sure `Config` -> `USB` -> `USB UEFI BIOS Support` is Enabled. Also, in the Security tab you must make sure Secure Boot is not enabled (it should be off by default).
+
+Now boot from the UEFI usb (`F12` at startup). Run the installation as normal, being sure to find and select GPT partitioning in the installer options. Now before rebooting choose to drop to a shell or press `Ctrl-F2` and login as root. Type these commands:
 
 ```
 fdisk -p /dev/adaX > /tmp/parts
