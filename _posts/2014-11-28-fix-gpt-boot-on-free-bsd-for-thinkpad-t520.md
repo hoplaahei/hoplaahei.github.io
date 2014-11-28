@@ -5,11 +5,11 @@ published: true
 
 There is a long withstanding bug in the bioses for T520, T420 and W520 which prevents the booting of operating systems that use a GPT partition scheme with type `ee00` (protective MBR) as the first partition. So if you're one of the [many](http://forums.lenovo.com/t5/Linux-Discussion/Lenovo-Thinkpad-T520-doesn-t-boot-with-GPT-slices-on-FreeBSD-9/td-p/555317) Thinkpad owners tearing their hair out after following FreeBSD EFI/GPT installation guides to the letter, and still having no success, this post could finally offer a stop-gap solution. 
 
-You will need to replace `adaX` in the below commands with e.g., `ada0` if it is your primary disk or `ada1` if it is the secondary. Run:
-
 If you've struggled to get the install images working with legacy boot, get one of the UEFI images. Search for e.g.,: `FreeBSD-10.1-RELEASE-amd64-uefi-mini-memstick.img`. In `F1` setup at computer boot choose `Startup` -> `UEFI/Legacy Boot` -> `Both`. If booting from a USB image, you also need to make sure `Config` -> `USB` -> `USB UEFI BIOS Support` is Enabled. Also, in the Security tab you must make sure Secure Boot is not enabled (it should be off by default).
 
-Now boot from the UEFI usb (`F12` at startup). Run the installation as normal, being sure to find and select GPT partitioning in the installer options. Now before rebooting choose to drop to a shell or press `Ctrl-F2` and login as root. Type these commands:
+Now boot from the UEFI usb (`F12` at startup). Run the installation as normal, being sure to find and select GPT partitioning in the installer options. Now before rebooting choose to drop to a shell or press `Ctrl-F2` and login as root.
+
+When typing the below commands, you will need to replace `adaX` with e.g., `ada0` if it is the primary disk or, `ada1` if it is the secondary. Run:
 
 ```
 fdisk -p /dev/adaX > /tmp/parts
