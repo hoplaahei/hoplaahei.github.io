@@ -5,7 +5,7 @@ published: true
 
 There is a long withstanding bug in the bioses for T520, T420 and W520 that prevents the booting of operating systems that use a GPT partition scheme with type `ee00` (protective MBR) as the first partition. [Many](http://forums.lenovo.com/t5/Linux-Discussion/Lenovo-Thinkpad-T520-doesn-t-boot-with-GPT-slices-on-FreeBSD-9/td-p/555317) users have this problem. 
 
-I've learned about a hackish way to get GPT booting in legacy mode, and you may wish to [skip](#the-hackish-way) straight to those steps, but carry on reading if you prefer a simpler solution that doesn't use GPT.
+I've learned about a hackish way to get GPT booting in legacy mode, and you may wish to [skip](#markdown-header-the-hackish-way) straight to those steps, but carry on reading if you prefer a simpler solution that doesn't use GPT.
 
 ## Without GPT (simpler)
 
