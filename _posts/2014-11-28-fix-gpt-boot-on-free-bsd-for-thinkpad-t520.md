@@ -38,4 +38,4 @@ Now run:
 fdisk -f /tmp/parts /dev/adX
 ```
 
-You've now modified the partition table so that partition one is an empty dummy partition, tricking the crappy Lenovo bios, and preventing it from borking at seeing an `ee00` protective MBR type partition as the first partition. 
+You've now modified the partition table so that partition one is an empty dummy partition, tricking the crappy Lenovo bios, and preventing it from borking at seeing an `ee00` protective MBR type partition as the first partition.
