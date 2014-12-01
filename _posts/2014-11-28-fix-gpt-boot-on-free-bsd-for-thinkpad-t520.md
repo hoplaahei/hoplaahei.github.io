@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Fix GPT boot on FreeBSD for Thinkpad T520, T420s & W520"
+title: "Fix GPT boot on FreeBSD or PC-BSD for Thinkpad T520, T420s & W520"
 published: true
 tags: ""
 ---
