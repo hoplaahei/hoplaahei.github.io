@@ -47,3 +47,5 @@ fdisk -f /tmp/parts /dev/adX
 ```
 
 You've now modified the partition table so that partition one is an empty dummy partition, tricking the Lenovo bios, and preventing it from borking at seeing an `ee` type protective MBR partition as the first partition.
+
+If you used this guide to edit the PC-BSD installation media to make it bootable, remember to switch back to legacy boot in the BIOS, or it will try to UEFI boot (which is currently broken on T520). To do so, press `F1` key at computer boot and choose `Startup` -> `UEFI/Legacy Boot` -> `Legacy`.
