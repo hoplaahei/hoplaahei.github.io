@@ -5,7 +5,7 @@ published: true
 tags: ""
 ---
 
-**If you are already aware of the issues surrounding GPT with Lenovo bioses, scroll straight down to 'Booting a live image'. If you already have a working BSD installation, skip to 'The hack'.**
+**If you are already aware of the issues surrounding GPT with Lenovo bioses, scroll straight down to 'Booting a live image'. If you already have a working BSD installation, skip straight to 'The hack'.**
 
 To cut a long story short, when booted in legacy mode, the bioses in Lenovo T520, T420s and W520 cannot handle the way BSD installations try to partition with GPT. The bios borks when it sees an `ee` type protective MBR partition as the first partition. This means that if you want to use ZFS-on-root (which requires booting in legacy mode), you will not be able to boot into a system partitioned with GPT. To solve this problem, we could partition with MBR instead. If, however, we insist on a GPT installation (for future-proofing purposes), then a low-level hack must be performed, so I suggest you backup any data first.
 
