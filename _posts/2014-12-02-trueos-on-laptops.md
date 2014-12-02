@@ -57,7 +57,6 @@ If you need `HAL` (I don't bother with it), then edit `/etc/rc.conf`:
 
 ```
 hald_enable="YES"
-dbus_enable="YES" # you'll probably want this too
 ```
 
 I get Xorg running without `HAL` instead, as I don't use anything hefty like `GNOME`:
@@ -96,6 +95,11 @@ Might as well get a browser window open for reference as well:
 
 ```
 pkg install firefox
+```
+This `Firefox` package also requires the enabling of `DBUS` in `/etc/rc.conf`:
+
+```
+dbus_enable="YES"
 ```
 
 
