@@ -34,7 +34,8 @@ powerd_flags="-a hiadaptive -b adaptive"
 ```
 This will use `Turbo Boost` CPU technologies when plugged in (`-a`), but save some power on battery (`-b).
 
- > hiadaptive  Like adaptive mode, but tuned for systems where performance
+ >  hiadaptive:
+ >  Like adaptive mode, but tuned for systems where performance
  >  and interactivity are more important than power consumption.
  >  It increases frequency faster, reduces frequency less aggres-
  >  sively, and will maintain full frequency for longer.  May be
