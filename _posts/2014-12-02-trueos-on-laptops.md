@@ -50,10 +50,21 @@ pkg install xorg-minimal
 Install some required drivers e.g.,:
 
 ```
-pkg install xf86-video-intel xf86-input synaptics xf86-input-keyboard
+pkg install xf86-video-intel xf86-input-synaptics
 ```
 
-And install the window manager:
+Get Xorg to run without `hal` (unless you want to run a desktop environment that requires it):
+
+```
+Xorg -config /usr/local/etc/X11/xorg.conf
+```
+
+Add this line to the `ServerLayout` section of `/usr/local/etc/X11/xorg.conf`:
+
+```
+Option       "AutoAddDevices" "Off"
+```
+Now install a window manager:
 
 ```
 pkg install sawfish
