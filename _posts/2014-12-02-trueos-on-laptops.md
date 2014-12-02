@@ -4,7 +4,7 @@ published: false
 title: TrueOS Laptop Install
 ---
 
-TrueOS is almost vanilla FreeBSD with a few tweaks, and cli versions of most PC-BSD tools. It is designed for server installations, but I like having its tools (such as `Life Preserver`) available on my laptops too. It also sets up a ZFS-on-Root quickly. 
+TrueOS is almost vanilla FreeBSD with a few tweaks, and cli versions of most PC-BSD tools. It is designed for server installations, but I like having its tools (such as `Life Preserver`) available on my laptops too. It also sets up a ZFS-On-Root quickly. 
 
 First thing to do when booted into TrueOS is get the wifi up. In `/etc/rc.conf` ammend:
 
