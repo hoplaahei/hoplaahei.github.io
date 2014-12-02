@@ -83,7 +83,7 @@ Get `sawfish` WM to run with a terminal spawned when `X` starts by editing `ee ~
 exec urxvtcd & # start urxvt daemon if it isn't already running
 exec sawfish
 ```
-From now on I prefer to edit with something more robut than `ee`. I will use `ports` to install `emacs` with `lucid` toolkit rather than `GTK` (because for years emacsclient has been crashing with 100% CPU usage if you close Xorg while a graphical GTK frame is running).
+From now on I prefer to edit with something more robut than `ee`. I will use `ports` to install `emacs` with `lucid` toolkit rather than `GTK` (because for years emacsclient has been crashing with 100% CPU usage if you close Xorg while emacs GTK widgets are running).
 
 ```
 cd /usr/ports/emacs
