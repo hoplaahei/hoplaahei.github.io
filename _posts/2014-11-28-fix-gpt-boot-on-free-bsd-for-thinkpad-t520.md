@@ -13,7 +13,7 @@ We will use the BSD version of `fdisk` to edit the partition table of an existin
 
 ## Booting a live image
 
-If you don't have a working BSD, booting into a live environment in UEFI works as a temporary solution. Download `FreeBSD-10.1-RELEASE-amd64-uefi-mini-memstick.img`, or whatever is the latest. [Prepare the boot media](https://www.freebsd.org/doc/handbook/install-pre.html#install-boot-media) as instructed in the handbook. To boot into it, press `F1` key at computer boot and choose `Startup` -> `UEFI/Legacy Boot` -> `Both`. If booting from a USB image, you also need to make sure `Config` -> `USB` -> `USB UEFI BIOS Support` is Enabled. Also, in the Security tab you must make sure SecureBoot is not enabled (I don't even see a clearly labelled option for it in my T520 bios, so I assume it is off by default). Now boot from the UEFI USB (`F12` at startup). 
+If you don't have a working BSD, booting into a live environment in UEFI works as a temporary solution. Download `FreeBSD-10.1-RELEASE-amd64-uefi-mini-memstick.img`, or whatever is the latest. [Prepare the boot media](https://www.freebsd.org/doc/handbook/install-pre.html#install-boot-media) as instructed in the handbook. To boot into it, press `F1` key at computer boot and choose `Startup` -> `UEFI/Legacy Boot` -> `Both`. If booting from a USB image, you also need to make sure `Config` -> `USB` -> `USB UEFI BIOS Support` is Enabled. Also, in the `Security` tab you must make sure `SecureBoot` is not enabled (I don't even see a clearly labelled option for it in my T520 bios, so I assume it is off by default). Now boot from the UEFI USB (`F12` at startup). 
 
 ## The hack
 
