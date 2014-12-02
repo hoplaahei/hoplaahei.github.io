@@ -18,7 +18,7 @@ Change it to:
 ifconfig_wlan0="WPA DHCP"
 ```
 
-This simple change will invoke wpa_supplicant on boot. Now edit `/etc/wpa_supplicant.conf` from the cli with:
+This simple change will invoke `wpa_supplicant` on boot. Now edit `/etc/wpa_supplicant.conf` from the cli with:
 
 ```
 wpa_passphrase yourAP yourPass > /etc/wpa_supplicant.conf
