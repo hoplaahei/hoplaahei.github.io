@@ -20,4 +20,4 @@ As Chris Torek's hack uses the BSD version of `fdisk` you will, at least tempora
 - the installer will pop-up a dialog with the option to drop to a console
 - now apply the [hack](http://lists.freebsd.org/pipermail/freebsd-i386/2013-March/010437.html)
 
-If fixing a PC-BSD installation media, you will want to toggle the preference to try 'Legacy Boot' first over 'UEFI boot' once you've applied the hack, otherwise it will try to boot from their (at the time of writing) broken Grub2 UEFI boot implementation. 
+If you still have problems booting the media after this, make sure it isn't preferring UEFI, by going to `F1` setup at boot and choosing `Startup` -> `UEFI/Legacy Boot Priority` -> `Legacy`. 
