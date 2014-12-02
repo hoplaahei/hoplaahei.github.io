@@ -5,7 +5,7 @@ published: true
 tags: ""
 ---
 
-To cut a long story short, the bioses in Lenovo T520, T420s and W520 cannot handle the way BSD installations partition with GPT. Lenovo bios borks when it sees an `ee` type protective MBR partition as the first partition. To solve this problem we must perform a low-level hack, so I suggest you backup any data first.
+To cut a long story short, the bioses in Lenovo T520, T420s and W520 cannot handle the way BSD installations try to partition with GPT. Lenovo bios borks when it sees an `ee` type protective MBR partition as the first partition. To solve this problem we must perform a low-level hack, so I suggest you backup any data first.
 
 We will use the BSD version of `fdisk` to edit the partition table of an existing installation or installation media to make it bootable. Skip the next paragraph if you already have a working BSD environment to run fdisk on.
 
