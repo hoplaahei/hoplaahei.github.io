@@ -5,7 +5,7 @@ published: true
 tags: ""
 ---
 
-To cut a long story short, when booted in legacy mode, the bioses in Lenovo T520, T420s and W520 cannot handle the way BSD installations setup the GPT partitions. The bios borks when it sees an `ee` type protective MBR partition as the first partition. 
+To cut a long story short, when booted in legacy mode, the bioses in Lenovo T520, T420s and W520 cannot handle the way BSD installations setup the GPT partitions. The BIOS borks when it sees an `ee` type protective MBR partition as the first partition. 
 
 So those who don't want to UEFI boot (e.g., those who use ZFS-on-root), and those who prefer the [advantages](https://wiki.manjaro.org/index.php?title=Some_basics_of_MBR_v/s_GPT_and_BIOS_v/s_UEFI#MBR_vs._GPT) of GPT over BIOS partitioning, should apply Chris Torek's [hack](http://lists.freebsd.org/pipermail/freebsd-i386/2013-March/010437.html). In short, it edits the partition table to make Partition 1 a dummy partition, thus tricking the Lenovo bios into loading the protective MBR, which is now at Partition 2.
 
