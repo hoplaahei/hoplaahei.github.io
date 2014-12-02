@@ -47,10 +47,10 @@ Pull in the graphical environment with:
 pkg install xorg-minimal
 ```
 
-Get the graphics driver e.g.,:
+Install some required drivers e.g.,:
 
 ```
-pkg install xf86-video-intel
+pkg install xf86-video-intel xf86-input synaptics xf86-input-keyboard
 ```
 
 And install the window manager:
