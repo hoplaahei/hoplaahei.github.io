@@ -72,14 +72,15 @@ And add this line to the `ServerLayout` section of the newly generated `/usr/loc
 Option       "AutoAddDevices" "Off"
 ```
 
-Now install a window manager:
+Now install a window manager and a terminal to run some commands in the graphical environment:
 
 ```
-pkg install sawfish
+pkg install sawfish rxvt-unicode
 ```
-Get `sawfish` to run when `X` starts with `ee ~/.xinitrc`:
+Get `sawfish` WM to run with a terminal spawned when `X` starts by editing `ee ~/.xinitrc`:
 
 ```
+exec urxvtcd & # start urxvt daemon if it isn't already running
 exec sawfish
 ```
 From now on I prefer to edit with something more robut than `ee`. I will use `ports` to install `emacs` with `lucid` toolkit rather than `GTK` (because for years emacsclient has been crashing with 100% CPU usage if you close Xorg while a graphical GTK frame is running).
