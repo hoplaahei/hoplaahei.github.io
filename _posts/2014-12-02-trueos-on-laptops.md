@@ -69,7 +69,7 @@ Xorg -config /usr/local/etc/X11/xorg.conf
 And add this line to the `ServerLayout` section of the newly generated `/usr/local/etc/X11/xorg.conf` to disable `HAL`:
 
 ```
-Option       "AutoAddDevices" "Off"
+Option "AutoAddDevices" "Off"
 ```
 
 Now install a window manager and a terminal to run some commands in the graphical environment:
