@@ -41,3 +41,29 @@ This will use `Turbo Boost` CPU technologies when plugged in (`-a`), but save so
  >  sively, and will maintain full frequency for longer.  May be
  >  abbreviated as hadp.
 
+Pull in the graphical environment with:
+
+```
+pkg install xorg-minimal
+```
+
+Get the graphics driver e.g.,:
+
+```
+pkg install xf86-video-intel
+```
+
+And install the window manager:
+
+```
+pkg install sawfish
+```
+From now on I prefer to edit with something more robut than `ee`. I will use `ports` to install `emacs` with `lucid` toolkit rather than `GTK` (because for years emacsclient has been crashing with 100% CPU usage if you close Xorg while a graphical GTK frame is running).
+
+```
+cd /usr/ports/emacs
+make clean
+```
+
+If that directory isn't found for whatever reason, install the ports `tree` with:
+
