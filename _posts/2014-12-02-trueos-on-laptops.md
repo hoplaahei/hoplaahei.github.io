@@ -4,7 +4,7 @@ published: false
 title: TrueOS On Laptops
 ---
 
-TrueOS is almost vanilla FreeBSD with a few tweaks, and cli versions of most PC-BSD tools. It is designed for server installations, but I like having its tools such as `Life Preserver` available in laptop installs too. It also sets up a ZFS-on-Root quickly. 
+TrueOS is almost vanilla FreeBSD with a few tweaks, and cli versions of most PC-BSD tools. It is designed for server installations, but I like having its tools (such as `Life Preserver`) available on my laptops too. It also sets up a ZFS-on-Root quickly. 
 
 First thing to do when booted into TrueOS is get the wifi up. In `/etc/rc.conf` ammend:
 
@@ -40,3 +40,4 @@ This will use `Turbo Boost` CPU technologies when plugged in (`-a`), but save so
  >  It increases frequency faster, reduces frequency less aggres-
  >  sively, and will maintain full frequency for longer.  May be
  >  abbreviated as hadp.
+
