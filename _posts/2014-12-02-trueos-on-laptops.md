@@ -53,17 +53,25 @@ Install some required drivers e.g.,:
 pkg install xf86-video-intel xf86-input-synaptics
 ```
 
-Get Xorg to run without `hal` (unless you want to run a desktop environment that requires it):
+If you need `HAL` (I don't bother with it), then edit `/etc/rc.conf`:
+
+```
+hald_enable="YES"
+dbus_enable="YES" # you'll probably want this too
+```
+
+I get Xorg running without `HAL` instead, as I don't use anything hefty like `GNOME`:
 
 ```
 Xorg -config /usr/local/etc/X11/xorg.conf
 ```
 
-Add this line to the `ServerLayout` section of `/usr/local/etc/X11/xorg.conf`:
+And add this line to the `ServerLayout` section of the newly generated `/usr/local/etc/X11/xorg.conf` to disable `HAL`:
 
 ```
 Option       "AutoAddDevices" "Off"
 ```
+
 Now install a window manager:
 
 ```
