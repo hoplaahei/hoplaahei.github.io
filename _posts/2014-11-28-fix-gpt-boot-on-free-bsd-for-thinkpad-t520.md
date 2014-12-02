@@ -23,9 +23,9 @@ Once at a console, type:
 fdisk -p /dev/adaX > /tmp/parts
 ```
 
-Replace `adaX` with e.g., `ada0` if FreeBSD/PC-BSD is installed on the primary disk, `ada1` if it is the secondary, or maybe `da0` if you are fixing a USB pen installation media. 
+Replace `adaX` with e.g., `ada0` if FreeBSD/PC-BSD is installed on the primary disk, `ada1` if it is the secondary, or e.g., `da0` if you are fixing a USB pen installation media. 
 
-Now open the file you just made with and editor e.g., `ee /tmp/parts`:
+Now open the file you just made with any editor e.g., `ee /tmp/parts`:
 
 ```
     # /dev/ada0
