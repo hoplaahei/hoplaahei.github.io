@@ -58,6 +58,11 @@ And install the window manager:
 ```
 pkg install sawfish
 ```
+Get `sawfish` to run when `X` starts with `ee ~/.xinitrc`:
+
+```
+exec sawfish
+```
 From now on I prefer to edit with something more robut than `ee`. I will use `ports` to install `emacs` with `lucid` toolkit rather than `GTK` (because for years emacsclient has been crashing with 100% CPU usage if you close Xorg while a graphical GTK frame is running).
 
 ```
