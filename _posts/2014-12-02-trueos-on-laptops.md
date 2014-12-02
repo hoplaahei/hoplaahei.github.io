@@ -114,5 +114,9 @@ This `Firefox` package also requires the enabling of `DBUS` in `/etc/rc.conf`:
 ```
 dbus_enable="YES"
 ```
+A movie player is also nice to start watching a TV episode while `emacs` finishes compiling:
 
+```
+pkg install mpv
+```
 
