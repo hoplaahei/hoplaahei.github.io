@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 title: TrueOS On Laptops
 ---
 
@@ -39,5 +39,3 @@ This will use `Turbo Boost` CPU technologies when plugged in (`-a`), but save so
  >  It increases frequency faster, reduces frequency less aggres-
  >  sively, and will maintain full frequency for longer.  May be
  >  abbreviated as hadp.
-
-
