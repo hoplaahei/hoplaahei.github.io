@@ -72,3 +72,10 @@ make clean
 
 If that directory isn't found for whatever reason, install the ports `tree` with:
 
+Might as well get a browser window open for reference as well:
+
+```
+pkg install firefox
+```
+
+
