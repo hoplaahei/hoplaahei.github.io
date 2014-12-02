@@ -27,22 +27,28 @@ Replace `adaX` with e.g., `ada0` if FreeBSD/PC-BSD is installed on the primary d
 
 Now open the file you just made with any editor e.g., `ee /tmp/parts`:
 
-
-` # /dev/ada0 `
-` g c969021 h16 s63 `
-` p 1 0xee 1 976773167 `
-
-Your file probably won't look exactly like this, but it will look similar. You need to edit it to this:
+```
+   # /dev/ada0
+   g c969021 h16 s63
+   p 1 0xee 1 976773167
+```   
+Your file probably won't look exactly like this, but it will look similar. You need to edit it so it ends up similar to this:
 
 ```
   # /dev/ada0
-  g c61048323 h16 **s1**
-  p 1 **0x00** 1 976773167
-  p **2** **0xee** 1 976773167
+  g c61048323 h16 s1
+  p 1 0x00 1 976773167
+  p 2 0xee 1 976773167
 ```
-So basically just copy/paste the 3rd line to make a 4th line, and then save the file after making the changes marked in bold.
 
 **See Chris Torek's original [post](ttp://lists.freebsd.org/pipermail/freebsd-i386/2013-March/010437.html) for an in-depth explanation of these changes.**
+
+If you can't see by eye what has changed in the above example, follow these steps in the exact order:
+
+1. Change `s63` on line 2 to `s1`
+2. Copy/Paste line 3 to line 4
+3. Change `0xee` on line 3 to `0x00`
+4. Change `p1` to `p2` on line 4
 
 To apply the changes to the media:
 
