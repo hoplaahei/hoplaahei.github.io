@@ -7,7 +7,7 @@ tags: ""
 
 To cut a long story short, when booted in legacy mode, the bioses in Lenovo `T520`, `T420s` and `W520` cannot handle the way BSD installations setup the GPT partitions. The BIOS borks when it sees an `ee` type protective MBR partition as the first partition. 
 
-So those who don't want to UEFI boot (e.g., those who use ZFS-on-root), and those who prefer the [advantages](https://wiki.manjaro.org/index.php?title=Some_basics_of_MBR_v/s_GPT_and_BIOS_v/s_UEFI#MBR_vs._GPT) of GPT over BIOS partitioning, should apply Chris Torek's [hack](http://lists.freebsd.org/pipermail/freebsd-i386/2013-March/010437.html). In short, it edits the partition table to make Partition 1 a dummy partition, thus tricking the Lenovo bios into loading the protective MBR, which is now at Partition 2.
+So those who don't want to UEFI boot (e.g., those who use ZFS-on-root), and those who prefer the [advantages](https://wiki.manjaro.org/index.php?title=Some_basics_of_MBR_v/s_GPT_and_BIOS_v/s_UEFI#MBR_vs._GPT) of GPT over BIOS partitioning, should apply Chris Torek's [hack](http://lists.freebsd.org/pipermail/freebsd-i386/2013-March/010437.html). In short, it edits the partition table to make Partition 1 a dummy partition, thus tricking the Lenovo BIOS into loading the protective MBR, which is now at Partition 2.
 
 As Chris Torek's hack uses the BSD version of `fdisk` you will, at least temporarily, need a working BSD environment. `FreeBSD-10.1-RELEASE-amd64-uefi-mini-memstick.img` worked for me. If you don't already know how to boot the UEFI installation media, then follow these steps:
 
@@ -20,4 +20,4 @@ As Chris Torek's hack uses the BSD version of `fdisk` you will, at least tempora
 - the installer will pop-up a dialog with the option to drop to a console
 - now apply the [hack](http://lists.freebsd.org/pipermail/freebsd-i386/2013-March/010437.html)
 
-If you still have problems booting the media after this, make sure it isn't preferring UEFI, by going to `F1` setup at boot and choosing `Startup` -> `UEFI/Legacy Boot Priority` -> `Legacy`. 
+If you still have problems booting the media after this, make sure it isn't preferring UEFI, by going to `F1` setup at boot and choosing `Startup` -> `UEFI/Legacy Boot Priority` -> `Legacy`.
