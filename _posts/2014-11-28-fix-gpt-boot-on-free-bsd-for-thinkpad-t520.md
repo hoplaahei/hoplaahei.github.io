@@ -50,4 +50,4 @@ fdisk -f /tmp/parts /dev/adX
 
 Partition '1' is now an empty dummy partition, tricking the Lenovo bios, and preventing it from borking at seeing an `ee` type protective MBR partition as the first partition. 
 
-PC-BSD installation medias will still try to boot UEFI (which is broken at the time of writing), so go back into BIOS setup and set if to prefer legacy boot over UEFI boot where available. 
+For FreeBSD users, you're done, and can now boot into the media like normal. PC-BSD users who are trying to get an installation media working should now go back into BIOS setup and set if to prefer legacy boot over UEFI boot, because the UEFI boot on the installation medias are broken (at the time of writing). 
