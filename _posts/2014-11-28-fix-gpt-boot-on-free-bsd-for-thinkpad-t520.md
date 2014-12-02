@@ -48,4 +48,6 @@ To apply the changes to the media:
 fdisk -f /tmp/parts /dev/adX
 ```
 
-Partition '1' is now an empty dummy partition, tricking the Lenovo bios, and preventing it from borking at seeing an `ee` type protective MBR partition as the first partition.
+Partition '1' is now an empty dummy partition, tricking the Lenovo bios, and preventing it from borking at seeing an `ee` type protective MBR partition as the first partition. 
+
+PC-BSD installation medias will still try to boot UEFI (which is broken at the time of writing), so go back into BIOS setup and set if to prefer legacy boot over UEFI boot where available. 
