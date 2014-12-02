@@ -32,7 +32,7 @@ moused_enable="YES"
 powerd_enable="YES"
 powerd_flags="-a hiadaptive -b adaptive"
 ```
-This will use `Turbo Boost` CPU technologies when plugged in (`-a`), but save some power on battery (`-b).
+This will use `Turbo Boost` CPU technologies when plugged in (`-a`), but save some power on battery (`-b`).
 
  >  hiadaptive:
  >  Like adaptive mode, but tuned for systems where performance
