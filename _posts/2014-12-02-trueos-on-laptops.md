@@ -1,7 +1,7 @@
 ---
 layout: post
 published: false
-title: TrueOS On Laptops
+title: TrueOS Laptop Install
 ---
 
 TrueOS is almost vanilla FreeBSD with a few tweaks, and cli versions of most PC-BSD tools. It is designed for server installations, but I like having its tools (such as `Life Preserver`) available on my laptops too. It also sets up a ZFS-on-Root quickly. 
