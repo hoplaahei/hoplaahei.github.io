@@ -41,6 +41,19 @@ This will use `Turbo Boost` CPU technologies when plugged in (`-a`), but save so
  >  sively, and will maintain full frequency for longer.  May be
  >  abbreviated as hadp.
 
+Before I start making more complex changes to the system, I use `lpreserver` to make a `cron` job that takes `ZFS` backup snapshots:
+
+```
+lpreserver cronsnap tank start auto
+```
+See `lpreserver help cronsnap` for explanation.
+
+> * Snapshots will be created every 5 minutes and kept for an hour.
+> * An hourly snapshot will be kept for a day.
+> * A daily snapshot will be kept for a month.
+> * A monthly snapshot will be kept for a year.
+> * The life-preserver daemon will also keep track of the zpool disk space. If the capacity falls below 75% the oldest snapshot will be auto-pruned.
+
 Pull in the graphical environment with:
 
 ```
