@@ -33,7 +33,7 @@ default:\
         :copyright=/etc/COPYRIGHT:\
 ...
         :umask=022:\
-        :lang=en_GB.UTF-8\
+        :lang=en_GB.UTF-8:\
         :setenv=LC_ALL=en_GB.UTF-8:\
         :setenv=LC_COLLATE=en_GB.UTF-8:\
         :setenv=LC_CTYPE=en_GB.UTF-8:\
