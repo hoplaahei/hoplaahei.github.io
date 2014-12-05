@@ -25,7 +25,7 @@ wpa_passphrase yourAP yourPass > /etc/wpa_supplicant.conf
 ```
 Restarting the network service after this change is finicky (at least on my Intel Centrino Ultimate-N 6300), so I found a reboot was needed to get the wifi adapter up and connected to the AP.
 
-The handbook examples are not very clear on how to set a different locale. I found `LC_ALL` also needs setting in addition to `lang` and `charset`. Stick them at the end of the `default` section in `/etc/login.conf`.
+If you use a different locale than US you may find lots of applications throw complaints on the console because they do not correctly respect locale settings. Set each variable individually at the end of `default` section in `/etc/login.conf`.
 
 ```
 default:\
@@ -33,9 +33,15 @@ default:\
         :copyright=/etc/COPYRIGHT:\
 ...
         :umask=022:\
+        :lang=en_GB.UTF-8\
+        :setenv=LC_ALL=en_GB.UTF-8:\
+        :setenv=LC_COLLATE=en_GB.UTF-8:\
+        :setenv=LC_CTYPE=en_GB.UTF-8:\
+        :setenv=LC_MESSAGES=en_GB.UTF-8:\
+        :setenv=LC_MONETARY=en_GB.UTF-8:\
+        :setenv=LC_NUMERIC=en_GB.UTF-8:\
+        :setenv=LC_TIME=en_GB.UTF-8:\
         :charset=UTF-8:\
-        :lang=en_GB.UTF-8:\
-        :setenv=LC_ALL=en_GB.UTF-8:
 ```
 Remember to run `cap_mkdb /etc/login.conf` and logout and back in from your user session. 
 
