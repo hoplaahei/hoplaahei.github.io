@@ -139,14 +139,10 @@ A video player is nice to start watching something while `emacs` finishes compil
 ```
 pkg install mpv
 ```
-To get flashplayer working:
+Getting flashplayer working on `TrueOS`/`PC-BSD` is very easy:
 
 ```
-echo 'linux_load="YES"' >> /boot/loader.conf
-echo 'proc /proc procfs rw 0 0' >> /etc/fstab
-echo 'fdesc /dev/fd fdescfs rw 0 0' >> /etc/fstab
-echo 'linproc   /compat/linux/proc   linprocfs   rw   0  0' >> /etc/fstab
 pkg install pipelight
+pipelight-plugin --create-mozilla-plugins
+pipelight-plugin --enable flash 
 ```
-The above commands enable compatibility for linux and wine, but will need a reboot.
-
