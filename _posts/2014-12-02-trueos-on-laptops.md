@@ -25,6 +25,20 @@ wpa_passphrase yourAP yourPass > /etc/wpa_supplicant.conf
 ```
 Restarting the network service after this change is finicky (at least on my Intel Centrino Ultimate-N 6300), so I found a reboot was needed to get the wifi adapter up and connected to the AP.
 
+The handbook examples are not very clear on how to set a different locale. I found `LC_ALL` also needs setting in addition to `lang` and `charset`. Stick them at the end of the `default` section in `/etc/login.conf`.
+
+```
+default:\
+        :passwd_format=md5:\
+        :copyright=/etc/COPYRIGHT:\
+...
+        :umask=022:\
+        :charset=UTF-8:\
+        :lang=en_GB.UTF-8:\
+        :setenv=LC_ALL=en_GB.UTF-8:
+```
+Remember to run `cap_mkdb /etc/login.conf` and logout and back in from your user session. 
+
 Having `moused` up and running is also useful for copy and pasting from configs while setting up. Enable it in `/etc/rc.conf`, and while we're at it, enable some basic laptop powersaving too:
 
 ```
@@ -119,5 +133,3 @@ A video player is nice to start watching something while `emacs` finishes compil
 ```
 pkg install mpv
 ```
-
-
