@@ -98,12 +98,28 @@ I get Xorg running without `HAL` instead, as I don't use anything hefty like `GN
 Xorg -config /usr/local/etc/X11/xorg.conf
 ```
 
-And add this line to the `ServerLayout` section of the newly generated `/usr/local/etc/X11/xorg.conf` to disable `HAL`:
+Copy the generate config to `/etc/X11/`:
+
+```
+cp /usr/local/etc/X11/xorg.conf /etc/X11/xorg.conf
+```
+
+And add this line to the `ServerLayout` section of `/etc/X11/xorg.conf` to disable `HAL`:
 
 ```
 Option "AutoAddDevices" "Off"
 ```
 
+You can also set keymap options by editing the `InputClass`. In this example I've added two `Option` lines. The first uses `Great Britain` keyboard layout, and the second makes `CapsLock` key a second `Ctrl` key:
+
+```
+Section "InputClass"
+        Identifier "Keyboard0"
+        Driver "kbd"
+        Option "XkbLayout" "gb"
+        Option "XkbOptions" "ctrl:nocaps"
+EndSection
+```
 Now install a window manager and a terminal to run some commands in the graphical environment:
 
 ```
