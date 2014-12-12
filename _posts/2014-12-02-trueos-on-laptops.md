@@ -155,10 +155,68 @@ A video player is nice to start watching something while `emacs` finishes compil
 ```
 pkg install mpv
 ```
-Getting flashplayer working on `TrueOS`/`PC-BSD` is very easy:
+Getting flashplayer working on `TrueOS` is very easy:
 
 ```
 pkg install pipelight
 pipelight-plugin --create-mozilla-plugins
-pipelight-plugin --enable flash 
+pipelight-plugin --enable flash
 ```
+
+## Powersaving
+
+In `/etc/rc.conf` set wifi into powersave mode (may take slightly longer to uplink to routers):
+
+```
+ifconfig_wlan0="-powersave WPA DHCP"
+```
+
+Some `/boot/loader.conf` tweaks:
+
+```
+hint.p4tcc.0.disabled=1
+hint.acpi_throttle.0.disabled=1
+
+drm.i915.enable_rc6=7 # this setting for intel devices saves quite a bit of energy
+
+hw.snd.latency=7
+
+hint.apic.0.clock=0
+kern.hz=100 # lower kernel interrupt important for C3 state. Not sure about others states
+hint.atrtc.0.clock=0
+
+cpufreq_load="YES"
+
+```
+I've read in a forum post that the `p4tcc` line is no longer necessary, but I've not seen any official opinion on this.
+
+Some `/etc/rc.conf` tweaks:
+
+```
+# Powersaving Tweaks
+powerd_enable="YES"
+powerd_flags="-a hiadaptive -b adaptive -n adaptive"
+performance_cx_lowest="Cmax"
+economy_cx_lowest="Cmax"
+```
+The `Cmax` value confused me at first, but the higher the value the `C-state`, the more effective the powersaving is. Many FreeBSD powersaving tutorials say to set `C3` state, but using the `Cmax` setting was optimal for my i7. It appears to achieve `C8` state, i.e., `sysctl dev.cpu | grep cx` shows:
+
+```
+dev.cpu.0.cx_supported: C1/1/1 C2/2/80 C3/3/109
+dev.cpu.0.cx_lowest: C8
+dev.cpu.0.cx_usage: 14.95% 3.94% 81.10% last 2942us
+dev.cpu.1.cx_supported: C1/1/1 C2/2/80 C3/3/109
+dev.cpu.1.cx_lowest: C8
+dev.cpu.1.cx_usage: 12.60% 3.23% 84.15% last 1529us
+dev.cpu.2.cx_supported: C1/1/1 C2/2/80 C3/3/109
+dev.cpu.2.cx_lowest: C8
+dev.cpu.2.cx_usage: 12.01% 3.59% 84.39% last 4195us
+dev.cpu.3.cx_supported: C1/1/1 C2/2/80 C3/3/109
+dev.cpu.3.cx_lowest: C8
+dev.cpu.3.cx_usage: 13.99% 4.36% 81.64% last 3165us
+```
+
+
+
+
+This change was the single most noticeable improvement on my battery life (it shot up from 2 hours to  hours). 
