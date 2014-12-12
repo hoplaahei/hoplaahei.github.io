@@ -215,8 +215,6 @@ dev.cpu.3.cx_supported: C1/1/1 C2/2/80 C3/3/109
 dev.cpu.3.cx_lowest: C8
 dev.cpu.3.cx_usage: 13.99% 4.36% 81.64% last 3165us
 ```
-
-
-
-
 This change was the single most noticeable improvement on my battery life (it shot up from 2 hours to  hours). 
+
+These settings still use max performance rather than max energy saving when the battery is plugged in. If, however, you care about the 'green' energy saving of your laptop, setting `-a` flag of `powerd_flags` to `adaptive` rather than `hidapative` should save power even with the adapter plugged in, but the likes of `Intel Turbo Boost` will get disabled.
