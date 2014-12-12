@@ -251,5 +251,15 @@ hw.acpi.verbose=1
 hw.syscons.sc_no_suspend_vtswitch=0
 dev.acpi_ibm.0.events=1
 ```
+Edit `/etc/X11/xorg.conf` to get brightness controls working:
+
+```
+Section "Screen"
+        Identifier "Screen0"
+        Device     "Card0"
+        Monitor    "Monitor0"
+        Option     "RegistryDwords" "EnableBrightnessControl=1"
+EndSection
+```
 
 
