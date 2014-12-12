@@ -61,6 +61,8 @@ This will use `Turbo Boost` CPU technologies when plugged in (`-a`), but save so
  >  sively, and will maintain full frequency for longer.  May be
  >  abbreviated as hadp.
 
+If you care about the 'green' energy saving of your laptop, setting `-a` flag of `powerd_flags` to `adaptive` rather than `hidapative` should save power even with the adapter plugged in, but the likes of `Intel Turbo Boost` will get disabled.
+
 Before I start making more complex changes to the system, I use `lpreserver` to make a `cron` job that takes `ZFS` backup snapshots:
 
 ```
@@ -215,6 +217,4 @@ dev.cpu.3.cx_supported: C1/1/1 C2/2/80 C3/3/109
 dev.cpu.3.cx_lowest: C8
 dev.cpu.3.cx_usage: 13.99% 4.36% 81.64% last 3165us
 ```
-This change was the single most noticeable improvement on my battery life (it shot up from 2 hours to  hours). 
-
-These settings still use max performance rather than max energy saving when the battery is plugged in. If, however, you care about the 'green' energy saving of your laptop, setting `-a` flag of `powerd_flags` to `adaptive` rather than `hidapative` should save power even with the adapter plugged in, but the likes of `Intel Turbo Boost` will get disabled.
+This change was the single most noticeable improvement on my battery life (it shot up from 2 hours to 5 hours).
