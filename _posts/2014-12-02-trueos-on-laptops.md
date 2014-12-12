@@ -192,6 +192,12 @@ cpufreq_load="YES"
 ```
 I've read in a forum post that the `p4tcc` line is no longer necessary, but I've not seen any official opinion on this.
 
+Reload `grub`:
+
+```
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
 Some `/etc/rc.conf` tweaks:
 
 ```
@@ -218,3 +224,32 @@ dev.cpu.3.cx_lowest: C8
 dev.cpu.3.cx_usage: 13.99% 4.36% 81.64% last 3165us
 ```
 This change was the single most noticeable improvement on my battery life (it shot up from 2 hours to 5 hours).
+
+## Fixing Thinkpad buttons, Fn keys & suspend/resume glitches
+
+Put in `/boot/loader.conf`:
+
+```
+acpi_ibm_load="YES"
+```
+
+Reload `grub`:
+
+```
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+Edit `/etc/sysctl.conf`:
+
+```
+hw.acpi.reset_video=0
+hw.acpi.lid_switch_state=S3
+hw.acpi.sleep_button_state=S3
+hw.acpi.power_button_state=S5
+hw.acpi.sleep_delay=3
+hw.acpi.verbose=1
+hw.syscons.sc_no_suspend_vtswitch=0
+dev.acpi_ibm.0.events=1
+```
+
+
