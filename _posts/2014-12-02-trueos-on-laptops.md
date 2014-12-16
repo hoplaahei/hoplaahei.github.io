@@ -164,7 +164,7 @@ pkg install pipelight
 pipelight-plugin --create-mozilla-plugins
 pipelight-plugin --enable flash
 ```
-The latest versions of Flash are only supported by Google via `pepperflash` and not available in FreeBSD. Flash is gradually getting replaced by `HTML5` anyway on most sites, but installing the slightly older Flash 11 has done the trick for me on sites where it still isn't supported.
+The latest versions of `Flash` are only supported by Google via `pepperflash` and not available in FreeBSD. `HTML5` is gradually replacing Flash on most sites anyway, but installing the slightly older Flash 11 seems to cover all sites that still don't support HTML5.
 
 ## Powersaving
 
