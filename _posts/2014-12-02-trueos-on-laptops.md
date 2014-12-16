@@ -256,7 +256,6 @@ If using the `intel` graphics driver then install `acpi_call` to dim the brightn
 ```
 pkg install acpi_call
 kldload acpi_call
-acpi_call -p '\VBRC' -i 8
 ```
 Make the changes permanent by adding to `/boot/loader.conf`:
 
@@ -269,7 +268,13 @@ Remember to reload`grub`:
 ```
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
-You can then add the brightness dim to a key with e.g., `xbindkeys`.
+Now you can dim the brightness from the command-line:
+
+```
+acpi_call -p '\VBRC' -i 8
+```
+
+Or bind brightness increments to keys (values 0-16) with e.g., `xbindkeys`.
 
 If you have nVidia `discrete` graphics enabled permanently in BIOS then edit `/etc/X11/xorg.conf` to get the `Fn` + `Home`/`End` brightness keys working:
 
