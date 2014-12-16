@@ -271,7 +271,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 You can then add the brightness dim to a key with e.g., `xbindkeys`.
 
-If you have nVidia `discrete` graphics enabled permanently in BIOS then edit `/etc/X11/xorg.conf` to get brightness controls working:
+If you have nVidia `discrete` graphics enabled permanently in BIOS then edit `/etc/X11/xorg.conf` to get the `Fn` + `Home`/`End` keys working:
 
 ```
 Section "Screen"
