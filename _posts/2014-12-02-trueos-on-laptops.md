@@ -251,7 +251,27 @@ hw.acpi.verbose=1
 hw.syscons.sc_no_suspend_vtswitch=0
 dev.acpi_ibm.0.events=1
 ```
-Edit `/etc/X11/xorg.conf` to get brightness controls working:
+If using the `intel` graphics driver then install `acpi_call` to dim the brightness:
+
+```
+pkg install acpi_call
+kldload acpi_call
+acpi_call -p '\VBRC' -i 8
+```
+Make the changes permanent by adding to `/boot/loader.conf`:
+
+```
+acpi_call_load="YES"
+```
+
+Remember to reload`grub`:
+
+```
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+You can then add the brightness dim to a key with e.g., `xbindkeys`.
+
+If you have nVidia `discrete` graphics enabled permanently in BIOS then edit `/etc/X11/xorg.conf` to get brightness controls working:
 
 ```
 Section "Screen"
@@ -261,5 +281,3 @@ Section "Screen"
         Option     "RegistryDwords" "EnableBrightnessControl=1"
 EndSection
 ```
-
-
