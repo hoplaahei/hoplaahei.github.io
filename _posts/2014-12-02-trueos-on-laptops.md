@@ -25,6 +25,20 @@ wpa_passphrase yourAP yourPass > /etc/wpa_supplicant.conf
 ```
 Restarting the network service after this change is finicky (at least on my Intel Centrino Ultimate-N 6300), so I found a reboot was needed to get the wifi adapter up and connected to the AP.
 
+I also like to set `sudo` to 'no password' (insecure I know):
+
+```
+sudo pw usermod joe -G wheel
+sudo visudo
+```
+
+Uncomment this line:
+
+```
+## Same thing without a password
+ %wheel ALL=(ALL) NOPASSWD: ALL
+```
+
 If you use a different locale than US you may find lots of applications throw complaints on the console because they do not correctly respect locale settings. Sadly, there is not yet any magic syntax to fix this, and each variable needs setting individually at the end of `default` section in `/etc/login.conf`.
 
 ```
