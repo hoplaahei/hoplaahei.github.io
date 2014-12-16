@@ -88,19 +88,19 @@ Install some required drivers e.g.,:
 pkg install xf86-video-intel xf86-input-synaptics
 ```
 
-If you need `HAL` (I don't bother with it), then edit `/etc/rc.conf`:
+Mouse and keys won't respond on running Xorg unless you EITHER enable `HAL` in `/etc/rc.conf`:
 
 ```
 hald_enable="YES"
 ```
 
-I get Xorg running without `HAL` instead, as I don't use anything hefty like `GNOME`:
+OR get Xorg running without `HAL` instead (if you don't use a full-blown desktop environment like `GNOME`):
 
 ```
 Xorg -config /usr/local/etc/X11/xorg.conf
 ```
 
-Copy the generate config to `/etc/X11/`:
+Copy the generated config to `/etc/X11/`:
 
 ```
 cp /usr/local/etc/X11/xorg.conf /etc/X11/xorg.conf
@@ -157,13 +157,14 @@ A video player is nice to start watching something while `emacs` finishes compil
 ```
 pkg install mpv
 ```
-Getting flashplayer working on `TrueOS` is very easy:
+The pipelight flashplayer crashes for me at the time of writing, but for reference I'll show howto install it anyway:
 
 ```
 pkg install pipelight
 pipelight-plugin --create-mozilla-plugins
 pipelight-plugin --enable flash
 ```
+The latest versions of Flash are only supported by Google via `pepperflash` and not available in FreeBSD. Flash is gradually getting replaced by `HTML5` anyway on most sites, but installing the slightly older Flash 11 has done the trick for me on sites where it still isn't supported.
 
 ## Powersaving
 
