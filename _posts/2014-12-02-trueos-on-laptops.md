@@ -167,10 +167,17 @@ Uncomment `CCACHE_DIR` to speed things up:
 # It will be mounted into the jail and be shared among all jails. 
 CCACHE_DIR=/var/cache/ccache
 ```
-Give poudriere an updated `ports` tree:
+
+Tell poudriere to update ports tree with `git` by changing 'portsnap' in `/usr/local/etc/poudriere.d/ports/default/method` to:
 
 ```
-poudriere ports -c
+git
+```
+
+Get poudriere to use our existing git ports tree:
+
+```
+poudriere ports -c -F -f none -M /usr/ports -p default
 ```
 
 Make a `DISTFILES` and `CCACHE_DIR` directory:
@@ -189,19 +196,19 @@ uname -r
 Checkout a jail with the same version as your current system e.g.,: 
 
 ```
-poudriere jail -c -j 101x64 -v 10.1-RELEASE -a amd64
+poudriere jail -c -a amd64 -m ftp -v 10.1-RELEASE -f none -j release101x64
 ```
 
-Configure emacs `port`:
+Configure emacs `port` for the jail:
 
 ```
-poudriere options -j 101x64 multimedia/mpv
+poudriere options -j release101x64 editors/emacs
 ```
 
 Now in the dialog that appears select the `XAW` option and deselect `GTK`. And compile the port:
 
 ```
-poudriere bulk -j 101x64 multimedia/mpv
+poudriere bulk -j 101x64 editors/emacs
 ```
 
 Might as well get a browser window open for reference as well:
