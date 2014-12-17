@@ -7,7 +7,7 @@ tags: ""
 
 ## Option 1: Boot in UEFI mode
 
-Booting in `UEFI` mode is fine for `FreeBSD`, but it doesn't support booting a ZFS root. See the bullet list of steps below if you are unsure how to enable UEFI booting in your BIOS.
+Booting in `UEFI` mode is fine for `FreeBSD`, but it doesn't support booting a `ZFS` root. See the bullet list of steps below if you are unsure how to enable UEFI booting in your BIOS.
 
 PC-BSD installer DOES currently supports a root ZFS with UEFI boot, but the USB install image ends in a `grub` rescue prompt. To fix this and boot into the installation media as normal, type:
 
