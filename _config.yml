@@ -24,10 +24,6 @@ prose:
         field:
           element: "hidden"
           value: "post"
-      - name: "with_toc_data"
-        field:
-          element: "hidden"
-          value: "true" 
       - name: "tags"
         field:
           element: "multiselect"
