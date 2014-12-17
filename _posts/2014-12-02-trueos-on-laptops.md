@@ -159,16 +159,25 @@ Uncomment `ZPOOL` and change it to your default zpool (probably 'tank'):
 ## If you have a ZFS pool named tank, uncomment this
 ZPOOL=tank
 ```
-Give poudriere and updated `ports` tree:
+
+Uncomment `CCACHE_DIR` to speed things up:
+
+```
+# ccache support. Supply the path to your ccache cache directory. 
+# It will be mounted into the jail and be shared among all jails. 
+CCACHE_DIR=/var/cache/ccache
+```
+Give poudriere an updated `ports` tree:
 
 ```
 poudriere ports -c
 ```
 
-Make a `DISTFILES` directory:
+Make a `DISTFILES` and `CCACHE_DIR` directory:
 
 ```
 mkdir /usr/src/distfiles
+mkdir /var/cache/ccache
 ```
 
 Find out the version of your current system:
