@@ -147,14 +147,53 @@ Get `sawfish` WM to run with a terminal spawned when `X` starts by editing `ee ~
 exec urxvtcd & # start urxvt daemon if it isn't already running
 exec sawfish
 ```
-From now on I prefer to edit with something more robut than `ee`. I will use `ports` to install `emacs` with `lucid` toolkit rather than `GTK` (because for years emacsclient has been crashing with 100% CPU usage if you close Xorg while emacs GTK widgets are running).
+From now on I prefer to edit with something more robut than `ee`. I will use `poudriere` to install a customised version of `emacs` with `lucid` toolkit rather than `GTK` (because for years emacsclient has been crashing with 100% CPU usage if you close Xorg while emacs GTK widgets are running).
 
 ```
-cd /usr/ports/emacs
-make clean
+pkg install poudriere dialog4ports
+ee ./usr/local/etc/poudriere.conf
+```
+Uncomment `ZPOOL` and change it to your default zpool (probably 'tank'):
+
+```
+## If you have a ZFS pool named tank, uncomment this
+ZPOOL=tank
+```
+Give poudriere and updated `ports` tree:
+
+```
+poudriere ports -c
 ```
 
-If that directory isn't found for whatever reason, install the ports `tree` with:
+Make a `DISTFILES` directory:
+
+```
+mkdir /usr/src/distfiles
+```
+
+Find out the version of your current system:
+
+```
+uname -r
+```
+
+Checkout a jail with the same version as your current system e.g.,: 
+
+```
+poudriere jail -c -j 101x64 -v 10.1-RELEASE -a amd64
+```
+
+Configure emacs `port`:
+
+```
+poudriere options -j 101x64 multimedia/mpv
+```
+
+Now in the dialog that appears select the `XAW` option and deselect `GTK`. And compile the port:
+
+```
+poudriere bulk -j 101x64 multimedia/mpv
+```
 
 Might as well get a browser window open for reference as well:
 
@@ -166,11 +205,7 @@ This `Firefox` package also requires the enabling of `DBUS` in `/etc/rc.conf`:
 ```
 dbus_enable="YES"
 ```
-A video player is nice to start watching something while `emacs` finishes compiling:
 
-```
-pkg install mpv
-```
 The pipelight flashplayer crashes for me at the time of writing, but for reference I'll show howto install it anyway:
 
 ```
