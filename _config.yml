@@ -4,8 +4,6 @@ signature: "Questions: hoplaahei@opmbx.org"
 pygments: true
 permalink: pretty
 markdown: redcarpet
-redcarpet:
-extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
 github:
   # enables "edit" link
   repo: 'hoplaahei/hoplaahei.github.io'
