@@ -1,6 +1,6 @@
 ---
-with_toc_data: "true"
 layout: post
+with_toc_data: "true"
 title: "Fix boot on FreeBSD or PC-BSD for Thinkpad T520, T420s & W520"
 published: true
 tags: ""
@@ -21,7 +21,7 @@ PC-BSD installer DOES currently supports a root ZFS with UEFI boot, but the USB 
 
 You can now install PC-BSD with normal settings and it will boot into a ZFS root from UEFI. 
 
-## Option 2
+## Option 2: Boot in legacy mode
 
 If you need to boot in legacy mode for whatever reason (e.g., you want a ZFS root on FreeBSD), the BIOSes in Lenovo `T520`, `T420s` and `W520` cannot handle the way BSD installations setup the GPT partitions. The BIOS borks when it sees an `ee` type protective MBR partition as the first partition. 
 
