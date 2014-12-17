@@ -168,23 +168,23 @@ Uncomment `CCACHE_DIR` to speed things up:
 CCACHE_DIR=/var/cache/ccache
 ```
 
+Make a `DISTFILES` and `CCACHE_DIR` directory:
+
+```
+mkdir /usr/src/distfiles
+mkdir /var/cache/ccache
+```
+
 Tell poudriere to update ports tree with `git` by changing 'portsnap' in `/usr/local/etc/poudriere.d/ports/default/method` to:
 
 ```
 git
 ```
 
-Get poudriere to use our existing git ports tree:
+Get poudriere to use our existing git ports tree with:
 
 ```
 poudriere ports -c -F -f none -M /usr/ports -p default
-```
-
-Make a `DISTFILES` and `CCACHE_DIR` directory:
-
-```
-mkdir /usr/src/distfiles
-mkdir /var/cache/ccache
 ```
 
 Find out the version of your current system:
@@ -216,6 +216,7 @@ Might as well get a browser window open for reference as well:
 ```
 pkg install firefox
 ```
+
 This `Firefox` package also requires the enabling of `DBUS` in `/etc/rc.conf`:
 
 ```
