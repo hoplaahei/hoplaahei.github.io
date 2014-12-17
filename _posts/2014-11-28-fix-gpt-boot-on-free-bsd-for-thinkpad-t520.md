@@ -7,7 +7,7 @@ tags: ""
 
 ## Option 1: Boot in UEFI mode
 
-Booting in `UEFI` mode is fine for `FreeBSD`, but it doesn't support booting a `ZFS` root. Read the bullet points under 'Option 2' below if you are unsure how to enable UEFI booting.
+Booting in `UEFI` mode is fine for `FreeBSD`, but it doesn't support booting a `ZFS` root. Read [below](#Option-2) if you are unsure how to enable UEFI booting.
 
 PC-BSD installer DOES currently supports a root ZFS with UEFI boot, but the USB install image ends in a `grub` rescue prompt. To fix this and boot into the installation media as normal, type:
 
@@ -20,7 +20,7 @@ PC-BSD installer DOES currently supports a root ZFS with UEFI boot, but the USB 
 
 You can now install PC-BSD with normal settings and it will boot into a ZFS root from UEFI. 
 
-## Option 2: Boot in legacy mode
+## Option 2
 
 If you need to boot in legacy mode for whatever reason (e.g., you want a ZFS root on FreeBSD), the BIOSes in Lenovo `T520`, `T420s` and `W520` cannot handle the way BSD installations setup the GPT partitions. The BIOS borks when it sees an `ee` type protective MBR partition as the first partition. 
 
