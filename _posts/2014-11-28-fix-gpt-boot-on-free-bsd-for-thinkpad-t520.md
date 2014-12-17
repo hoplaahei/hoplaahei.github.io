@@ -1,4 +1,5 @@
 ---
+with_toc_data: "true"
 layout: post
 title: "Fix boot on FreeBSD or PC-BSD for Thinkpad T520, T420s & W520"
 published: true
