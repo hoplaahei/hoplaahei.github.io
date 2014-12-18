@@ -211,6 +211,8 @@ Now in the dialog that appears select the `XAW` option and deselect `GTK`. And c
 poudriere bulk -j 101x64 editors/emacs
 ```
 
+I repeat this process of building a custom package for `mpv`, by checking `VAAPI` support as an option. VAAPI saves battery power by offloading video processing to my Intell integrated graphics card when watching TV shows and movies.
+
 Might as well get a browser window open for reference as well:
 
 ```
