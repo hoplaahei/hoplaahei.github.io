@@ -20,18 +20,19 @@ snapper create -d "Fresh"
 For me, the most essential package when installing a new system is a clipboard manager to manage copy/paste history (we will do a lot of it):
 
 ```
-zypper ins parcellite
+zypper in parcellite
 parcellite &
 ```
 
-Enable packman repository for more choice:
+Enable some repositories for more choice:
 
 ```
 zypper ar -f http://packman.inode.at/suse/openSUSE_13.2/ packman
+zypper ar -f http://download.opensuse.org/repositories/X11:/Utilities/openSUSE_13.2/X11:Utilities.repo
 ```
 
 ```
-zypper install firefox flash-plugin git make cc rox-filer dmenu mpv rxvt-unicode emacs-x11 feh mate-power-manager sawfish gtk-chtheme gcolor2 yast2-sound
+zypper install firefox flash-plugin git make cc rox-filer dmenu mpv rxvt-unicode emacs-x11 feh mate-power-manager sawfish gtk-chtheme gcolor2 yast2-sound trayer
 ```
 
 ## Get sound working
