@@ -34,6 +34,10 @@ zypper ar -f http://packman.inode.at/suse/openSUSE_13.2/ packman
 zypper install firefox flash-plugin git make cc rox-filer dmenu mpv rxvt-unicode emacs-x11 feh mate-power-manager sawfish gtk-chtheme gcolor2
 ```
 
+## Make some adjustments to a few things that irk me
+
+Set bootloader wait to from 8 seconds to 1 in `Yast` -> `Bootloader` -> `Bootloader Options`.
+
 ## Enable Optimus Graphics Switching
 
 Follow [this](https://en.opensuse.org/SDB:NVIDIA_Bumblebee) guide.
