@@ -81,7 +81,7 @@ Prepend `DISPLAY` and `XAUTHORITY` to the variables in env_keep:
 Defaults        env_keep = "DISPLAY XAUTHORITY LANG LC_ADDRESS ...
 ```
 
-What did work for me is adding xhost command to ~/.bashrc:
+What did work for me is adding `xhost` command to `~/.bashrc`:
 
 ```
 echo 'xhost + && clear' >> $HOME/.bashrc
