@@ -43,18 +43,6 @@ Install `yast2-sound` module and then:
 
 Allow it to autoconfigure. 
 
-## Make some adjustments to a few things that irk me
-
-Set bootloader wait from 8 seconds to 1:
-
-`Yast` -> `Bootloader` -> `Bootloader Options`.
-
-`sudo` without a password:
-
-`Yast` -> `Sudo`
-
-Edit `ALL` and check the box for `NOPASSWD`, so that it says 'Yes'.
-
 ## Enable Optimus Graphics Switching
 
 Follow [this](https://en.opensuse.org/SDB:NVIDIA_Bumblebee) guide.
@@ -66,6 +54,18 @@ Don't forget to follow the step to blacklist `nouveau`. I ignored it and encount
 ```
 usermod -G video,audio,wheel,bumblebee joe
 ```
+
+## Make some adjustments to a few things that irk me
+
+Set bootloader wait from 8 seconds to 1:
+
+`Yast` -> `Bootloader` -> `Bootloader Options`.
+
+`sudo` without a password:
+
+`Yast` -> `Sudo`
+
+Edit `ALL` and check the box for `NOPASSWD`, so that it says 'Yes'. Also make sure your user is in the `wheel` group. 
 
 ## Make Firefox less shit
 
