@@ -52,6 +52,10 @@ usermod -G video,audio,wheel,bumblebee joe
 
 Under `Advanced` of Firefox `Preferences`, I check 'Use autoscrolling' as this prevents me accidentally middle clicking on a page and activating the stupid clipboard URL load. 
 
+## Why you should use a Display Manager
+
+I like to autologin without entering a password. One thing I see a lot on Linux forums is users getting berrated for asking how to autologin to a display manager. The typical response is, "there is no point in using a login manager if you're going to bypass it?". This is not true, as the login/display manager does other things such as interface with `policykit` to enable `ACLs` (modern nix permissions), so we don't need to mess around with permissions the old way. But if you insist, here is the hackish way to bypass using a display manager and still autologin to X...
+
 ## X Autologin Without Display Manager
 
 Disable the current display manager in `/etc/sysconfig/displaymanager`:
@@ -75,9 +79,23 @@ ExecStart=-/sbin/agetty --autologin yourusername --noclear %I 38400 linux
 Type=simple
 ```
 
-Edit ~/.bash_profile:
+Edit `~/.bash_profile`:
 
 ```
 # Following automatically calls "startx" when you login:
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 ```
+
+Uncomment this line in `/etc/permissions.local`:
+
+```
+#/usr/bin/Xorg                 root:root       4711
+```
+
+Run:
+
+```
+SuSEconfig --module permissions
+```
+
+And make sure your user is in any important groups such as audio and video (or things like Flash will do strange things).
