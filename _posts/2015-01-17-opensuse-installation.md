@@ -36,7 +36,11 @@ zypper install firefox flash-plugin git make cc rox-filer dmenu mpv rxvt-unicode
 
 ## Get sound working
 
-Yast -> Sound -> Edit
+Install `yast2-sound` module and then:
+
+`Yast` -> `Sound` -> `Edit`
+
+Allow it to autoconfigure. 
 
 ## Make some adjustments to a few things that irk me
 
