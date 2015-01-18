@@ -73,9 +73,9 @@ Edit `ALL` and check the box for `NOPASSWD`, so that it says 'Yes'. Also make su
 
 Under `Advanced` of Firefox `Preferences`, I check 'Use autoscrolling' as this prevents me accidentally middle clicking on a page and activating the stupid clipboard URL load. 
 
-## Why you should use a Display Manager
+## Why you should use a display manager
 
-If you need autologin use something like slim, but if not then the default `xdm` that openSUSE uses on X only installations is good enough.
+If you need autologin use something like `slim`, but if not then the default `xdm` that openSUSE uses on X only installations is good enough.
 
 Example .xsession for `xdm` display manager:
 
@@ -97,7 +97,7 @@ I do not suggest bypassing the displayer-manager service (using `startx` or `xin
 
 But if you insist, here is the fiddly way to bypass using a display manager and still autologin to X...
 
-## X Autologin Without Display Manager
+## X autologin without display manager
 
 Disable the current display manager in `/etc/sysconfig/displaymanager`:
 
@@ -127,7 +127,7 @@ Edit `~/.bash_profile`:
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 ```
 
-Uncomment this line in `/etc/permissions.local`:
+Uncomment this line in `/etc/permissions.local` to set suid bit:
 
 ```
 #/usr/bin/Xorg                 root:root       4711
