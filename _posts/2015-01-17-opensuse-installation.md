@@ -67,7 +67,19 @@ usermod -G video,audio,wheel,bumblebee joe
 
 Edit `ALL` and check the box for `NOPASSWD`, so that it says 'Yes'. Also make sure your user is in the `wheel` group.
 
-3.) Get a better icon theme by editing `~/.gtkrc.mine`:
+3.) Run graphical programs as root:
+
+```
+sudo visudo
+```
+
+Prepend `DISPLAY` and `XAUTHORITY` to the variables in env_keep:
+
+```
+Defaults        env_keep = "DISPLAY XAUTHORITY LANG LC_ADDRESS ...
+```
+
+4.) Get a better icon theme by editing `~/.gtkrc.mine`:
 
 ```
 gtk-icon-theme-name="Bluecurve"
