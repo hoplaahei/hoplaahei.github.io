@@ -65,7 +65,15 @@ usermod -G video,audio,wheel,bumblebee joe
 
 `Yast` -> `Sudo`
 
-Edit `ALL` and check the box for `NOPASSWD`, so that it says 'Yes'. Also make sure your user is in the `wheel` group. 
+Edit `ALL` and check the box for `NOPASSWD`, so that it says 'Yes'. Also make sure your user is in the `wheel` group.
+
+3.) Get a better icon theme by editing `~/.gtkrc.mine`:
+
+```
+gtk-icon-theme-name="Bluecurve"
+```
+
+You need to download and extract [Bluecurve](http://gnome-look.org/content/show.php/Bluecurve+GNOME%2BMATE+Theme?content=148927) icons into `~/.icons` directory. 
 
 ## Make Firefox less shit
 
