@@ -31,7 +31,7 @@ zypper ar -f http://packman.inode.at/suse/openSUSE_13.2/ packman
 ```
 
 ```
-zypper install firefox flash-plugin git make cc rox-filer dmenu
+zypper install firefox flash-plugin git make cc rox-filer dmenu mpv rxvt-unicode emacs-x11 feh mate-power-manager sawfish gtk-chtheme gcolor2
 ```
 
 ## Enable Optimus Graphics Switching
