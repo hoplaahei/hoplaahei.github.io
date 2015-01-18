@@ -30,6 +30,10 @@ Enable packman repository for more choice:
 zypper ar -f http://packman.inode.at/suse/openSUSE_13.2/ packman
 ```
 
+```
+zypper install firefox flash-plugin git make cc rox-filer dmenu
+```
+
 ## Enable Optimus Graphics Switching
 
 Follow [this](https://en.opensuse.org/SDB:NVIDIA_Bumblebee) guide.
