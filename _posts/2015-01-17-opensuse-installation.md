@@ -131,3 +131,11 @@ SuSEconfig --module permissions
 ```
 
 And make sure your user is in any important groups such as audio and video (or things like Flash will do strange things).
+
+## Notes
+
+When uninstalling software, remember to use: 
+
+```
+zypper remove --clean-deps
+```
