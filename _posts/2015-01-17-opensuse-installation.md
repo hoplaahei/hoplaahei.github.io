@@ -66,7 +66,27 @@ Under `Advanced` of Firefox `Preferences`, I check 'Use autoscrolling' as this p
 
 ## Why you should use a Display Manager
 
-I like to autologin without entering a password, and in display managers such as slim this is easy to do (just Google it). But one thing I see a lot on Linux forums is users getting berated when they ask how to autologin to a display manager. The typical response is, "there is no point in using a display manager if you're going to autologin". This suggests the Display Manager's sole purpose is to log a user in, but this is not true. It does other things such as interface with `policykit` to enable `ACLs` (modern nix permissions), so we don't need to mess around with permissions the old way. But if you insist, here is the fiddly way to bypass using a display manager and still autologin to X...
+If you need autologin use something like slim, but if not then the default `xdm` that openSUSE uses on X only installations is good enough.
+
+Example .xsession for `xdm` display manager:
+
+```
+#!/bin/bash
+mate-power-manager &
+parcellite &
+sleep 1 &&
+exec sawfish
+```
+
+And remember to:
+
+```
+chmod +x ~/.xsession
+```
+
+I do not suggest bypassing the displayer-manager service (using `startx` or `xinit` directly), even if you do autologin. The display manager is not just for logging users in; it does other things such as interface with `policykit` to enable `ACLs`, which many modern apps use to configure permissions. If you choose to bypass `policykit` and/or `ACLs`, then you may get unexpected behaviour, or some apps not working at all. 
+
+But if you insist, here is the fiddly way to bypass using a display manager and still autologin to X...
 
 ## X Autologin Without Display Manager
 
