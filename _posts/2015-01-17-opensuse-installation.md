@@ -45,7 +45,15 @@ Allow it to autoconfigure.
 
 ## Make some adjustments to a few things that irk me
 
-Set bootloader wait from 8 seconds to 1 in `Yast` -> `Bootloader` -> `Bootloader Options`.
+Set bootloader wait from 8 seconds to 1:
+
+`Yast` -> `Bootloader` -> `Bootloader Options`.
+
+`sudo` without a password:
+
+`Yast` -> `Sudo`
+
+Edit `ALL` and check the box for `NOPASSWD`, so that it says 'Yes'.
 
 ## Enable Optimus Graphics Switching
 
