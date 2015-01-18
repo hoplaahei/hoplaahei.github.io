@@ -69,6 +69,8 @@ Edit `ALL` and check the box for `NOPASSWD`, so that it says 'Yes'. Also make su
 
 3.) Run graphical programs as root:
 
+The following advice from openSUSE 'Login as root' document is meant to work, but doesn't for me:
+
 ```
 sudo visudo
 ```
@@ -77,6 +79,12 @@ Prepend `DISPLAY` and `XAUTHORITY` to the variables in env_keep:
 
 ```
 Defaults        env_keep = "DISPLAY XAUTHORITY LANG LC_ADDRESS ...
+```
+
+What did work for me is adding xhost command to ~/.bashrc:
+
+```
+echo 'xhost + && clear' >> $HOME/.bashrc
 ```
 
 4.) Get a better icon theme by editing `~/.gtkrc.mine`:
