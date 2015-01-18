@@ -6,9 +6,39 @@ title: openSUSE installation
 
 Here are some notes on my openSUSE installation.
 
+## Take a snapshot
+
+It is nice to be able to rollback to a fresh install if we make mistakes, so create a backup:
+
+```
+sudo su
+snapper create -d "Fresh"
+```
+
+## Install essential packages
+
+For me, the most essential package when installing a new system is a clipboard manager to manage copy/paste history (we will do a lot of it):
+
+```
+zypper ins parcellite
+parcellite &
+```
+
+Enable packman repository for more choice:
+
+```
+zypper ar -f http://packman.inode.at/suse/openSUSE_13.2/ packman
+```
+
 ## Enable Optimus Graphics Switching
 
-If you enable optimus in the BIOS at system boot then the openSUSE installer will detect this and setup bumblebee automatically for switching between integrated and discrete (dedicated) graphics. 
+Follow [this](https://en.opensuse.org/SDB:NVIDIA_Bumblebee) guide.
+
+## Add user to groups
+
+```
+usermod -G video,audio,wheel,bumblebee joe
+```
 
 ## X Autologin Without Display Manager
 
@@ -39,5 +69,3 @@ Edit ~/.bash_profile:
 # Following automatically calls "startx" when you login:
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 ```
-
-
