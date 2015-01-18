@@ -54,7 +54,7 @@ Under `Advanced` of Firefox `Preferences`, I check 'Use autoscrolling' as this p
 
 ## Why you should use a Display Manager
 
-I like to autologin without entering a password, and in display managers such as slim this is easy to do (just Google it). But one thing I see a lot on Linux forums is users getting berated when they ask how to autologin to a display manager. The typical response is, "there is no point in using a display manager if you're going to bypass it". This is not true, as the login/display manager does other things such as interface with `policykit` to enable `ACLs` (modern nix permissions), so we don't need to mess around with permissions the old way. But if you insist, here is the fiddly way to bypass using a display manager and still autologin to X...
+I like to autologin without entering a password, and in display managers such as slim this is easy to do (just Google it). But one thing I see a lot on Linux forums is users getting berated when they ask how to autologin to a display manager. The typical response is, "there is no point in using a display manager if you're going to autologin". This suggests the Display Manager's sole purpose is to log a user in, but this is not true. It does other things such as interface with `policykit` to enable `ACLs` (modern nix permissions), so we don't need to mess around with permissions the old way. But if you insist, here is the fiddly way to bypass using a display manager and still autologin to X...
 
 ## X Autologin Without Display Manager
 
