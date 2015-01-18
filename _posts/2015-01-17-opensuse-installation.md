@@ -82,6 +82,9 @@ Example .xsession for `xdm` display manager:
 ```
 #!/bin/bash
 mate-power-manager &
+xcompmgr &
+feh --bg-scale ~/.wallpaper/current &
+trayer --SetDockType false --transparent true --expand true --align right --alpha 255 &
 parcellite &
 sleep 1 &&
 exec sawfish
