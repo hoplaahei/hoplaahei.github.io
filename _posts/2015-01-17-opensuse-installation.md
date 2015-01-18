@@ -92,8 +92,14 @@ echo 'xhost + && clear' >> $HOME/.bashrc
 ```
 gtk-icon-theme-name="Bluecurve"
 ```
+You need to download and extract [Bluecurve](http://gnome-look.org/content/show.php/Bluecurve+GNOME%2BMATE+Theme?content=148927) icons into `~/.icons` directory.
 
-You need to download and extract [Bluecurve](http://gnome-look.org/content/show.php/Bluecurve+GNOME%2BMATE+Theme?content=148927) icons into `~/.icons` directory. 
+5.) Fix Flash in Palemoon
+
+```
+mkdir -p /usr/lib/mozilla
+sudo ln -s /usr/lib64/browser-plugins/ /usr/lib/mozilla/plugins
+```
 
 ## Make Firefox less shit
 
