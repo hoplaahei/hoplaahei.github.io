@@ -32,7 +32,7 @@ zypper ar -f http://download.opensuse.org/repositories/X11:/Utilities/openSUSE_1
 ```
 
 ```
-zypper install firefox flash-plugin git make cc rox-filer dmenu mpv rxvt-unicode urxvt-perls emacs-x11 feh mate-power-manager sawfish gtk-chtheme gpick yast2-sound trayer
+zypper install firefox flash-plugin git make cc rox-filer dmenu mpv rxvt-unicode urxvt-perls emacs-x11 feh mate-power-manager sawfish gtk-chtheme gpick yast2-sound trayer xosd
 ```
 
 ## Get sound working
