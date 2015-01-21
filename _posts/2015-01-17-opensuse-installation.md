@@ -47,7 +47,7 @@ Allow it to autoconfigure.
 
 Use this [one-click](http://opensuse-community.org/) install. This is needed to get e.g., h264 playback working in Firefox.
 
-In Firefox:
+The following config change is needed in Firefox:
 
 - enter `about:config` in the URL bar
 - search for `media.gstreamer.enabled`
