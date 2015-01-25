@@ -242,9 +242,11 @@ And make sure your user is in any important groups such as audio and video (or t
 zypper in osc
 ```
 
-Follow [this](https://en.opensuse.org/openSUSE:Build_Service_Tutorial) tutorial. The tutorial leaves out some cruical steps for cli usage though. You must login to the build service via the web first to create the home project before the cli commands will work. Also, it fails to note that the example code for adding a repository must be nested within the <project name=...> `XML` tags.
+Follow [this](https://en.opensuse.org/openSUSE:Build_Service_Tutorial) tutorial. The tutorial leaves out some cruical steps though. You must login to the build service via the web first and browse to the default home project. You will then get an option to generate it because it doesn't exist yet. **I haven't bothered looking up the equivalent cli commands to do this without logging in via the web.**
 
-For packaging python modules use [this](https://en.opensuse.org/openSUSE:Packaging_Python) guide, but make sure you've followed the [Build Service](https://en.opensuse.org/openSUSE:Build_Service_Tutorial) tutorial first to setup repositories and projects correctly. 
+Also, it fails to note that the example code for adding a repository must be nested within the <project name=...> `XML` tags.
+
+For packaging python modules use [this](https://en.opensuse.org/openSUSE:Packaging_Python) guide, but make sure you've followed the [Build Service](https://en.opensuse.org/openSUSE:Build_Service_Tutorial) tutorial first to setup repositories and projects correctly.
 
 ## Notes
 
