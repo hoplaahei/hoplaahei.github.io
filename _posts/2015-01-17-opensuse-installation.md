@@ -32,8 +32,31 @@ zypper ar -f http://download.opensuse.org/repositories/X11:/Utilities/openSUSE_1
 ```
 
 ```
-zypper install firefox flash-plugin git make cc rox-filer dmenu mpv rxvt-unicode urxvt-perls emacs-x11 feh mate-power-manager sawfish gtk-chtheme gpick yast2-sound trayer xosd
+zypper install firefox flash-plugin git make cc rox-filer dmenu mpv rxvt-unicode urxvt-perls emacs-x11 feh mate-power-manager sawfish gtk-chtheme gpick yast2-sound trayer xosd xosd-devel xfontsel
 ```
+
+## Choose fonts
+
+Construct an `X Logical Font Description (XLFD)` with `xfontsel` e.g.,:
+
+```
+-*-fixed-*-r-*-*-14-*-*-*-*-*-*-*
+```
+
+Or if the application supports `XFT`:
+
+```
+fixed:size=14
+```
+
+Manually add `~/.fonts` path to if it isn't added automatically:
+
+```
+xset +fp ~/.fonts
+```
+
+Check a font is installed with `fc-list`.
+
 
 ## Get sound working
 
