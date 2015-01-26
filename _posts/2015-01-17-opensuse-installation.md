@@ -170,6 +170,7 @@ if [ -s \$prefix/grubenv ]; then
   load_env
 fi
 EOF
+```
 
 ## Make Firefox less shit
 
