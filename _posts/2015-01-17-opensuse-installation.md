@@ -109,7 +109,7 @@ usermod -G video,audio,wheel,bumblebee joe
 
 `Yast` -> `Bootloader` -> `Bootloader Options`.
 
-## sudo without a password:
+## `sudo` without a password:
 
 `Yast` -> `Sudo`
 
@@ -149,7 +149,7 @@ mkdir -p /usr/lib/mozilla
 sudo ln -s /usr/lib64/browser-plugins/ /usr/lib/mozilla/plugins
 ```
 
-## Get dependencies for wallpaper to .Xresources colour generating [script](http://charlesleifer.com/blog/using-python-to-generate-awesome-linux-desktop-themes/)
+## Get dependencies for wallpaper to `.Xresources` colour generating [script](http://charlesleifer.com/blog/using-python-to-generate-awesome-linux-desktop-themes/)
 
 ```
 zypper install python-devel libjpeg8-devel python-pip
@@ -157,7 +157,7 @@ pip install Pillow
 python colorscheme.py
 ```
 
-## Remove Grub "sparse file" error
+## Remove Grub `sparse file` error
 
 Comment these lines in `/etc/grub.d/00_header`:
 
@@ -169,7 +169,7 @@ fi
 EOF
 ```
 
-## Make Firefox less shit
+## Customise Firefox/Palemoon
 
 `Treestyle Tabs` extension is nice, but I recommend setting the skin to 'Mixed' or 'Flat', otherwise you can't tell which tab is highlighted under certain GTK themes. It is also worthwhile to right click on the sidebar and choose 'Fix position and width of tab bar', or you will end up dragging it by accident. I also recommend going to the 'Tree' section of its configuration and unchecking 'When a new tree appears...' and 'When a new tab gets focus...', or you just end up loosing track of where your tabs got hidden.
 
