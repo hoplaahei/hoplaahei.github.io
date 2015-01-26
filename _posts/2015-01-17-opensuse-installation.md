@@ -107,17 +107,17 @@ usermod -G video,audio,wheel,bumblebee joe
 
 ## Make some adjustments to a few things that irk me
 
-1.) Set bootloader wait from 8 seconds to 1:
+### Set bootloader wait from 8 seconds to 1:
 
 `Yast` -> `Bootloader` -> `Bootloader Options`.
 
-2.) `sudo` without a password:
+### `sudo` without a password:
 
 `Yast` -> `Sudo`
 
 Edit `ALL` and check the box for `NOPASSWD`, so that it says 'Yes'. Also make sure your user is in the `wheel` group.
 
-3.) Run graphical programs as root:
+### Run graphical programs as root:
 
 The following advice from openSUSE 'Login as root' document is meant to work, but doesn't for me:
 
@@ -137,21 +137,21 @@ What did work for me is adding `xhost` command to `~/.bashrc`:
 echo 'xhost + && clear' >> $HOME/.bashrc
 ```
 
-4.) Get a better icon theme by editing `~/.gtkrc.mine`:
+### Get a better icon theme by editing `~/.gtkrc.mine`:
 
 ```
 gtk-icon-theme-name="Bluecurve"
 ```
 You need to download and extract [Bluecurve](http://gnome-look.org/content/show.php/Bluecurve+GNOME%2BMATE+Theme?content=148927) icons into `~/.icons` directory.
 
-5.) Fix Flash in Palemoon
+### Fix Flash in Palemoon
 
 ```
 mkdir -p /usr/lib/mozilla
 sudo ln -s /usr/lib64/browser-plugins/ /usr/lib/mozilla/plugins
 ```
 
-6.) Get dependencies for wallpaper to .Xresources colour generating [script](http://charlesleifer.com/blog/using-python-to-generate-awesome-linux-desktop-themes/)
+### Get dependencies for wallpaper to .Xresources colour generating [script](http://charlesleifer.com/blog/using-python-to-generate-awesome-linux-desktop-themes/)
 
 ```
 zypper install python-devel libjpeg8-devel python-pip
@@ -159,7 +159,7 @@ pip install Pillow
 python colorscheme.py
 ```
 
-7.) Remove Grub "sparse file" error
+### Remove Grub "sparse file" error
 
 
 Comment these lines in `/etc/grub.d/00_header`:
