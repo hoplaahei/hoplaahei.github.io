@@ -93,7 +93,7 @@ The following config change is also needed for Firefox:
 - search for `media.gstreamer.enabled`
 - set it to `true`
 
-## Enable Optimus Graphics Switching
+## Enable `Optimus` Graphics Switching
 
 Follow [this](https://en.opensuse.org/SDB:NVIDIA_Bumblebee) guide.
 
