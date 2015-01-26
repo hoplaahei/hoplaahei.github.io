@@ -85,7 +85,7 @@ Allow it to autoconfigure.
 
 ## Playback all popular formats in Web Browser
 
-Use this [one-click](http://opensuse-community.org/) install. This is needed to get e.g., h264 playback working in Firefox.
+Use this [one-click](http://opensuse-community.org/) install. This is needed to get e.g., `h264` playback working in Firefox.
 
 The following config change is also needed for Firefox:
 
