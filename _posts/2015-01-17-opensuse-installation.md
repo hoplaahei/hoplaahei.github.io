@@ -15,6 +15,10 @@ sudo su
 snapper create -d "Fresh"
 ```
 
+## Daemonise Emacs
+
+See [here](https://wiki.archlinux.org/index.php/Emacs#As_a_systemd_unit).
+
 ## Install essential packages
 
 For me, the most essential package when installing a new system is a clipboard manager to manage copy/paste history (we will do a lot of it):
