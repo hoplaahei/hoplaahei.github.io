@@ -107,11 +107,11 @@ usermod -G video,audio,wheel,bumblebee joe
 
 ## Make some adjustments to a few things that irk me
 
-### Set bootloader wait from 8 seconds to 1:
+#### Set bootloader wait from 8 seconds to 1:
 
 `Yast` -> `Bootloader` -> `Bootloader Options`.
 
-### `sudo` without a password:
+#### `sudo` without a password:
 
 `Yast` -> `Sudo`
 
