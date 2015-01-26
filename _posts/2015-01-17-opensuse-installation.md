@@ -142,7 +142,7 @@ gtk-icon-theme-name="Bluecurve"
 ```
 You need to download and extract [Bluecurve](http://gnome-look.org/content/show.php/Bluecurve+GNOME%2BMATE+Theme?content=148927) icons into `~/.icons` directory.
 
-## Fix Flash in Palemoon
+## Fix `Flash` in Palemoon
 
 ```
 mkdir -p /usr/lib/mozilla
@@ -157,7 +157,7 @@ pip install Pillow
 python colorscheme.py
 ```
 
-## Remove Grub `sparse file` error
+## Remove Grub `"sparse file"` error
 
 Comment these lines in `/etc/grub.d/00_header`:
 
