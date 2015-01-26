@@ -159,6 +159,18 @@ pip install Pillow
 python colorscheme.py
 ```
 
+7.) Remove Grub "sparse file" error
+
+
+Comment these lines in `/etc/grub.d/00_header`:
+
+```
+cat << EOF
+if [ -s \$prefix/grubenv ]; then
+  load_env
+fi
+EOF
+
 ## Make Firefox less shit
 
 `Treestyle Tabs` extension is nice, but I recommend setting the skin to 'Mixed' or 'Flat', otherwise you can't tell which tab is highlighted under certain GTK themes. It is also worthwhile to right click on the sidebar and choose 'Fix position and width of tab bar', or you will end up dragging it by accident. I also recommend going to the 'Tree' section of its configuration and unchecking 'When a new tree appears...' and 'When a new tab gets focus...', or you just end up loosing track of where your tabs got hidden.
