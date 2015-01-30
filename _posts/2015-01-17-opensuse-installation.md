@@ -153,6 +153,14 @@ mkdir -p /usr/lib/mozilla
 sudo ln -s /usr/lib64/browser-plugins/ /usr/lib/mozilla/plugins
 ```
 
+## Fix some apps that depend on old versions of `libudev`
+
+```
+sudo ln -s /usr/lib64/libudev.so.1 /usr/lib64/libudev.so.0
+/libudev.so.0
+```
+
+
 ## Get dependencies for wallpaper to `.Xresources` colour generating [script](http://charlesleifer.com/blog/using-python-to-generate-awesome-linux-desktop-themes/)
 
 ```
