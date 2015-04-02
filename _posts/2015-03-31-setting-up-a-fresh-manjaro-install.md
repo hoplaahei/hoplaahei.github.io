@@ -4,7 +4,7 @@ published: false
 title: Setting up a Fresh Manjaro Install
 ---
 
-## Set Thinkpad battery thresholds
+# Set Thinkpad battery thresholds
 
 Get the `linux-headers` for your kernel e.g.,
 
@@ -73,7 +73,7 @@ ExecStart=/usr/bin/perl /usr/bin/tpacpi-bat -v -s ST 0 40
 WantedBy=multi-user.target
 ```
 
-## Setup a tor proxy without DNS leaks
+# Setup a tor proxy without DNS leaks
 
 Install and enable both `tor` and `polipo`:
 
