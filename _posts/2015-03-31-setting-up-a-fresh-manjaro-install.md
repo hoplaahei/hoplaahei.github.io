@@ -4,6 +4,54 @@ published: false
 title: Setting up a Fresh Manjaro Install
 ---
 
+# Manually add UEFI boot entry if you get errors during install
+
+```
+sudo efibootmgr -c -p 2 -d /dev/sda -L Manjaro -l "\EFI\manjaro_grub\grubx64.efi"
+```
+
+# Fixing misconfigured graphics
+
+See what drivers are available for your card:
+
+```
+mhwd
+```
+
+See what drivers are already installed:
+
+```
+mhwd -li
+```
+
+If the wrong drivers are installed (e.g., one time the installer selected nouveau for my card, but it didn't work) uninstall with:
+
+```
+mhwd -r pci name-of-listed-config
+```
+
+Install the right one (e.g., nvidia-bumblebee):
+
+```
+mhwd -i pci name-of-correct-config
+```
+
+The mhwd script didn't work first time for me because of conflicts with `xorg-server`, so I temporarily removed it:
+
+```
+pacman -R xorg-server
+```
+
+And it was pulled back in by the mhwd script anyway, so no harm done (I think).
+
+# Get rid of black Manjaro themed colours in Firefox
+
+For some reason changing the gtk theme does not get rid of Manjaro dark themed colours in Firefox (the URL and URL search have a black background). I removed my whole `.mozilla` directory and it fixed it, but I'd be interested to know a more precise way to fix it, one which doesn't involve losing any Firefox settings not backed up by `Mozilla Sync`.
+
+# Problems with AUR builds
+
+The minimal Manjaro install doesn't include `AUR` support for some reason. I tried installing `base-devel`, but that conflicted with the multi-lib support, so I ended up having to install most of the base-devel packages manually (e.g., autoconf aclocal) to get things to compile . It was a bit of a pain to search for the multilib equivalents of some of these packages when I found conflicts. 
+
 # Set Thinkpad battery thresholds
 
 Get the `linux-headers` for your kernel e.g.,
