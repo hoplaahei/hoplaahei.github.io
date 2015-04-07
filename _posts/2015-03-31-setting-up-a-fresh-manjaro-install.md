@@ -30,23 +30,23 @@ If the wrong drivers are installed (e.g., one time the installer selected nouvea
 mhwd -r pci name-of-listed-config
 ```
 
-Install the right one (e.g., nvidia-bumblebee):
+Install the right one (e.g., `nvidia-bumblebee`):
 
 ```
 mhwd -i pci name-of-correct-config
 ```
 
-The mhwd script didn't work first time for me because of conflicts with `xorg-server`, so I temporarily removed it:
+The `mhwd` script didn't work first time for me because of conflicts with `xorg-server`, so I temporarily removed it:
 
 ```
 pacman -R xorg-server
 ```
 
-And it was pulled back in by the mhwd script anyway, so no harm done (I think).
+And it was pulled back in by the `mhwd` script anyway, so no harm done (I think).
 
 # Get rid of black Manjaro themed colours in Firefox
 
-For some reason changing the gtk theme does not get rid of Manjaro dark themed colours in Firefox (the URL and URL search have a black background). I removed my whole `.mozilla` directory and it fixed it, but I'd be interested to know a more precise way to fix it, one which doesn't involve losing any Firefox settings not backed up by `Mozilla Sync`.
+For some reason changing the `GTK` theme does not get rid of Manjaro dark themed colours in Firefox (the URL and URL search have a black background). I removed my whole `.mozilla` directory and it fixed it, but I'd be interested to know a more precise way to fix it, one which doesn't involve losing any Firefox settings not backed up by `Mozilla Sync`.
 
 # Problems with AUR builds
 
