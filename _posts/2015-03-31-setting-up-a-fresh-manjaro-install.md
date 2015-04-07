@@ -4,6 +4,14 @@ published: false
 title: Setting up a Fresh Manjaro Install
 ---
 
+# Wifi not enabled on startup
+
+Upgrade to at least kernel 3.18x
+
+```
+sudo mhwd-kernel -i linux318
+```
+
 # Manually add UEFI boot entry if you get errors during install
 
 ```
@@ -27,19 +35,19 @@ mhwd -li
 If the wrong drivers are installed (e.g., one time the installer selected nouveau for my card, but it didn't work) uninstall with:
 
 ```
-mhwd -r pci name-of-listed-config
+sudo mhwd -r pci name-of-listed-config
 ```
 
 Install the right one (e.g., `nvidia-bumblebee`):
 
 ```
-mhwd -i pci name-of-correct-config
+sudo mhwd -i pci name-of-correct-config
 ```
 
 The `mhwd` script didn't work first time for me because of conflicts with `xorg-server`, so I temporarily removed it:
 
 ```
-pacman -R xorg-server
+sudo pacman -R xorg-server
 ```
 
 And it was pulled back in by the `mhwd` script anyway, so no harm done (I think).
