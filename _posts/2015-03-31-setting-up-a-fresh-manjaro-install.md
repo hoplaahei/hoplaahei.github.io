@@ -107,7 +107,7 @@ pacman -S linux316-headers
 Install acpi_call_dkms from the `AUR`:
 
 ```
-yaourt -S acpi_call_dkms
+yaourt -S acpi_call-dkms
 ```
 
 Follow the instructions it gives you e.g.,:
