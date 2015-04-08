@@ -20,6 +20,20 @@ Run `mkinitcpio` for that kernel version:
 sudo mkinitcpio -p linux318
 ```
 
+Find out the `PARTUUID` by looking at the swap partition entry in your `/etc/fstab`.
+
+Edit `/etc/default/grub` to use this `PARTUUID`, e.g.,:
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="resume=PARTUUID=6da102e7-37c8-44dc-b48d-90ec09ebf9a3"
+```
+
+Regenerate `grub` with:
+
+```
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
+
 # Wifi not enabled on startup
 
 Upgrade to at least kernel 3.18x
