@@ -33,7 +33,7 @@ Regenerate `grub` with:
 ```
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
-# Daemonize urxvt
+# Daemonize URxvt
 
 The example on the Arch wiki using sockets doesn't work for me. Creating these files does:
 
