@@ -93,6 +93,12 @@ Add yourself to the user group:
 sudo gpasswd -a joe vboxusers
 ```
 
+If `virtualbox` doesn't start try installing qt4:
+
+```
+sudo pacman -S qt4
+```
+
 # Fixing misconfigured graphics
 
 See what drivers are available for your card:
