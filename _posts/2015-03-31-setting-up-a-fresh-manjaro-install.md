@@ -66,6 +66,13 @@ Accept=yes
 WantedBy=sockets.target
 ```
 
+And enable the service:
+
+```
+systemctl --user enable urxvtd
+systemctl --user start urxvtd
+```
+
 # Wifi not enabled on startup
 
 Upgrade to at least kernel 3.18x
