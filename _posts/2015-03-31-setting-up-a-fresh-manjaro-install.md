@@ -48,6 +48,51 @@ sudo mhwd-kernel -i linux318
 sudo efibootmgr -c -p 2 -d /dev/sda -L Manjaro -l "\EFI\manjaro_grub\grubx64.efi"
 ```
 
+# Install virtualbox so its modules update automatically on kernel upgrade
+
+Get the `linux-headers` for your kernel e.g.,
+
+```
+uname -r
+```
+
+Which might say we have `3.16.7.8-1-MANJARO`, so:
+
+```
+pacman -S linux316-headers
+```
+
+When installing `virtualbox` with `pacman -S virtualbox` choose 8) to select the dkms repo.
+
+Now run this command:
+
+```
+dkms install vboxhost/$(pacman -Q virtualbox|awk '{print $2}'|sed 's/\-.\+//') -k $(uname -rm|sed 's/\ /\//')
+```
+Enable `dkms` service so you don't need to type the above command each time you upgrade the kernel:
+
+```
+sudo systemctl enable dkms.service
+```
+
+Enable `vboxdrv` without reboot:
+
+```
+sudo modprobe vboxdrv
+```
+
+Install the extension pack:
+
+```
+yaourt -S virtualbox-ext-oracle
+```
+
+Add yourself to the user group:
+
+```
+sudo gpasswd -a joe vboxusers
+```
+
 # Fixing misconfigured graphics
 
 See what drivers are available for your card:
