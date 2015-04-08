@@ -161,7 +161,7 @@ Install acpi_call_dkms from the `AUR`:
 yaourt -S acpi_call-dkms
 ```
 
-Follow the instructions it gives you e.g.,:
+Follow the instructions it prints out e.g.,:
 
 ```
 sudo dkms install acpi_call/1.1.0
@@ -189,10 +189,10 @@ sudo /usr/bin/perl /usr/bin/tpacpi-bat -v -s SP 0 80
 sudo /usr/bin/perl /usr/bin/tpacpi-bat -v -s ST 0 40
 ```
 
-Create a `systemd` user-service to run this at startup (in case the thresholds get reset by taking the battery out the laptop):
+As the battery scripts require elevated priveleges, create a `systemd` system-wide service to run this at startup (in case the thresholds get reset by taking the battery out the laptop):
 
 ```
-nano -w ~/.config/systemd/user/set-battery.service
+nano -w /etc/systemd/system/set-battery.service
 ```
 
 Paste this over to the service file:
@@ -208,6 +208,12 @@ ExecStart=/usr/bin/perl /usr/bin/tpacpi-bat -v -s ST 0 40
 
 [Install]
 WantedBy=multi-user.target
+```
+
+And enable the service:
+
+```
+sudo systemctl enable set-battery.service
 ```
 
 # Setup a tor proxy without DNS leaks
