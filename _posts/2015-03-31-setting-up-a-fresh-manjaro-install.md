@@ -4,6 +4,22 @@ published: false
 title: Setting up a Fresh Manjaro Install
 ---
 
+# Fix resume from hibernation
+
+Add `resume` hook to `/etc/mkinitcpio.conf`, e.g.,:
+
+```
+HOOKS="base udev autodetect modconf block resume filesystems keyboard keymap fsck"
+```
+
+Find out your kernel version with `uname -r`, e.g., mine is `3.18.11-1-MANJARO`.
+
+Run `mkinitcpio` for that kernel version:
+
+```
+sudo mkinitcpio -p linux318
+```
+
 # Wifi not enabled on startup
 
 Upgrade to at least kernel 3.18x
