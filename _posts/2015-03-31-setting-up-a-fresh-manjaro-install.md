@@ -141,7 +141,7 @@ sudo /usr/bin/perl /usr/bin/tpacpi-bat -v -s ST 0 40
 Create a `systemd` user-service to run this at startup (in case the thresholds get reset by taking the battery out the laptop):
 
 ```
-nano ~/.config/systemd/user/set-battery.service
+nano -w ~/.config/systemd/user/set-battery.service
 ```
 
 Paste this over to the service file:
