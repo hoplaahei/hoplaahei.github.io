@@ -33,6 +33,38 @@ Regenerate `grub` with:
 ```
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
+# Daemonize urxvt
+
+The example on the Arch wiki using sockets doesn't work for me. Creating these files does:
+
+~/.config/systemd/user/urxvtd.service
+```
+[Unit]
+Description=RXVT-Unicode Daemon
+Requires=urxvtd.socket
+
+[Service]
+ExecStart=/usr/bin/urxvtd -q -o
+Environment=RXVT_SOCKET=%h/.urxvt/urxvtd-%H
+
+[Install]
+WantedBy=default.target
+```
+
+~/.config/systemd/user/urxvtd.socket
+```
+[Unit]
+Description=urxvt daemon (socket activation)
+Documentation=man:urxvtd(1) man:urxvt(1)
+
+[Socket]
+ListenStream=%h/.urxvt/urxvtd-%H
+SocketMode=0700
+Accept=yes
+
+[Install]
+WantedBy=sockets.target
+```
 
 # Wifi not enabled on startup
 
