@@ -37,7 +37,8 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 The example on the Arch wiki using sockets doesn't work for me. Creating these files does:
 
-~/.config/systemd/user/urxvtd.service
+`~/.config/systemd/user/urxvtd.service`
+
 ```
 [Unit]
 Description=RXVT-Unicode Daemon
@@ -51,7 +52,8 @@ Environment=RXVT_SOCKET=%h/.urxvt/urxvtd-%H
 WantedBy=default.target
 ```
 
-~/.config/systemd/user/urxvtd.socket
+`~/.config/systemd/user/urxvtd.socket`
+
 ```
 [Unit]
 Description=urxvt daemon (socket activation)
