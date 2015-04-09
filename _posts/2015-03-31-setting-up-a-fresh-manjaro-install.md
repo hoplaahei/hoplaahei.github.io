@@ -4,6 +4,18 @@ published: false
 title: Setting up a Fresh Manjaro Install
 ---
 
+# sudo without entering password
+
+```
+sudo visudo
+```
+
+```
+Defaults:USER_NAME      !authenticate
+```
+
+Logout and back in.
+
 # Nice zsh config
 
 ```
