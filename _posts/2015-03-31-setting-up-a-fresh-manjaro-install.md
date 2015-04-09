@@ -4,6 +4,12 @@ published: false
 title: Setting up a Fresh Manjaro Install
 ---
 
+# Faster download speeds
+
+```
+rankmirrors -g
+```
+
 # Fix resume from hibernation
 
 Add `resume` hook to `/etc/mkinitcpio.conf`, e.g.,:
