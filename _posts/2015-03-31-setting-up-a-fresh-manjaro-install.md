@@ -89,6 +89,16 @@ Defaults:USER_NAME      !authenticate
 
 Logout and back in.
 
+# Better dmenu
+
+```
+yaourt -S xboomx
+```
+
+```
+cp /usr/share/xboomx/config ~/.xboomx/config
+```
+
 # Nice zsh config
 
 ```
