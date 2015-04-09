@@ -18,13 +18,7 @@ Install `base-devel` early on. I tried installing it later and it created a lot 
 sudo pacman -S base-devel
 ```
 
-# Get wifi up from cli
-
-```
-nmcli dev wifi connect YOURWIFIESSID password YOURWIFIPASS
-```
-
-# Get latest kernel if hardware isn't working
+# Get latest kernel if any hardware isn't working
 
 List the kernels available for installation:
 
@@ -44,8 +38,44 @@ Might as well install the heads too, they come in useful for compiling things fr
 sudo pacman -S linux318-headers
 ```
 
+# Get proprietary Optimus graphics
 
+```
+sudo mhwd -i pci video-hybrid-intel-nvidia-bumblebee
+```
 
+You may need to remove conflicting drivers first, e.g.,:
+
+```
+sudo mhwd -r pci video-hybrid-intel-nouveau-bumblebee
+```
+
+# Get wifi up from cli
+
+```
+nmcli dev wifi connect YOURWIFIESSID password YOURWIFIPASS
+```
+
+# Get to a graphical interface
+
+Install your display-manager of choice e.g.,:
+
+```
+sudo pacman -S lxdm
+```
+
+Install your window-manager/desktop-environment of choice e.g.,:
+
+```
+sudo pacman -S bspwm
+```
+
+Enable and start the display-manager e.g.,:
+
+```
+sudo systemctl enable lxdm
+sudo systemctl start lxdm
+```
 
 # sudo without entering password
 
