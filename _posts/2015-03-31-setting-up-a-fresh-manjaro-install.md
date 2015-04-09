@@ -10,6 +10,43 @@ title: Setting up a Fresh Manjaro Install
 sudo pacman -Syu
 ```
 
+# Allow AUR to compile programs without constant errors
+
+Install `base-devel` early on. I tried installing it later and it created a lot of conflicts with `multilib` packages.
+
+```
+sudo pacman -S base-devel
+```
+
+# Get wifi up from cli
+
+```
+nmcli dev wifi connect YOURWIFIESSID password YOURWIFIPASS
+```
+
+# Get latest kernel if hardware isn't working
+
+List the kernels available for installation:
+
+```
+mhwd-kernel -l
+```
+
+Install one e.g.,:
+
+```
+sudo mhwd-kernel -i linux318
+```
+
+Might as well install the heads too, they come in useful for compiling things from the `AUR`:
+
+```
+sudo pacman -S linux318-headers
+```
+
+
+
+
 # sudo without entering password
 
 ```
