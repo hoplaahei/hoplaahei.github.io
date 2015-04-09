@@ -4,6 +4,12 @@ published: false
 title: Setting up a Fresh Manjaro Install
 ---
 
+# Nice zsh config
+
+```
+yaourt -S grml-zsh-config-git
+```
+
 # Faster download speeds
 
 ```
