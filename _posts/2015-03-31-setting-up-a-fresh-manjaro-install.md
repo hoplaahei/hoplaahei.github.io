@@ -4,6 +4,12 @@ published: false
 title: Setting up a Fresh Manjaro Install
 ---
 
+# Before anything (crucial)
+
+```
+sudo pacman -Syu
+```
+
 # sudo without entering password
 
 ```
