@@ -7,7 +7,7 @@ title: Setting up a Fresh Manjaro Install
 # Before anything (crucial)
 
 ```
-sudo pacman -Syu
+sudo pacman -Syyu
 ```
 
 # Allow AUR to compile programs without constant errors
