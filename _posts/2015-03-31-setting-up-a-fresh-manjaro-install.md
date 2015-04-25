@@ -391,3 +391,21 @@ And start the tor and polipo services:
 ```
 sudo systemctl start polipo tor
 ```
+
+# Allow spacefm to mount internal device and exfat
+
+Install `fuse-exfat`
+
+```
+sudo pacman -S fuse-exfat
+```
+
+Edit `/etc/udevil/udevil.conf` with e.g.,:
+
+```
+allowed_internal_devices = /dev/sdc*, /dev/sdd*, /dev/sde*, /dev/sdf*, /dev/sdg*
+default_options_exfat     = nosuid, noexec, nodev, noatime, utf8, nonempty
+allowed_options_exfat     = nosuid, noexec, nodev, noatime, ro, rw, uid=$UID, gid=$GID, utf8, nonempty
+```
+
+The `nonempty` option is required.
