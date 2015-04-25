@@ -392,7 +392,7 @@ And start the tor and polipo services:
 sudo systemctl start polipo tor
 ```
 
-# Allow spacefm to mount internal device and exfat
+# Allow spacefm to mount internal devices and exfat
 
 Install `fuse-exfat`
 
