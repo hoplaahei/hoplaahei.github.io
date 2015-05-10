@@ -33,3 +33,11 @@ Follow the simple `optimus` [guide](http://docs.slackware.com/howtos:hardware:nv
 append="root=/dev/sdb3 vga=normal resume=/dev/sdb2 ro"
 ```
 Here we have added the `resume` stipulation, pointing to our `swap` partition.
+
+On a `BIOS` system update your changes with:
+
+```
+lilo
+```
+
+UEFI systems do not need to update the bootloader.
