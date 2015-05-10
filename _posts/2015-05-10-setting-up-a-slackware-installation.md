@@ -79,10 +79,15 @@ xterm.VT100.Translations:    #override \n\
 
 # Get framebuffer working correctly
 
-Install the `DirectFB` slackbuild and create `/etc/directfbrc`:
+There are double-typing and erratic mouse bugs on the `framebuffer` that mainly affect laptops with `Synaptics` and `Trackpoint` such as `Thinkpads`. See the [ArchWiki](https://wiki.archlinux.org/index.php/Qingy#Synaptic_touchpad_and_keyboard_issue) article for more info. 
+
+In the case of my Thinkpad T520, I couldn't use `quingy` login-manager because of the double-typing when inputting my username and password. 
+
+To solve it:
+
+Install the `DirectFB` slackbuild and create `/etc/directfbrc` (e.g., `qinqy` login-manager):
 
 ```
 disable-module=linux_input 
 ```
 
-See [ArchWiki](https://wiki.archlinux.org/index.php/Qingy#Synaptic_touchpad_and_keyboard_issue) for more information.
