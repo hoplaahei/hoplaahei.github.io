@@ -44,4 +44,4 @@ UEFI systems do not need to update the bootloader.
 
 # Upgrade the system
 
-See 'Full Upgrade' in [slackpkg](http://docs.slackware.com/slackware:slackpkg) guide.
+See 'Full system upgrade' in [slackpkg](http://docs.slackware.com/slackware:slackpkg) guide.
