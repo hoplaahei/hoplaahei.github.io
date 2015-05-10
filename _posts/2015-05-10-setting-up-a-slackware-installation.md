@@ -76,3 +76,13 @@ xterm.VT100.Translations:    #override \n\
         ~Shift<BtnUp>:                  select-end(PRIMARY, CUT_BUFFER0) \n\
         Shift<BtnUp>:                   select-end(CLIPBOARD, CUT_BUFFER1)
 ```
+
+# Get framebuffer working correctly
+
+Install the `DirectFB` slackbuild and create `/etc/directfbrc`:
+
+```
+disable-module=linux_input 
+```
+
+See [ArchWiki](https://wiki.archlinux.org/index.php/Qingy#Synaptic_touchpad_and_keyboard_issue) for more information.
