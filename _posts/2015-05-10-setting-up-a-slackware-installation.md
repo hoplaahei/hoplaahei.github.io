@@ -62,4 +62,17 @@ Change the servers to something nearer in `/etc/ntp.conf`:
 	   server 1.uk.pool.ntp.org
 	   server 2.uk.pool.ntp.org
 	   server 3.uk.pool.ntp.org
-```       
+```
+
+# Fix xterm not copy/pasting from clipboard
+
+Edit `$HOME/.Xdefaults`:
+
+```
+XTerm*selectToClipboard: true
+xterm.VT100.Translations:    #override \n\
+        Shift <KeyPress> Insert:        insert-selection(CLIPBOARD) \n\
+        <Btn2Up>:                       insert-selection(SELECT, CUT_BUFFER0) \n\
+        ~Shift<BtnUp>:                  select-end(PRIMARY, CUT_BUFFER0) \n\
+        Shift<BtnUp>:                   select-end(CLIPBOARD, CUT_BUFFER1)
+```
