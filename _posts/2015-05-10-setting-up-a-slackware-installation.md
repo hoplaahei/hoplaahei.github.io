@@ -10,7 +10,7 @@ Follow the [beginners guide](http://docs.slackware.com/slackware:beginners_guide
 
 # Configure sbotool
 
-Setup `sbopkg` to [automatically](http://slackblogs.blogspot.ca/2014/01/managing-sbo-dependencies-easily.html) queue the dependencies of a `slackbuild` for installation. 
+Setup `sbopkg` to [automatically](http://slackblogs.blogspot.ca/2014/01/managing-sbo-dependencies-easily.html) offer to install all the dependencies of a `slackbuild` for you. This is NOT the same as dependency management, but it will save you the bother of installing each dependency individually, and it will also install the dependencies in the right order.
 
 # Blacklist unwanted updates
 
