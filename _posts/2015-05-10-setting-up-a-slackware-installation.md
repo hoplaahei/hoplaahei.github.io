@@ -64,7 +64,7 @@ Change the servers to something nearer in `/etc/ntp.conf`:
 	   server 3.uk.pool.ntp.org
 ```
 
-# Fix xterm not copy/pasting from clipboard
+# Fix xterm not copy/pasting to/from clipboard
 
 Edit `$HOME/.Xdefaults`:
 
