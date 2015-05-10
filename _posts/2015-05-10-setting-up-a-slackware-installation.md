@@ -52,3 +52,14 @@ UEFI systems do not need to update the bootloader.
 # Upgrade the system
 
 See 'Full system upgrade' in [slackpkg](http://docs.slackware.com/slackware:slackpkg) guide.
+
+# Fix time not syncing
+
+Change the servers to something nearer in `/etc/ntp.conf`:
+
+```
+	   server 0.uk.pool.ntp.org
+	   server 1.uk.pool.ntp.org
+	   server 2.uk.pool.ntp.org
+	   server 3.uk.pool.ntp.org
+```       
