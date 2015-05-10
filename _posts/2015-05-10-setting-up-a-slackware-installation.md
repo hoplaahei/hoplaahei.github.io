@@ -6,7 +6,7 @@ title: Setting up a Slackware installation
 
 # Basic configuration (users, locale, etc)
 
-Follow [this](http://docs.slackware.com/slackware:beginners_guide) simple guide.
+Follow the [beginners guide](http://docs.slackware.com/slackware:beginners_guide).
 
 # Configure sbotool
 
