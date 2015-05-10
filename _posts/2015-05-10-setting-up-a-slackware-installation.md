@@ -8,6 +8,13 @@ title: Setting up a Slackware installation
 
 Follow the [beginners guide](http://docs.slackware.com/slackware:beginners_guide).
 
+# Run NetworkManager and start on next reboot
+
+```
+chmod +x /etc/rc.d/rc.networkmanager
+/etc/rc.d/rc.networkmanager start
+```
+
 # Configure sbotool
 
 Setup `sbopkg` to [automatically](http://slackblogs.blogspot.ca/2014/01/managing-sbo-dependencies-easily.html) offer to install all the dependencies of a `slackbuild` for you. This is NOT the same as dependency management, but it will save you the bother of installing each dependency individually, and it will also install the dependencies in the right order.
