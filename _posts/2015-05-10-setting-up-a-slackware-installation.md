@@ -51,6 +51,7 @@ UEFI systems do not need to update the bootloader.
 
 # Upgrade the system
 
+- blacklist any third-party packages and `slackbuilds` so they don't get removed e.g., for `sbopkgs` uncomment '[0-9]+_SBo' in /etc/slackpkg/blacklist
 - follow Alien Bob's [instructions](http://www.linuxquestions.org/questions/slackware-14/xorg-segfault-after-latest-upgrade-current-944305/#post4676576) for blacklisting kernels
 
 - see 'Full system upgrade' in [slackpkg](http://docs.slackware.com/slackware:slackpkg) guide
