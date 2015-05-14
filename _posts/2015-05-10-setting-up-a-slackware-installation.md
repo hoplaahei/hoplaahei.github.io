@@ -4,6 +4,7 @@ published: false
 title: Setting up a Slackware installation
 ---
 
+
 # Basic configuration (users, locale, etc)
 
 Follow the [beginners guide](http://docs.slackware.com/slackware:beginners_guide).
@@ -93,3 +94,7 @@ Install the `DirectFB` slackbuild and create `/etc/directfbrc` (e.g., `qinqy` lo
 ```
 disable-module=linux_input 
 ```
+
+# Firefox with h.264 MP4 support
+
+Install `gst-ffmpeg` with `sbotool`.
