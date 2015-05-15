@@ -15,7 +15,7 @@ Empty the `syslog`:
 
 (Don't delete the syslog in case it causes permission problems).
 
-Blacklist the mei_me modules by editing `/lib/modprobe.d/blacklist.conf`:
+Blacklist the mei_me modules by editing /lib/modprobe.d/blacklist.conf:
 
 ```
 blacklist mei_me
