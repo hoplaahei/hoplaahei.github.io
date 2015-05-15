@@ -10,7 +10,7 @@ title: Setting up a Slackware installation
 Empty the `syslog`:
 
 ```
-/var/log/syslog
+> /var/log/syslog
 ```
 
 (Don't delete the syslog in case it causes permission problems).
