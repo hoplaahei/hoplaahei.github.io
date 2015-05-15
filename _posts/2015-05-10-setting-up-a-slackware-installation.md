@@ -5,6 +5,22 @@ title: Setting up a Slackware installation
 ---
 
 
+# Fix huge syslog file bug
+
+Empty the `syslog`:
+
+```
+> /var/log/syslog
+```
+
+(Don't delete the syslog in case it causes permission problems).
+
+Blacklist the mei_me modules by editing `/lib/modprobe.d/blacklist.conf`:
+
+```
+blacklist mei_me
+```
+
 # Basic configuration (users, locale, etc)
 
 Follow the [beginners guide](http://docs.slackware.com/slackware:beginners_guide).
