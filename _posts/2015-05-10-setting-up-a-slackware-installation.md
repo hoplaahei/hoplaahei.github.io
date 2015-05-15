@@ -10,12 +10,12 @@ title: Setting up a Slackware installation
 Empty the `syslog`:
 
 ```
-> /var/log/syslog
+/var/log/syslog
 ```
 
 (Don't delete the syslog in case it causes permission problems).
 
-Blacklist the mei_me modules by editing /lib/modprobe.d/blacklist.conf:
+Blacklist the mei_me modules by editing `/lib/modprobe.d/blacklist.conf`:
 
 ```
 blacklist mei_me
