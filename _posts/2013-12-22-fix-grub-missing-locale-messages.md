@@ -1,7 +1,9 @@
 ---
 layout: post
-published: true
+published: false
+title: Untitled
 ---
+
 
 ```
 cp /boot/grub/locale/en@quot.mo /boot/grub/locale/en.mo
