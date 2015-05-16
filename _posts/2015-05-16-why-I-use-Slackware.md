@@ -24,4 +24,4 @@ Also, the full base install of Slack includes many of the useful command line to
 
 When updating a stable Slackware installation, you still get security patches and newer versions of programs, such as Firefox, but there are never any drastic changes. The base system mostly remains the same, and if you stick to using Slackbuilds or well vetted third-party packages (such as those from the Alien BOB repos) breakage is unlikely.
 
-So if you want a system that you can mess around with as you please, but still actually rely on for daily work and play, take a look at Slackware 14.1-Stable. 
+So if you want a system that you can tinker with as you please, but still actually rely on for daily work and play, take a look at Slackware 14.1-Stable. 
