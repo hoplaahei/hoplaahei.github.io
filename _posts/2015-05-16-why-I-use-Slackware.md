@@ -20,7 +20,7 @@ With some other distros I've used, I found the build scripts a bit overwhelming 
 
 There is no need to mess about with compile time options and dependencies if you don't want to either. `sbopkg` supports `queue` files to find and install all the needed dependencies automatically. Queue files just list the other recommended Slackbuilds needed to get a Slackbuild to install properly. So if you don't care about fine-tuning what dependencies get used, sbopkg has the ability to offer to use a queue file to install all dependencies in the right order, first time. I've never had a problem installing a Slackbuild in this manner. 
 
-Also, the full base install of Slack includes many of the useful command line tools and development tools one might gradually end up installing anyway. Only on very rare occasions have I needed to compile a package manually, and even then there are tools such as `src2pkg`, that can make Slack packages from any source.
+Also, the full base install of Slackware includes many of the useful command line tools and development tools one might gradually end up installing anyway. Slackers encourage the use of a 'full' install, as it includes many of the development files needed for building and installing software. Only on very rare occasions have I needed to compile a package manually, and even then there are tools such as `src2pkg`, that can make Slack packages from any source.
 
 When updating a stable Slackware installation, you still get security patches and newer versions of programs, but there are never any drastic changes. The base system mostly remains the same, and if you stick to using Slackbuilds or well vetted third-party packages (such as those from the Alien BOB repos), breakage is unlikely.
 
