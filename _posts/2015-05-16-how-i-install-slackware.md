@@ -4,6 +4,7 @@ published: false
 title: How I install Slackware
 ---
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Also, Google if you don't understand how to use these tools. 
@@ -45,7 +46,4 @@ When it asks which media to use, choose USB. It will scan and detect the install
 
 ## When the installation is done
 
-Now is a good time to make a nice clearn image of your installation to revert back to if you mess up. This will save the hassle of having to go through the whole partitioning procedure next time. You can also use it to put Slackware on your other computers if they have similar sized disks. I don't recommend adding anything else to this clean-slate image, as, if you are forgetful like me, you will forget what you changed by the time you come to need the image, and end up opting to do a complete reinstall instead. 
-
-
-
+Now is a good time to make a nice clearn image of your installation to revert back to if you mess up. This will save the hassle of having to go through the whole partitioning procedure next time. You can also use it to put Slackware on your other computers if they have similar sized disks. I don't recommend adding anything else to this clean-slate image, except perhaps some basic steps from the [Slackware Beginners Guide](docs.slackware.com/slackware:beginners_guide), as, if you are forgetful like me, you will forget what you changed by the time you come to need the image, which could cause confusion. 
