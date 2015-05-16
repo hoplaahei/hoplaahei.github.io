@@ -46,4 +46,19 @@ When it asks which media to use, choose USB. It will scan and detect the install
 
 ## When the installation is done
 
-Now is a good time to make a nice clearn image of your installation to revert back to if you mess up. This will save the hassle of having to go through the whole partitioning procedure next time. You can also use it to put Slackware on your other computers if they have similar sized disks. I don't recommend adding anything else to this clean-slate image, except perhaps some basic steps from the [Slackware Beginners Guide](docs.slackware.com/slackware:beginners_guide), as, if you are forgetful like me, you will forget what you changed by the time you come to need the image, which could cause confusion. 
+Now is a good time to make a nice clearn image of your installation to revert back to if you mess up. This will save the hassle of having to go through the whole partitioning procedure next time. You can also use it to put Slackware on your other computers if they have similar sized disks. I don't recommend adding anything else to this clean-slate image, except perhaps some basic steps from the [Slackware Beginners Guide](docs.slackware.com/slackware:beginners_guide), as, if you are forgetful like me, you will forget what you changed by the time you come to need the image, which could cause confusion.
+
+For a first time backup a simple `dd` to a compressed file should suffice:
+
+```
+```
+
+## Learn to use Slackbuilds
+
+[Install](http://www.sbopkg.org/downloads.php) `sbopkg` and sync with the remote repository by running:
+
+```
+sbopkg -r
+```
+
+Now follow this guide to [manage queue files easily](http://slackblogs.blogspot.co.uk/2014/01/managing-sbo-dependencies-easily.html), 
