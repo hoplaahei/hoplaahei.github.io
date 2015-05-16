@@ -1,7 +1,7 @@
 ---
 layout: post
 published: false
-title: Complete Slackware Install
+title: Why I use Slackware
 ---
 
 # Why would I want to use Slackware?
