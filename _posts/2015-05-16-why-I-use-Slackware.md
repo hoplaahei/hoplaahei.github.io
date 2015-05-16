@@ -1,8 +1,9 @@
 ---
 layout: post
-published: false
+published: true
 title: Why I use Slackware
 ---
+
 
 
 # Why would I want to use Slackware?
@@ -19,4 +20,6 @@ With some other distros I've used, I found the build scripts a bit overwhelming 
 
 There is no need to mess about with compile time options and dependencies if you don't want to either. `sbopkg` supports `queue` files to find and install all the needed dependencies automatically. So if you don't care about installing all the possible dependencies for a package, sbopkg will offer to use a queue file to install everything in the right order first time. I've never had a problem installing a Slackbuild in this manner. 
 
-Also, the full base install of Slack includes many of the useful command line tools and development tools one might gradually end up installing anyway. Only on very rare occasions have I needed to compile a package manually, and even then there are tools to make Slack packages from source such as `src2pkg`.
+Also, the full base install of Slack includes many of the useful command line tools and development tools one might gradually end up installing anyway. Only on very rare occasions have I needed to compile a package manually, and even then there are tools to make Slack packages from source such as `src2pkg`. 
+
+When updating a stable Slackware installation, you still get security patches and newer versions of programs, such as Firefox, but there are never any drastic changes. The base system mostly remains the same, and if you stick to using Slackbuilds or well vetted third-party packages such as those from the Alien BOB repos, breakage is unlikely. 
