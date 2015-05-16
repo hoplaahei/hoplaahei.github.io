@@ -22,6 +22,6 @@ There is no need to mess about with compile time options and dependencies if you
 
 Also, the full base install of Slack includes many of the useful command line tools and development tools one might gradually end up installing anyway. Only on very rare occasions have I needed to compile a package manually, and even then there are tools to make Slack packages from source such as `src2pkg`. 
 
-When updating a stable Slackware installation, you still get security patches and newer versions of programs, such as Firefox, but there are never any drastic changes. The base system mostly remains the same, and if you stick to using Slackbuilds or well vetted third-party packages such as those from the Alien BOB repos, breakage is unlikely.
+When updating a stable Slackware installation, you still get security patches and newer versions of programs, such as Firefox, but there are never any drastic changes. The base system mostly remains the same, and if you stick to using Slackbuilds or well vetted third-party packages (such as those from the Alien BOB repos) breakage is unlikely.
 
 So if you want a system that you can mess around with as you please, but still actually use day-to-day for work and play, take a look at Slackware 14.1-Stable. 
