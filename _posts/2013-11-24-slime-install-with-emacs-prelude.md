@@ -1,7 +1,9 @@
 ---
 layout: post
-published: true
+published: false
+title: Untitled
 ---
+
 
 - Move your existing .emacs file and .emacs.d folder
 - Install sbcl
