@@ -20,4 +20,8 @@ hdparm --user-master u --security-erase PasSWorD /dev/sdX
 
 The `ArchWiki` has a good [article](https://wiki.archlinux.org/index.php/SSD_memory_cell_clearing) on this, so I'm not going to reiterate the steps.
 
+## Partitioning
+
+Read [this](http://slackware.mirrorcatalogs.com/slackware64-14.1/README_UEFI.TXT) guide. It should work for any modern system with or without UEFI.
+
 
