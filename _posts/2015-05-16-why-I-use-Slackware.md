@@ -8,7 +8,7 @@ title: Why I use Slackware
 
 # Why would I want to use Slackware?
 
-To put it simply: it is stable, simple to use, and offers sane defaults. However, "stable", "simple" and "sane" are subjective terms, so allow me to elaborate. 
+To put it simply: it is stable, simple to use, and sane. However, "stable", "simple" and "sane" are subjective terms, so allow me to elaborate. 
 
 Slackware is great for people like me who are OCD over keeping full control of their system. Whereas many modern Linux distros rely on automated tools, Slackware encourages a manual approach using standard Unix practices. It requires you to learn a few things, and maybe even keep a few notes about the changes you've made, but at least you will understand how things interrelate on your system. In my experience, the automated tools of other distros might not do what you think they're doing, and can lead in the long term to undesirable changes and untraceable breakage. 
 
