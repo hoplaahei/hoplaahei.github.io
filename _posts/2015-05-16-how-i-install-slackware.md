@@ -34,14 +34,14 @@ The `ArchWiki` has a good [article](https://wiki.archlinux.org/index.php/SSD_mem
 
 Read [this](http://slackware.mirrorcatalogs.com/slackware64-14.1/README_UEFI.TXT) guide. It will help you decide whether you want or need modern partitioning scheme and/or UEFI boot.
 
-Now run:
+Follow that guide to make the partitions and then run:
 
 ```
 mkswap /dev/sdX #whatever partition you used for swap)
 setup
 ```
 
-When it asks what media to use choose USB. It will scan and detect the installation files. 
+When it asks which media to use, choose USB. It will scan and detect the installation files automatically. 
 
 
 
