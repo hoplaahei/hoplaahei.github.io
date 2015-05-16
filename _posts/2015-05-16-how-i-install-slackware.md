@@ -41,7 +41,11 @@ mkswap /dev/sdX #whatever partition you used for swap)
 setup
 ```
 
-When it asks which media to use, choose USB. It will scan and detect the installation files automatically. 
+When it asks which media to use, choose USB. It will scan and detect the installation files automatically. The installer will automatically detect the EFI and swap partitions available. It is quite intelligent in figuring out which partitions to use, but you need to tell it specifically. Follow the Slackware documentation for further advice on installs, but rest-assured that most of it is fairly self-explanatory.
+
+## When the installation is done
+
+Now is a good time to make a nice clearn image of your installation to revert back to if you mess up. I don't recommend adding anything else to this clean-slate image, as, if you are forgetful like me, you will forget what you changed by the time you come to need the image, and just opt to do a complete reinstall instead. 
 
 
 
