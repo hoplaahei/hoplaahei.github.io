@@ -20,7 +20,7 @@ dd if=slackware-iso-you-downloaded.iso of=/dev/sdX bs=1M && sync
 
 ## SSD memory cell clearing
 
-The tl;dr of SSD memory cell clearing is that it could potentially give you back the same write speeds your SSD had from the factory by running these commands:
+The tl;dr of SSD memory cell clearing is that it could potentially give back the same write speeds the SSD had from the factory by running these commands:
 
 ```
 echo -n "mem" > /sys/power/state # suspend to RAM to unfreeze security
