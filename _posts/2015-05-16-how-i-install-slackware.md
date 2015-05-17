@@ -12,7 +12,7 @@ Disclaimer: these commands will wipe your disk. The commands use the form `sdX`,
 
 See the [torrents](http://www.slackware.com/getslack/torrents.php) page. I chose [Slackware 14.1 64-bit](http://www.slackware.com/torrents/slackware64-14.1-install-dvd.torrent) from the bottom of the page. At the time of writing it is the stable edition.
 
-Once downloaded put it on a USB stick from the terminal:
+Once downloaded, use a terminal to put the ISO on a USB stick:
 
 ```
 dd if=slackware-iso-you-downloaded.iso of=/dev/sdX bs=1M && sync
