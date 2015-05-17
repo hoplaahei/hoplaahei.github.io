@@ -7,6 +7,7 @@ title: How I install Slackware
 
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Also, Google if you don't understand how to use these tools. 
@@ -78,7 +79,11 @@ Now is a good time to make a nice clean image of your installation to revert bac
 
 For a first time backup a simple `dd` to a compressed file should suffice, but if you didn't choose a filesystem which supports freezing the disk such as `XFS`, then you need to reboot into a live environment such as the Slackware Install ISO, or anywhere where the disk you need to backup isn't mounted. 
 
-I'm using XFS, which allows to freeze the disk, so I don't bother rebooting into a live environment. Make sure you backup to a spare disk with nearly as much room as the disk you are backing up, or you might run out of disk space. 
+I'm using XFS, which allows to freeze the disk, so I don't bother rebooting into a live environment. But since I can't do much while the disk is frozen anyway, I do still stay on the safe side and switch in to single-user mode so that a minimal number of things are running at the time of the freze:
+
+```
+
+Make sure you backup to a spare disk with nearly as much room as the disk you are backing up, or you might run out of disk space. 
 
 ```
 xfs_freeze -f /
