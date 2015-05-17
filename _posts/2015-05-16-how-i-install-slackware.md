@@ -108,6 +108,6 @@ Now follow this guide to [manage queue files easily](http://slackblogs.blogspot.
 
 ## Bastardize your installation with multilib
 
-Adding 32-bit support to any Linux system currently draws in an extra layer of complexity that we could all do without, but it's a necessary evil to get some applications running. For instance, many wine apps needs 32-bit support, and I prefer the near native speed for games it gives me (no my laptop does not support [VGA passthrough](https://wiki.debian.org/VGAPassthrough) with KVM).
+Adding 32-bit support to any Linux system currently draws in an extra layer of complexity that we could all do without, but it's a necessary evil to get some applications running. For instance, many wine apps need 32-bit support, and I prefer the near native speed for games it gives me (no my laptop does not support [VGA passthrough](https://wiki.debian.org/VGAPassthrough) with KVM).
 
 Fortunately, `slackpkg+` makes converting Slackware to multilib easy. 
