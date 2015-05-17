@@ -99,3 +99,7 @@ sbopkg -r
 ```
 
 Now follow this guide to [manage queue files easily](http://slackblogs.blogspot.co.uk/2014/01/managing-sbo-dependencies-easily.html).
+
+## Bastardize your installation with multilib
+
+Adding 32-bit support to any Linux system currently draws in an extra layer of complexity that we could all do without, but it is a necessary evil to get some applications running. For instance, wine needs 32-bit, and I need the near native speed for games it gives me (no my laptop does not support [VGA passthrough](https://wiki.debian.org/VGAPassthrough) with KVM). 
