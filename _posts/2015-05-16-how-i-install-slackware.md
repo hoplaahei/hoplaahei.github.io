@@ -6,7 +6,7 @@ title: How I install Slackware
 
 # Preparation
 
-Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Also, Google if you don't understand how to use these tools. 
+Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
 
 ## Get Slackware ISO onto a USB pen
 
@@ -32,9 +32,9 @@ The `ArchWiki` has a good [article](https://wiki.archlinux.org/index.php/SSD_mem
 
 ## Partitioning
 
-The SlackDocs wiki has an [install](http://docs.slackware.com/slackware:install) guide for standard installation. Some modern computers force the use of UEFI boot with a GPT partitioning scheme. If you require/want this then see the UEFI [README](http://slackware.mirrorcatalogs.com/slackware64-14.1/README_UEFI.TXT).
+The SlackDocs wiki has an [install](http://docs.slackware.com/slackware:install) guide for standard installation. Some modern computers force the use of UEFI boot with a GPT partitioning scheme, and if you require/want this then see the UEFI [README](http://slackware.mirrorcatalogs.com/slackware64-14.1/README_UEFI.TXT).
 
-Follow that guide to make the partitions and then simply run:
+Afer partitioning, simply run:
 
 ```
 setup
@@ -102,6 +102,6 @@ Now follow this guide to [manage queue files easily](http://slackblogs.blogspot.
 
 ## Bastardize your installation with multilib
 
-Adding 32-bit support to any Linux system currently draws in an extra layer of complexity that we could all do without, but it is a necessary evil to get some applications running. For instance, wine needs 32-bit, and I need the near native speed for games it gives me (no my laptop does not support [VGA passthrough](https://wiki.debian.org/VGAPassthrough) with KVM). 
+Adding 32-bit support to any Linux system currently draws in an extra layer of complexity that we could all do without, but it's a necessary evil to get some applications running. For instance, many wine apps needs 32-bit support, and I prefer the near native speed for games it gives me (no my laptop does not support [VGA passthrough](https://wiki.debian.org/VGAPassthrough) with KVM).
 
 Fortunately, `slackpkg+` makes converting Slackware to multilib easy. 
