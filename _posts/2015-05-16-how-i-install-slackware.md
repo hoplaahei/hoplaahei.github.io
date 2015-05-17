@@ -6,6 +6,7 @@ title: How I install Slackware
 
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Also, Google if you don't understand how to use these tools. 
@@ -36,14 +37,13 @@ The `ArchWiki` has a good [article](https://wiki.archlinux.org/index.php/SSD_mem
 
 Read [this](http://slackware.mirrorcatalogs.com/slackware64-14.1/README_UEFI.TXT) guide. It will help you decide whether you want or need modern partitioning scheme and/or UEFI boot.
 
-Follow that guide to make the partitions and then run:
+Follow that guide to make the partitions and then simply run:
 
 ```
-mkswap /dev/sdX #whatever partition you used for swap)
 setup
 ```
 
-When it asks which media to use, choose USB. It will scan and detect the installation files automatically. The installer will automatically detect the EFI and swap partitions available. It is quite intelligent in figuring out which partitions to use, but you need to tell it specifically. Follow the Slackware documentation for further advice on installs, but rest-assured that most of it is fairly self-explanatory.
+When it asks which media to use, choose USB. It will scan and detect the installation files automatically. The installer will automatically detect the EFI and swap partitions available. It is quite intelligent in figuring out which partitions to use, but you need to tell it specifically. Follow the `SlackDocs` on [installation](http://docs.slackware.com/slackware:install) for further advice, but rest-assured that most of it is fairly self-explanatory.
 
 ## When the installation is done
 
