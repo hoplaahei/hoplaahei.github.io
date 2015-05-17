@@ -45,7 +45,7 @@ setup
 
 When it asks which media to use, choose USB. It will scan and detect the installation files automatically. The installer will automatically detect the EFI and swap partitions available. It is quite intelligent in figuring out which partitions to use, but you need to tell it specifically. Follow the `SlackDocs` on [installation](http://docs.slackware.com/slackware:install) for further advice, but rest-assured that most of it is fairly self-explanatory.
 
-If you used LVM then there are some additional steps. Before rebooting run:
+If you followed the partitioning scheme in this guide, then you may skip to the next section. If, however, you used `LVM` (Logical Volume Manager), then there are some additional steps to do before rebooting:
 
 ```
 mount -o bind /dev /mnt/dev
@@ -62,7 +62,7 @@ Now modify `/boot/efi/EFI/Slackware/elilo.conf` for `UEFI` systems or `/etc/lilo
 append="root=/dev/yourVG/yourLV vga=normal ro"
 ```
 
-Replace 'slack' with whatever you named the `Volume Group` and root with the `Logical Volume`.  
+Replace 'yourVG' with whatever you named the `Volume Group` and 'yourLV' with the `Logical Volume` you created.  
 
 Now run:
 
@@ -70,9 +70,11 @@ Now run:
 eliloconfig # or liloconfig if you use lilo
 ```
 
+And reboot.
+
 ## When the installation is done
 
-Now is a good time to make a nice clearn image of your installation to revert back to if you mess up. This will save the hassle of having to go through the whole partitioning procedure next time. You can also use it to put Slackware on your other computers if they have similar sized disks. I don't recommend adding anything else to this clean-slate image, except perhaps some basic steps from the [Slackware Beginners Guide](docs.slackware.com/slackware:beginners_guide), as, if you are forgetful like me, you will forget what you changed by the time you come to need the image, which could cause confusion.
+Now is a good time to make a nice clean image of your installation to revert back to if you mess up. This will save the hassle of having to go through the whole partitioning procedure next time. You can also use it to put Slackware on your other computers if they have similar sized disks (but remember to change `bootloader` and `fstab` entries). I don't recommend adding anything else to this clean-slate image, except perhaps some basic steps from the [Slackware Beginners Guide](docs.slackware.com/slackware:beginners_guide), as, if you are forgetful like me, you won't remember what you changed by the time you actually come to need the image, which could cause confusion.
 
 For a first time backup a simple `dd` to a compressed file should suffice:
 
