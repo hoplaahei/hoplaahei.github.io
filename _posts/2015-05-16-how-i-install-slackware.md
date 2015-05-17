@@ -8,6 +8,7 @@ title: How I install Slackware
 
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Also, Google if you don't understand how to use these tools. 
@@ -75,15 +76,19 @@ And reboot.
 
 ## When the installation is done
 
-Now is a good time to make a nice clean image of your installation to revert back to if you mess up. This will save the hassle of having to go through the whole partitioning procedure next time. You can also use it to put Slackware on your other computers if they have similar sized disks (but remember to change `bootloader` and `fstab` entries). I don't recommend adding anything else to this clean-slate image, except perhaps some basic steps from the [Slackware Beginners Guide](docs.slackware.com/slackware:beginners_guide), as, if you are forgetful like me, you won't remember what you changed by the time you actually come to need the image, which could cause confusion.
+Now is a good time to make a nice clean image of your installation to revert back to if you mess up. This will save the hassle of having to go through the whole partitioning and setup procedure next time. You can also use this image to put Slackware on other computers if they have similar sized disks (but remember to change `[e]ilo` and `fstab` entries). I don't recommend adding anything else to this clean-slate image, except perhaps the basic configuration from the [Slackware Beginners Guide](docs.slackware.com/slackware:beginners_guide). Otherwise, if you are forgetful like me, you won't remember what was edited by the time you actually come to need the image, which could cause confusion.
 
-For a first time backup a simple `dd` to a compressed file should suffice, but if you didn't choose a filesystem which supports freezing the disk such as `XFS`, then you need to reboot into a live environment such as the Slackware Install ISO, or anywhere where the disk you need to backup isn't mounted. 
+There is no one absolute, universally agreed on method for backing up. If you've got a lot of spare disk space, I recommend a simple `dd` to a compressed image file for the first time backup, as it is a tried and true method. Please note that if you didn't choose a filesystem which supports freezing the disk such as `XFS`, then rebooting into a live environment such as the Slackware Install ISO is necessary, or anywhere where the disk to backup isn't mounted. 
 
-I'm using XFS, which allows to freeze the disk, so I don't bother rebooting into a live environment. But since I can't do much while the disk is frozen anyway, I do still stay on the safe side and switch in to single-user mode so that a minimal number of things are running at the time of the freze:
+I'm using XFS, which allows to freeze the mounted disk, and in that case rebooting into a live environment isn't necessary. To avoid any problems with PID files of running processes and such in the frozen image, I also switch to single user to shut off as much as I can, by running:
 
 ```
+/sbin/init 1
+```
 
-Make sure you backup to a spare disk with nearly as much room as the disk you are backing up, or you might run out of disk space. 
+That way a minimal number of things are running at the time of the freeze.
+
+Also, make sure the backup goes to a spare disk with at least nearly as much room as the disk you are backing up to, or disk space might run out. 
 
 ```
 xfs_freeze -f /
