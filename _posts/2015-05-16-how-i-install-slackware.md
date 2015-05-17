@@ -40,9 +40,9 @@ Afer partitioning, simply run:
 setup
 ```
 
-If following the steps in my guide then you are using a USB installation, so when prompted for the installation media choose USB and the installer will detect the install packages correctly. EFI and swap partitions should get detected and formatted automatically. Follow the `SlackDocs` on [installation](http://docs.slackware.com/slackware:install) for further advice, but the installer is usually clever enough in figuring out what you want.
+If following the steps in my guide, then you are using a USB installation, so when prompted for the installation media choose USB, and the installer will detect the install packages correctly. EFI and swap partitions should get detected and formatted automatically. Follow the `SlackDocs` on [installation](http://docs.slackware.com/slackware:install) for further advice, but the installer is usually clever enough in figuring out what you want.
 
-If following the partitioning scheme in this guide, then skip to the next section. If, however, `LVM` (Logical Volume Manager) is required, then follow these additional steps before rebooting:
+If following the partitioning scheme in this guide, then skip to the next section. If, however, you followed the links in SlackDocs for `LVM` (Logical Volume Manager) installation, then follow these additional steps before rebooting after the install:
 
 ```
 mount -o bind /dev /mnt/dev
@@ -53,7 +53,7 @@ $( /usr/share/mkinitrd/mkinitrd_command_generator.sh -r )
 exit
 ```
 
-Now modify `/boot/efi/EFI/Slackware/elilo.conf` for `UEFI` systems, or `/etc/lilo.conf` for `BIOS` systems. Change the append line to:
+And modify `/boot/efi/EFI/Slackware/elilo.conf` for `UEFI` systems, or `/etc/lilo.conf` for `BIOS` systems to use the LVM volumes. Change the append line to:
 
 ```
 append="root=/dev/yourVG/yourLV vga=normal ro"
@@ -75,19 +75,19 @@ Now is a good time to make a nice clean image of your installation to revert bac
 
 I don't recommend adding anything else to the backup image, except perhaps a basic configuration from the [Slackware Beginners Guide](docs.slackware.com/slackware:beginners_guide). Otherwise, you might not remember what was edited by the time it comes to actually needing the image. Save confusing yourself.
 
-There is no absolute, universally agreed on method for backing up. Assuming disk-space is not an issue, I recommend the tried and true `dd` to a compressed image file for the first time backup. I'll explain this method now. 
+There is no absolute, universally agreed on method for backing up. Assuming you have a large enough spare drive around, I recommend the tried and true `dd` to a compressed image file for the first time backup. I'll explain this method now. 
 
 Do not leave the system that needs backing up running unless the underlying filesystem supports freezing (e.g., XFS). Instead, reboot into a live environment such as the Slackware Install ISO.
 
-I'm using XFS filesystem, which allows freezing the mounted disk, so in that case rebooting into a live environment isn't necessary. But to avoid any problems with PID files of running processes, and such, in the frozen image, I also switch to single-user mode to shut off as much as I can. To do so, run:
+I'm using XFS filesystem, which allows freezing the mounted disk, so I don't bother rebooting into a live environment. But to avoid any problems with the likes of PID files of running processes in the frozen image, I also switch to single-user mode to shut off as much as I can. To do so, run:
 
 ```
 /sbin/init 1
 ```
 
-That way a minimal number of things are running at the time of the freeze.
+That way a minimal number of things are running when it comes to entering the freeze command on the console.
 
-Also, make sure the backup goes to a spare disk with at least nearly as much room as the disk that needs backing up, otherwise disk space might run out. 
+Also, make sure the backup goes to a spare disk with at least nearly as much space as the full size of the disk that needs backing up, otherwise disk space might run out. 
 
 Steps:
 
