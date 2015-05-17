@@ -28,7 +28,7 @@ hdparm --user-master u --security-set-pass PasSWorD /dev/sdX
 hdparm --user-master u --security-erase PasSWorD /dev/sdX
 ```
 
-The `ArchWiki` has a good [article](https://wiki.archlinux.org/index.php/SSD_memory_cell_clearing) on this, so I'm not going to reiterate the steps.
+The `ArchWiki` has a good [article](https://wiki.archlinux.org/index.php/SSD_memory_cell_clearing) on this, so I'm not going to reiterate the steps in detail.
 
 ## Partitioning
 
