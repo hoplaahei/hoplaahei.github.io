@@ -80,7 +80,7 @@ Now is a good time to make a nice clean image of your installation to revert bac
 
 There is no one absolute, universally agreed on method for backing up. If you've got a lot of spare disk space, I recommend a simple `dd` to a compressed image file for the first time backup, as it is a tried and true method. Please note that if you didn't choose a filesystem which supports freezing the disk such as `XFS`, then rebooting into a live environment such as the Slackware Install ISO is necessary, or anywhere where the disk to backup isn't mounted. 
 
-I'm using XFS, which allows to freeze the mounted disk, and in that case rebooting into a live environment isn't necessary. To avoid any problems with PID files of running processes and such in the frozen image, I also switch to single user to shut off as much as I can, by running:
+I'm using XFS filesystem, which allows to freeze the mounted disk, and in that case rebooting into a live environment isn't necessary. But to avoid any problems with PID files of running processes and such in the frozen image, I also switch to single-user mode to shut off as much as I can, by running:
 
 ```
 /sbin/init 1
