@@ -76,9 +76,13 @@ And reboot.
 
 Now is a good time to make a nice clean image of your installation to revert back to if you mess up. This will save the hassle of having to go through the whole partitioning procedure next time. You can also use it to put Slackware on your other computers if they have similar sized disks (but remember to change `bootloader` and `fstab` entries). I don't recommend adding anything else to this clean-slate image, except perhaps some basic steps from the [Slackware Beginners Guide](docs.slackware.com/slackware:beginners_guide), as, if you are forgetful like me, you won't remember what you changed by the time you actually come to need the image, which could cause confusion.
 
-For a first time backup a simple `dd` to a compressed file should suffice:
+For a first time backup a simple `dd` to a compressed file should suffice, but if you didn't choose a filesystem which supports freezing the disk such as `XFS`, then you need to reboot into a live environment such as the Slackware Install ISO, or anywhere where the disk you need to backup isn't mounted. 
+
+I'm using XFS, which allows to freeze the disk, so I don't bother rebooting into a live environment. Make sure you backup to a spare disk with nearly as much room as the disk you are backing up, or you might run out of disk space. 
 
 ```
+xfs_freeze /dev/sdX
+dd if=/dev/sda | gzip > /path/to/backup/disc/location/ssd_backup.gz
 ```
 
 ## Learn to use Slackbuilds
