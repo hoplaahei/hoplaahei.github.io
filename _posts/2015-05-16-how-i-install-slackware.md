@@ -122,3 +122,7 @@ From the slackpkg+ documentation:
 
 > Periodically you should run "slackpkg install multilib"
 > after run "slackpkg upgrade-all"
+
+## Support for nVidia Optimus
+
+Someone made a one-liner to install it. See the [docs](http://docs.slackware.com/howtos:hardware:nvidia_optimus}. 
