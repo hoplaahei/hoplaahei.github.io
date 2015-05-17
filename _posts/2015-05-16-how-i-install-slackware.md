@@ -81,7 +81,7 @@ For a first time backup a simple `dd` to a compressed file should suffice, but i
 I'm using XFS, which allows to freeze the disk, so I don't bother rebooting into a live environment. Make sure you backup to a spare disk with nearly as much room as the disk you are backing up, or you might run out of disk space. 
 
 ```
-xfs_freeze /dev/sdX
+xfs_freeze -f /
 dd if=/dev/sda | gzip > /path/to/backup/disc/location/ssd_backup.gz
 ```
 
