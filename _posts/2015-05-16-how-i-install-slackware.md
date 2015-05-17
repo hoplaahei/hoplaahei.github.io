@@ -4,6 +4,7 @@ published: false
 title: How I install Slackware
 ---
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -119,9 +120,5 @@ installpkg slackpkg+-[downloaded-version]-noarch-2mt.txz
 
 From the slackpkg+ documentation:
 
->     Periodically you should run "slackpkg install multilib"
->     after run "slackpkg upgrade-all"
-
-
-
-
+> Periodically you should run "slackpkg install multilib"
+> after run "slackpkg upgrade-all"
