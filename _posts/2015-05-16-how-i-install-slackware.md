@@ -117,4 +117,11 @@ installpkg slackpkg+-[downloaded-version]-noarch-2mt.txz
 /usr/doc/slackpkg+-*/setupmultilib.sh
 ```
 
+From the slackpkg+ documentation:
+
+>     Periodically you should run "slackpkg install multilib"
+>     after run "slackpkg upgrade-all"
+
+
+
 
