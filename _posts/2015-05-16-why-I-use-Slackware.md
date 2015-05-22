@@ -8,7 +8,7 @@ Slackware is great for people like me who are OCD over keeping full control of a
 
 The thing that puts many off using Slackware is the lack of officially supported dependency resolution for packages. In practice, however, dependency conflicts rarely happen, due to a large amount of software available as Slackbuilds. Slackbuilds require only the base system or other Slackbuilds as dependencies, so nothing tends to conflict.
 
-`sbopkg` makes installing Slackbuilds easy. It detects user modifications to the Slackbuilds and offer a choice between using the original or edited version. This prompt helps to remind the user of any changes made. Furthermore, any options set only apply to that Slackbuild, and will not change the defaults for other Slackbuilds, which is reassuring to know for a control freak such as myself.
+`sbopkg` makes installing Slackbuilds easy. It detects user modifications to the Slackbuilds and offers a choice between using the original or edited version. This prompt helps to remind the user of any changes made. Furthermore, any options set only apply to that Slackbuild, and will not change the defaults for other Slackbuilds, which is reassuring to know for a control freak such as myself.
 
 The package build scripts of some other distros are complex and overuse syntactic sugar; this sugar helps package maintainers who do a lot of packaging, but adds unecessary layers of abstraction and complexity for the average user. Conversely, Slackbuilds use simple, standard, but well documented shell script. Variables listed at the start of Slackbuilds make it easy for the user to discover and set the interesting features of software.
 
