@@ -4,7 +4,7 @@ published: true
 title: Why I use Slackware
 ---
 
-Slackware is great for people like me who are OCD over keeping full control of a system. Although it offers automated tools and scripts for repetitive tasks, it also mandates more user interaction and understanding of the different Linux components than most other distros. To me this is a good thing, because automated tools don't always do what you expect, and in the long term often lead to undesirable changes and untraceable breakage.
+Slackware is great for people like me who are OCD over keeping full control of a system. Although it offers automated tools and scripts for repetitive tasks, it also mandates more user interaction and understanding of the different Linux components than most other distros. This is a good thing, because automated tools don't always do what you expect; they often lead to undesirable changes and untraceable breakage.
 
 The thing that puts many off using Slackware is the lack of officially supported dependency resolution for packages. In practice, however, dependency conflicts rarely happen, due to a large amount of software available as Slackbuilds. Slackbuilds require only the base system or other Slackbuilds as dependencies, so nothing tends to conflict.
 
