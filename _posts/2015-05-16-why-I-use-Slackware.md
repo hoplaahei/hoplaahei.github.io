@@ -16,6 +16,6 @@ If you don't care about fine-tuning which dependencies get used, `sbopkg` can us
 
 Also, the full base install of Slackware includes many of the useful command line tools and development tools that end up getting installed gradually on typical systems anyway. The 'Full' Slackware install is recommended, as it includes many of the development files needed for building and installing software. On the rare occasions when no Slackbuild is available, `src2pkg` helps make Slack packages from any source.
 
-When updating a stable Slackware installation, security patches and newer versions of programs are installed, but there are never any drastic changes between releases. The base system mostly remains the same (especially in the stable branch), and by sticking to Slackbuilds or well vetted third-party packages (such as those from the Alien BOB repos), breakage is unlikely.
+When updating a Slackware installation, security patches and newer versions of programs are installed, but there are never any drastic changes between releases. The base system mostly remains the same (especially in the stable branch), and by sticking to Slackbuilds or well vetted third-party packages (such as those from the Alien BOB repos), breakage is unlikely.
 
 For a system you can tinker with as you please, but still actually rely on for daily work and play, take a look at Slackware.
