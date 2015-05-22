@@ -13,7 +13,7 @@ Arguably the most distinctive characteristic of Slackware is the lack of officia
 
 The package build scripts of some other distros are complex, and overuse syntactic sugar; admittedly, this sugar helps package maintainers who do a lot of bulk packaging, but adds unecessary layers of abstraction and complexity for the average user. Conversely, Slackbuilds use simple, standard, but well documented shell script. Variables listed at the start of Slackbuilds make it easy for the user to discover and set the interesting features of software.
 
-If you don't care about fine-tuning which dependencies get used, `sbopkg` can use [queue](http://www.sbopkg.org/queues.php) files to find the right Slackbuilds and install them as dependencies in the correct order. `sqg` tool is used to keep an up-to-date list of queue files for all Slackbuilds. The combination of queue files and Slackbuilds work surprisingly well. 
+If you don't care about fine-tuning which dependencies get used, `sbopkg` can use [queue](http://www.sbopkg.org/queues.php) files to find the right Slackbuilds and install them as dependencies in the correct order. `sqg` tool is used to keep an up-to-date list of queue files for all Slackbuilds. The combination of queue files and Slackbuilds works surprisingly well. 
 
 Also, the full base install of Slackware includes many of the useful command line tools and development tools that end up getting installed gradually on typical systems anyway. The 'Full' Slackware install is recommended, as it includes many of the development files needed for building and installing software. On the rare occasions when no Slackbuild is available, `src2pkg` helps make Slack packages from any source.
 
