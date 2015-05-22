@@ -15,7 +15,7 @@ The package build scripts of some other distros are complex, and overuse syntact
 
 If you don't care about fine-tuning which dependencies get used, `sbopkg` can use [queue](http://www.sbopkg.org/queues.php) files to find the right Slackbuilds and install them as dependencies in the correct order. `sqg` tool is used to keep an up-to-date list of queue files for all Slackbuilds. The combination of queue files and Slackbuilds works surprisingly well. 
 
-Also, the full base install of Slackware includes many of the useful command line tools and development tools that end up getting installed gradually on typical systems anyway. The 'Full' Slackware install is recommended, as it includes many of the development files needed for building and installing software. On the rare occasions when no Slackbuild is available, `src2pkg` helps make Slack packages from any source.
+Also, the full base install of Slackware includes many of the useful command-line tools and development tools that end up getting installed gradually on typical systems anyway. The 'Full' Slackware install is recommended, as it includes many of the development files needed for building and installing software. On the rare occasions when no Slackbuild is available, `src2pkg` helps make Slack packages from any source.
 
 When updating a Slackware installation, security patches and newer versions of programs are installed, but there are never any drastic changes between releases. The base system mostly remains the same (especially in the stable branch), and by sticking to Slackbuilds or well vetted third-party packages (such as those from the Alien BOB repos), breakage is unlikely.
 
