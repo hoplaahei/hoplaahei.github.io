@@ -4,12 +4,6 @@ published: true
 title: Why I use Slackware
 ---
 
-
-
-# Why would I want to use Slackware?
-
-To put it simply: it is stable, simple to use, and sane. However, "stable", "simple" and "sane" are subjective terms, so allow me to elaborate. 
-
 Slackware is great for people like me who are OCD over keeping full control of their system. It requires you to learn a few standard practices and conventions, and maybe even keep a few notes about the changes you've made, but at least you will understand how things interrelate on your system. Slackware does offer some automated tools and scripts for repetitive tasks, but also encourages more user interaction and understanding than most other distros do. To me this is a good thing, because automated tools might not do what you think they're doing, and in the long term often lead to undesirable changes and untraceable breakage. 
 
 The thing that puts many off using Slackware is that it has no officially supported dependency resolution for its packages. I've found, however, that in practice dependency conflicts never happen on Slackware, because 90% of the software I need has a `Slackbuild` available already. Slackbuilds tend to use other Slackbuilds as dependencies, or the base install itself, so nothing conflicts. 
@@ -24,4 +18,4 @@ Also, the full base install of Slackware includes many of the useful command lin
 
 When updating a stable Slackware installation, you still get security patches and newer versions of programs, but there are never any drastic changes between releases. The base system mostly remains the same, and if you stick to using Slackbuilds or well vetted third-party packages (such as those from the Alien BOB repos), breakage is unlikely.
 
-So if you want a system that you can tinker with as you please, but still actually rely on for daily work and play, please take a look at Slackware 14.1-stable. 
+So if you want a system that you can tinker with as you please, but still actually rely on for daily work and play, please take a look at Slackware 14.1-stable.
