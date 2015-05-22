@@ -18,4 +18,4 @@ Also, the full base install of Slackware includes many of the useful command lin
 
 When updating a Slackware installation, security patches and newer versions of programs are installed, but there are never any drastic changes between releases. The base system mostly remains the same (especially in the stable branch), and by sticking to Slackbuilds or well vetted third-party packages (such as those from the Alien BOB repos), breakage is unlikely.
 
-For a stable system that you can rely on for daily work and play, but still tinker with as you please, take a look at Slackware.
+For a stable system that you can rely on for daily work and play, take a look at Slackware.
