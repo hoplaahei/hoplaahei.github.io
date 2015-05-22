@@ -11,7 +11,7 @@ Arguably the most distinctive characteristic of Slackware is the lack of officia
 
 `sbopkg` makes installing Slackbuilds easy. It detects user modifications to the script, and offers a choice between using the original or edited version. This prompt helps to remind the user of any changes made. Furthermore, any options set only apply to that Slackbuild, and will not change the defaults for other Slackbuilds -- this is reassuring to know for a control freak such as myself.
 
-The package build scripts of some other distros are complex, and overuse syntactic sugar; admittedly, this sugar helps package maintainers who do a lot of bulk packaging, but adds unecessary layers of abstraction and complexity for the average user. Conversely, Slackbuilds use simple, standard, but well documented shell script. Variables listed at the start of Slackbuilds make it easy for the user to discover and set the interesting features of software.
+The package build scripts of some other distros are complex, and overuse syntactic sugar; this sugar helps package maintainers who do a lot of bulk packaging, but adds unecessary layers of abstraction and complexity for the average user. Conversely, Slackbuilds use simple, standard, but well documented shell script. Variables listed at the start of Slackbuilds make it easy for the user to discover and set the interesting features of software.
 
 If you don't care about fine-tuning which dependencies get used, `sbopkg` can use [queue](http://www.sbopkg.org/queues.php) files to find the right Slackbuilds and install them as dependencies in the correct order. `sqg` tool is used to keep an up-to-date list of queue files for all Slackbuilds. The combination of queue files and Slackbuilds works surprisingly well. 
 
