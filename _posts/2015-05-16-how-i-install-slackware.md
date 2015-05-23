@@ -14,15 +14,15 @@ Disclaimer: these commands will wipe your disk. The commands use the form `sdX`,
 
 See the [torrents](http://www.slackware.com/getslack/torrents.php) page. I chose [Slackware 14.1 64-bit](http://www.slackware.com/torrents/slackware64-14.1-install-dvd.torrent) from the bottom of the page. At the time of writing it is the stable edition.
 
-Once downloaded, use a terminal to put the ISO on a USB stick:
+Even though the ISO is for DVDs, it works just as well on a USB stick (replace sdX with the USB stick device):
 
 ```
-dd if=slackware-iso-you-downloaded.iso of=/dev/sdX bs=1M && sync
+dd if=slackware-DVD-iso-you-downloaded.iso of=/dev/sdX bs=1M && sync
 ```
 
 ## SSD memory cell clearing
 
-The tl;dr of SSD memory cell clearing is that it could potentially give back the same write speeds the SSD had from the factory by running these commands:
+This step is not at all essential to installing Slackware, but it is something I always do out of habit. The tl;dr of SSD memory cell clearing is that it could reset any slow down in SSD write speeds by returning it to factory defaults:
 
 ```
 echo -n "mem" > /sys/power/state # suspend to RAM to unfreeze security
