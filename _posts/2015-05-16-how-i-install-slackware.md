@@ -4,11 +4,6 @@ published: true
 title: How I install Slackware
 ---
 
-
-
-
-
-
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -120,7 +115,9 @@ I advise to read the comments of `/etc/profile.d/lang.sh` when setting a locale 
 LANG=C xpdf
 ```
 
-When following the beginners guide steps to install the generic kernel, you need to copy the `initrd` and `vmlinuz` from that kernel to `/boot/efi/EFI/Slackware`, e.g., 
+## Using a generic kernel on UEFI systems
+
+There are some additional steps to load the new generic kernel on UEFI systems using `elilo`. Copy the `initrd` and `vmlinuz` from that kernel to `/boot/efi/EFI/Slackware`, e.g., 
 
 ```
 cp /boot/vmlinuz-generic-3.10.17 /boot/efi/EFI/Slackware/
@@ -172,15 +169,19 @@ From the slackpkg+ documentation:
 > Periodically you should run "slackpkg install multilib"
 > after run "slackpkg upgrade-all"
 
-## Prevent unwanted packages getting installed when requesting new packages
+## Upgrade packages
 
-Edit `/etc/slackpkg/blacklist` with e.g.,:
+The [systemupgade](http://docs.slackware.com/howtos:slackware_admin:systemupgrade) wiki article covers all the steps. 
+
+One thing I found annoying is that slackpkg `install-new` asks to upgrade packages I don't want on my system (e.g., kde, xfce). To stop getting prompts to install such packages, edit `/etc/slackpkg/blacklist`:
 
 ```
 kde/*
 kdei/*
 xfce/*
 ```
+
+If using `UEFI` and `elilo`, it is safe to upgrade kernel without blacklisting, because the old kernel will still boot until you explicity activate the new one. See **"Using a generic kernel on UEFI systems"** heading above for how to do that.
 
 ## Support for nVidia Optimus
 
