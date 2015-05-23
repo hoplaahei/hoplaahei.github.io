@@ -111,7 +111,7 @@ Connect to one (start line with a space to prevent password getting stored in th
 
 Do all the steps in the [begginers guide](http://docs.slackware.com/slackware:beginners_guide) and also follow the link to [localisation](http://docs.slackware.com/slackware:localization), as you can do useful things like get the '£' sign working permanently on a UK keyboard in `X`. 
 
-The only thing I want to add to the steps in these guides is to follow the advice in the comments of `/etc/profile.d/lang.sh` and not enable UTF-8 for the locale. I experienced strange behaviour with some applications, e.g., `xpdf` failed to load some PDFs. If, however, UTF-8 is essential to your system then you can still get the problem apps to load by launching them with `C` locale like this:
+The only thing I want to add to the steps in these guides is to follow the advice in the comments of `/etc/profile.d/lang.sh` and not enable UTF-8 for the locale. I experienced strange behaviour with some applications, e.g., `xpdf` failing to load some PDFs. If, however, UTF-8 is essential to your system then you can still get the problem apps to load by launching them with `C` locale like this:
 
 ```
 LANG=C xpdf
