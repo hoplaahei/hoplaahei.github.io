@@ -101,7 +101,7 @@ From the terminal list the available access points:
 nmcli dev wifi
 ```
 
-Connect to one (start line with a space to prevent password getting stored in the history file of the shell)
+Connect to one (start this line with a space to prevent the wifi password getting stored in the history file of the shell)
 
 ```
  nmcli dev wifi connect YourAccessPoint password YoUrPaSs
