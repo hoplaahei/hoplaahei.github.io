@@ -5,6 +5,7 @@ title: How I install Slackware
 ---
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -70,11 +71,59 @@ eliloconfig # or liloconfig if you use lilo
 
 And reboot.
 
-## When the installation is done
+## Get correct keys on the keyboard
+
+After logging in it is useful to start `X` with `startx` command to run the default window manager selected in installation e.g., `windowmaker`, but the keys might not be right on the keyboard. For a quick fix, run from the terminal e.g.,
+
+```
+setxkbmap gb # for a British keyboard
+```
+
+This will only work for the current session, but we will set it permanently later. 
+
+## Wireless networking
+
+Enable `NetworkManager` at boot:
+
+```
+chmod +x /etc/rc.d/rc.networkmanager
+```
+
+Start NetworkManager:
+
+```
+/etc/rc.d/rc.networkmanager start
+```
+
+From the terminal list the available access points:
+
+```
+nmcli dev wifi
+```
+
+Connect to one (start line with a space to prevent password getting stored in the history file of the shell)
+
+```
+ nmcli dev wifi connect YourAccessPoint password YoUrPaSs
+```
+
+## Follow the beginners guide
+
+Do all the steps in the [begginers guide](http://docs.slackware.com/slackware:beginners_guide) and also follow the link to [localisation](http://docs.slackware.com/slackware:localization) as you can do useful things like get the '£' sign working permanently on a UK keyboard in `X`. 
+
+The only thing I want to add to the steps in these guides is to follow the advice in the comments of `/etc/profile.d/lang.sh` and not enable UTF-8 for the locale. I experienced strange behaviour with some applications, e.g., `xpdf` failed to load some PDFs. If, however, UTF-8 is essential to your system then you can still get the problem apps to load by launching them with `C` locale like this:
+
+```
+LANG=C xpdf
+```
+
+
+
+## Take a backup
 
 Now is a good time to make a nice clean image of your installation to revert back to if things go wrong. This will save the hassle of having to go through the whole partitioning and setup procedure again. This image is also useful for deploying Slackware to other computers with similar sized disks (but remember to change `[e]ilo` and `fstab` entries). 
 
-I don't recommend adding anything else to the backup image, except perhaps a basic configuration from the [Slackware Beginners Guide](docs.slackware.com/slackware:beginners_guide). Otherwise, you might not remember what was edited by the time it comes to actually needing the image. Save confusing yourself.
+I don't recommend adding anything else to the backup image, except perhaps a basic configuration from the [Slackware Beginners Guide](docs.slackware.com/slackware:beginners_guide). Otherwise, you might not remember what was edited by the time it comes to actually needing the image. Save the confusion.
 
 There is no absolute, universally agreed on method for backing up. Assuming you have a large enough spare drive around, I recommend the tried and true `dd` to a compressed image file for the first time backup. I'll explain this method now. 
 
@@ -125,4 +174,4 @@ From the slackpkg+ documentation:
 
 ## Support for nVidia Optimus
 
-Someone made a one-liner to install it. See the [docs](http://docs.slackware.com/howtos:hardware:nvidia_optimus}. 
+Someone made a one-liner to install it. See the [docs](http://docs.slackware.com/howtos:hardware:nvidia_optimus}.
