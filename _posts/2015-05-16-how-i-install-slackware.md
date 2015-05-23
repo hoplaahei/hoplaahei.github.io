@@ -44,7 +44,7 @@ setup
 
 If following the steps in my guide, then you are using a USB installation, so when prompted for the installation media choose USB, and the installer will detect the install packages correctly. EFI and swap partitions should get detected and formatted automatically. Follow the `SlackDocs` on [installation](http://docs.slackware.com/slackware:install) for further advice, but the installer is usually clever enough in figuring out what you want.
 
-If following the partitioning scheme in this guide, then skip to the next section. If, however, you followed the links in SlackDocs for `LVM` (Logical Volume Manager) installation, then follow these additional steps before rebooting after the install:
+If following the partitioning scheme in the SlackDocs wiki, then skip to the next section. If, however, you followed the links in SlackDocs for `LVM` (Logical Volume Manager) installation, then follow these additional steps before rebooting after the install:
 
 ```
 mount -o bind /dev /mnt/dev
