@@ -132,7 +132,7 @@ image = vmlinuz-generic-3.10.17
         root = /dev/sdb3
         label = 3.10.17
         read-only
-        append="vga=normal resume=/dev/sdb2 ro"
+        append="vga=normal ro"
 ```
 
 ## Enable resume from hibernation
