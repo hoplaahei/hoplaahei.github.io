@@ -117,6 +117,14 @@ The only thing I want to add to the steps in these guides is to follow the advic
 LANG=C xpdf
 ```
 
+## Enable resume from hibernation
+
+In `/etc/lilo.conf` or `/boot/efi/EFI/Slackware/elilo.conf` add this somewhere in the double quotes (") of the `append=` line:
+
+```
+resume=/dev/sdX # where X is the swap partition
+```
+
 ## Learn to use Slackbuilds
 
 [Install](http://www.sbopkg.org/downloads.php) `sbopkg` and sync with the remote repository by running:
