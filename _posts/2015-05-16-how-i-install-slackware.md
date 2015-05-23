@@ -124,7 +124,7 @@ cp /boot/vmlinuz-generic-3.10.17 /boot/efi/EFI/Slackware/
 cp /boot/initrd.gz /boot/efi/EFI/Slackware/
 ```
 
-And edit `/boot/efi/EFI/Slackware/elilo.conf` as opposed to `/boot/lilo.conf`. The syntax is mostly the same, but the `/boot/` part of the paths needs removing, e.g.,:
+And edit `/boot/efi/EFI/Slackware/elilo.conf` as opposed to `/boot/lilo.conf`. The syntax is mostly the same as in the beginners guide example, but the `/boot/` part of the paths need removing, e.g.,:
 
 ```
 image = vmlinuz-generic-3.10.17
