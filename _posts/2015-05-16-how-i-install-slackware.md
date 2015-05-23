@@ -117,35 +117,6 @@ The only thing I want to add to the steps in these guides is to follow the advic
 LANG=C xpdf
 ```
 
-
-
-## Take a backup
-
-Now is a good time to make a nice clean image of your installation to revert back to if things go wrong. This will save the hassle of having to go through the whole partitioning and setup procedure again. This image is also useful for deploying Slackware to other computers with similar sized disks (but remember to change `[e]ilo` and `fstab` entries). 
-
-I don't recommend adding anything else to the backup image, except perhaps a basic configuration from the [Slackware Beginners Guide](docs.slackware.com/slackware:beginners_guide). Otherwise, you might not remember what was edited by the time it comes to actually needing the image. Save the confusion.
-
-There is no absolute, universally agreed on method for backing up. Assuming you have a large enough spare drive around, I recommend the tried and true `dd` to a compressed image file for the first time backup. I'll explain this method now. 
-
-Do not leave the system that needs backing up running unless the underlying filesystem supports freezing (e.g., XFS). Instead, reboot into a live environment such as the Slackware Install ISO.
-
-I'm using XFS filesystem, which allows freezing the mounted disk, so I don't bother rebooting into a live environment. But to avoid any problems with the likes of PID files of running processes in the frozen image, I also switch to single-user mode to shut off as much as I can. To do so, run:
-
-```
-/sbin/init 1
-```
-
-That way a minimal number of things are running when it comes to entering the freeze command on the console.
-
-Also, make sure the backup goes to a spare disk with at least nearly as much space as the full size of the disk that needs backing up, otherwise disk space might run out. 
-
-Steps:
-
-```
-xfs_freeze -f /
-dd if=/dev/sda | gzip > /path/to/backup/disc/location/ssd_backup.gz
-```
-
 ## Learn to use Slackbuilds
 
 [Install](http://www.sbopkg.org/downloads.php) `sbopkg` and sync with the remote repository by running:
