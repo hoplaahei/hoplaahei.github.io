@@ -111,11 +111,21 @@ Connect to one (start this line with a space to prevent the wifi password gettin
 
 Do all the steps in the [beginners guide](http://docs.slackware.com/slackware:beginners_guide) and also follow the link to [localisation](http://docs.slackware.com/slackware:localization), as you can do useful things like get the '£' sign working permanently on a UK keyboard in `X`. 
 
-The only thing I want to add to the steps in these guides is to follow the advice in the comments of `/etc/profile.d/lang.sh` and not enable UTF-8 for the locale. I experienced strange behaviour with some applications, e.g., `xpdf` failing to load some PDFs. If, however, UTF-8 is essential to your system, then you can still get the problem apps to load by overriding the locale with `C` locale like this:
+I advise to read the comments of `/etc/profile.d/lang.sh` and not enable UTF-8 for the locale unless absolutley necessary. I experienced strange behaviour with some applications and UTF-8, e.g., `xpdf` failing to load some PDFs. If, however, UTF-8 is essential to your system, then you can still get the problem apps to load by overriding the locale per-application with `C` locale like this:
 
 ```
 LANG=C xpdf
 ```
+
+When following the beginners guide steps to install the generic kernel, then you need to copy the `initrd` and `vmlinuz` from that kernel to `/boot/efi/EFI/Slackware`, e.g., 
+
+```
+cp /boot/vmlinuz-generic-3.10.17 /boot/efi/EFI/Slackware/
+cp /boot/initrd.gz /boot/efi/EFI/Slackware/
+```
+
+And edit `/boot/efi/EFI/Slackware/elilo.conf` as opposed to `/boot/lilo.conf`. The syntax is the same. 
+
 
 ## Enable resume from hibernation
 
