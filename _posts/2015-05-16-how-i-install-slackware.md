@@ -111,21 +111,29 @@ Connect to one (start this line with a space to prevent the wifi password gettin
 
 Do all the steps in the [beginners guide](http://docs.slackware.com/slackware:beginners_guide) and also follow the link to [localisation](http://docs.slackware.com/slackware:localization), as you can do useful things like get the '£' sign working permanently on a UK keyboard in `X`. 
 
-I advise to read the comments of `/etc/profile.d/lang.sh` and not enable UTF-8 for the locale unless absolutley necessary. I experienced strange behaviour with some applications and UTF-8, e.g., `xpdf` failing to load some PDFs. If, however, UTF-8 is essential to your system, then you can still get the problem apps to load by overriding the locale per-application with `C` locale like this:
+I advise to read the comments of `/etc/profile.d/lang.sh` when setting a locale and not enable UTF-8 unless absolutley necessary. I experienced strange behaviour with some applications and UTF-8, e.g., `xpdf` failing to load some PDFs. If, however, UTF-8 is essential to your system, then you can still get the problem apps to load by overriding the locale per-application with `C` locale like this:
 
 ```
 LANG=C xpdf
 ```
 
-When following the beginners guide steps to install the generic kernel, then you need to copy the `initrd` and `vmlinuz` from that kernel to `/boot/efi/EFI/Slackware`, e.g., 
+When following the beginners guide steps to install the generic kernel, you need to copy the `initrd` and `vmlinuz` from that kernel to `/boot/efi/EFI/Slackware`, e.g., 
 
 ```
 cp /boot/vmlinuz-generic-3.10.17 /boot/efi/EFI/Slackware/
 cp /boot/initrd.gz /boot/efi/EFI/Slackware/
 ```
 
-And edit `/boot/efi/EFI/Slackware/elilo.conf` as opposed to `/boot/lilo.conf`. The syntax is the same. 
+And edit `/boot/efi/EFI/Slackware/elilo.conf` as opposed to `/boot/lilo.conf`. The syntax is mostly the same, but the `/boot/` part of the paths needs removing, e.g.,:
 
+```
+image = vmlinuz-generic-3.10.17
+        initrd = initrd.gz
+        root = /dev/sdb3
+        label = 3.10.17
+        read-only
+        append="vga=normal resume=/dev/sdb2 ro"
+```
 
 ## Enable resume from hibernation
 
