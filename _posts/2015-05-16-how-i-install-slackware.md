@@ -158,7 +158,7 @@ Now follow this guide to [manage queue files easily](http://slackblogs.blogspot.
 
 Adding 32-bit support to any Linux system currently draws in an extra layer of complexity that we could all do without, but it's a necessary evil to get some applications running. For instance, many wine apps need 32-bit support, and I prefer the near native speed for games it gives me (no my laptop does not support [VGA passthrough](https://wiki.debian.org/VGAPassthrough) with KVM).
 
-`phenixia2003` has an excellent post on [linuxquestions.org](http://linuxquestions.org) outlining the different methods to update the system to multilib. I prefer to use the third method listed: `slackpkg+`. Don't use the script in the compat directory though: it doesn't set multilib as a priority for some reason, which caused all sorts of problems for me. Follow the instructions `phenixia2003` gives in his post instead. 
+`phenixia2003` has an excellent post on [linuxquestions.org](https://www.linuxquestions.org/questions/slackware-14/slackware64-and-my-stupidity-4175484839/#post5066064) outlining the different methods to update the system to multilib. I prefer to use the third method listed: `slackpkg+`. Don't use the script in the compat directory though: it doesn't set multilib as a priority for some reason, which caused all sorts of problems for me. Follow the instructions `phenixia2003` gives in his post instead. 
 
 The first one listed (the official one) works fine too. Just follow the 'Quick n' dirty' instructions section. It is not necessary to also complete the 'detailed' instructions further down that page, but it might help in understanding what is going on. 
 
