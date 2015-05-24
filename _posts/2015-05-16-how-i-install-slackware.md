@@ -160,7 +160,7 @@ Adding 32-bit support to any Linux system currently draws in an extra layer of c
 
 `phenixia2003` has an excellent post on [linuxquestions.org](https://www.linuxquestions.org/questions/slackware-14/slackware64-and-my-stupidity-4175484839/#post5066064) outlining the different methods to update the system to multilib. I prefer to use the third method listed: `slackpkg+`. Don't use the script in the compat directory though: it doesn't set multilib as a priority for some reason, which caused all sorts of problems for me. Follow the instructions `phenixia2003` gives in his post instead. 
 
-The first one listed (the official one) works fine too. Just follow the 'Quick n' dirty' instructions section. It is not necessary to also complete the 'detailed' instructions further down that page, but it might help in understanding what is going on. 
+The first method listed (the official one) works fine too. Just follow the 'Quick n' dirty' instructions section of the linked wiki page. It is not necessary to also complete the 'Detailed' instructions further down that page, but it might help in understanding what is going on. 
 
 ## Upgrade packages
 
