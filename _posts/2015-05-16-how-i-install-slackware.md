@@ -128,7 +128,7 @@ image = vmlinuz-generic-3.10.17
         read-only
         append="vga=normal ro"
 ```
-Leave the old entry in there above the new one, so you can select which kernel to boot with the arrow keys from the boot-menu on boot. Once sure it boots, add this line after `timeout=1` in the `elilo.conf`:
+Leave the old entry in there above the new one, so you can select which kernel to boot with the arrow keys from the menu on boot. Once sure it boots, add this line after `timeout=1` in the `elilo.conf`:
 
 ```
 default=3.10.17
