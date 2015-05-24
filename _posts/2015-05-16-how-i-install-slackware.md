@@ -5,6 +5,7 @@ title: How I install Slackware
 ---
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -194,7 +195,7 @@ The [official](http://alien.slackbook.org/dokuwiki/doku.php?id=slackware:multili
 
 ## Upgrade packages
 
-The [systemupgade](http://docs.slackware.com/howtos:slackware_admin:systemupgrade) wiki article covers all the steps. 
+The [systemupgrade](http://docs.slackware.com/howtos:slackware_admin:systemupgrade) wiki article covers all the steps. 
 
 One thing I found annoying is that slackpkg `install-new` asks to upgrade packages I don't want on my system (e.g., kde, xfce). To stop getting prompts to install such packages, edit `/etc/slackpkg/blacklist`:
 
