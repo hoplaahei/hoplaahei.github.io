@@ -164,7 +164,7 @@ Now follow this guide to [manage queue files easily](http://slackblogs.blogspot.
 installpkg slackpkg+-*.txz
 ```
 
-At the time of writing, the README says it is possible to use the script `/usr/doc/slackpkg+-*/setupmultilib.sh`. This script didn't work properly for me; it didn't uncomment the line to set the multilib repo as the priority, which had me scratching my head.
+At the time of writing, the README says it is possible to use the script `/usr/doc/slackpkg+-*/setupmultilib.sh`. This script didn't work properly for me, as it didn't uncomment the line to set the multilib repo as the priority, which had me scratching my head.
 
 Instead, manually edit `/etc/slackpkg/slackpkgplus.conf`:
 
