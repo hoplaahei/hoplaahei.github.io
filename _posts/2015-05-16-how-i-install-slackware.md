@@ -183,7 +183,8 @@ Now run:
 ```
 slackpkg update gpg
 slackpkg update
-slackpkg upgrade-all # or perhaps just 'slackpkg upgrade gcc glibc'
+slackpkg upgrade gcc glibc
+slackpkg upgrade-all # optional
 slackpkg install multilib
 ```
 
