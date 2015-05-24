@@ -32,17 +32,11 @@ The `ArchWiki` has a good [article](https://wiki.archlinux.org/index.php/SSD_mem
 
 ## Partitioning
 
-The SlackDocs wiki has an [install](http://docs.slackware.com/slackware:install) guide for standard installation. Some modern computers force the use of UEFI boot with a GPT partitioning scheme, and if you require/want this then see the UEFI [README](http://slackware.mirrorcatalogs.com/slackware64-14.1/README_UEFI.TXT).
+The SlackDocs wiki has an [install](http://docs.slackware.com/slackware:install) guide for standard installation. Follow these steps first. Some modern computers force the use of UEFI boot with a GPT partitioning scheme, and if you require/want this then see the UEFI [README](http://slackware.mirrorcatalogs.com/slackware64-14.1/README_UEFI.TXT).
 
-After partitioning, simply run:
+If using the DVD ISO on a USB pen, tell the installer the files are on a USB when it asks, and it will scan automatically. Any EFI and swap partitions get detected and formatted automatically.
 
-```
-setup
-```
-
-If using the DVD ISO on a USB pen, tell the installer the files are on a USB when it asks, and it will scan automatically. Any EFI and swap partitions get detected and formatted automatically. Follow the `SlackDocs` on [installation](http://docs.slackware.com/slackware:install) for further advice, but the installer is usually clever enough in figuring things out.
-
-If following the partitioning scheme in the SlackDocs wiki, then skip to the next section. If, however, `LVM` (Logical Volume Manager) is setup, there are some additional steps needed before rebooting that are not mentioned in any of the official documentation:
+The install guide doesn't mention how to generate an `initrd` for those who use `LVM` (Logical Volume Manager). Ignore this step unless you setup LVM. Otherwise, the step needs performing after setup, but before rebooting:
 
 ```
 mount -o bind /dev /mnt/dev
