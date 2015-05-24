@@ -199,7 +199,7 @@ The [official](http://alien.slackbook.org/dokuwiki/doku.php?id=slackware:multili
 
 The [systemupgrade](http://docs.slackware.com/howtos:slackware_admin:systemupgrade) wiki article covers all the steps. 
 
-**Note:** if using `UEFI` and `elilo`, it is safe to upgrade kernel automatically without first blacklisting it, because the old kernel will still boot until you explicity activate the new one by copying it over to the `EFI` partition. See **"Using a generic kernel on UEFI systems"** heading above for how to do that.
+**Note:** if using `UEFI` and `elilo`, it is safe to upgrade kernel automatically without first blacklisting it, because the old kernel will still boot until you explicitly activate the new one by copying it over to the `EFI` partition. See **"Using a generic kernel on UEFI systems"** heading above for how to do that.
 
 One thing I found annoying is that `slackpkg install-new` asks to upgrade from package sets I'd already deselected in setup (e.g., kde, xfce). To stop getting prompts to install such packages, edit `/etc/slackpkg/blacklist` with e.g.,:
 
