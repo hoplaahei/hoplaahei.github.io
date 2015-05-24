@@ -111,7 +111,7 @@ LANG=C xpdf
 
 ## Using a generic kernel on UEFI systems
 
-There are some additional steps to load the new generic kernel on UEFI systems using `elilo`. Copy the `initrd` and `vmlinuz` from that kernel to `/boot/efi/EFI/Slackware`, e.g., 
+There are some additional steps to switch from a huge kernel to a generic one on UEFI systems (using `elilo`) that the `begginers guide` doesn't mention. Copy the `initrd` and `vmlinuz` from that kernel to `/boot/efi/EFI/Slackware`, e.g., 
 
 ```
 cp /boot/vmlinuz-generic-3.10.17 /boot/efi/EFI/Slackware/
@@ -128,13 +128,13 @@ image = vmlinuz-generic-3.10.17
         read-only
         append="vga=normal ro"
 ```
-Leave the old entry in there above the new one, so you can select which kernel to boot with the arrow keys from the boot-menu on boot. Once sure it boots, add this line after timeout=1 in the `elilo.conf`:
+Leave the old entry in there above the new one, so you can select which kernel to boot with the arrow keys from the boot-menu on boot. Once sure it boots, add this line after `timeout=1` in the `elilo.conf`:
 
 ```
 default=3.10.17
 ```
 
-And replace the above example with the `label` name you want to boot.
+And replace the above example with the `label` of the boot entry you need to boot.
 
 ## Enable resume from hibernation
 
