@@ -7,6 +7,7 @@ title: How I install Slackware
 
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -43,9 +44,9 @@ After partitioning, simply run:
 setup
 ```
 
-If following the steps in my guide, then you are using a USB installation, so when prompted for the installation media choose USB, and the installer will detect the install packages correctly. EFI and swap partitions should get detected and formatted automatically. Follow the `SlackDocs` on [installation](http://docs.slackware.com/slackware:install) for further advice, but the installer is usually clever enough in figuring out what you want.
+If using the DVD iso on a USB pen, tell the installer the files are on a USB when it asks, and it will scan automatically. Any EFI and swap partitions get detected and formatted automatically. Follow the `SlackDocs` on [installation](http://docs.slackware.com/slackware:install) for further advice, but the installer is usually clever enough in figuring things out.
 
-If following the partitioning scheme in the SlackDocs wiki, then skip to the next section. If, however, you followed the links in SlackDocs for `LVM` (Logical Volume Manager) installation, then follow these additional steps before rebooting after the install:
+If following the partitioning scheme in the SlackDocs wiki, then skip to the next section. If, however, `LVM` (Logical Volume Manager) is setup, there are some additional steps needed before rebooting that are not mentioned in any of the official documentation:
 
 ```
 mount -o bind /dev /mnt/dev
@@ -62,7 +63,7 @@ And modify `/boot/efi/EFI/Slackware/elilo.conf` for `UEFI` systems, or `/etc/lil
 append="root=/dev/yourVG/yourLV vga=normal ro"
 ```
 
-Replace 'yourVG' with whatever you named the `Volume Group` and 'yourLV' with the `Logical Volume` you created.  
+Replace 'yourVG' with the `Volume Group` and 'yourLV' with the `Logical Volume` you created.  
 
 Now run:
 
