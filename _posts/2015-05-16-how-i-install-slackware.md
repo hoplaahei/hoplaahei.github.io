@@ -156,13 +156,15 @@ Now follow this guide to [manage queue files easily](http://slackblogs.blogspot.
 
 ## Bastardise your installation with multilib
 
-`slackpkg+` can enable multilib and keep it updated easily. Download the latest [slackpkg+](http://sourceforge.net/projects/slackpkgplus/files/) package. Install from the cli in the same directory as the downloaded file with:
+`slackpkg+` can enable `multilib` and keep it updated easily. Download the latest [slackpkg+](http://sourceforge.net/projects/slackpkgplus/files/) package. Install from the cli in the same directory as the downloaded file with:
 
 ```
 installpkg slackpkg+version.txz
 ```
 
-Edit `/etc/slackpkg/slackpkgplus.conf`:
+At the time of writing, the README says it is possible to use the script `/usr/doc/slackpkg+-*/setupmultilib.sh`. I don't recommend this script, as it doesn't set multilib repo as the priority, which will cause problems.
+
+Instead, manually edit `/etc/slackpkg/slackpkgplus.conf`:
 
 ```
 # Uncomment (and keep it first in the list)
@@ -181,7 +183,7 @@ Now run:
 ```
 slackpkg update gpg
 slackpkg update
-slackpkg upgrade-all
+slackpkg upgrade-all # or perhaps just 'slackpkg upgrade gcc glibc'
 slackpkg install multilib
 ```
 
