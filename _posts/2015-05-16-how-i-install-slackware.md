@@ -4,6 +4,7 @@ published: true
 title: How I install Slackware
 ---
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -111,7 +112,7 @@ LANG=C xpdf
 
 ## Using a generic kernel on UEFI systems
 
-There are some additional steps to switch from a huge kernel to a generic one on UEFI systems (using `elilo`) that the `begginers guide` doesn't mention. Copy the `initrd` and `vmlinuz` from that kernel to `/boot/efi/EFI/Slackware`, e.g., 
+There are some additional steps to switch from a huge kernel to a generic one on UEFI systems (using `elilo`) that the `beginners guide` doesn't mention. Copy the `initrd` and `vmlinuz` from that kernel to `/boot/efi/EFI/Slackware`, e.g., 
 
 ```
 cp /boot/vmlinuz-generic-3.10.17 /boot/efi/EFI/Slackware/
