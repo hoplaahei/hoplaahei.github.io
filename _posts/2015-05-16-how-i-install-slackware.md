@@ -65,7 +65,7 @@ And reboot.
 
 ## Get correct keys on the keyboard
 
-After logging in it is useful to start `X` with `startx` command to run the default window manager selected in installation e.g., `windowmaker`, but the keys might not be right on the keyboard. For a quick fix, run from the terminal e.g.,
+After logging in it is useful to start `X` with `startx` command to run the default window-manager selected in installation e.g., `windowmaker`, but the keys might not be right on the keyboard. For a quick fix, run from the terminal e.g.,
 
 ```
 setxkbmap gb # for a British keyboard
