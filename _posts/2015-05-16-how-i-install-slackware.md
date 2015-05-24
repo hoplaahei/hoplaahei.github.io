@@ -156,11 +156,38 @@ Now follow this guide to [manage queue files easily](http://slackblogs.blogspot.
 
 ## Bastardise your installation with multilib
 
-Adding 32-bit support to any Linux system currently draws in an extra layer of complexity that we could all do without, but it's a necessary evil to get some applications running. For instance, many wine apps need 32-bit support, and I prefer the near native speed for games it gives me (no my laptop does not support [VGA passthrough](https://wiki.debian.org/VGAPassthrough) with KVM).
+`slackpkg+` can enable multilib and keep it updated easily. Download the latest [slackpkg+](http://sourceforge.net/projects/slackpkgplus/files/) package. Install from the cli in the same directory as the downloaded file with:
 
-`phenixia2003` has an excellent post on [linuxquestions.org](https://www.linuxquestions.org/questions/slackware-14/slackware64-and-my-stupidity-4175484839/#post5066064) outlining the different methods to update the system to multilib. I prefer to use the third method listed: `slackpkg+`. Don't use the `/usr/doc/slackpkg+-*/setupmultilib.sh` script though: it doesn't set multilib as the priority repo for some reason, and that causes all sorts of problems for me. Follow the instructions `phenixia2003` gives in his post instead. 
+```
+installpkg slackpkg+version.txz
+```
 
-The first method listed (the official one) works fine too. Just follow the **'Quick n' dirty'** instructions section of the linked wiki page. It is not necessary to also complete the 'Detailed' instructions further down that page, but it might help in understanding what is going on. 
+Edit `/etc/slackpkg/slackpkgplus.conf`:
+
+```
+# Uncomment (and keep it first in the list)
+PKGS_PRIORITY=( multilib )
+...
+
+# Add "multilib" (order doesn't matter here)
+REPOPLUS=( multilib slackpkgplus restricted alienbob slacky )
+...
+# And also uncomment
+MIRRORPLUS['multilib']=http://taper.alienbase.nl/mirrors/people/alien/multilib/14.1/
+```
+
+Now run:
+
+```
+slackpkg update gpg
+slackpkg update
+slackpkg upgrade-all
+slackpkg install multilib
+```
+
+The [official](http://alien.slackbook.org/dokuwiki/doku.php?id=slackware:multilib) method works fine too. Just follow the **'Quick n' dirty'** instructions section of the linked wiki page. It is not necessary to also complete the 'Detailed' instructions further down that page, but it might help in understanding what is going on. 
+
+[phenixia2003](https://www.linuxquestions.org/questions/slackware-14/slackware64-and-my-stupidity-4175484839/#post5066064) gives a good overview of all the available methods for installing multilib.
 
 ## Upgrade packages
 
