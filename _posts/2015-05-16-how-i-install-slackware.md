@@ -163,7 +163,9 @@ sbopkg -r
 
 Now follow this guide to [manage queue files easily](http://slackblogs.blogspot.co.uk/2014/01/managing-sbo-dependencies-easily.html).
 
-## Convert to multilib
+## Convert to multilib (optional)
+
+`wine`, `virtualbox`, `skype` and `google-earth` are some examples of programs that need a `multilib` system.
 
 `slackpkg+` can enable `multilib` and keep it updated easily. Download the latest [slackpkg+](http://sourceforge.net/projects/slackpkgplus/files/) package. Install from the cli in the same directory as the downloaded file with:
 
@@ -171,7 +173,7 @@ Now follow this guide to [manage queue files easily](http://slackblogs.blogspot.
 installpkg slackpkg+version.txz
 ```
 
-At the time of writing, the README says it is possible to use the script `/usr/doc/slackpkg+-*/setupmultilib.sh`. I don't recommend this script, as it doesn't set multilib repo as the priority, which will cause problems.
+At the time of writing, the README says it is possible to use the script `/usr/doc/slackpkg+-*/setupmultilib.sh`. This script didn't work properly for me; it didn't uncomment the line to set the multilib repo as the priority, which had me scratching my head.
 
 Instead, manually edit `/etc/slackpkg/slackpkgplus.conf`:
 
@@ -205,7 +207,9 @@ The [official](http://alien.slackbook.org/dokuwiki/doku.php?id=slackware:multili
 
 The [systemupgrade](http://docs.slackware.com/howtos:slackware_admin:systemupgrade) wiki article covers all the steps. 
 
-One thing I found annoying is that slackpkg `install-new` asks to upgrade packages I don't want on my system (e.g., kde, xfce). To stop getting prompts to install such packages, edit `/etc/slackpkg/blacklist`:
+**Note:** if using `UEFI` and `elilo`, it is safe to upgrade kernel automatically without first blacklisting it, because the old kernel will still boot until you explicity activate the new one by copying it over to the `EFI` partition. See **"Using a generic kernel on UEFI systems"** heading above for how to do that.
+
+One thing I found annoying is that `slackpkg install-new` asks to upgrade from package sets I'd already deselected in setup (e.g., kde, xfce). To stop getting prompts to install such packages, edit `/etc/slackpkg/blacklist` with e.g.,:
 
 ```
 kde/*
@@ -213,8 +217,6 @@ kdei/*
 xfce/*
 ```
 
-If using `UEFI` and `elilo`, it is safe to upgrade kernel without blacklisting, because the old kernel will still boot until you explicity activate the new one. See **"Using a generic kernel on UEFI systems"** heading above for how to do that.
-
 ## Support for nVidia Optimus
 
-Someone made a one-liner to install it. See the [docs](http://docs.slackware.com/howtos:hardware:nvidia_optimus).
+Someone made a one-liner to install it that works for me. See the [docs](http://docs.slackware.com/howtos:hardware:nvidia_optimus).
