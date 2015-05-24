@@ -20,7 +20,7 @@ dd if=slackware-DVD-iso-you-downloaded.iso of=/dev/sdX bs=1M && sync
 
 ## SSD memory cell clearing
 
-This step is not at all essential to installing Slackware, but it is something I always do out of habit. The tl;dr of SSD memory cell clearing is that it could reset any slow down in SSD write speeds by returning it to factory defaults:
+This step is not at all essential to installing Slackware, but it is something I always do out of habit. The tl;dr of SSD memory cell clearing is that it could reset any slow down in SSD write speeds by returning it to factory defaults (this blanks the disk):
 
 ```
 echo -n "mem" > /sys/power/state # suspend to RAM to unfreeze security
