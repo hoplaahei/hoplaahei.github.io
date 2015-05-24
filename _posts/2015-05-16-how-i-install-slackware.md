@@ -4,6 +4,7 @@ published: true
 title: How I install Slackware
 ---
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -157,17 +158,9 @@ Now follow this guide to [manage queue files easily](http://slackblogs.blogspot.
 
 Adding 32-bit support to any Linux system currently draws in an extra layer of complexity that we could all do without, but it's a necessary evil to get some applications running. For instance, many wine apps need 32-bit support, and I prefer the near native speed for games it gives me (no my laptop does not support [VGA passthrough](https://wiki.debian.org/VGAPassthrough) with KVM).
 
-Fortunately, [slackpkg+](http://slakfinder.org/slackpkg+.html) makes converting Slackware to multilib easy:
+`phenixia2003` has an excellent post on `linuxquestions.org` outlining the different methods to update the system to multilib. I've found that the first one listed (the official one) from the Slackware Wiki works fine. Just following the 'Quick n' dirty' instructions section works fine. Only read the detailed installation if you want to understand what is going on.
 
-```
-installpkg slackpkg+-[downloaded-version]-noarch-2mt.txz
-/usr/doc/slackpkg+-*/setupmultilib.sh
-```
-
-From the slackpkg+ documentation:
-
-> Periodically you should run "slackpkg install multilib"
-> after run "slackpkg upgrade-all"
+I prefer to use the third method listed: `slackpkg+`. Don't use the script in the compat directory though: it doesn't set multilib as priority for some reason, which caused all sorts of problems for me. Follow the instructions `phenixia2003` gives in his post instead. 
 
 ## Upgrade packages
 
