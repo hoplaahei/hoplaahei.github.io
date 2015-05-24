@@ -185,7 +185,7 @@ slackpkg upgrade-all
 slackpkg install multilib
 ```
 
-The [official](http://alien.slackbook.org/dokuwiki/doku.php?id=slackware:multilib) method works fine too. Just follow the **'Quick n' dirty'** instructions section of the linked wiki page. It is not necessary to also complete the 'Detailed' instructions further down that page, but it might help in understanding what is going on. 
+The [official](http://alien.slackbook.org/dokuwiki/doku.php?id=slackware:multilib) method works fine too. Just follow the **'Quick n' dirty'** instructions section of the linked wiki page. It is not necessary to also complete the 'Detailed' instructions further down the page, but it might help in understanding what is going on. 
 
 [phenixia2003](https://www.linuxquestions.org/questions/slackware-14/slackware64-and-my-stupidity-4175484839/#post5066064) gives a good overview of all the available methods for installing multilib.
 
