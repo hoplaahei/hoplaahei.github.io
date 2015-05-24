@@ -147,7 +147,7 @@ And replace the above example with the `label` name you want to boot.
 
 ## Enable resume from hibernation
 
-In `/etc/lilo.conf` or `/boot/efi/EFI/Slackware/elilo.conf` add this somewhere in the double quotes (") of the `append=` line:
+In `/etc/lilo.conf` or `/boot/efi/EFI/Slackware/elilo.conf` add this somewhere in the double quotes ("") of the `append=` line:
 
 ```
 resume=/dev/sdX # where X is the swap partition
@@ -163,7 +163,7 @@ sbopkg -r
 
 Now follow this guide to [manage queue files easily](http://slackblogs.blogspot.co.uk/2014/01/managing-sbo-dependencies-easily.html).
 
-## Bastardise your installation with multilib
+## Activate multilib
 
 `slackpkg+` can enable `multilib` and keep it updated easily. Download the latest [slackpkg+](http://sourceforge.net/projects/slackpkgplus/files/) package. Install from the cli in the same directory as the downloaded file with:
 
