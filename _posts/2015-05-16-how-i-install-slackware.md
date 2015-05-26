@@ -256,7 +256,7 @@ This config works without LVM, but without its snapshotting capability, I recomm
 Some explanation of the options:
 
 - `snapshot_root` :: This is the directory where the backup will happen. I mount an external drive here to keep the backup offsite and save space. 
-- `no_create_root  1` :: Prevent rsnapshot automatically creating backup directory if it doesn't exist. I use this in case I forget to mount to my external drive (I don't want the backup to run on the drive I'm backing up and run out of disk space.)
+- `no_create_root  1` :: Prevent rsnapshot automatically creating the backup directory if it doesn't exist. Useful to make sure the external drive containing the backup directory is mounted (otherwise the backup would just create the directory automatically on the source drive and backup to the wrong place.)
 - `one_fs          1` :: Don't go across to other mounted filesystems (so prevent also backing up e.g., mounted USB pens and external disks)
 - `retain  manual  30` :: Keep 30 manual backups before starting to replace them
 - `verbose         4` :: Print out which files are currently copying, so I know the backup is still running ok
