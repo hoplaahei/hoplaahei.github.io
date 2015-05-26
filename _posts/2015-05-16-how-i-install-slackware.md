@@ -201,7 +201,7 @@ Someone made a one-liner to install it that works for me. See the [docs](http://
 
 Backing up for me is as simple as running `rsnapshot manual` (I prefer this to an automatic cron job).
 
-[rsnapshot](http://rsnapshot.org/) has LVM support built-in to its config file. My `rsnapshot` config makes use of an LVM snapshot volume to take a consistent, atomic (point-in-time) snapshot of the system before running rsync. This allows me to backup the root filesystem live, without having to unmount it first, and gives the assurance that write processes are allowed to finish before the backup is taken. Here are the important parts of my `/etc/rsnapshot.conf`:
+[rsnapshot](http://rsnapshot.org/) has LVM support built-in to its config file. My `rsnapshot` creates a temporary LVM snapshot volume to take a consistent, atomic (point-in-time) snapshot of the system before running rsync. This allows me to backup the root filesystem live, without having to unmount it first, and gives the assurance that write processes are allowed to finish before the backup is taken. Here are the important parts of my `/etc/rsnapshot.conf`:
 
 ```
 config_version  1.2
