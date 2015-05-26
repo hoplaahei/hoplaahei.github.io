@@ -260,7 +260,7 @@ Some explanation of the options:
 `one_fs          1` - Don't go across to other mounted filesystems (so prevent also backing up mounted USB pens and external disks)
 `retain  manual  30` - Keep 30 manual backups before starting to replace them
 `verbose         4` - Print out which files are currently copying, so I know the backup is still running ok
-`linux_lvm_cmd_mount` -  Runs a wrapper script to mount to fix XFS LVM snapshot mounting
+`linux_lvm_cmd_mount` -  In later versions of `rsnapshot` it is possible to pass mount options here, but not in the version on Slackware, so I point this to a mount-wrapper script. 
 
 Contents of the wrapper script `/usr/local/bin/mount-wrapper:
 
