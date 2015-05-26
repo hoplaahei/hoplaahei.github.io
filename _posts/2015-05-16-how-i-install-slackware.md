@@ -7,6 +7,7 @@ title: How I install Slackware
 
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -85,7 +86,11 @@ After logging in it is useful to start `X` with `startx` command to run the defa
 setxkbmap gb # for a British keyboard
 ```
 
-This will only work for the current session, but we will set it permanently later. 
+This will only work for the current session, but we will set it permanently later.
+
+## Fix incorrect time
+
+ [This](http://docs.slackware.com/howtos:hardware:syncing_hardware_clock_and_system_local_time) SlackDoc explains how to keep the time of all dual-booted operating systems in sync.
 
 ## Wireless networking
 
