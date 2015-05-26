@@ -6,6 +6,7 @@ title: How I install Slackware
 
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -38,19 +39,7 @@ The SlackDocs wiki has an [install](http://docs.slackware.com/slackware:install)
 
 If using the DVD ISO on a USB pen, tell the installer the files are on a USB when it asks, and it will scan automatically. Any EFI and swap partitions get detected and formatted automatically.
 
-For LVM partitioning there are some additional steps needed before and after setup, so read `README_LVM.txt` (included on the USB and readable from the console) carefully. The guide is excellent, but I recommend scrolling down to the "alternative method" that automatically generates the right commands to pass to `mkinitrd`. The command generated is not quite correct for `UEFI` systems. You will need to copy `/boot/initrd.gz` and `/boot/vmlinuz-generic-x.xx.xx` to the EFI System Partition itself in `/boot/efi/EFI/Slackware/` and also edit `/boot/efi/EFI/Slackware/elilo.conf` to point straight to the filenames without `/boot/` prefixed before them e.g., here is my `elilo.conf`:
-
-```
-chooser=simple
-delay=1
-timeout=1
-#
-image=vmlinuz-generic-3.10.17
-	initrd=initrd.gz
-        label=linux
-        read-only
-        append="root=/dev/slack/root resume=/dev/slack/swap vga=normal ro"
-```        
+For LVM partitioning there are some additional steps needed before and after setup, so read `README_LVM.txt` (included on the USB and readable from the console) carefully. The guide is excellent, but I recommend scrolling down to the "alternative method" that automatically generates the right commands to pass to `mkinitrd`. For `UEFI` systems, the location of the output files and paths of the elilo config are not quite correct (see "Using a generic kernel on UEFI systems" heading below).
 
 ## Get correct keys on the keyboard
 
