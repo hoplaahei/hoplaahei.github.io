@@ -39,7 +39,42 @@ The SlackDocs wiki has an [install](http://docs.slackware.com/slackware:install)
 
 If using the DVD ISO on a USB pen, tell the installer the files are on a USB when it asks, and it will scan automatically. Any EFI and swap partitions get detected and formatted automatically.
 
-For LVM partitioning there are some additional steps needed before and after setup, so read `README_LVM.txt` (included on the USB and readable from the console) carefully. The guide is excellent, but I recommend scrolling down to the "alternative method" that automatically generates the right commands to pass to `mkinitrd`. For `UEFI` systems, the location of the output files and paths of the elilo config are not quite correct (see "Using a generic kernel on UEFI systems" heading below).
+For LVM partitioning there are some additional steps needed before and after setup, so read `README_LVM.txt` (included on the USB and readable from the console) carefully. The guide is excellent, but I recommend scrolling down to the "alternative method" that automatically generates the right commands to pass to `mkinitrd`. For `UEFI` systems, running the generated command will result in incorrect file locations and paths in `elilo.conf`, but it is easily fixable (see the next heading).
+
+## Using a generic kernel on UEFI systems
+
+There are some additional steps to switch from a huge kernel to a generic one on UEFI systems (using `elilo`) that the `beginners guide` doesn't mention. Copy the `initrd` and `vmlinuz` from that kernel to `/boot/efi/EFI/Slackware`, e.g., 
+
+```
+cp /boot/vmlinuz-generic-3.10.17 /boot/efi/EFI/Slackware/
+cp /boot/initrd.gz /boot/efi/EFI/Slackware/
+```
+
+And edit `/boot/efi/EFI/Slackware/elilo.conf` as opposed to `/boot/lilo.conf`. The syntax is mostly the same as in the beginners guide example, but the `/boot/` part of the paths need removing, e.g.,:
+
+```
+image = vmlinuz-generic-3.10.17
+        initrd = initrd.gz
+        root = /dev/sdb3
+        label = 3.10.17
+        read-only
+        append="vga=normal ro"
+```
+Leave the old entry in there above the new one, so you can select which kernel to boot with the arrow keys from the menu on boot. Once sure it boots, add this line after `timeout=1` in the `elilo.conf`:
+
+```
+default=3.10.17
+```
+
+And replace the above example with the `label` of the boot entry you need to boot.
+
+## Enable resume from hibernation
+
+In `/etc/lilo.conf` (BIOS setup) or `/boot/efi/EFI/Slackware/elilo.conf` (UEFI setup) add this somewhere in the double quotes ("") of the `append=` line:
+
+```
+resume=/dev/sdX # where X is the swap partition
+```
 
 ## Get correct keys on the keyboard
 
@@ -85,41 +120,6 @@ I advise to read the comments of `/etc/profile.d/lang.sh` when setting a locale,
 
 ```
 LANG=C xpdf
-```
-
-## Using a generic kernel on UEFI systems
-
-There are some additional steps to switch from a huge kernel to a generic one on UEFI systems (using `elilo`) that the `beginners guide` doesn't mention. Copy the `initrd` and `vmlinuz` from that kernel to `/boot/efi/EFI/Slackware`, e.g., 
-
-```
-cp /boot/vmlinuz-generic-3.10.17 /boot/efi/EFI/Slackware/
-cp /boot/initrd.gz /boot/efi/EFI/Slackware/
-```
-
-And edit `/boot/efi/EFI/Slackware/elilo.conf` as opposed to `/boot/lilo.conf`. The syntax is mostly the same as in the beginners guide example, but the `/boot/` part of the paths need removing, e.g.,:
-
-```
-image = vmlinuz-generic-3.10.17
-        initrd = initrd.gz
-        root = /dev/sdb3
-        label = 3.10.17
-        read-only
-        append="vga=normal ro"
-```
-Leave the old entry in there above the new one, so you can select which kernel to boot with the arrow keys from the menu on boot. Once sure it boots, add this line after `timeout=1` in the `elilo.conf`:
-
-```
-default=3.10.17
-```
-
-And replace the above example with the `label` of the boot entry you need to boot.
-
-## Enable resume from hibernation
-
-In `/etc/lilo.conf` (BIOS setup) or `/boot/efi/EFI/Slackware/elilo.conf` (UEFI setup) add this somewhere in the double quotes ("") of the `append=` line:
-
-```
-resume=/dev/sdX # where X is the swap partition
 ```
 
 ## Learn to use Slackbuilds
