@@ -39,7 +39,7 @@ The SlackDocs wiki has an [install](http://docs.slackware.com/slackware:install)
 
 If using the DVD ISO on a USB pen, tell the installer the files are on a USB when it asks, and it will scan automatically. Any EFI and swap partitions get detected and formatted automatically.
 
-For LVM partitioning there are some additional steps needed before and after setup, so read `README_LVM.txt` (included on the USB and readable from the console) carefully. The guide is excellent, but I recommend scrolling down to the "alternative method" that automatically generates the right commands to pass to `mkinitrd`. For `UEFI` systems, running the generated command will result in incorrect file locations and paths in `elilo.conf`, but it is easily fixable (see the next heading).
+For LVM partitioning, there are some additional steps needed before and after setup, so read `README_LVM.txt` (included on the USB and readable from the console) carefully. The guide is excellent. I recommend scrolling down to the "alternative method" that automatically generates the right commands to pass to `mkinitrd`. For `UEFI` systems, running the generated command will result in incorrect file locations and paths in `elilo.conf`, but it is easily fixable (see the next heading).
 
 ## Using a generic kernel on UEFI systems
 
