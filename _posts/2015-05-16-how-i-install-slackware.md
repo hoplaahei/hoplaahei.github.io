@@ -8,6 +8,7 @@ title: How I install Slackware
 
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -195,3 +196,80 @@ xfce/*
 ## Support for nVidia Optimus
 
 Someone made a one-liner to install it that works for me. See the [docs](http://docs.slackware.com/howtos:hardware:nvidia_optimus).
+
+## Backing up
+
+Backing up for me is as simple as running `rsnapshot manual` (I prefer this to automatic cron job).
+
+`rsnapshot` has LVM support built-in to its config file. My `rsnapshot` config makes use of an LVM snapshot volume to take a consistent, atmoic (point-in-time) snapshot of the system before running rsync. This allows me to backup the root filesystem live, without having to unmount it first, and gives the assurance that write processes are allowed to finish before the backup is taken. Here are the important parts of my `/etc/rsnapshot.conf`:
+
+```
+config_version  1.2
+
+snapshot_root   /media/backup/rsnapshot/
+retain  manual  30
+no_create_root  1
+cmd_rm          /usr/bin/rm
+cmd_rsync       /usr/bin/rsync
+cmd_logger      /usr/bin/logger
+cmd_du          /usr/bin/du
+
+interval        hourly  6
+interval        daily   7
+interval        weekly  4
+#interval       monthly 3
+
+verbose         4
+
+loglevel        3
+
+lockfile        /var/run/rsnapshot.pid
+
+one_fs          1
+
+exclude dev/
+exclude media/
+exclude mnt/
+exclude proc/
+exclude sys/
+exclude tmp/
+exclude run/
+exclude home/Downloads
+exclude home/.gvfs
+
+
+# LOCALHOST
+linux_lvm_cmd_lvcreate  /sbin/lvcreate
+linux_lvm_cmd_lvremove  /sbin/lvremove
+linux_lvm_snapshotsize  5G
+linux_lvm_snapshotname  rsnapshot-tmp
+linux_lvm_vgpath        /dev
+linux_lvm_mountpath     /mnt/rsnapshot-tmp
+linux_lvm_cmd_mount     /usr/local/bin/mount-wrapper
+linux_lvm_cmd_umount    /bin/umount
+
+backup  lvm://slack/root/       slack-root/
+```
+
+This config works without LVM, but without its snapshotting capability, I recommend unmounting `/` and backing up from another OS, otherwise running processes might only partially complete writing to files, resulting in a tarnished backup.
+
+Some explanation of the options:
+
+`snapshot_root` - This is the folder where the backup will happen. I mount an external drive here. 
+`no_create_root  1` - Prevent rsnapshot automatically creating backup folder if it doesn't exist. I use this in case I forget to mount to my external drive (I don't want the backup to run on the drive I'm backing up and run out of disk space)
+`one_fs          1` - Don't go across to other mounted filesystems (so prevent also backing up mounted USB pens and external disks)
+`retain  manual  30` - Keep 30 manual backups before starting to replace them
+`verbose         4` - Print out which files are currently copying, so I know the backup is still running ok
+`linux_lvm_cmd_mount` -  Runs a wrapper script to mount to fix XFS LVM snapshot mounting
+
+Contents of the wrapper script `/usr/local/bin/mount-wrapper:
+
+```
+#! /bin/bash
+#
+# This is a wrapper for mount to pass it the nouuid option.
+# This is required to enable rsnapshot to mount an xfs lvm snapshot.
+
+/bin/mount -o nouuid $1 $2
+if [ "$?"-ne 0]; then echo "Error detected. This wrapper only works with XFS filesystems"; exit 1; fi
+```
