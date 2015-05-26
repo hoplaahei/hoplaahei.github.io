@@ -256,11 +256,11 @@ This config works without LVM, but without its snapshotting capability, I recomm
 Some explanation of the options:
 
 - `snapshot_root` :: This is the directory where the backup will happen. I mount an external drive here to keep the backup offsite and save space. 
-- `no_create_root  1` :: Prevent rsnapshot automatically creating backup folder if it doesn't exist. I use this in case I forget to mount to my external drive (I don't want the backup to run on the drive I'm backing up and run out of disk space)
-- `one_fs          1` :: Don't go across to other mounted filesystems (so prevent also backing up mounted USB pens and external disks)
+- `no_create_root  1` :: Prevent rsnapshot automatically creating backup directory if it doesn't exist. I use this in case I forget to mount to my external drive (I don't want the backup to run on the drive I'm backing up and run out of disk space.)
+- `one_fs          1` :: Don't go across to other mounted filesystems (so prevent also backing up e.g., mounted USB pens and external disks)
 - `retain  manual  30` :: Keep 30 manual backups before starting to replace them
 - `verbose         4` :: Print out which files are currently copying, so I know the backup is still running ok
-- `linux_lvm_cmd_mount` ::  In later versions of `rsnapshot` it is possible to pass mount options here, but not in the version on Slackware, so I point this to a mount-wrapper script. 
+- `linux_lvm_cmd_mount` ::  In later versions of `rsnapshot` it is possible to pass mount options here, but not in the release version on Slackware 14.1, so I point this option to a mount-wrapper script. 
 
 Contents of the wrapper script `/usr/local/bin/mount-wrapper:
 
@@ -273,3 +273,4 @@ Contents of the wrapper script `/usr/local/bin/mount-wrapper:
 /bin/mount -o nouuid $1 $2
 if [ "$?"-ne 0]; then echo "Error detected. This wrapper only works with XFS filesystems"; exit 1; fi
 ```
+I need this workaround because `XFS` will not mount filesystems with the same `UUID`. 
