@@ -201,7 +201,11 @@ Someone made a one-liner to install it that works for me. See the [docs](http://
 
 Backing up for me is as simple as running `rsnapshot manual` (I prefer this to an automatic cron job).
 
-[rsnapshot](http://rsnapshot.org/) has LVM support built-in to its config file. My `rsnapshot` creates a temporary LVM snapshot volume to take a consistent, atomic (point-in-time) snapshot of the system before running rsync. This allows me to backup the running root filesystem of the OS live, without having to unmount it and remount it read only first, and gives the assurance that write processes are allowed to finish before the backup is taken. Here are the important parts of my `/etc/rsnapshot.conf`:
+[rsnapshot](http://rsnapshot.org/) has LVM support built-in to its config file. My `rsnapshot` creates a temporary LVM snapshot volume to take a consistent, atomic (point-in-time) snapshot of the system before running rsync. This allows me to backup the running root filesystem of the OS live, without having to unmount it and remount it read only first, and gives the assurance that write processes are allowed to finish before the backup is taken. 
+
+The relevant parts of the config I use are below. The config is easily modified to work without LVM by commenting out the LVM stuff, and changing the first parameter of `backup` to a standard partition e.g., `/dev/sda2`. However, without the LVM snapshotting capability, I'd recommend first unmounting `/` and booting into another OS or LiveCD to do the backup. Otherwise, running processes might only partially complete writing to files, resulting in a tarnished backup.
+
+Here are the important parts of my `/etc/rsnapshot.conf`:
 
 ```
 config_version  1.2
@@ -248,8 +252,6 @@ linux_lvm_cmd_umount    /bin/umount
 
 backup  lvm://slack/root/       slack-root/
 ```
-
-This config can work without LVM. However, without its snapshotting capability it is recommended to first unmount `/` and boot into and back up from another OS or LiveCD. Otherwise, running processes might only partially complete writing to files, resulting in a tarnished backup.
 
 Some explanation of the options:
 
