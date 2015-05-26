@@ -70,7 +70,7 @@ And replace the above example with the `label` of the boot entry you need to boo
 
 ## Enable resume from hibernation
 
-In `/etc/lilo.conf` (BIOS setup) or `/boot/efi/EFI/Slackware/elilo.conf` (UEFI setup) add this somewhere in the double quotes ("") of the `append=` line:
+In `/etc/lilo.conf` (non-UEFI BIOS setup) or `/boot/efi/EFI/Slackware/elilo.conf` (UEFI setup) add this somewhere in the double quotes ("") of the `append=` line:
 
 ```
 resume=/dev/sdX # where X is the swap partition
