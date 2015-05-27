@@ -35,7 +35,7 @@ The `ArchWiki` has a good [article](https://wiki.archlinux.org/index.php/SSD_mem
 
 The SlackDocs wiki has an [install](http://docs.slackware.com/slackware:install) guide for standard installation. Follow these steps first. Some modern computers force the use of UEFI boot with a GPT partitioning scheme, and if you require/want this then see the UEFI [README](http://slackware.mirrorcatalogs.com/slackware64-14.1/README_UEFI.TXT).
 
-If using the DVD ISO on a USB pen, tell the installer the files are on a USB when it asks, and it will scan automatically. Any EFI and swap partitions get detected and formatted automatically.
+If using the DVD ISO on a USB pen, tell the installer the files are on a USB when it asks, and it will scan automatically. Setup detects any EFI and swap partitions and gives the user a choice to format them.
 
 For LVM partitioning, there are some additional steps needed before and after setup, so read `README_LVM.txt` (included on the USB and readable from the console) carefully. The guide is excellent. I recommend scrolling down to the "alternative method" that automatically generates the right commands to pass to `mkinitrd`. Be warned, on `UEFI` systems, the generated command will not copy the files over to the `EFI` partition, or set the right paths in `elilo.conf`. This is easily fixable (see the next heading).
 
