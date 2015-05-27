@@ -195,7 +195,7 @@ Someone made a one-liner to install it that works for me. See the [docs](http://
 
 ## Backing up
 
-When `rsnapshot` is configured, backing up is as simple as running `rsnapshot manual` (I prefer this to an automatic cron job).
+When `rsnapshot` is configured right, making a complete backup of the OS is as simple as running `rsnapshot manual` (I prefer this to an automatic cron job). The initial backup is a little slow and takes up as much disk space as you've used on the root filesystem, but only the changes get backed up on subsequent backups. `rsnapshot` is great for reverting a file system "back-in-time" to different states.
 
 [rsnapshot](http://rsnapshot.org/) config file has support for automatically taking a temporary LVM snapshot of a volume before backing it up. The snapshot creates a consistent, atomic (point-in-time) image of the system before running rsync. This allows me to backup the running root filesystem of the OS live, without having to unmount it and remount it read only first, and also gives the assurance that write processes are allowed to finish before the backup is taken. Other filesystems such as `BTRFS` and `ZFS` also support snapshotting, but I prefer the stability of `LVM` on Linux, with its added bonus of nice integration with `rsnapshot`. 
 
