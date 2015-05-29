@@ -11,7 +11,7 @@ Note: This guide requires knowledge of basic Linux console commands. Please back
 
 ## Why UEFI?
 
-UEFI seems complicated to setup, but once you know how, it is arguably simpler than the old BIOS MBR way. It also boots somewhat quicker on most systems. Read [UEFI boot: how does that actually work then?](https://www.happyassassin.net/2014/01/25/uefi-boot-how-does-that-actually-work-then/) to see the cases when UEFI booting is beneficial, or when it is not necessary. 
+UEFI seems complicated to setup, but once you know how, it is arguably simpler than the old BIOS MBR way. It also boots somewhat quicker on most systems. Read [UEFI boot: how does that actually work then?](https://www.happyassassin.net/2014/01/25/uefi-boot-how-does-that-actually-work-then/) to see the cases when UEFI booting is beneficial, or when it is not necessary.
 
 ## Why gummiboot?
 
@@ -33,7 +33,7 @@ If unsure which `sdX` device to copy the ISO to, run `dmesg | tail` just after p
 
 ## Configure firmware to make computer UEFI bootable
 
-Reboot your computer and immediately press the setup key (usually F1 or Escape). Here you should make sure under the 'Boot' section that Uefi boot is enabled. 
+Reboot your computer and immediately press the setup key (usually F1 or Escape). Here you should make sure under the 'Boot' section that UEFI boot is enabled. 
 
 Also set the boot order in the firmware configuration to boot from USB, or find the key to load the boot menu when you reboot. Select your USB device, then the UEFI Arch entry (if it pops up). 
 
