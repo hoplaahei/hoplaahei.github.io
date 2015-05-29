@@ -5,6 +5,7 @@ title: How I install Slackware
 ---
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -31,9 +32,9 @@ hdparm --user-master u --security-erase PasSWorD /dev/sdX
 
 The `ArchWiki` has a good [article](https://wiki.archlinux.org/index.php/SSD_memory_cell_clearing) on this, so I'm not going to reiterate the steps in detail.
 
-## Partitioning
+## Installing
 
-The SlackDocs wiki has an [install](http://docs.slackware.com/slackware:install) guide for standard installation. Follow these steps first. Some modern computers force the use of UEFI boot with a GPT partitioning scheme, and if you require/want this then see the UEFI [README](http://slackware.mirrorcatalogs.com/slackware64-14.1/README_UEFI.TXT).
+The SlackDocs wiki has an [install](http://docs.slackware.com/slackware:install) guide for standard installation. Follow these steps first. Some modern computers may also benefit from booting into Slackware using their native UEFI boot. See [UEFI boot: how does that actually work, then?](https://www.happyassassin.net/2014/01/25/uefi-boot-how-does-that-actually-work-then/) to get a clear understanding of the cases where native UEFI boot is beneficial, and the cases where it is not necessary. See the UEFI [README](http://slackware.mirrorcatalogs.com/slackware64-14.1/README_UEFI.TXT) for how to get it working on a Slackware install. 
 
 If using the DVD ISO on a USB pen, tell the installer the files are on a USB when it asks, and it will scan automatically. Setup detects any EFI and swap partitions and gives the user a choice to format them.
 
@@ -69,7 +70,7 @@ And replace the above example with the `label` of the boot entry you need to boo
 
 ## Enable resume from hibernation
 
-In `/etc/lilo.conf` (non-UEFI BIOS setup) or `/boot/efi/EFI/Slackware/elilo.conf` (UEFI setup) add this somewhere in the double quotes ("") of the `append=` line:
+In `/etc/lilo.conf` (non-UEFI setup) or `/boot/efi/EFI/Slackware/elilo.conf` (UEFI setup) add this somewhere in the double quotes ("") of the `append=` line:
 
 ```
 resume=/dev/sdX # where X is the swap partition
