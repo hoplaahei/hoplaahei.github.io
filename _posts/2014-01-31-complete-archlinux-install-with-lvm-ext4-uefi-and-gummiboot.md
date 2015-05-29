@@ -7,9 +7,11 @@ title: "Complete Archlinux Install With LVM, EXT4, UEFI, And Gummiboot"
 
 Note: This guide requires knowledge of basic Linux console commands. Please backup all data before attempting to follow it.
 
+** You need a UEFI compatible firmware to follow the steps in this guide.  **
+
 ## Why UEFI?
 
-UEFI seems complicated to setup, but once you know how, it is arguably simpler than the old BIOS MBR way. It also boots somewhat quicker on most systems. 
+UEFI seems complicated to setup, but once you know how, it is arguably simpler than the old BIOS MBR way. It also boots somewhat quicker on most systems. Read [UEFI boot: how does that actually work then?](https://www.happyassassin.net/2014/01/25/uefi-boot-how-does-that-actually-work-then/) to see the cases when UEFI booting is beneficial, or when it is not necessary. 
 
 ## Why gummiboot?
 
