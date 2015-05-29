@@ -9,7 +9,7 @@ Note: This guide requires knowledge of basic Linux console commands. Please back
 
 ## Why UEFI?
 
-Uefi seems complicated to setup, but once you know how, it is arguably simpler than the old BIOS MBR way. It also boots somewhat quicker on most systems. 
+UEFI seems complicated to setup, but once you know how, it is arguably simpler than the old BIOS MBR way. It also boots somewhat quicker on most systems. 
 
 ## Why gummiboot?
 
