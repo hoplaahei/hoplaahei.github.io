@@ -7,7 +7,7 @@ title: "Complete Archlinux Install With LVM, EXT4, UEFI, And Gummiboot"
 
 Note: This guide requires knowledge of basic Linux console commands. Please backup all data before attempting to follow it.
 
-** You need a UEFI compatible firmware to follow the steps in this guide.  **
+** You need a UEFI compatible firmware to thoroughly benefit from the steps in this guide. **
 
 ## Why UEFI?
 
