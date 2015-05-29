@@ -6,6 +6,7 @@ title: How I install Slackware
 
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -270,4 +271,4 @@ Contents of the wrapper script `/usr/local/bin/mount-wrapper`:
 /bin/mount -o nouuid $1 $2
 if [ "$?"-ne 0]; then echo "Error detected. This wrapper only works with XFS filesystems"; exit 1; fi
 ```
-I need this workaround because `XFS` will not mount filesystems with the same `UUID`.
+I need this workaround because `XFS` will not mount filesystems with the same `UUID` by default.
