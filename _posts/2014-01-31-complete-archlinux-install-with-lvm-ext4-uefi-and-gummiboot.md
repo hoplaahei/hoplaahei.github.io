@@ -4,11 +4,12 @@ published: true
 title: "Complete Archlinux Install With LVM, EXT4, UEFI, And Gummiboot"
 ---
 
+
 Note: This guide requires knowledge of basic Linux Console commands. Please backup all data before attempting to follow it.
 
 ## Why UEFI?
 
-Uefi seems complicated to setup, but once you know how, it is arguably simpler than the old MBR way. It also boots somewhat quicker on most systems. 
+Uefi seems complicated to setup, but once you know how, it is arguably simpler than the old BIOS MBR way. It also boots somewhat quicker on most systems. 
 
 ## Why gummiboot?
 
@@ -28,11 +29,11 @@ dd bs=4M if=/path/to/archlinux.iso of=/dev/sdX && sync # where X is your device 
 
 If unsure which `sdX` device to copy the ISO to, run `dmesg | tail` just after plugging it in and look at the last few lines.
 
-## Modify BIOS to make computer UEFI bootable
+## Configure firmware to make computer UEFI bootable
 
-Reboot your computer and immediately press the BIOS key (usually F1 or Escape). Here you should make sure under the 'Boot' section that Uefi boot is enabled. 
+Reboot your computer and immediately press the setup key (usually F1 or Escape). Here you should make sure under the 'Boot' section that Uefi boot is enabled. 
 
-Also set the boot order in the BIOS to boot from USB, or find the key to load the boot menu when you reboot. Select your USB device, then the UEFI Arch entry (if it pops up). 
+Also set the boot order in the firmware configuration to boot from USB, or find the key to load the boot menu when you reboot. Select your USB device, then the UEFI Arch entry (if it pops up). 
 
 ## Prepare the live environment
 
