@@ -83,7 +83,7 @@ resume=/dev/sdX # where X is the swap partition
 
 Initial RAM Disk systems:
 
-If you opt for a `generic` kernel, which uses an `initrd` (initial RAM disk), then the above method of passing a parameter to the kernel to resume from the swap partition doesn't work for the likes of LVM. The `initrd` needs regenerating with an option to resume the swap partition. Run this before regenerating:
+If you opt for a `generic` kernel, which uses an `initrd` (initial RAM disk), then the above method of passing a parameter to the kernel to resume from the swap partition doesn't work for the likes of LVM swap partitions. The `initrd` needs regenerating with an option to resume the swap partition. Run this before regenerating:
 
 ```
 /usr/share/mkinitrd/mkinitrd_command_generator.sh -r
