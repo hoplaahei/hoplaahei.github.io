@@ -82,19 +82,19 @@ resume=/dev/sdX # where X is the swap partition
 
 LVM systems:
 
-If you opt for a `generic` kernel that uses an `initrd` passing a parameter to the kernel to resume from the swap partition isn't enough at the time of writing. The `initrd` needs regenerating e.g.,:
+If you opt for a `generic` kernel that uses an `initrd`, then passing a parameter to the kernel to resume from the swap partition isn't enough (at the time of writing). The `initrd` needs regenerating. Run this before regenerating:
 
 ```
 /usr/share/mkinitrd/mkinitrd_command_generator.sh -r
 ```
 
-That will output a command to run, but before running it, append `-h /dev/yourVG/yourLV` to it, e.g.,:
+That will output a command that needs running to generate the `initrd`, but before running it, append `-h /dev/yourVG/yourLV`, e.g.,:
 
 ```
 mkinitrd -c -k 3.10.17 -f xfs -r /dev/slack/root -m usbhid:hid_generic:xfs -h /dev/slack/swap -L -u -o /boot/initrd.gz
 ```
 
-If using `elilo` (UEFI), also copy over the new `initrd`:
+If using `elilo` (UEFI), also copy over the new `initrd` to the `EFI` partition:
 
 ```
 cp /boot/initrd.gz /boot/efi/EFI/Slackware/
