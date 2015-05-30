@@ -5,9 +5,10 @@ title: "Complete Archlinux Install With LVM, EXT4, UEFI, And Gummiboot"
 ---
 
 
+
 Note: This guide requires knowledge of basic Linux console commands. Please backup all data before attempting to follow it.
 
-** Your computer motherboard must have a UEFI compatible firmware to UEFI boot. **
+Your computer motherboard **MUST** have a UEFI compatible firmware to UEFI boot.
 
 ## Why UEFI?
 
