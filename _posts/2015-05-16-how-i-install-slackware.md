@@ -7,6 +7,7 @@ title: How I install Slackware
 
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -71,10 +72,26 @@ And replace the above example with the `label` of the boot entry you need to boo
 
 ## Enable resume from hibernation
 
+Non-LVM systems:
+
 In `/etc/lilo.conf` (non-UEFI setup) or `/boot/efi/EFI/Slackware/elilo.conf` (UEFI setup) add this somewhere in the double quotes ("") of the `append=` line:
 
 ```
 resume=/dev/sdX # where X is the swap partition
+```
+
+LVM systems:
+
+If you opt for a `generic` kernel that uses an `initrd` passing a parameter to the kernel to resume from the swap partition isn't enough at the time of writing. The `initrd` needs regenerating e.g.,:
+
+```
+/usr/share/mkinitrd/mkinitrd_command_generator.sh -r
+```
+
+That will output a command to run, and you will need to append `-h /dev/yourVG/yourLV` to it, e.g., :
+
+```
+/usr/share/mkinitrd/mkinitrd_command_generator.sh -r
 ```
 
 ## Get correct keys on the keyboard
