@@ -88,10 +88,10 @@ If you opt for a `generic` kernel that uses an `initrd` passing a parameter to t
 /usr/share/mkinitrd/mkinitrd_command_generator.sh -r
 ```
 
-That will output a command to run, and you will need to append `-h /dev/yourVG/yourLV` to it, e.g., :
+That will output a command to run, but before running it, append `-h /dev/yourVG/yourLV` to it, e.g.,:
 
 ```
-/usr/share/mkinitrd/mkinitrd_command_generator.sh -r
+mkinitrd -c -k 3.10.17 -f xfs -r /dev/slack/root -m usbhid:hid_generic:xfs -h /dev/slack/swap -L -u -o /boot/initrd.gz
 ```
 
 ## Get correct keys on the keyboard
