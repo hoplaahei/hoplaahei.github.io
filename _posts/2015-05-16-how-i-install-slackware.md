@@ -94,6 +94,12 @@ That will output a command to run, but before running it, append `-h /dev/yourVG
 mkinitrd -c -k 3.10.17 -f xfs -r /dev/slack/root -m usbhid:hid_generic:xfs -h /dev/slack/swap -L -u -o /boot/initrd.gz
 ```
 
+If using `elilo` (UEFI), also copy over the new `initrd`:
+
+```
+cp /boot/initrd.gz /boot/efi/EFI/Slackware/
+```
+
 ## Get correct keys on the keyboard
 
 After logging in it is useful to start `X` with `startx` command to run the default window-manager selected in installation e.g., `windowmaker`, but the keys might not be right on the keyboard. For a quick fix, run from the terminal e.g.,
