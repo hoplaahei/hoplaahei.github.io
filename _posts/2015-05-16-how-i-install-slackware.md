@@ -89,7 +89,7 @@ If you opt for a `generic` kernel, which uses an `initrd` (initial RAM disk), th
 /usr/share/mkinitrd/mkinitrd_command_generator.sh -r
 ```
 
-That will output a command that needs running to generate the `initrd`, but before running it, append `-h /dev/yourVG/yourLV`, e.g.,:
+That will output a command that needs running to generate the `initrd`, but before executing the output, append `-h /dev/yourVG/yourLV`, e.g.,:
 
 ```
 mkinitrd -c -k 3.10.17 -f xfs -r /dev/slack/root -m usbhid:hid_generic:xfs -h /dev/slack/swap -L -u -o /boot/initrd.gz
