@@ -139,10 +139,6 @@ setxkbmap gb # for a British keyboard
 
 This will only work for the current session, but we will set it permanently later.
 
-## Fix incorrect time
-
- [This](http://docs.slackware.com/howtos:hardware:syncing_hardware_clock_and_system_local_time) SlackDoc explains how to keep the time of all dual-booted operating systems in sync.
-
 ## Wireless networking
 
 Enable `NetworkManager` at boot:
@@ -168,6 +164,10 @@ Connect to one (start this line with a space to prevent the wifi password gettin
 ```
  nmcli dev wifi connect YourAccessPoint password YoUrPaSs
 ```
+
+## Fix incorrect time
+
+ [This](http://docs.slackware.com/howtos:hardware:syncing_hardware_clock_and_system_local_time) SlackDoc explains how to keep the time of all dual-booted operating systems in sync.
 
 ## Follow the beginners guide
 
