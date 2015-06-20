@@ -11,6 +11,7 @@ title: How I install Slackware
 
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -39,17 +40,15 @@ The `ArchWiki` has a good [article](https://wiki.archlinux.org/index.php/SSD_mem
 
 ## Installing
 
-The SlackDocs wiki has an [install](http://docs.slackware.com/slackware:install) guide for standard installation. Follow these steps first. Some modern computers may also benefit from booting into Slackware using their native UEFI boot. See [UEFI boot: how does that actually work, then?](https://www.happyassassin.net/2014/01/25/uefi-boot-how-does-that-actually-work-then/) to get a clear understanding of the cases where native UEFI boot is beneficial, and the cases where it is not necessary. See the UEFI [README](http://slackware.mirrorcatalogs.com/slackware64-14.1/README_UEFI.TXT) for how to get it working on a Slackware install. 
+The SlackDocs wiki has an [install](http://docs.slackware.com/slackware:install) guide for standard installation. It is a good idea to read this guide. Some modern computers may also benefit from booting into Slackware using their native UEFI boot. See [UEFI boot: how does that actually work, then?](https://www.happyassassin.net/2014/01/25/uefi-boot-how-does-that-actually-work-then/) to get a clear understanding of the cases where native UEFI boot is beneficial, and the cases where it is not necessary. 
 
-If using the DVD ISO on a USB pen, tell the installer the files are on a USB when it asks, and it will scan automatically. Setup detects any EFI and swap partitions and gives the user a choice to format them.
+Read through the UEFI [README](http://slackware.mirrorcatalogs.com/slackware64-14.1/README_UEFI.TXT) for how to setup an EFI partition and make Slackware UEFI bootable. My guide also covers these steps. 
 
-For LVM partitioning, there are some additional steps needed before and after setup, so read `README_LVM.txt` (included on the USB and readable from the console) carefully. I recommend scrolling down to the "alternative method" that automatically generates the right commands to pass to `mkinitrd`. Be warned, on `UEFI` systems, the generated command will not copy the files over to the `EFI` partition, or set the right paths in `elilo.conf`. This is easily fixable (see the next heading).
+For LVM partitioning, there are some additional steps needed before and after setup, so read `README_LVM.txt` on the USB before you boot into it. I'm going to cover the extra steps that are needed when using a UEFI and LVM setup.
 
 ## An example LVM setup with UEFI
 
-You may notice that this process is pretty much just a copy & paste of my Arch guide, because the process doesn't vary much between distros. 
-
-First, choose the disk you want to install Slackware on. Use `blkid` to see available devices. I like to get rid of remnants of old partitions on the chosen disk by running `gdisk /dev/sdX` and pressing `x` for `extra functionality`, followed by `z` to `zap (destroy) GPT data structures and exit`.
+Choose the disk you want to install Slackware on by using `blkid` to see available devices. If you skipped SSD memory cell-clearing then you may still want to get rid of remnants of old partitions on the chosen disk by running `gdisk /dev/sdX` and pressing `x` for `extra functionality`, followed by `z` to `zap (destroy) GPT data structures and exit`.
 
 Now make a 512M EFI (ee00 code) boot partition using `gdisk /dev/sda` again:
 
