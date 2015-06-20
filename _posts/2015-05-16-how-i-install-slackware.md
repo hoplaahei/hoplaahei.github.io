@@ -10,6 +10,7 @@ title: How I install Slackware
 
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -48,53 +49,12 @@ For LVM partitioning, there are some additional steps needed before and after se
 
 You may notice that this process is pretty much just a copy & paste of my Arch guide, because the process doesn't vary much between distros. 
 
-First, choose the disk you want to install Slackware on. Use `blkid` to see available devices. I like to get rid of remnants of old partitions on the chosen disk by running `gdisk /dev/sdX` and pressing `x` for `extra functionality`, followed by `z` to `zap (destroy) GPT data structures and exit`. 
+First, choose the disk you want to install Slackware on. Use `blkid` to see available devices. I like to get rid of remnants of old partitions on the chosen disk by running `gdisk /dev/sdX` and pressing `x` for `extra functionality`, followed by `z` to `zap (destroy) GPT data structures and exit`.
 
-Or if you don't have gdisk installed you can do it with dd:
+Now make a 512M EFI (ee00 code) boot partition using `gdisk /dev/sda` again:
 
-```
-dd if=/dev/zero of=/dev/sdX bs=512 count=1 # erase MBR and dos partition table
-dd if=/dev/zero of=/dev/sdX bs=512 count=2 # erase GPT table beginning
-dd if=/dev/zero of=/dev/sdX bs=512 count=2 seek=$(($(blockdev --getsz /dev/sdb) - 2)) # erase GPT end
-```
-Then I create a fresh GPT partition table:
+Press `n` and choose `1` to select 1st partition. Leave start sector at default by pressing `Enter`, but change end sector to `+512M` (it is important to keep it at this size on some firmwares, but 100M is reported to work for a lot of people if you need something smaller). For the type enter the code `ef00` (EFI).
 
-```
-gdisk /dev/sdX # where X is the device number you selected
-```
-
-Press `o` on the prompt of `gdisk` to create `an empty GUID partition table`. Then `w` to save and write the changes.
-
-## Create the EFI boot partition
-
-Make a 512M EFI (ee00 code) boot partition:
-
-```bash
-gdisk /dev/sdX # if you are not already running it
-```
-
-Now press `n` and choose `1` to select 1st partition. Leave start sector at default by pressing `Enter`, but change end sector to `+512M` (it is important to keep it at this size). For the type enter the code `ef00` (EFI). Remember to write the changes with `w`.
-
-## Creating and mounting the LVM volumes
-
-Creating LVM volumes seems abstract and complex at first compared to traditional partitioning of Linux, but really it just has a few more layers of complexity to remember. 
-
-We will put LVM in its own partition; that way it can coexist with the EFI boot partition we made. _Side note: LVM can exist on the block level, without the need for partitions, but in this case we store it in one, so as not to overwrite the UEFI boot partition we made._
-
-Our LVM partition uses the remaining space on the drive. Here is a brief run down of how we will make a usable LVM setup:
-
-1. create a primary LVM partition (code 8e00 in gdisk)
-2. make the device LVM ready (using pvcreate)
-3. create a volume group to contain the volumes (using vgcreate)
-4. add volumes (using lvcreate)
-
-It is no harder than those four steps, and you will see exactly how to do it. The last step of volume creation looks complicated, but it is the same as creating traditional partitions e.g., / and swap. So let's go.
-
-Create the LVM partition:
-
-```
-gdisk /dev/sdX
-```
 Press `n` and `Enter` to make partition 2. `Enter` again for default start block, and `Enter` once more for default end block. `8e00` to create type LVM and then `w` to write the changes. 
 
 Now create the LVM hierarchy:
