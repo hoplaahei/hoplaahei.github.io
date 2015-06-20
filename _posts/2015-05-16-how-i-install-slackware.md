@@ -72,11 +72,33 @@ mkswap /dev/VolGroup00/lvolswap
 mkfs.vfat -F32 /dev/sdX1 # the EFI partition
 ```
 
-Now run `setup` as usual and Slackware should automatically detect the partitions as the installer goes along. See the [install](http://docs.slackware.com/slackware:install) guide.
+Now run `setup` as usual and Slackware should automatically detect the partitions as the installer goes along. Select USB as the installation media if you followed the steps in this guide to create the media. Also see the Slackware [install](http://docs.slackware.com/slackware:install) guide for further help.
 
-## Using a generic kernel on UEFI systems
+** DO NOT REBOOT **
 
-There are some additional steps to switch from a huge kernel to a generic one on UEFI systems (using `elilo`) that the `beginners guide` doesn't mention. Copy the `initrd` and `vmlinuz` from that kernel to `/boot/efi/EFI/Slackware`, e.g., 
+There are some additional steps needed with LVM or you will receive a kernel panic. We will switch from the HUGE kernel to the generic kernel to fix this and also copy the `initrd` and `vmlinuz` from that kernel to the EFI partition so they are seen in a UEFI boot.
+
+First we must `chroot` into our Slackware install. The installer has already setup the environment for us, so simply enter:
+
+```
+chroot /mnt
+```
+
+Now use this script to analyse our setup and output a command we can use:
+
+```
+/usr/share/mkinitrd/mkinitrd_command_generator.sh -r
+```
+
+That will output a line with the command to generate the `initrd`, but we also want to add resume support for our swap partition by appending `-h /dev/yourVG/yourSwapLV`, e.g.,:
+
+```
+mkinitrd -c -k 3.10.17 -f xfs -r /dev/slack/root -m usbhid:hid_generic:xfs -h /dev/slack/swap -L -u -o /boot/initrd.gz
+```
+
+Copy over the new `initrd` and kernel to the `EFI` partition:
+
+e.g., 
 
 ```
 cp /boot/vmlinuz-generic-3.10.17 /boot/efi/EFI/Slackware/
@@ -88,10 +110,9 @@ And edit `/boot/efi/EFI/Slackware/elilo.conf` as opposed to `/etc/lilo.conf`. Th
 ```
 image = vmlinuz-generic-3.10.17
         initrd = initrd.gz
-        root = /dev/sdb3
         label = 3.10.17
         read-only
-        append="vga=normal ro"
+        append="root=/dev/VolGroup00/lvolroot vga=normal ro"
 ```
 
 Leave any old entries in there above the new one, so you can select which kernel to boot with the arrow keys from the menu on boot. Once sure it boots, add this line after `timeout=1` in the `elilo.conf`:
@@ -100,37 +121,7 @@ Leave any old entries in there above the new one, so you can select which kernel
 default=3.10.17
 ```
 
-And replace the above example with the `label` of the boot entry you need to boot.
-
-## Enable resume from hibernation
-
-If using full kernel (non-initrd):
-
-In `/etc/lilo.conf` (non-UEFI setup) or `/boot/efi/EFI/Slackware/elilo.conf` (UEFI setup) add this somewhere in the double quotes ("") of the `append=` line:
-
-```
-resume=/dev/sdX # where X is the swap partition
-```
-
-Initial RAM Disk systems:
-
-If you opt for a `generic` kernel, which uses an `initrd` (initial RAM disk), then the above method of passing a parameter to the kernel to resume from the swap partition doesn't work for the likes of LVM swap partitions. The `initrd` needs regenerating with an option to resume the swap partition. Run this before regenerating:
-
-```
-/usr/share/mkinitrd/mkinitrd_command_generator.sh -r
-```
-
-That will output a line with the command to generate the `initrd`, but before executing the line, append `-h /dev/yourVG/yourLV`, e.g.,:
-
-```
-mkinitrd -c -k 3.10.17 -f xfs -r /dev/slack/root -m usbhid:hid_generic:xfs -h /dev/slack/swap -L -u -o /boot/initrd.gz
-```
-
-If using `elilo` (UEFI), also copy over the new `initrd` to the `EFI` partition:
-
-```
-cp /boot/initrd.gz /boot/efi/EFI/Slackware/
-```
+And replace the above example with the `label` of the boot entry you need to boot. Now reboot.
 
 ## Get correct keys on the keyboard
 
