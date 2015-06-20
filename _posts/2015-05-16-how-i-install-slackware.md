@@ -102,7 +102,7 @@ Now create the LVM hierarchy:
 ```bash
 pvcreate /dev/sdX2 # activate
 vgcreate VolGroup00 /dev/sdX2
-lvcreate -C y -L 9G VolGroup00 -n lvolswap
+lvcreate -C y -L 9G VolGroup00 -n lvolswap # -C y option is for contigious allocation
 lvcreate -l +100%FREE VolGroup00 -n lvolroot # use remaining space
 ```
 
