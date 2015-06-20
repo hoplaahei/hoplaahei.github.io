@@ -125,7 +125,13 @@ And replace the above example with the `label` of the boot entry you need to boo
 
 ## Get correct keys on the keyboard
 
-After logging in it is useful to start `X` with `startx` command to run the default window-manager selected in installation e.g., `windowmaker`, but the keys might not be right on the keyboard. For a quick fix, run from the terminal e.g.,
+After logging in you may want to work from the console. Load your keyboard language, e.g., United Kingdom with:
+
+```
+loadkeys uk
+```
+
+It is useful, however, to start `X` with `startx` command to run the default window-manager selected in installation e.g., `windowmaker`, but the keys might not be right on the keyboard in `X` either. For a quick fix, run from an `xterm` e.g.,
 
 ```
 setxkbmap gb # for a British keyboard
