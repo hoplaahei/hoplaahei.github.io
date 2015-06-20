@@ -114,6 +114,8 @@ mkswap /dev/VolGroup00/lvolswap
 mkfs.vfat -F32 /dev/sdX1 # the EFI partition
 ```
 
+Now run `setup` as usual and Slackware should automatically detect the partitions as the installer goes along. See the [install](http://docs.slackware.com/slackware:install) guide.
+
 ## Using a generic kernel on UEFI systems
 
 There are some additional steps to switch from a huge kernel to a generic one on UEFI systems (using `elilo`) that the `beginners guide` doesn't mention. Copy the `initrd` and `vmlinuz` from that kernel to `/boot/efi/EFI/Slackware`, e.g., 
