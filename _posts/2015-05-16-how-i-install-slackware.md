@@ -65,10 +65,9 @@ lvcreate -C y -L 9G VolGroup00 -n lvolswap # -C y option is for contigious alloc
 lvcreate -l +100%FREE VolGroup00 -n lvolroot # use remaining space
 ```
 
-Format the partitions:
+Format the swap and EFI partitions, so that the Slackware installer will detect them:
 
 ```
-mkfs.xfs -L "Slack" /dev/VolGroup00/lvolroot
 mkswap /dev/VolGroup00/lvolswap
 mkfs.vfat -F32 /dev/sdX1 # the EFI partition
 ```
