@@ -124,7 +124,7 @@ default=3.10.17
 
 And replace the above example with the `label` of the boot entry you need to boot.
 
-If it doesn't boot correctly, you've likely made a typo. Boot back into the Slackware install USB and make the installer aware of the existing LVM volumes using:
+If it doesn't boot correctly, you've likely made a typo, or missed a step. Boot back into the Slackware install USB and make the installer aware of the existing LVM volumes using:
 
 ```
 vgchange -ay
