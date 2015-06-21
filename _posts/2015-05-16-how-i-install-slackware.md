@@ -130,7 +130,11 @@ If it doesn't boot correctly, you've likely made a typo, or missed a step. Boot 
 vgchange -ay
 ```
 
-Now follow the Slackware [chroot](http://docs.slackware.com/howtos:slackware_admin:how_to_chroot_from_media) guide. That guide assumes a non-LVM setup, so replace /dev/sdX2 accordingly. For example, you will first need to mount the LVM root volume `/dev/VolGroup00/lvolroot` on `/mnt` and the EFI partition `/dev/sdX1` on `/mnt/boot`, then bind mount `dev`, `proc` and `sys`.
+Now follow the Slackware [chroot](http://docs.slackware.com/howtos:slackware_admin:how_to_chroot_from_media) guide. That guide assumes a non-LVM setup, so replace /dev/sdX2 accordingly. For example, you will first need to mount the LVM root volume `/dev/VolGroup00/lvolroot` on `/mnt` and the EFI partition `/dev/sdX1` on `/mnt/boot`, then bind mount `dev`, `proc` and `sys`. Redo all the steps from the **DO NOT REBOOT** warning above. Remember you need to:
+
+- examine `/boot/efi/EFI/Slackware/elilo.conf` to make sure it is correct
+- regenerate the inital RAM-disk
+- copy over the ramdisk and kernel image to `/boot/efi/EFI/Slackware`
 
 ## Get correct keys on the keyboard
 
