@@ -123,9 +123,9 @@ Leave any old entries in there above the new one; that way, you can select which
 default=3.10.17
 ```
 
-And replace the above example with the `label` of the boot entry you need to boot.
+And replace the above example with the `label` of the boot entry you need to boot. Skip to the next section. 
 
-If it doesn't boot correctly, you've likely made a typo, or missed a step. Boot back into the Slackware install USB and make the installer aware of the existing LVM volumes using:
+If it doesn't boot correctly, you've likely made a typo, or missed a step. In that case, boot back into the Slackware install USB and make the installer aware of the existing LVM volumes using:
 
 ```
 vgchange -ay
@@ -135,7 +135,7 @@ Now follow the Slackware [chroot](http://docs.slackware.com/howtos:slackware_adm
 
 - examine `/boot/efi/EFI/Slackware/elilo.conf` to make sure it is correct
 - regenerate the inital RAM-disk
-- copy over the ramdisk and kernel image to `/boot/efi/EFI/Slackware`
+- copy over the ramdisk and kernel image to `/boot/efi/EFI/Slackware` so `elilo` is aware of them
 
 ## Get correct keys on the keyboard
 
