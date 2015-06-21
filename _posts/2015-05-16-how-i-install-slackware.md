@@ -141,6 +141,8 @@ This will only work for the current session, but we will set it permanently late
 
 ## Wireless networking
 
+There are a couple of different ways to setup wifi outlined in the Slackware [wifi](http://docs.slackware.com/slackbook:wifi) docs. I use NetworkManager because it is the quickest to get up and running on a fresh install. IMO most of the hate for NetworkManager is undeserved these days; it has worked pretty good for a while now. 
+
 Enable `NetworkManager` at boot:
 
 ```
