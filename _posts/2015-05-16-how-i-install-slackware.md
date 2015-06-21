@@ -73,11 +73,11 @@ mkswap /dev/VolGroup00/lvolswap
 mkfs.vfat -F32 /dev/sdX1 # the EFI partition
 ```
 
-Now run `setup` as usual and Slackware should automatically detect the partitions as the installer goes along. Select USB as the installation media if you followed the steps in this guide to create the media. Also see the Slackware [install](http://docs.slackware.com/slackware:install) guide for further help.
+Now run `setup` as usual and Slackware should automatically detect the partitions as the installer goes along. Select USB as the installation media if you followed the steps in this guide to create the media. Do not install `lilo` when prompted; the installer will prompt you to install `elilo` instead. Also see the Slackware [install](http://docs.slackware.com/slackware:install) guide for further help.
 
 **DO NOT REBOOT**
 
-There are some additional steps needed with LVM or you will receive a kernel panic. We will switch from the HUGE kernel to the GENERIC kernel to fix this, and also copy the `initrd` and `vmlinuz` from that kernel to the EFI partition, so they are seen in a UEFI boot.
+There are some additional steps needed with an LVM setup or you will receive a kernel panic. We will switch from the HUGE kernel to the GENERIC kernel to fix this, and also copy the `initrd` and `vmlinuz` from that kernel to the EFI partition, so they are seen in a UEFI boot.
 
 First we must `chroot` into our Slackware install. The installer has already setup the environment for us, so simply enter:
 
