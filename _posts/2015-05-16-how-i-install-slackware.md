@@ -13,6 +13,7 @@ title: How I install Slackware
 
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -116,7 +117,7 @@ image = vmlinuz-generic-3.10.17
         append="root=/dev/VolGroup00/lvolroot vga=normal ro"
 ```
 
-Leave any old entries in there above the new one; that way, you can select which kernel to boot with the arrow keys from the menu on boot. Reboot into the new system now. If it boots correctly, add this line after `timeout=1` in the `elilo.conf`:
+Leave any old entries in there above the new one; that way, you can select which kernel to boot with the arrow keys from the menu on boot. Reboot into the new system now. If it boots correctly, add this line after `timeout=1` in the `/etc/elilo.conf`:
 
 ```
 default=3.10.17
