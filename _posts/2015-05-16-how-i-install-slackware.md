@@ -12,6 +12,7 @@ title: How I install Slackware
 
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -74,9 +75,9 @@ mkfs.vfat -F32 /dev/sdX1 # the EFI partition
 
 Now run `setup` as usual and Slackware should automatically detect the partitions as the installer goes along. Select USB as the installation media if you followed the steps in this guide to create the media. Also see the Slackware [install](http://docs.slackware.com/slackware:install) guide for further help.
 
-** DO NOT REBOOT **
+**DO NOT REBOOT**
 
-There are some additional steps needed with LVM or you will receive a kernel panic. We will switch from the HUGE kernel to the generic kernel to fix this and also copy the `initrd` and `vmlinuz` from that kernel to the EFI partition so they are seen in a UEFI boot.
+There are some additional steps needed with LVM or you will receive a kernel panic. We will switch from the HUGE kernel to the GENERIC kernel to fix this, and also copy the `initrd` and `vmlinuz` from that kernel to the EFI partition, so they are seen in a UEFI boot.
 
 First we must `chroot` into our Slackware install. The installer has already setup the environment for us, so simply enter:
 
@@ -90,10 +91,10 @@ Now use this script to analyse our setup and output a command we can use:
 /usr/share/mkinitrd/mkinitrd_command_generator.sh -r
 ```
 
-That will output a line with the command to generate the `initrd`, but we also want to add resume support for our swap partition by appending `-h /dev/yourVG/yourSwapLV`, e.g.,:
+That will output a line with the command to generate the `initrd`, but we also want to add resume support for our swap partition by including `-h /dev/yourVG/yourSwapLV`, e.g.,:
 
 ```
-mkinitrd -c -k 3.10.17 -f xfs -r /dev/slack/root -m usbhid:hid_generic:xfs -h /dev/slack/swap -L -u -o /boot/initrd.gz
+mkinitrd -c -k 3.10.17 -f xfs -r /dev/slack/root -m usb-storage:ehci-hcd:ehci-pci:xfs -h /dev/slack/swap -L -u -o /boot/initrd.gz
 ```
 
 Copy over the new `initrd` and kernel to the `EFI` partition:
@@ -105,7 +106,7 @@ cp /boot/vmlinuz-generic-3.10.17 /boot/efi/EFI/Slackware/
 cp /boot/initrd.gz /boot/efi/EFI/Slackware/
 ```
 
-And edit `/boot/efi/EFI/Slackware/elilo.conf` as opposed to `/etc/lilo.conf`. The syntax is mostly the same as in the beginners guide example, but the `/boot/` part of the paths need removing, e.g.,:
+And edit `/boot/efi/EFI/Slackware/elilo.conf`. The syntax is mostly the same as in the beginners guide example for `lilo.conf`, but the `/boot/` part of the paths need removing, e.g.,:
 
 ```
 image = vmlinuz-generic-3.10.17
@@ -115,13 +116,21 @@ image = vmlinuz-generic-3.10.17
         append="root=/dev/VolGroup00/lvolroot vga=normal ro"
 ```
 
-Leave any old entries in there above the new one, so you can select which kernel to boot with the arrow keys from the menu on boot. Once sure it boots, add this line after `timeout=1` in the `elilo.conf`:
+Leave any old entries in there above the new one; that way, you can select which kernel to boot with the arrow keys from the menu on boot. Reboot into the new system now. If it boots correctly, add this line after `timeout=1` in the `elilo.conf`:
 
 ```
 default=3.10.17
 ```
 
-And replace the above example with the `label` of the boot entry you need to boot. Now reboot.
+And replace the above example with the `label` of the boot entry you need to boot.
+
+If it doesn't boot correctly, you've likely made a typo. Boot back into the Slackware install USB and make the installer aware of the existing LVM volumes using:
+
+```
+vgchange -ay
+```
+
+Now follow the Slackware [chroot](http://docs.slackware.com/howtos:slackware_admin:how_to_chroot_from_media) guide. That guide assumes a non-LVM setup, so replace /dev/sdX2 accordingly. For example, you will first need to mount the LVM root volume `/dev/VolGroup00/lvolroot` on `/mnt` and the EFI partition `/dev/sdX1` on `/mnt/boot`, then bind mount `dev`, `proc` and `sys`.
 
 ## Get correct keys on the keyboard
 
