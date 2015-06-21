@@ -317,7 +317,7 @@ linux_lvm_mountpath     /mnt/rsnapshot-tmp
 linux_lvm_cmd_mount     /usr/local/bin/mount-wrapper
 linux_lvm_cmd_umount    /bin/umount
 
-backup  lvm://slack/root/       slack-root/
+backup  lvm://VolGroup00/lvolroot/       slack-root/
 ```
 
 Some explanation of the options:
@@ -328,6 +328,8 @@ Some explanation of the options:
 - `retain  manual  30` :: Keep 30 manual backups before starting to replace them
 - `verbose         4` :: Print out which files are currently copying, so I know the backup is still running ok
 - `linux_lvm_cmd_mount` ::  In later versions of `rsnapshot` it is possible to pass mount options here, but not in the release version on Slackware 14.1, so I point this option to a mount-wrapper script. 
+
+Create the directories `/mnt/rsnapshot-tmp` and `/media/backup/rsnapshot` for the following script to work. 
 
 Contents of the wrapper script `/usr/local/bin/mount-wrapper`:
 
