@@ -127,7 +127,7 @@ Most modern SSDs support TRIM, but it needs activating explicitly for LVM by edi
 issue_discards = 1
 ```
 
-You may also need to add 'discard' option to the relevant partitions in `/etc/fstab` e.g.,:
+You may also need to add `discard` option to the relevant partitions in `/etc/fstab` e.g.,:
 
 ```
 /dev/VolGroup00/lvolroot /                xfs         defaults,discard         1   1
