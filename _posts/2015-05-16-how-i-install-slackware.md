@@ -127,6 +127,12 @@ Most modern SSDs support TRIM, but it needs activating explicitly for LVM by edi
 issue_discards = 1
 ```
 
+You may also need to add 'discard' option to the relevant partitions in `/etc/fstab` e.g.,:
+
+```
+/dev/VolGroup00/lvolroot /                xfs         defaults,discard         1   1
+```
+
 Now reboot into the new system now. If it boots correctly, add this line after `timeout=1` in the `/etc/elilo.conf`:
 
 ```
