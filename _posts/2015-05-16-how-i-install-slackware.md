@@ -16,6 +16,7 @@ title: How I install Slackware
 
 
 
+
 # Preparation
 
 Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
@@ -121,7 +122,7 @@ image = vmlinuz-generic-3.10.17
 
 Leave any old entries in there above the new one; that way, you can select which kernel to boot with the arrow keys from the menu on boot. 
 
-Most modern SSDs support TRIM, but it needs activating explicitly for LVM by editing `/etc/lvm/lvm.conf` and changing `issue_discards` from '0' to '1':
+Most modern SSDs support [TRIM](https://en.wikipedia.org/wiki/Trim_%28computing%29), but it needs activating explicitly for LVM by editing `/etc/lvm/lvm.conf` and changing `issue_discards` from '0' to '1':
 
 ```
 issue_discards = 1
