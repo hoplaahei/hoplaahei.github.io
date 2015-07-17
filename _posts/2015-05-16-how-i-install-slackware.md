@@ -4,26 +4,12 @@ published: true
 title: How I install Slackware
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Preparation
-
-Disclaimer: these commands will wipe your disk. The commands use the form `sdX`, where you need to replace the `sdX` with e.g., `sda`, and where 'a' is usually the first disk (but double check with `fdisk` or `gdisk` to make sure). Google if you don't understand how to use these tools. 
-
 ## Get Slackware ISO onto a USB pen
 
 See the [torrents](http://www.slackware.com/getslack/torrents.php) page. I chose [Slackware 14.1 64-bit](http://www.slackware.com/torrents/slackware64-14.1-install-dvd.torrent) from the bottom of the page. At the time of writing it is the stable edition.
+
+** Disclaimer: I expect you to know what I mean by `sdX` and what you 
+should replace it with. If you don't, read up on it before accidentally wiping a disk. **
 
 Even though the ISO is for DVDs, it works just as well on a USB stick (replace sdX with the USB stick device):
 
@@ -98,7 +84,7 @@ Now use this script to analyse our setup and output a command we can use:
 That will output a line with the command to generate the `initrd`, but we also want to add resume support for our swap partition by including `-h /dev/yourVG/yourSwapLV`, e.g.,:
 
 ```
-mkinitrd -c -k 3.10.17 -f xfs -r /dev/slack/root -m usb-storage:ehci-hcd:ehci-pci:xfs -h /dev/slack/swap -L -u -o /boot/initrd.gz
+mkinitrd -c -k 3.10.17 -f xfs -r /dev/VolGroup00/lvolroot -m usb-storage:ehci-hcd:ehci-pci:xfs -h /dev/VolGroup00/lvolswap -L -u -o /boot/initrd.gz
 ```
 
 Copy over the new `initrd` and kernel to the `EFI` partition:
@@ -121,18 +107,6 @@ image = vmlinuz-generic-3.10.17
 ```
 
 Leave any old entries in there above the new one; that way, you can select which kernel to boot with the arrow keys from the menu on boot. 
-
-Most modern SSDs support [TRIM](https://en.wikipedia.org/wiki/Trim_%28computing%29), but it needs activating explicitly for LVM by editing `/etc/lvm/lvm.conf` and changing `issue_discards` from '0' to '1':
-
-```
-issue_discards = 1
-```
-
-You may also need to append the `discard` option to the relevant volumes in `/etc/fstab`. On my system I use XFS as the underlying filesystem, but do not use a separate `home` volume, so I only need to append `discard` to one line:
-
-```
-/dev/VolGroup00/lvolroot /                xfs         defaults,discard         1   1
-```
 
 Now reboot into the new system now. If it boots correctly, add this line after `timeout=1` in the `/etc/elilo.conf`:
 
