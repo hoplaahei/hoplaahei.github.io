@@ -62,11 +62,21 @@ n
 w
 EOF
 
+mkfs.vfat -F32 /dev/sda1
 zpool create $ZPOOL ${TARGET}2
 zfs create $ZPOOL/$ROOTFS
 zfs create $ZPOOL/$ROOTFS/$INSTALLFS
 zfs umount -a
 zfs set mountpoint=/ $ZPOOL/$ROOTFS/$INSTALLFS
+zpool set bootfs=$ZPOOL/$ROOTFS/$INSTALLFS $ZPOOL
+zpool export $ZPOOL
+zpool import -R /mnt $ZPOOL
+mkdir -p /mnt/{boot/efi,dev,proc,run,sys}
+mount /dev/sda1 /mnt/boot/efi
+mount --rbind /dev /mnt/dev
+mount --rbind /proc /mnt/proc
+mount --rbind /run /mnt/run
+mount --rbind /sys /mnt/sys
 ```
 
 
