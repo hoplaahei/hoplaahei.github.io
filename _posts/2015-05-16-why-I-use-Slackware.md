@@ -1,7 +1,7 @@
 ---
 layout: post
 published: true
-title: "Slackware: lack of dependency resolution is a feature"
+title: Advantages of manual dependency management in Slackware
 ---
 
 
