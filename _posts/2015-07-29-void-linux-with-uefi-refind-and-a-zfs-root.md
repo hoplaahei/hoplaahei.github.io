@@ -7,17 +7,23 @@ title: Void (Linux) with rEFInd (UEFI) and ZFS (root)
 Void Linux is installable from any existing OS or live CD. Find a recent one that comes with ZFS tools (or can install the tools).
 
 ```
-#!/bin/bash
+#!/usr/bin/env bash
 
-TARGET=/dev/sda
-EFISIZE=512 # in MB
-##DISKSIZE=`expr $(blockdev --getsize64 $TARGET) / 1024` # in bytes
-DISKSIZE=$(awk -v dev="${TARGET}$" '$0 ~ dev {print $3}' /proc/partitions) # in KB
-# make swap size 1.5 times system RAM
-##SWAPSIZE=`expr $(vmstat -s -S b) / 1024` # in bytes
-SWAPSIZE=$(awk 'NR <=1 {print $2 * 1.5}' /proc/meminfo) # in KB
-# subtract swap space and EFI from size of disk to get root size
-ROOTSIZE=`expr ($(DISKSIZE) - $(SWAPSIZE)) - $(expr $EFISIZE * 1024)` # in KB
+set -euf -o pipefail
+
+# user set variables
+TARGET="/dev/sda"
+EFISIZE=512
+
+# don't change these
+DISKSIZE=$(blockdev --getsize64 $TARGET) 
+SWAPSIZE=$(vmstat -s -S b | awk 'NR <=1 {print $1 * 1.5}')
+
+# size of disk minus space needed for swap minus space needed for an EFI partition 
+# EFI size converted to bytes for the sum
+# answer converted to kilobytes (because gdisk doesn't accept bytes)
+# don't change this
+ROOTSIZE=$(( ( $DISKSIZE - ($SWAPSIZE + (( ($EFISIZE * 1024) * 1024 )) ) ) / 1024 ))
 
 WIFIDEV=wlp3s0
 ESSID=PlusnetWireless94CBB7
