@@ -77,6 +77,10 @@ mount --rbind /dev /mnt/dev
 mount --rbind /proc /mnt/proc
 mount --rbind /run /mnt/run
 mount --rbind /sys /mnt/sys
+xbps-install wget xz
+wget "http://repo.voidlinux.eu/static/xbps-static-latest.x86_64-musl.tar.xz"
+tar xf xbps-static-latest.x86_64-musl.tar.xz -C /mnt
+/mnt/usr/bin/xbps-install -S --repository=http://repo.voidlinux.eu/current -r /mnt base-system
 ```
 
 
