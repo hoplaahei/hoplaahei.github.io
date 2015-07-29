@@ -1,8 +1,9 @@
 ---
 layout: post
 published: true
-title: Why I use Slackware
+title: "Why Slackware's lack of dependency resolution isn't necessarily a bad thing"
 ---
+
 
 
 Slackware is great for people like me who are OCD over keeping full control of a system. Although it offers automated tools and scripts for installing software and configuring the system, it encourages users to study the configuration options of the components, to better understand how to maintain a Linux system. 
