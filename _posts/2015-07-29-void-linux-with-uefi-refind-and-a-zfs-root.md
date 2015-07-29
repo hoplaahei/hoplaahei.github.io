@@ -17,6 +17,7 @@ ZPOOL="rpool"
 ROOTFS="ROOT"
 INSTALLFS="voidlinux_1"
 EFISIZE=512
+HOSTNAME="salient230"
 
 # don't change these
 DISKSIZE=$(blockdev --getsize64 $TARGET) 
@@ -81,6 +82,14 @@ xbps-install wget xz
 wget "http://repo.voidlinux.eu/static/xbps-static-latest.x86_64-musl.tar.xz"
 tar xf xbps-static-latest.x86_64-musl.tar.xz -C /mnt
 /mnt/usr/bin/xbps-install -S --repository=http://repo.voidlinux.eu/current -r /mnt base-system
+cp /etc/resolv.conf /mnt/etc/resolv.conf
+chroot /mnt /bin/bash
+passwd root
+chown root:root /
+chmod 755 /
+echo $HOSTNAME > /etc/hostname
+xbps-install zfs
+
 ```
 
 
