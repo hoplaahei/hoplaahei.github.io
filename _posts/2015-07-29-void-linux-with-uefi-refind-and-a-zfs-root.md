@@ -14,6 +14,8 @@ set -euf -o pipefail
 # user set variables
 TARGET="/dev/sda"
 ZPOOL="rpool"
+ROOTFS="ROOT"
+INSTALLFS="voidlinux_1"
 EFISIZE=512
 
 # don't change these
@@ -61,7 +63,10 @@ w
 EOF
 
 zpool create $ZPOOL ${TARGET}2
-zfs create $ZPOOL/ROOT
+zfs create $ZPOOL/$ROOTFS
+zfs create $ZPOOL/$ROOTFS/$INSTALLFS
+zfs umount -a
+zfs set mountpoint=/ $ZPOOL/$ROOTFS/$INSTALLFS
 ```
 
 
