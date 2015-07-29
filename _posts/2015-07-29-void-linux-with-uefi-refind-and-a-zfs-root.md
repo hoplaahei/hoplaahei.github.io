@@ -4,7 +4,7 @@ published: false
 title: Void (Linux) with rEFInd (UEFI) and ZFS (root)
 ---
 
-Void Linux is installable from any existing OS or live CD. Find one that is fairly recent, and comes with ZFS tools (or allows you to install them).
+Void Linux is installable from any existing OS or live CD. Find a recent one that comes with ZFS tools (or can install tools).
 
 ```
 TARGET=/dev/sda
