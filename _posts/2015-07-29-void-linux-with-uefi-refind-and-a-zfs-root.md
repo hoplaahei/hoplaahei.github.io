@@ -18,6 +18,7 @@ ROOTFS="ROOT"
 INSTALLFS="voidlinux_1"
 EFISIZE=512
 HOSTNAME="salient230"
+KERNEL="4.1"
 
 # don't change these
 DISKSIZE=$(blockdev --getsize64 $TARGET) 
@@ -93,6 +94,7 @@ printf '/dev/sda1 /boot/efi vfat defaults 0 0\n' >> /mnt/etc/fstab
 mkdir -p /etc/dracut.conf.d
 printf 'hostonly=yes\n' > /etc/dracut.conf.d/hostonly.conf
 zpool set cachefile=/etc/zfs/zpool.cache $ZPOOL
+xbps-reconfigure -f $KERNEL
 ```
 
 
