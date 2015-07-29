@@ -89,10 +89,10 @@ chown root:root /
 chmod 755 /
 echo $HOSTNAME > /etc/hostname
 xbps-install zfs
-printf '/dev/sda1 /boot vfat defaults 0 0\n' >> /mnt/etc/fstab
+printf '/dev/sda1 /boot/efi vfat defaults 0 0\n' >> /mnt/etc/fstab
 mkdir -p /etc/dracut.conf.d
 printf 'hostonly=yes\n' > /etc/dracut.conf.d/hostonly.conf
-
+zpool set cachefile=/etc/zfs/zpool.cache $ZPOOL
 ```
 
 
