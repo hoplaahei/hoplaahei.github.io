@@ -1,8 +1,9 @@
 ---
 layout: post
-published: true
+published: false
 title: How I install Slackware
 ---
+
 
 ## Get Slackware ISO onto a USB pen
 
