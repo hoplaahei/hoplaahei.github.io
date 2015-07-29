@@ -1,8 +1,9 @@
 ---
 layout: post
 published: true
-title: "Why Slackware's lack of dependency resolution isn't necessarily a bad thing"
+title: "Slackware: lack of dependency resolution is a feature"
 ---
+
 
 
 
