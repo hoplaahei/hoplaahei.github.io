@@ -20,6 +20,7 @@ hdparm --user-master u --security-erase pAsSwOrD $TARGET
 cp /etc/wpa_supplicant/wpa_supplicant{,-$WIFIDEV}.conf
  wpa_passphrase $ESSID $WIFIPASS >> /etc/wpa_supplicant/wpa_supplicant-$WIFIDEV.conf
 sv restart dhcpcd
+```
 
 
 
