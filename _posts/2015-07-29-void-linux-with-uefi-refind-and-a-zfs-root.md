@@ -10,11 +10,14 @@ Void Linux is installable from any existing OS or live CD. Find a recent one tha
 #!/bin/bash
 
 TARGET=/dev/sda
-DISKSIZE=$(fdisk -s $TARGET)
-# make swap size 1.5 times RAM
-SWAPSIZE=$(awk 'NR <=1 {print $2 * 1.5}' /proc/meminfo)
-# subtract swap space from size of disk
-ROOTSIZE=`expr $(DISKSIZE) - $(SWAPSIZE)` 
+EFISIZE=512 # in MB
+##DISKSIZE=`expr $(blockdev --getsize64 $TARGET) / 1024` # in bytes
+DISKSIZE=$(awk -v dev="${TARGET}$" '$0 ~ dev {print $3}' /proc/partitions) # in KB
+# make swap size 1.5 times system RAM
+##SWAPSIZE=`expr $(vmstat -s -S b) / 1024` # in bytes
+SWAPSIZE=$(awk 'NR <=1 {print $2 * 1.5}' /proc/meminfo) # in KB
+# subtract swap space and EFI from size of disk to get root size
+ROOTSIZE=`expr ($(DISKSIZE) - $(SWAPSIZE)) - $(expr $EFISIZE * 1024)` # in KB
 
 WIFIDEV=wlp3s0
 ESSID=PlusnetWireless94CBB7
@@ -30,6 +33,7 @@ cp /etc/wpa_supplicant/wpa_supplicant{,-$WIFIDEV}.conf
 sv restart dhcpcd
 
 # partition disks
+xbps-install gptfdisk
 gdisk $TARGET <<EOF
 n
 
@@ -39,7 +43,12 @@ ef00
 n
 
 
-+$SWAPSIZE
++$ROOTSIZE
+
+n
+
+
+
 8200
 w
 EOF
