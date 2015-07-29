@@ -13,6 +13,7 @@ set -euf -o pipefail
 
 # user set variables
 TARGET="/dev/sda"
+ZPOOL="rpool"
 EFISIZE=512
 
 # don't change these
@@ -58,6 +59,9 @@ n
 8200
 w
 EOF
+
+zpool create $ZPOOL ${TARGET}2
+zfs create $ZPOOL/ROOT
 ```
 
 
