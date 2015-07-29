@@ -7,6 +7,7 @@ title: Void (Linux) with rEFInd (UEFI) and ZFS (root)
 Void Linux is installable from any existing OS or live CD. Find a recent one that comes with ZFS tools (or can install the tools).
 
 ```
+#!/bin/bash
 TARGET=/dev/sda
 WIFIDEV=wlp3s0
 ESSID=PlusnetWireless94CBB7
