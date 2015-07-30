@@ -35,6 +35,7 @@ ESSID=PlusnetWireless94CBB7
 WIFIPASS=9FB2A30C04
 
 # securely erase our target disk
+zzz
 hdparm --user-master u --security-set-pass pAsSwOrD $TARGET
 hdparm --user-master u --security-erase pAsSwOrD $TARGET
 
@@ -73,8 +74,8 @@ zfs set mountpoint=/ $ZPOOL/$ROOTFS/$INSTALLFS
 zpool set bootfs=$ZPOOL/$ROOTFS/$INSTALLFS $ZPOOL
 zpool export $ZPOOL
 zpool import -R /mnt $ZPOOL
-mkdir -p /mnt/{boot/efi,dev,proc,run,sys}
-mount /dev/sda1 /mnt/boot/efi
+mkdir -p /mnt/{boot,dev,proc,run,sys}
+mount /dev/sda1 /mnt/boot
 mount --rbind /dev /mnt/dev
 mount --rbind /proc /mnt/proc
 mount --rbind /run /mnt/run
@@ -93,6 +94,7 @@ echo $HOSTNAME > /etc/hostname
 xbps-install zfs efibootmgr curl unzip
 (cd /boot/efi; curl -O -J -L "http://sourceforge.net/projects/refind/files/latest/download?source=files" && unzip refind-bin-*.zip && ./refind-bin-*/install.sh)
 printf '/dev/sda1 /boot/efi vfat defaults 0 0\n' >> /mnt/etc/fstab
+printf '/dev/sda3 swap swap defaults 0 0\n' >> /mnt/etc/fstab
 mkdir -p /etc/dracut.conf.d
 printf 'hostonly=yes\n' > /etc/dracut.conf.d/hostonly.conf
 zpool set cachefile=/etc/zfs/zpool.cache $ZPOOL
