@@ -107,6 +107,7 @@ ln -s /etc/sv/dhcpcd /var/service/
 useradd -m -s /usr/bin/zsh -G wheel,users,audio,video,cdrom,input joe
 passwd joe
 xbps-install zsh
+echo "LANG=es_GB.UTF-8" > /etc/locale.conf
 zfs snapshot $ZPOOL@fresh-install
 exit
 exit
