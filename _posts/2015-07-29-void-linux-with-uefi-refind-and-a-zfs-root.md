@@ -100,6 +100,8 @@ printf '/dev/${TARGET}1 /boot vfat defaults 0 0\n' >> /mnt/etc/fstab
 printf '/dev/${TARGET}3 swap swap defaults 0 0\n' >> /mnt/etc/fstab
 printf 'hostonly=yes\n' >> /etc/dracut.conf
 zpool set cachefile=/etc/zfs/zpool.cache $ZPOOL
+echo "LANG=es_GB.UTF-8" > /etc/locale.conf
+xbps-reconfigure -f glibc-locales
 xbps-reconfigure -f linux${KERNEL}
 echo "now add 'zfs=bootfs' to standard options of /boot/refind_linux.conf"
 
@@ -108,9 +110,7 @@ useradd -m -s /usr/bin/zsh -G wheel,users,audio,video,cdrom,input joe
 passwd joe
 xbps-install zsh
 echo "/usr/bin/zsh" >> /etc/shells
-echo "LANG=es_GB.UTF-8" > /etc/locale.conf
-xbps-reconfigure -f glibc-locales
-zfs snapshot $ZPOOL@fresh-install
+zfs snapshot $ZPOOL/$ROOTFS/$INSTALLFS@fresh-install
 exit
 exit
 umount -R /mnt
