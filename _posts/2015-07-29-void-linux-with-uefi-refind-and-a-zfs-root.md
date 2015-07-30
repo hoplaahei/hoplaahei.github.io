@@ -95,10 +95,9 @@ xbps-install zfs efibootmgr curl unzip
 (cd /boot; curl -O -J -L "http://sourceforge.net/projects/refind/files/latest/download?source=files" && unzip refind-bin-*.zip && ./refind-bin-*/install.sh)
 printf '/dev/sda1 /boot/efi vfat defaults 0 0\n' >> /mnt/etc/fstab
 printf '/dev/sda3 swap swap defaults 0 0\n' >> /mnt/etc/fstab
-mkdir -p /etc/dracut.conf.d
-printf 'hostonly=yes\n' > /etc/dracut.conf.d/hostonly.conf
+printf 'hostonly=yes\n' >> /etc/dracut.conf
 zpool set cachefile=/etc/zfs/zpool.cache $ZPOOL
-xbps-reconfigure -f $KERNEL
+xbps-reconfigure -f linux${KERNEL}
 echo "now add 'zfs=bootfs' to standard options of /boot/refind_linux.conf"
 exit
 exit
