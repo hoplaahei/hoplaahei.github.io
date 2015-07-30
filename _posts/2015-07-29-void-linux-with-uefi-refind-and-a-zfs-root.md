@@ -87,6 +87,7 @@ wget "http://repo.voidlinux.eu/static/xbps-static-latest.x86_64-musl.tar.xz"
 tar xf xbps-static-latest.x86_64-musl.tar.xz -C /mnt
 /mnt/usr/bin/xbps-install -S --repository=http://repo.voidlinux.eu/current -r /mnt base-system
 cp /etc/resolv.conf /mnt/etc/resolv.conf
+cp /etc/wpa_supplicant/wpa_supplicant-$WIFIDEV.conf /mnt/etc/wpa_supplicant/wpa_supplicant-$WIFIDEV.conf
 chroot /mnt /bin/bash
 
 passwd root
