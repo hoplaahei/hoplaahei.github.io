@@ -92,7 +92,7 @@ chown root:root /
 chmod 755 /
 echo $HOSTNAME > /etc/hostname
 xbps-install zfs efibootmgr curl unzip
-(cd /boot/efi; curl -O -J -L "http://sourceforge.net/projects/refind/files/latest/download?source=files" && unzip refind-bin-*.zip && ./refind-bin-*/install.sh)
+(cd /boot; curl -O -J -L "http://sourceforge.net/projects/refind/files/latest/download?source=files" && unzip refind-bin-*.zip && ./refind-bin-*/install.sh)
 printf '/dev/sda1 /boot/efi vfat defaults 0 0\n' >> /mnt/etc/fstab
 printf '/dev/sda3 swap swap defaults 0 0\n' >> /mnt/etc/fstab
 mkdir -p /etc/dracut.conf.d
