@@ -98,12 +98,9 @@ printf 'hostonly=yes\n' > /etc/dracut.conf.d/hostonly.conf
 zpool set cachefile=/etc/zfs/zpool.cache $ZPOOL
 xbps-reconfigure -f $KERNEL
 echo "now add 'zfs=bootfs' to standard options of /boot/refind_linux.conf"
-echo "rebooting in 15 seconds"
-sleep 15
 exit
 exit
 umount -R /mnt
-reboot
 ```
 
 
