@@ -102,7 +102,11 @@ printf 'hostonly=yes\n' >> /etc/dracut.conf
 zpool set cachefile=/etc/zfs/zpool.cache $ZPOOL
 xbps-reconfigure -f linux${KERNEL}
 echo "now add 'zfs=bootfs' to standard options of /boot/refind_linux.conf"
+
 ln -s /etc/sv/dhcpcd /var/service/
+useradd -m -s /bin/zsh -G wheel,users,audio,video,cdrom,input joe
+passwd joe
+xbps-install zsh
 zfs snapshot $ZPOOL@fresh-install
 exit
 exit
