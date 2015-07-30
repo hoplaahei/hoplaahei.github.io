@@ -65,7 +65,9 @@ n
 w
 EOF
 
-mkfs.vfat -F32 /dev/sda1
+mkfs.vfat -F32 /dev/${TARGET}1
+mkswap /dev/${TARGET}3
+swapon /dev/${TARGET}3
 zpool create $ZPOOL ${TARGET}2
 zfs create $ZPOOL/$ROOTFS
 zfs create $ZPOOL/$ROOTFS/$INSTALLFS
@@ -75,7 +77,7 @@ zpool set bootfs=$ZPOOL/$ROOTFS/$INSTALLFS $ZPOOL
 zpool export $ZPOOL
 zpool import -R /mnt $ZPOOL
 mkdir -p /mnt/{boot,dev,proc,run,sys}
-mount /dev/sda1 /mnt/boot
+mount /dev/{TARGET}1 /mnt/boot
 mount --rbind /dev /mnt/dev
 mount --rbind /proc /mnt/proc
 mount --rbind /run /mnt/run
@@ -93,8 +95,8 @@ chmod 755 /
 echo $HOSTNAME > /etc/hostname
 xbps-install zfs efibootmgr curl unzip
 (cd /boot; curl -O -J -L "http://sourceforge.net/projects/refind/files/latest/download?source=files" && unzip refind-bin-*.zip && ./refind-bin-*/install.sh)
-printf '/dev/sda1 /boot/efi vfat defaults 0 0\n' >> /mnt/etc/fstab
-printf '/dev/sda3 swap swap defaults 0 0\n' >> /mnt/etc/fstab
+printf '/dev/${TARGET}1 /boot/efi vfat defaults 0 0\n' >> /mnt/etc/fstab
+printf '/dev/${TARGET}3 swap swap defaults 0 0\n' >> /mnt/etc/fstab
 printf 'hostonly=yes\n' >> /etc/dracut.conf
 zpool set cachefile=/etc/zfs/zpool.cache $ZPOOL
 xbps-reconfigure -f linux${KERNEL}
