@@ -96,7 +96,7 @@ chmod 755 /
 echo $HOSTNAME > /etc/hostname
 xbps-install zfs efibootmgr curl unzip
 (cd /boot; curl -O -J -L "http://sourceforge.net/projects/refind/files/latest/download?source=files" && unzip refind-bin-*.zip && ./refind-bin-*/install.sh)
-printf '/dev/${TARGET}1 /boot/efi vfat defaults 0 0\n' >> /mnt/etc/fstab
+printf '/dev/${TARGET}1 /boot vfat defaults 0 0\n' >> /mnt/etc/fstab
 printf '/dev/${TARGET}3 swap swap defaults 0 0\n' >> /mnt/etc/fstab
 printf 'hostonly=yes\n' >> /etc/dracut.conf
 zpool set cachefile=/etc/zfs/zpool.cache $ZPOOL
