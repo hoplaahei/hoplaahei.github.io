@@ -85,16 +85,19 @@ tar xf xbps-static-latest.x86_64-musl.tar.xz -C /mnt
 /mnt/usr/bin/xbps-install -S --repository=http://repo.voidlinux.eu/current -r /mnt base-system
 cp /etc/resolv.conf /mnt/etc/resolv.conf
 chroot /mnt /bin/bash
+
 passwd root
 chown root:root /
 chmod 755 /
 echo $HOSTNAME > /etc/hostname
-xbps-install zfs
+xbps-install zfs efibootmgr curl unzip
+(cd /boot/efi; curl -O -J -L "http://sourceforge.net/projects/refind/files/latest/download?source=files" && unzip refind-bin-*.zip && ./refind-bin-*/install.sh)
 printf '/dev/sda1 /boot/efi vfat defaults 0 0\n' >> /mnt/etc/fstab
 mkdir -p /etc/dracut.conf.d
 printf 'hostonly=yes\n' > /etc/dracut.conf.d/hostonly.conf
 zpool set cachefile=/etc/zfs/zpool.cache $ZPOOL
 xbps-reconfigure -f $KERNEL
+echo "now add 'zfs=bootfs' to standard options of /boot/refind_linux.conf"
 ```
 
 
