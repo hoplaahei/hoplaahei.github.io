@@ -108,6 +108,7 @@ useradd -m -s /usr/bin/zsh -G wheel,users,audio,video,cdrom,input joe
 passwd joe
 xbps-install zsh
 echo "LANG=es_GB.UTF-8" > /etc/locale.conf
+xbps-reconfigure -f glibc-locales
 zfs snapshot $ZPOOL@fresh-install
 exit
 exit
