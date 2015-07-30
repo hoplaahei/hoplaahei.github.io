@@ -104,8 +104,8 @@ echo "LANG=es_GB.UTF-8" > /etc/locale.conf
 xbps-reconfigure -f glibc-locales
 xbps-reconfigure -f linux${KERNEL}
 echo "now add 'zfs=bootfs' to standard options of /boot/refind_linux.conf"
-
 ln -s /etc/sv/dhcpcd /var/service/
+
 useradd -m -s /usr/bin/zsh -G wheel,users,audio,video,cdrom,input joe
 passwd joe
 xbps-install zsh
