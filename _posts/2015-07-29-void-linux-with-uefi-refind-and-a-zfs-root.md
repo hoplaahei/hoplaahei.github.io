@@ -142,7 +142,7 @@ EOL
 zfs snapshot $ZPOOL/$ROOTFS/$INSTALLFS@fresh-install
 
 mkdir -p $HOME/Ultimate/Configs
-rsync -avz --progress hoplaahei@hoplaahei.strongspace.com:/strongspace/hoplaahei/home/Ultimate/Configs $HOME/Ultimate/Configs
+rsync -avz --progress hoplaahei@hoplaahei.strongspace.com:/strongspace/hoplaahei/home/Ultimate/Configs $HOME
 exit
 exit
 umount -R /mnt
