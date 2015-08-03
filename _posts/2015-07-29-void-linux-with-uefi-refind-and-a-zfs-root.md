@@ -4,6 +4,7 @@ published: false
 title: Void (Linux) with rEFInd (UEFI) and ZFS (root)
 ---
 
+
 Void Linux is installable from any existing OS or live CD. Find a recent one that comes with ZFS tools (or can install the tools).
 
 ```
@@ -96,8 +97,8 @@ chmod 755 /
 echo $HOSTNAME > /etc/hostname
 xbps-install zfs efibootmgr curl unzip
 (cd /boot; curl -O -J -L "http://sourceforge.net/projects/refind/files/latest/download?source=files" && unzip refind-bin-*.zip && ./refind-bin-*/install.sh)
-printf '/dev/${TARGET}1 /boot vfat defaults 0 0\n' >> /mnt/etc/fstab
-printf '/dev/${TARGET}3 swap swap defaults 0 0\n' >> /mnt/etc/fstab
+printf '/dev/${TARGET}1\t/boot\tvfat\tdefaults\t\t0\t0\n' >> /mnt/etc/fstab
+printf '/dev/${TARGET}3\tswap\tswap\tdefaults\t\t0\t0\n' >> /mnt/etc/fstab
 printf 'hostonly=yes\n' >> /etc/dracut.conf
 zpool set cachefile=/etc/zfs/zpool.cache $ZPOOL
 echo "LANG=es_GB.UTF-8" > /etc/locale.conf
@@ -115,7 +116,3 @@ exit
 exit
 umount -R /mnt
 ```
-
-
-
-
