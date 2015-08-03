@@ -135,8 +135,8 @@ Section "InputClass"
         Driver "evdev"
         # Keyboard layouts
         Option "XkbModel" "pc104"
-        Option "XkbLayout" "us,gb"
-        Option "XkbOptions" "grp:alt_shift_toggle, grp_led:scroll, terminate:ctrl_alt_bksp"
+        Option "XkbLayout" "us"
+        Option "XkbOptions" "ctrl:nocaps"
 EndSection
 EOL
 zfs snapshot $ZPOOL/$ROOTFS/$INSTALLFS@fresh-install
