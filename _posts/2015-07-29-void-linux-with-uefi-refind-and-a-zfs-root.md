@@ -112,6 +112,8 @@ passwd joe
 xbps-install zsh
 echo "/usr/bin/zsh" >> /etc/shells
 zfs snapshot $ZPOOL/$ROOTFS/$INSTALLFS@fresh-install
+
+
 exit
 exit
 umount -R /mnt
