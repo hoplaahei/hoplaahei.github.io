@@ -101,7 +101,7 @@ printf '/dev/${TARGET}1\t/boot\tvfat\tdefaults\t\t0\t0\n' >> /mnt/etc/fstab
 printf '/dev/${TARGET}3\tswap\tswap\tdefaults\t\t0\t0\n' >> /mnt/etc/fstab
 printf 'hostonly=yes\n' >> /etc/dracut.conf
 zpool set cachefile=/etc/zfs/zpool.cache $ZPOOL
-echo "LANG=es_GB.UTF-8" > /etc/locale.conf
+echo "LANG=en_GB.UTF-8" > /etc/locale.conf
 xbps-reconfigure -f glibc-locales
 xbps-reconfigure -f linux${KERNEL}
 echo "now add 'zfs=bootfs' to standard options of /boot/refind_linux.conf"
