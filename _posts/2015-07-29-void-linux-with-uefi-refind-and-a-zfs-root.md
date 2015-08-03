@@ -53,16 +53,6 @@ read -p "Are these values correct? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  echo "do dangerous stuff"
-fi
-
-echo
-echo $( echo $(blockdev --getsz $TARGET) $OP_PERCENT | awk '{print $1 * (1 - ($2 / 100) )}' ) blocks will be provisioned for $TARGET
-echo
-read -p "Are these values correct? " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
 hdparm -Np$( echo $(blockdev --getsz $TARGET) $OP_PERCENT | awk '{print $1 * (1 - ($2 / 100) )}' ) $TARGET --yes-i-know-what-i-am-doing
 fi
 
