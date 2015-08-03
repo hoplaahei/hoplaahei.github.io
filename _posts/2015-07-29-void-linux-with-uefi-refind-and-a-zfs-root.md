@@ -21,6 +21,9 @@ EFISIZE=512
 HOSTNAME="salient230"
 KERNEL="4.1"
 
+# optional amount to overprovision the SSD by (compensates for no ZFS TRIM support)
+OP_PERCENT=25
+
 # don't change these
 DISKSIZE=$(blockdev --getsize64 $TARGET) 
 SWAPSIZE=$(vmstat -s -S b | awk 'NR <=1 {print $1 * 1.5}')
@@ -39,6 +42,29 @@ WIFIPASS=9FB2A30C04
 zzz
 hdparm --user-master u --security-set-pass pAsSwOrD $TARGET
 hdparm --user-master u --security-erase pAsSwOrD $TARGET
+
+# optional: zfs-on-linux does not support TRIM, but overprovising your
+# SSD with a HPA area can counteract any negative affects
+
+echo
+echo $( echo $(blockdev --getsz $TARGET) $OP_PERCENT | awk '{print $1 * (1 - ($2 / 100) )}' ) blocks will be provisioned for $TARGET
+echo
+read -p "Are these values correct? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  echo "do dangerous stuff"
+fi
+
+echo
+echo $( echo $(blockdev --getsz $TARGET) $OP_PERCENT | awk '{print $1 * (1 - ($2 / 100) )}' ) blocks will be provisioned for $TARGET
+echo
+read -p "Are these values correct? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+hdparm -Np$( echo $(blockdev --getsz $TARGET) $OP_PERCENT | awk '{print $1 * (1 - ($2 / 100) )}' ) $TARGET --yes-i-know-what-i-am-doing
+fi
 
 # bring up the wifi
 cp /etc/wpa_supplicant/wpa_supplicant{,-$WIFIDEV}.conf
