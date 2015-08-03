@@ -14,14 +14,18 @@ set -euf -o pipefail
 
 # user set variables
 TARGET="/dev/sda"
+TARGET_USER="joe"
 ZPOOL="rpool"
 ROOTFS="ROOT"
 INSTALLFS="voidlinux_1"
 EFISIZE=512
 HOSTNAME="salient230"
 KERNEL="4.1"
+WIFIDEV=wlp3s0
+ESSID=PlusnetWireless94CBB7
+WIFIPASS=9FB2A30C04
 
-# optional amount to overprovision the SSD by (compensates for no ZFS TRIM support)
+# optional amount to overprovision the SSD by (compensates for no ZFS on Linux TRIM support)
 OP_PERCENT=25
 
 # don't change these
@@ -34,18 +38,13 @@ SWAPSIZE=$(vmstat -s -S b | awk 'NR <=1 {print $1 * 1.5}')
 # don't change this
 ROOTSIZE=$(( ( $DISKSIZE - ($SWAPSIZE + (( ($EFISIZE * 1024) * 1024 )) ) ) / 1024 ))
 
-WIFIDEV=wlp3s0
-ESSID=PlusnetWireless94CBB7
-WIFIPASS=9FB2A30C04
-
 # securely erase our target disk
 zzz
 hdparm --user-master u --security-set-pass pAsSwOrD $TARGET
 hdparm --user-master u --security-erase pAsSwOrD $TARGET
 
 # optional: zfs-on-linux does not support TRIM, but overprovising your
-# SSD with a HPA area can counteract any negative affects
-
+# SSD with a HPA area can counteract any negative effects
 echo
 echo $( echo $(blockdev --getsz $TARGET) $OP_PERCENT | awk '{print $1 * (1 - ($2 / 100) )}' ) blocks will be provisioned for $TARGET
 echo
@@ -123,10 +122,23 @@ xbps-reconfigure -f linux${KERNEL}
 echo "now add 'zfs=bootfs' to standard options of /boot/refind_linux.conf"
 ln -s /etc/sv/dhcpcd /var/service/
 
-useradd -m -s /usr/bin/zsh -G wheel,users,audio,video,cdrom,input joe
-passwd joe
+useradd -m -s /usr/bin/zsh -G wheel,users,audio,video,cdrom,input $TARGET_USER
+passwd $TARGET_USER
 xbps-install zsh
 echo "/usr/bin/zsh" >> /etc/shells
+mkdir -p /etc/X11/xorg.conf.d
+cat >/etc/X11/xorg.conf.d/00-keyboard.conf <<EOL
+Section "InputClass"
+        Identifier "evdev keyboard catchall"
+        MatchIsKeyboard "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "evdev"
+        # Keyboard layouts
+        Option "XkbModel" "pc104"
+        Option "XkbLayout" "us,gb"
+        Option "XkbOptions" "grp:alt_shift_toggle, grp_led:scroll, terminate:ctrl_alt_bksp"
+EndSection
+EOL
 zfs snapshot $ZPOOL/$ROOTFS/$INSTALLFS@fresh-install
 
 
