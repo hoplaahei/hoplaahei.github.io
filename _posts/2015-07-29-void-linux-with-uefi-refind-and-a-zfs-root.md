@@ -167,3 +167,5 @@ And install the following extensions:
  - Random Agent Spoofer
  - Self-Destructing Cookies
  - Squared Australis Tabs
+ - Text Area Cache
+ - Flag Fox
