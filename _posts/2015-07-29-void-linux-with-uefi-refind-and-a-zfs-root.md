@@ -147,3 +147,23 @@ exit
 exit
 umount -R /mnt
 ```
+
+Then I add some Firefox customisations to `about:config`:
+
+```
+ui.key.menuAccessKeyFocuses = false
+```
+
+And install the following extensions:
+
+ - Disconnect Search
+ - Double Click Closes Tab
+ - Firemacs
+ - HTTPS-Everywhere
+ - uBlock Origin
+ - uMatrix
+ - NoScript (set to allow scripts globally because uMatrix blocks scripts, but NoScript offers other protections)
+ - Open With (to open Flash with `mpv` via `youtube-dl`)
+ - Random Agent Spoofer
+ - Self-Destructing Cookies
+ - Squared Australis Tabs
