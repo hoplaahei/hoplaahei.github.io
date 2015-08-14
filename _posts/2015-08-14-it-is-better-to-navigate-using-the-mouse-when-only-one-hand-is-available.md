@@ -4,7 +4,7 @@ published: false
 title: It is better to navigate using the mouse when only one hand is available
 ---
 
-Window manager keyboard shortcuts inherantly require a modifier key (e.g., holding onto 'Alt' key or 'Windows' key, and will do so until the day when someone designs advanced AI that can contextually detect when someone is typing rather than performing a management action on the window frame itself. The problem with needing to hold a modifier key, however, is that there are plenty of times when only one hand is rested on the keyboard; this requires finger gymnastics to press the right keyboard combinations. Examples of such situations:
+Window manager keyboard shortcuts inherantly require a modifier key (e.g., holding onto 'Alt' key or 'Windows' key, and will do so until the day when someone designs advanced AI that can contextually detect when someone is typing, rather than performing a management action on the window frame itself. The problem with needing to hold a modifier key, however, is that there are plenty of times when only one hand is rested on the keyboard; this requires finger gymnastics to press the right keyboard combinations. Examples of such situations:
 
 - holding a drink
 - passing documents
@@ -13,7 +13,14 @@ Window manager keyboard shortcuts inherantly require a modifier key (e.g., holdi
 - jerking off
 - stroking your neck beard
 
-Anyone who says they never do any of the above is lying; nobody is stooped over a computer desk with both hands on the keyboard 100% of the time. Hypothetically, I could bind all my window manager binds to the right side of the keyboard; that way, I don't need to keep reaching across the keyboard to press window manager shortcuts or enter key whilst typing with one hand. The problem with this, however, is that it requires finger gymnastics of the pinky finger to stretch for the modifier keys on any keyboard. Furthermore, myself, and the majority of people, are right hand dominant, and it feels awkward to use the left hand for other tasks, such as holding a cup of coffee. I've considered rebinding the enter key to the left side of my keyboard, but that is asking for disaster when in a terminal, and not a very portable solution across different setups. 
+Anyone who says they never do any of the above is lying; nobody is stooped over a computer desk with both hands on the keyboard 100% of the time. Hypothetically, I could bind all my window manager binds to the right side of the keyboard; that way, when I'm trying to use my computer with one hand, I don't need to keep reaching across the keyboard to hit the enter key, or various key combos. The problem with this, however, is that:
+
+ - keyboard shortcuts so close to the enter key are dangerous (e.g., in a terminal)
+ - the placement of right ctrl on most keyboards is hard to discover and usually requires a pinky stretch (especially on laptops where it is squashed in by the arrow keys)
+ - shift is practically unreachable as a modifier, and better served as a replacement for CapsLock when typing single-handedly
+ - alt key is reachable with the thumb, but most applications use it on the top-level, so it is inflexible as a modifier for window management keys
+
+requires finger gymnastics of the pinky finger to stretch for the modifier keys on any keyboard. Furthermore, myself, and the majority of people, are right hand dominant, and it feels awkward to use the left hand for other tasks, such as holding a cup of coffee. I've considered rebinding the enter key to the left side of my keyboard, but that is asking for disaster when in a terminal, and not a very portable solution across different setups. 
 
 Try doing any of the above tasks whilst also copying some text from your web browser to a terminal using just the keyboard. Even assuming you have a keyboard-optimised browsing extension enabled, you still need to either move the caret to select text, or search for the start point of the text, create a mark, and search for the end point. This will also require switching modes if using vim-like keybindings, or using finger gymnastics if using emacs-like keybindings (remember you only have one hand available). Either way, this generates a lot of mental activity that frustrates ones train of thought, whereas just selecting the text with a mouse is an almost subconscious action, and one that only requires to pin-point a spacial target.
 
