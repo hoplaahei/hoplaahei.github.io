@@ -6,7 +6,7 @@ title: "Lite-weight" window manager developers: stop making it hard to use a com
 
 I wouldn't even be arsed to make a whole post about this, but in my quest to find a portable and unbloated window manager, I've noticed one too many websites and forum posts from developers taking great pride in the fact that their window manager has limited to no mouse support at all. Look matey, being forced to hold onto MOD key + trackpoint on my laptop just to raise a window when I'm using one hand makes your window manager crap. Fair enough, you gave up your time to make it for free, and no one forced me to waste 10 minutes of my life installing and quickly deleting it, but please stop trying to push the arcane and academically dishonest idea that mouse usage is better off eradicated from a computer work-flow. 
 
-A great deal of casual computing tasks are comfortably done with only one hand. In fact, I often go for hours on end operating solely with the laptop trackpoint to read content aggregator websites. Some examples of when it is comfortabler for me to only operate a laptop with one hand are when I'm:
+I'm going to argue that there is a specific use case where a pointing device objectively excels over the keyboard: one-handed use. First, I want to outline why one handed operation is the norm rather than the exception for many people's computer workflows. Some examples of when it is comfortabler for me to only operate a laptop with one hand are when I'm:
 
 -  flicking through physical documents
 -  cuddling my girfriend
