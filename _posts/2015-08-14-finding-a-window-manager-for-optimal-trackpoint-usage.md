@@ -9,7 +9,7 @@ All window managers should at least optionally support:
  - click-to-raise (and/or clicking on titlebar and/or window borders to raise)
  - click to close, move, and resize
  
-Unforunately, however, there seems to be a cock waving excercise amongst the Linux "elite" over who can design a window manager that supports the least mouse usage possible. This is silly, as the mouse is preferable in certain situations (assuming you don't have a handicap), and this is an objective fact. Allow me to explain this bold claim. 
+Unfortunately, however, there seems to be a cock waving excercise amongst the Linux "elite" over who can design a window manager that supports the least mouse usage possible. This is silly, as the mouse is preferable in certain situations (assuming you don't have a handicap), and this is an objective fact. Allow me to explain this bold claim. 
 
 I'll agree that the keyboard is theoretically just as quick for most tasks as the mouse when two hands are placed over the keys, but the fact is that there are plenty of times when two hands do not rest on the keyboard. Examples of such situations:
 
