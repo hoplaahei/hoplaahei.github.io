@@ -10,7 +10,6 @@ Window manager keyboard shortcuts inherantly require a modifier key (e.g., holdi
 - passing documents
 - leaning your elbow on the couch (if on a laptop)
 - picking your nose
-- jerking off
 - stroking your neck beard
 
 Anyone who says they never do any of the above is lying; nobody is stooped over a computer desk with both hands on the keyboard 100% of the time. Hypothetically, I could bind all my window manager binds to the right side of the keyboard; that way, when I'm trying to use my computer with one hand, I don't need to keep reaching across the keyboard to hit the enter key, or various key combos. The problem with this, however, is that:
@@ -31,6 +30,6 @@ All window managers should at least optionally support:
  
 Unfortunately, however, there seems to be a cock waving excercise amongst the Linux "elite" over who can design a window manager that supports the least mouse usage possible. This is sad, considering that there is little cost or difficulty for WM developers to do the kind thing by adding a couple of lines of xlib or xcb calls to enable some basic mouse functionality for those who don't take such a hard line on mouse usage. Please stop designing arcane window management just for the sake of geek-cred.
 
-I wouldn't even be that arsed to make a whole post about this, but I've noticed one too many websites and forum posts from developers listing "no mouse" as a feature of the WM. Being forced to hold onto MOD key + trackpoint on my Thinkpad just to raise a window when I'm using one hand makes your window manager automatically crap. Fair enough, you gave up your time to make it for free, and no one forced me to waste 10 minutes of my life installing and quickly deleting it, but  stop spamming forums and encouraging your band of fellow cock-wavers with propoganda about the evils of mouse usage; it is academically dishonest. You fucking know you want to reach for that mouse. You miss it, especially when jerking it to porn. Stop lying to yourself. 
+I wouldn't even be that arsed to make a whole post about this, but I've noticed one too many websites and forum posts from developers listing "no mouse" as a feature of the WM. Being forced to hold onto MOD key + trackpoint on my Thinkpad just to raise a window when I'm using one hand makes your window manager automatically crap. Fair enough, you gave up your time to make it for free, and no one forced me to waste 10 minutes of my life installing and quickly deleting it, but  stop spamming forums and encouraging your band of fellow cock-wavers with propoganda about the evils of mouse usage; it is academically dishonest. You fucking know you want to reach for that mouse. You miss it. Stop lying to yourself. 
 
 
