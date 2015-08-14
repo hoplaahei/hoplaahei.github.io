@@ -4,9 +4,7 @@ published: false
 title: It is better to navigate using the mouse when only one hand is available
 ---
 
-Window manager keyboard shortcuts inherantly require a modifier key (e.g., holding onto 'Alt' key or 'Windows' key, and will do so until the day when someone designs advanced AI that can contextually detect when someone is typing rather than performing a management action on the window frame itself. That said, there are plenty of keyboard shortcuts that are cumbersome to perform with just one hand. Can you see where my argument is going yet? Hint: it's in the title.
-
-There are plenty of times when two hands do not rest on the keyboard. Examples of such situations:
+Window manager keyboard shortcuts inherantly require a modifier key (e.g., holding onto 'Alt' key or 'Windows' key, and will do so until the day when someone designs advanced AI that can contextually detect when someone is typing rather than performing a management action on the window frame itself. The problem with needing to hold a modifier key, however, is that there are plenty of times when only one hand is rested the keyboard; this requires finger gymnastics to press the right keyboard combinations. Examples of such situations:
 
 - holding a drink
 - passing documents
