@@ -4,6 +4,8 @@ published: false
 title: "Lite-weight" window manager developers: stop making it hard to use a computer with one hand
 ---
 
+I wouldn't even be arsed to make a whole post about this, but in my quest to find a portable and unbloated window manager, I've noticed one too many websites and forum posts from developers taking great pride in the fact their window manager has limited to no mouse support at all. Look here, being forced to hold onto MOD key + trackpoint on my Thinkpad just to raise a window when I'm using one hand makes your window manager automatically crap. Fair enough, you gave up your time to make it for free, and no one forced me to waste 10 minutes of my life installing and quickly deleting it, but please stop trying to push the arcane and academically dishonest idea that mouse usage is better of eradicated from a computer work-flow. 
+
 A great deal of casual computing tasks are comfortably done with only one hand. In fact, I often go for hours on end operating solely with the laptop trackpoint to read content aggregator websites. Some examples of when it is comfortabler for me to only operate a laptop with one hand are when I'm:
 
 -  flicking through physical documents
@@ -15,19 +17,7 @@ A great deal of casual computing tasks are comfortably done with only one hand. 
 
 I could go on, but hopefully this highlights the fact that having both hands at the ready at all times when operating a computer is impractical. Sadly, there is a trend of "lightweight" window managers to make it very hard to operate with one hand because of one simple ommission: they do not allow a "click-to-raise" policy. This means that my casual web browsing is completely fucked, as I now have to pinky stretch to a modifier key just to e.g., raise my web browser back above the terminal when I'm pasting code. 
 
-In my quest to find a window manager, I found so many Github issues raised asking for mouse support. And yet, many developers absolutley refuse to add the support, often touting the lack of mouse support as a feature of their window manager, even though it would literally only take a couple of lines of xlib or xcb calls to introduce a click-to-raise configuration option for those users who don't take such a hard line on mouse usage.   
-
 I've tried to play devils advocate with myself and not use the trackpoint (or touchpad) on my Thinkpad for a week, but operating window manager shortcuts with one hand is just plain awkward, however elaborate the keybinding setup. Window manager keyboard shortcuts inherantly require a modifier key (e.g., holding onto 'Alt' key or 'Windows' key, and will do so until the day when someone designs advanced AI that can contextually detect when someone is typing, rather than performing a management action on the window frame itself. The problem with needing to hold a modifier key, however, is that there are plenty of times when only one hand is rested on the keyboard.  
-
-Examples of such situations:
-
-- holding a drink
-- passing documents
-- leaning your elbow on the couch (if on a laptop)
-- picking your nose
-- stroking your neck beard
-
-Anyone who says they never do any of the above is lying; nobody is stooped over a computer desk with both hands on the keyboard 100% of the time. 
 
 With only one hand on the keyboard, a key map is needed that prevents too much travel across the keyboard, and prevents finger gymnastics to press the right keyboard combinations. 
 
@@ -41,13 +31,8 @@ And even if there is a keyboard out there that works well with right handed key 
 
 Try doing any of the above tasks whilst also copying some text from your web browser to a terminal using just the keyboard. Even assuming you have a keyboard-optimised browsing extension enabled, you still need to either move the caret to select text, or search for the start point of the text, create a mark, and search for the end point. This will also require switching modes if using vim-like keybindings, or using finger gymnastics if using emacs-like keybindings (remember you only have one hand available). Either way, this generates a lot of mental activity that frustrates ones train of thought, whereas just selecting the text with a mouse is an almost subconscious action, and one that only requires to pin-point a spacial target.
 
-All window managers should at least optionally support:
+In my quest to find a window manager, I found so many Github issues raised asking for mouse support. And yet, many developers take a very hard line and deny any such requests, often touting the lack of mouse support as a feature of their window manager. Refusing to add such basic support is silly; it involves little cost or difficulty to add a couple of lines of xlib or xcb calls that introduce a click-to-raise configuration option for those users who want it. 
+The tl;dr is that all window managers should at least optionally support:
 
  - click-to-raise (and/or clicking on titlebar and/or window borders to raise)
  - click to close, move, and resize
- 
-Unfortunately, however, there seems to be a cock waving excercise amongst the Linux "elite" over who can design a window manager that supports the least mouse usage possible. This is sad, considering that there is little cost or difficulty for WM developers to do the kind thing by adding a couple of lines of xlib or xcb calls to enable some basic mouse functionality for those who don't take such a hard line on mouse usage. Please stop designing arcane window management just for the sake of geek-cred.
-
-I wouldn't even be that arsed to make a whole post about this, but I've noticed one too many websites and forum posts from developers listing "no mouse" as a feature of the WM. Being forced to hold onto MOD key + trackpoint on my Thinkpad just to raise a window when I'm using one hand makes your window manager automatically crap. Fair enough, you gave up your time to make it for free, and no one forced me to waste 10 minutes of my life installing and quickly deleting it, but  stop spamming forums and encouraging your band of fellow cock-wavers with propoganda about the evils of mouse usage; it is academically dishonest. You fucking know you want to reach for that mouse. You miss it. Stop lying to yourself. 
-
-
