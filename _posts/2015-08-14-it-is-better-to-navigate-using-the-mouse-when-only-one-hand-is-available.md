@@ -4,9 +4,18 @@ published: false
 title: "Lite-weight" window manager developers: stop making it hard to use a computer with one hand
 ---
 
-A great deal of casual computing tasks are comfortably done with only one hand. For instance, I can happily go for an hour opening links with the trackpoint on content aggregator sites. If I'm on the couch, this means I can slouch out and rest on one elbow, or have a cup of coffee in hand, or cuddle my girlfriend. The idea that people should use their computers with two hands ready at all times is an asinane one. Sadly, there is a trend of "lightweight" window managers to make it very hard to operate a computer with one hand because of one simple ommission: they do not allow a "click-to-raise" policy. This means that my casual web browsing is completely fucked, as I now have to pinky stretch to a modifier key just to e.g., raise my web browser back above the terminal when I'm pasting code. 
+A great deal of casual computing tasks are comfortably done with only one hand. In fact, I often go for hours on end operating solely with the laptop trackpoint to read content aggregator websites. Some examples of when it is comfortabler for me to only operate a laptop with one hand are when I'm:
 
-In my quest to find a window manager, I found so many Github issues raised asking for mouse support. Yet many developers deliberately choose to exclude the option to add it, even though it would literally only take a couple of lines of xlib or xcb calls to introduce a click-to-raise configuration option. And yet, many developers absolutley refuse to add the support, often touting the lack of mouse support as a feature of their window manager.  
+-  flicking through physical documents
+-  cuddling my girfriend
+-  leaning on my elbow on the couch
+-  having a cup of coffee
+-  eating
+-  scratching my neckbeard
+
+I could go on, but hopefully this highlights the fact that having both hands at the ready at all times when operating a computer is impractical. Sadly, there is a trend of "lightweight" window managers to make it very hard to operate with one hand because of one simple ommission: they do not allow a "click-to-raise" policy. This means that my casual web browsing is completely fucked, as I now have to pinky stretch to a modifier key just to e.g., raise my web browser back above the terminal when I'm pasting code. 
+
+In my quest to find a window manager, I found so many Github issues raised asking for mouse support. And yet, many developers absolutley refuse to add the support, often touting the lack of mouse support as a feature of their window manager, even though it would literally only take a couple of lines of xlib or xcb calls to introduce a click-to-raise configuration option for those users who don't take such a hard line on mouse usage.   
 
 I've tried to play devils advocate with myself and not use the trackpoint (or touchpad) on my Thinkpad for a week, but operating window manager shortcuts with one hand is just plain awkward, however elaborate the keybinding setup. Window manager keyboard shortcuts inherantly require a modifier key (e.g., holding onto 'Alt' key or 'Windows' key, and will do so until the day when someone designs advanced AI that can contextually detect when someone is typing, rather than performing a management action on the window frame itself. The problem with needing to hold a modifier key, however, is that there are plenty of times when only one hand is rested on the keyboard.  
 
