@@ -1,8 +1,11 @@
 ---
 layout: post
 published: false
-title: "Lightweight" stacking window manager developers: stop making it hard to use a computer with one hand
+title: Lightweight
+stacking window manager developers: stop making it hard to use a computer with one hand
+tags: null
 ---
+
 
 Do you always sit like [this](http://pad2.whstatic.com/images/thumb/a/ac/Sit-at-a-Computer-Step-7-Version-2.jpg/670px-Sit-at-a-Computer-Step-7-Version-2.jpg) when using a computer? No, I don't either. 
 
