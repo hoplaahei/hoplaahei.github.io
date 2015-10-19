@@ -1,8 +1,10 @@
 ---
 layout: post
-published: true
+published: false
 title: "Complete Archlinux Install With LVM, EXT4, UEFI, And Gummiboot"
+tags: null
 ---
+
 
 
 
