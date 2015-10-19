@@ -1,9 +1,11 @@
 ---
 layout: post
-published: true
+published: false
 title: Praise for Slackware and Slackbuilds
-tags: null
+tags: 
+  - "null"
 ---
+
 
 Slackbuilds make it easy to maintain and update computer software without too
 much problem solving. They tend to make every effort possible to rely on the
